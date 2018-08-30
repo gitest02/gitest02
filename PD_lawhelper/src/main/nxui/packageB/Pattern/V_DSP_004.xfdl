@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="pop_char" classname="V_DSP_004" left="0" top="0" width="600" height="240" titletext="pop_char">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="법률관계자 등록" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Div id="dsp_off_no" taborder="1" left="1%" top="50" right="1%" height="32" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Button id="btn_officialSearch" taborder="11" text="검색  " onclick="Div00_Button00_onclick" left="38.23%" top="5" width="58" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;align:right middle;"/>
+              <Static id="Static00" taborder="12" text="법률관계자번호" left="0.51%" top="3" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="edt_officialNo" taborder="13" left="18.09%" top="3" right="62.8%" height="24"/>
+              <Static id="Static01" taborder="14" text="구분" left="49.49%" top="3" width="89" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Button id="btn_clean" taborder="15" text="초기화 " onclick="Div00_Button00_onclick" left="88.23%" top="5" width="64" height="20" style="background:@gradation URL('theme://images\btn_MF_Refresh_O.png') 5px 50px;align:right middle;"/>
+              <Combo id="combo_sep" taborder="16" innerdataset="@ds_officialType" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="65.19%" top="3" width="19.28%" height="24" value="null"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="dsp_info" taborder="2" left="1%" top="90" right="1%" height="114" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="18" text="비밀번호" left="0.51%" top="3" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="edt_pwd" taborder="19" left="18.09%" top="3" right="51.54%" height="24"/>
+              <Combo id="combo_city_code" taborder="22" innerdataset="@ds_addr" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="68.77%" top="57" width="30.2%" height="24"/>
+              <Static id="Static01" taborder="23" text="비밀번호 확인" left="49.32%" top="3" width="111" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="edt_pwd_ok" taborder="24" left="68.77%" top="3" right="1.02%" height="24"/>
+              <Static id="Static02" taborder="25" text="소속" left="0.51%" top="30" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="edt_dept" taborder="26" left="18.09%" top="30" right="51.54%" height="24"/>
+              <Static id="Static03" taborder="27" text="성명" left="49.32%" top="30" width="111" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="edt_name" taborder="28" left="68.77%" top="30" right="1.02%" height="24"/>
+              <Static id="Static04" taborder="29" text="이메일" left="0.51%" top="57" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="edt_email" taborder="30" left="18.09%" top="57" right="51.54%" height="24"/>
+              <Static id="Static05" taborder="31" text="시도코드" left="49.32%" top="57" width="111" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static06" taborder="32" text="핸드폰" left="0.51%" top="84" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static07" taborder="34" text="연락처" left="49.32%" top="84" width="111" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <MaskEdit id="edt_tel" taborder="35" left="68.77%" top="84" right="1.02%" height="24" displaynulltext="___-____-____" style="align:center middle;"/>
+              <MaskEdit id="edt_hp" taborder="36" displaynulltext="___-____-____" left="18.09%" top="84" right="51.54%" height="24" style="align:center middle;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="Button00" taborder="3" text="저장" left="82.5%" top="210" right="9.83%" height="24"/>
+        <Button id="Button01" taborder="4" text="닫기" left="91%" top="210" right="1.33%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_officialType">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_addr">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_official">
+        <ColumnInfo>
+          <Column id="legalOfficialinfoRelaNo" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoLyrPsw" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoRelaSep" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoTeamname" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoLyrName" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoMail" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoPhone" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoHdpn" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoCityCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="dsp_off_no.edt_officialNo" propid="value" datasetid="ds_official" columnid="legalOfficialinfoRelaNo"/>
+      <BindItem id="item1" compid="dsp_off_no.combo_sep" propid="value" datasetid="ds_official" columnid="legalOfficialinfoRelaSep"/>
+      <BindItem id="item2" compid="dsp_info.edt_pwd" propid="value" datasetid="ds_official" columnid="legalOfficialinfoLyrPsw"/>
+      <BindItem id="item3" compid="dsp_info.edt_dept" propid="value" datasetid="ds_official" columnid="legalOfficialinfoTeamname"/>
+      <BindItem id="item4" compid="dsp_info.edt_name" propid="value" datasetid="ds_official" columnid="legalOfficialinfoLyrName"/>
+      <BindItem id="item5" compid="dsp_info.edt_email" propid="value" datasetid="ds_official" columnid="legalOfficialinfoMail"/>
+      <BindItem id="item6" compid="dsp_info.combo_city_code" propid="value" datasetid="ds_official" columnid="legalOfficialinfoCityCode"/>
+      <BindItem id="item7" compid="dsp_info.edt_hp" propid="value" datasetid="ds_official" columnid="legalOfficialinfoHdpn"/>
+      <BindItem id="item8" compid="dsp_info.edt_tel" propid="value" datasetid="ds_official" columnid="legalOfficialinfoPhone"/>
+    </Bind>
+  </Form>
+</FDL>

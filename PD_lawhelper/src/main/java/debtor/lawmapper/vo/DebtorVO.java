@@ -1,0 +1,383 @@
+package debtor.lawmapper.vo;
+
+import com.nexacro.spring.data.DataSetRowTypeAccessor;
+
+public class DebtorVO implements DataSetRowTypeAccessor{
+
+	private int rowType;
+	
+	private String debtorListNo;
+	private String debtorListCode;
+	private String debtorListName;
+	private String debtorListGooboon;
+	private String debtorListEnName;
+	private String debtorListTel;
+	private String debtorListPhone;
+	private String debtorListPostal;
+	private String debtorListAddress1;
+	private String debtorListAddress2;
+	private String debtorListOwance;
+	private String debtorListRepay;
+	private String debtorListStatus;
+	private String debtorListEnddate;
+	private String debtorListMgrNum;
+	private String debtorListRegistDate;
+	private String debtorListInput;
+	private String debtorMgrName;
+	private String debtorListEtc;
+	
+	private String debtorHistorySeq;
+	private String debtorHistoryTel;	
+	private String debtorHistoryPhone;	
+	private String debtorHistoryZipcode;	
+	private String debtorHistoryAddress1;	
+	private String debtorHistoryAddress2;
+	private String debtorHistoryRegistDate;
+	private String debtorHistoryInput;
+	private String debtorHistoryMgrNum;
+	private String debtorHistoryEnName;
+	private String debtorHistoryGooboon;
+	private String debtorHistoryEtc;
+	
+	private String propertyNo;	
+	private String PropertyCheckDate;	
+	private String PropertyCode;	
+	private String PropertyDisclosuer;	
+	private String PropertyExpectation;	
+	private String PropertyStatus;	
+	private String PropertyRegistDate;	
+	private String PropertyInput;
+	
+	private String familySeq;	
+	private String familyJuminNum;	
+	private String familyRelCode;	
+	private String familyTel;	
+	private String familyPhone;	
+	private String familyZipcode;	
+	private String familyAddress1;	
+	private String familyAddress2;	
+	private String familyEtc;
+	private String familyName;
+	
+	
+	private String codeNo;
+	private String codeName;
+	
+	public String getDebtorListNo() {
+		return debtorListNo;
+	}
+	public void setDebtorListNo(String debtorListNo) {
+		this.debtorListNo = debtorListNo;
+	}
+	public String getDebtorListCode() {
+		return debtorListCode;
+	}
+	public void setDebtorListCode(String debtorListCode) {
+		this.debtorListCode = debtorListCode;
+	}
+	public String getDebtorListName() {
+		return debtorListName;
+	}
+	public void setDebtorListName(String debtorListName) {
+		this.debtorListName = debtorListName;
+	}
+	public String getDebtorListGooboon() {
+		return debtorListGooboon;
+	}
+	public void setDebtorListGooboon(String debtorListGooboon) {
+		this.debtorListGooboon = debtorListGooboon;
+	}
+	public String getDebtorListEnName() {
+		return debtorListEnName;
+	}
+	public void setDebtorListEnName(String debtorListEnName) {
+		this.debtorListEnName = debtorListEnName;
+	}
+	public String getDebtorListTel() {
+		return debtorListTel;
+	}
+	public void setDebtorListTel(String debtorListTel) {
+		this.debtorListTel = debtorListTel;
+	}
+	public String getDebtorListPhone() {
+		return debtorListPhone;
+	}
+	public void setDebtorListPhone(String debtorListPhone) {
+		this.debtorListPhone = debtorListPhone;
+	}
+	public String getDebtorListPostal() {
+		return debtorListPostal;
+	}
+	public void setDebtorListPostal(String debtorListPostal) {
+		this.debtorListPostal = debtorListPostal;
+	}
+	public String getDebtorListAddress1() {
+		return debtorListAddress1;
+	}
+	public void setDebtorListAddress1(String debtorListAddress1) {
+		this.debtorListAddress1 = debtorListAddress1;
+	}
+	public String getDebtorListAddress2() {
+		return debtorListAddress2;
+	}
+	public void setDebtorListAddress2(String debtorListAddress2) {
+		this.debtorListAddress2 = debtorListAddress2;
+	}
+	public String getDebtorListOwance() {
+		return debtorListOwance;
+	}
+	public void setDebtorListOwance(String debtorListOwance) {
+		this.debtorListOwance = debtorListOwance;
+	}
+	public String getDebtorListRepay() {
+		return debtorListRepay;
+	}
+	public void setDebtorListRepay(String debtorListRepay) {
+		this.debtorListRepay = debtorListRepay;
+	}
+	public String getDebtorListStatus() {
+		return debtorListStatus;
+	}
+	public void setDebtorListStatus(String debtorListStatus) {
+		this.debtorListStatus = debtorListStatus;
+	}
+	public String getDebtorListEnddate() {
+		return debtorListEnddate;
+	}
+	public void setDebtorListEnddate(String debtorListEnddate) {
+		this.debtorListEnddate = debtorListEnddate;
+	}
+	public String getDebtorListMgrNum() {
+		return debtorListMgrNum;
+	}
+	public void setDebtorListMgrNum(String debtorListMgrNum) {
+		this.debtorListMgrNum = debtorListMgrNum;
+	}
+	public String getDebtorListRegistDate() {
+		return debtorListRegistDate;
+	}
+	public void setDebtorListRegistDate(String debtorListRegistDate) {
+		this.debtorListRegistDate = debtorListRegistDate;
+	}
+	public String getDebtorListInput() {
+		return debtorListInput;
+	}
+	public void setDebtorListInput(String debtorListInput) {
+		this.debtorListInput = debtorListInput;
+	}
+	public String getDebtorMgrName() {
+		return debtorMgrName;
+	}
+	public void setDebtorMgrName(String debtorMgrName) {
+		this.debtorMgrName = debtorMgrName;
+	}
+	public String getDebtorListEtc() {
+		return debtorListEtc;
+	}
+	public void setDebtorListEtc(String debtorListEtc) {
+		this.debtorListEtc = debtorListEtc;
+	}
+	public String getDebtorHistorySeq() {
+		return debtorHistorySeq;
+	}
+	public void setDebtorHistorySeq(String debtorHistorySeq) {
+		this.debtorHistorySeq = debtorHistorySeq;
+	}
+	public String getDebtorHistoryTel() {
+		return debtorHistoryTel;
+	}
+	public void setDebtorHistoryTel(String debtorHistoryTel) {
+		this.debtorHistoryTel = debtorHistoryTel;
+	}
+	public String getDebtorHistoryPhone() {
+		return debtorHistoryPhone;
+	}
+	public void setDebtorHistoryPhone(String debtorHistoryPhone) {
+		this.debtorHistoryPhone = debtorHistoryPhone;
+	}
+	public String getDebtorHistoryZipcode() {
+		return debtorHistoryZipcode;
+	}
+	public void setDebtorHistoryZipcode(String debtorHistoryZipcode) {
+		this.debtorHistoryZipcode = debtorHistoryZipcode;
+	}
+	public String getDebtorHistoryAddress1() {
+		return debtorHistoryAddress1;
+	}
+	public void setDebtorHistoryAddress1(String debtorHistoryAddress1) {
+		this.debtorHistoryAddress1 = debtorHistoryAddress1;
+	}
+	public String getDebtorHistoryAddress2() {
+		return debtorHistoryAddress2;
+	}
+	public void setDebtorHistoryAddress2(String debtorHistoryAddress2) {
+		this.debtorHistoryAddress2 = debtorHistoryAddress2;
+	}
+	public String getDebtorHistoryRegistDate() {
+		return debtorHistoryRegistDate;
+	}
+	public void setDebtorHistoryRegistDate(String debtorHistoryRegistDate) {
+		this.debtorHistoryRegistDate = debtorHistoryRegistDate;
+	}
+	public String getDebtorHistoryInput() {
+		return debtorHistoryInput;
+	}
+	public void setDebtorHistoryInput(String debtorHistoryInput) {
+		this.debtorHistoryInput = debtorHistoryInput;
+	}
+	public String getDebtorHistoryMgrNum() {
+		return debtorHistoryMgrNum;
+	}
+	public void setDebtorHistoryMgrNum(String debtorHistoryMgrNum) {
+		this.debtorHistoryMgrNum = debtorHistoryMgrNum;
+	}
+	public String getDebtorHistoryEnName() {
+		return debtorHistoryEnName;
+	}
+	public void setDebtorHistoryEnName(String debtorHistoryEnName) {
+		this.debtorHistoryEnName = debtorHistoryEnName;
+	}
+	public String getDebtorHistoryGooboon() {
+		return debtorHistoryGooboon;
+	}
+	public void setDebtorHistoryGooboon(String debtorHistoryGooboon) {
+		this.debtorHistoryGooboon = debtorHistoryGooboon;
+	}
+	public String getDebtorHistoryEtc() {
+		return debtorHistoryEtc;
+	}
+	public void setDebtorHistoryEtc(String debtorHistoryEtc) {
+		this.debtorHistoryEtc = debtorHistoryEtc;
+	}
+	public String getPropertyNo() {
+		return propertyNo;
+	}
+	public void setPropertyNo(String propertyNo) {
+		this.propertyNo = propertyNo;
+	}
+	public String getPropertyCheckDate() {
+		return PropertyCheckDate;
+	}
+	public void setPropertyCheckDate(String propertyCheckDate) {
+		PropertyCheckDate = propertyCheckDate;
+	}
+	public String getPropertyCode() {
+		return PropertyCode;
+	}
+	public void setPropertyCode(String propertyCode) {
+		PropertyCode = propertyCode;
+	}
+	public String getPropertyDisclosuer() {
+		return PropertyDisclosuer;
+	}
+	public void setPropertyDisclosuer(String propertyDisclosuer) {
+		PropertyDisclosuer = propertyDisclosuer;
+	}
+	public String getPropertyExpectation() {
+		return PropertyExpectation;
+	}
+	public void setPropertyExpectation(String propertyExpectation) {
+		PropertyExpectation = propertyExpectation;
+	}
+	public String getPropertyStatus() {
+		return PropertyStatus;
+	}
+	public void setPropertyStatus(String propertyStatus) {
+		PropertyStatus = propertyStatus;
+	}
+	public String getPropertyRegistDate() {
+		return PropertyRegistDate;
+	}
+	public void setPropertyRegistDate(String propertyRegistDate) {
+		PropertyRegistDate = propertyRegistDate;
+	}
+	public String getPropertyInput() {
+		return PropertyInput;
+	}
+	public void setPropertyInput(String propertyInput) {
+		PropertyInput = propertyInput;
+	}
+	public String getFamilySeq() {
+		return familySeq;
+	}
+	public void setFamilySeq(String familySeq) {
+		this.familySeq = familySeq;
+	}
+	public String getFamilyJuminNum() {
+		return familyJuminNum;
+	}
+	public void setFamilyJuminNum(String familyJuminNum) {
+		this.familyJuminNum = familyJuminNum;
+	}
+	public String getFamilyRelCode() {
+		return familyRelCode;
+	}
+	public void setFamilyRelCode(String familyRelCode) {
+		this.familyRelCode = familyRelCode;
+	}
+	public String getFamilyTel() {
+		return familyTel;
+	}
+	public void setFamilyTel(String familyTel) {
+		this.familyTel = familyTel;
+	}
+	public String getFamilyPhone() {
+		return familyPhone;
+	}
+	public void setFamilyPhone(String familyPhone) {
+		this.familyPhone = familyPhone;
+	}
+	public String getFamilyZipcode() {
+		return familyZipcode;
+	}
+	public void setFamilyZipcode(String familyZipcode) {
+		this.familyZipcode = familyZipcode;
+	}
+	public String getFamilyAddress1() {
+		return familyAddress1;
+	}
+	public void setFamilyAddress1(String familyAddress1) {
+		this.familyAddress1 = familyAddress1;
+	}
+	public String getFamilyAddress2() {
+		return familyAddress2;
+	}
+	public void setFamilyAddress2(String familyAddress2) {
+		this.familyAddress2 = familyAddress2;
+	}
+	public String getFamilyEtc() {
+		return familyEtc;
+	}
+	public void setFamilyEtc(String familyEtc) {
+		this.familyEtc = familyEtc;
+	}
+	public String getFamilyName() {
+		return familyName;
+	}
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+	
+	public String getCodeNo() {
+		return codeNo;
+	}
+	public void setCodeNo(String codeNo) {
+		this.codeNo = codeNo;
+	}
+	public String getCodeName() {
+		return codeName;
+	}
+	public void setCodeName(String codeName) {
+		this.codeName = codeName;
+	}
+	
+	@Override
+	public int getRowType() {
+		return rowType;
+	}
+	@Override
+	public void setRowType(int rowType) {
+		this.rowType=rowType;
+	}
+	
+}

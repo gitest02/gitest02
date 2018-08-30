@@ -1,0 +1,18 @@
+package insertlaw.lawmapper.service;
+
+import java.io.File;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.nexacro.xapi.data.DataSet;
+
+import insertlaw.lawmapper.vo.DetcListVO;
+
+public interface DetcInsertService {
+
+	public void excelTodataset(File destination, DataSet resultDs) throws Exception;
+
+	public void detcInsert(List<DetcListVO> detcListVO) throws SQLException;
+
+	public DetcListVO excelSearch(List<DetcListVO> detcListVO);
+}

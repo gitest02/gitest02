@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="alesSue">
+
+	<resultMap type="legal.lawmapper.vo.AlesSueVO" id="AlesSueVO">
+		<result property="lawsuitAdmNo" column="LAWSUIT_ADM_NO" />
+		<result property="alesSueIssuPoin" column="ALES_SUE_ISSU_POIN" />
+		<result property="alesSueReqCont" column="ALES_SUE_REQ_CONT" />
+		<result property="alesSueRepoDate" column="ALES_SUE_REPO_DATE" />
+		
+	</resultMap>
+	
+	<!-- 응소제소정보 가져오기 -->
+	<select id="getAlesList" parameterType="legal.lawmapper.vo.AlesSueVO" resultMap="AlesSueVO">
+		SELECT
+			ALES_SUE_ISSU_POIN,
+			ALES_SUE_REQ_CONT,
+			ALES_SUE_REPO_DATE
+		FROM
+			PD_LAW.TAB_ALES_SUE
+		WHERE
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+	</select>
+	
+	<!-- 응소제소정보 삽입하기 -->
+	<insert id="alesInsert" parameterType="legal.lawmapper.vo.AlesSueVO">
+		INSERT INTO 
+			PD_LAW.TAB_ALES_SUE
+			(
+				LAWSUIT_ADM_NO
+				, ALES_SUE_ISSU_POIN
+				, ALES_SUE_REQ_CONT
+				, ALES_SUE_REPO_DATE
+			)
+		VALUES
+			(
+				#{lawsuitAdmNo}
+				, #{alesSueIssuPoin}
+				, #{alesSueReqCont} 
+				, #{alesSueRepoDate}
+			) 
+			
+	</insert>	
+	
+	<!-- 응소제소정보 수정하기 -->
+	<update id="alesUpdate" parameterType="legal.lawmapper.vo.AlesSueVO">
+		UPDATE 
+			PD_LAW.TAB_ALES_SUE
+		SET
+			ALES_SUE_ISSU_POIN = #{alesSueIssuPoin}
+			, ALES_SUE_REQ_CONT = #{alesSueReqCont}
+			, ALES_SUE_REPO_DATE = #{alesSueRepoDate}
+		WHERE
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+	</update>	
+	
+</mapper>

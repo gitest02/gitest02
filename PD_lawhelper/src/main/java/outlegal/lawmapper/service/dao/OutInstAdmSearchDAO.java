@@ -1,0 +1,27 @@
+package outlegal.lawmapper.service.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import outlegal.lawmapper.vo.OutFixinfoVO;
+import outlegal.lawmapper.vo.OutInstAdmSearchVO;
+
+@Repository("outInstAdmSearchDAO")
+public class OutInstAdmSearchDAO {
+	
+	@Autowired
+	private SqlSession session;
+	
+	// 소송관리번호 검색
+	public List<OutInstAdmSearchVO> getInstAdmList(OutInstAdmSearchVO outInstAdmSearchVO) {
+		return session.selectList("outInstAdmSearch.getInstAdmList", outInstAdmSearchVO);
+	}
+	
+	public List<OutInstAdmSearchVO> getLawsuitInfo(OutInstAdmSearchVO outInstAdmSearchVO) {
+		return session.selectList("outInstAdmSearch.getLawsuitInfo", outInstAdmSearchVO);
+	}
+
+}

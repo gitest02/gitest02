@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="deposit">
+
+	<resultMap type="deposit.lawmapper.vo.DepositVo" id="depositVo">
+		<result property="depositDepoAdmNo" column="DEPOSIT_DEPO_ADM_NO" />
+		<result property="depositOthDepoName" column="DEPOSIT_OTH_DEPO_NAME" />
+		<result property="depositDepoName" column="DEPOSIT_DEPO_NAME" />
+		<result property="depositForcExecSeq" column="DEPOSIT_FORC_EXEC_SEQ" />
+		<result property="depositDepoChg" column="DEPOSIT_DEPO_CHG" />
+		<result property="depositDepoDate" column="DEPOSIT_DEPO_DATE" />
+		<result property="depositDepuName" column="DEPOSIT_DEPU_NAME" />
+		<result property="depositJuriCortCode" column="DEPOSIT_JURI_CORT_CODE" />
+		<result property="depositKeepDeptCode" column="DEPOSIT_KEEP_DEPT_CODE" />
+		<result property="depositDepoReleDate" column="DEPOSIT_DEPO_RELE_DATE" />
+		<result property="depositDepchgCollDate" column="DEPOSIT_DEPCHG_COLL_DATE" />
+		<result property="depositDepoCollChg" column="DEPOSIT_DEPO_COLL_CHG" />
+		<result property="depositDepoCollRea" column="DEPOSIT_DEPO_COLL_REA" />
+		<result property="depositmgrDepoAdmNo" column="DEPOSITMGR_DEPO_ADM_NO" />
+		<result property="depositmgrSeq" column="DEPOSITMGR_SEQ" />
+		<result property="depositmgrId" column="DEPOSITMGR_ID" />
+		<result property="depositmgrDeptCode" column="DEPOSITMGR_DEPT_CODE" />
+		<result property="depositmgrAsigDate" column="DEPOSITMGR_ASIG_DATE" />
+		<result property="insaSabun" column="INSA_SABUN" />
+		<result property="insaName" column="INSA_NAME" />
+		<result property="insaEmail" column="INSA_EMAIL" />
+	</resultMap>
+
+
+	<!-- 공탁담당자 사원 조회 -->
+	<select id="mgrList" resultMap="depositVo" parameterType="deposit.lawmapper.vo.DepositVo">
+		 SELECT INSA_SABUN
+                ,INSA_NAME
+                ,INSA_EMAIL 
+           FROM PD_LAW.TAB_INSA
+           
+           <if test="codeNo != null">
+           WHERE
+           (CASE #{codeNo}
+				WHEN '0'
+					THEN INSA_SABUN
+				WHEN '1'
+					THEN INSA_NAME
+			END)
+					LIKE <![CDATA['%'||#{codeName}||'%']]>
+          </if>
+           
+        ORDER BY INSA_SABUN DESC
+   	</select> 
+   	
+</mapper>

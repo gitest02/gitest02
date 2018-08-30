@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_DSP_003" classname="V_DSP_003" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="2" text="법률자문기본사항" onclick="dps_insert_Static00_onclick" left="1.4%" top="109" right="88.8%" height="15"/>
+        <Static id="Static01" taborder="3" text="법률자문의뢰" onclick="dps_insert_Static00_onclick" left="1.4%" top="205" right="88.8%" height="15"/>
+        <Static id="Static02" taborder="5" text="법률자문의뢰" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Div id="dps_legal" taborder="6" text="dps_top" left="1%" top="55" right="1%" height="35" style="background:lavenderblush;border:1 solid #808080ff ;" scrollbars="none" dragscrolltype="none">
+          <Layouts>
+            <Layout width="973" height="46">
+              <Static id="Static00" taborder="5" text="법률자문의뢰번호" left="0.51%" top="5" width="116" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;" onclick="dps_top_Static00_onclick"/>
+              <Edit id="legaladv_no" taborder="6" left="12.78%" top="5" right="69.53%" height="24"/>
+              <Button id="btn_clean" taborder="8" text="초기화 " onclick="Div00_Button00_onclick" left="93.05%" top="7" width="62" height="20" style="background:@gradation URL('theme://images\btn_MF_Refresh_O.png') 5px 50px;align:right middle;"/>
+              <Button id="btn_list_no" taborder="9" text="검색  " onclick="Div00_Button00_onclick" left="30.88%" top="7" width="55" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;align:right middle;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="dps_insert" taborder="7" text="dps_insert" left="1%" top="124" right="1%" height="63" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout width="972" height="116">
+              <Static id="dps_court" taborder="18" text="의뢰부서" left="0.51%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static01" taborder="21" text="의뢰담당자" left="34.05%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="dps_court00" taborder="23" text="법률자문구분" left="0.51%" top="33" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="legal_mgr" taborder="26" left="44.68%" top="5" right="37.63%" height="24" enable="false"/>
+              <Static id="Static03" taborder="27" text="의뢰일자" left="67.69%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="dps_court01" taborder="29" text="내용공개여부" left="34.05%" top="33" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Combo id="out_dept" taborder="33" innerdataset="@ds_dept" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="11.15%" top="5" width="17.69%" height="24" enable="false"/>
+              <Combo id="lawAdv_code" taborder="35" innerdataset="@ds_lawAdv_code" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="11.15%" top="33" width="17.69%" height="24"/>
+              <Combo id="open_wtr" taborder="36" innerdataset="@ds_YN" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="44.68%" top="33" width="17.69%" height="24"/>
+              <Combo id="req_date" taborder="37" displaynulltext="____-__-__" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" enable="false" left="78.22%" top="5" width="17.69%" height="24"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_save" taborder="8" text="저장" left="86.3%" top="563" right="8.2%" height="26"/>
+        <Button id="btn_close" taborder="9" text="닫기" left="92.7%" top="563" right="1.8%" height="26"/>
+        <Div id="dps_insert00" taborder="10" text="dps_insert" left="1%" top="221" right="1%" height="333" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout width="972" height="116">
+              <Static id="dps_court" taborder="38" text="* 의뢰제목" left="0.51%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static01" taborder="39" text="* 질의요지" left="0.51%" top="146" width="100" height="91" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="dps_court00" taborder="40" text="사실관계" left="0.51%" top="33" width="100" height="109" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="adv_tit" taborder="41" left="11.15%" top="5" right="0.72%" height="24"/>
+              <Static id="dps_court01" taborder="43" text="기타사항" left="0.51%" top="241" width="100" height="84" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <TextArea id="fact_rela" taborder="47" left="11.15%" top="33" right="0.61%" height="109" scrollbars="alwaysvert"/>
+              <TextArea id="ques_issu" taborder="48" scrollbars="alwaysvert" left="11.15%" top="146" right="0.82%" height="91"/>
+              <TextArea id="etc" taborder="49" scrollbars="alwaysvert" left="11.15%" top="241" right="0.82%" height="84"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_lawAdv_code">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_YN">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">Yes</Col>
+            <Col id="codeNo">Y</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">No</Col>
+            <Col id="codeNo">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_legal">
+        <ColumnInfo>
+          <Column id="legaladvLawAdvReqNo" type="STRING" size="256"/>
+          <Column id="legaladvOpenWtr" type="STRING" size="256"/>
+          <Column id="legaladvReqDeptCode" type="STRING" size="256"/>
+          <Column id="legaladvReqMgrCode" type="STRING" size="256"/>
+          <Column id="legaladvReqDate" type="STRING" size="256"/>
+          <Column id="legaladvAdvTit" type="STRING" size="256"/>
+          <Column id="legaladvFactRela" type="STRING" size="256"/>
+          <Column id="legaladvQuesIssu" type="STRING" size="256"/>
+          <Column id="legaladvEtc" type="STRING" size="256"/>
+          <Column id="legaladvLawAdvCode" type="STRING" size="256"/>
+          <Column id="legaladvOutReqWtr" type="STRING" size="256"/>
+          <Column id="legaladvReviDay" type="STRING" size="256"/>
+          <Column id="legaladvRepDeptCode" type="STRING" size="256"/>
+          <Column id="legaladvRepMgrCode" type="STRING" size="256"/>
+          <Column id="legaladvRepDate" type="STRING" size="256"/>
+          <Column id="legaladvRepCont" type="STRING" size="256"/>
+          <Column id="legaladvRepTit" type="STRING" size="256"/>
+          <Column id="legaladvRepWtr" type="STRING" size="256"/>
+          <Column id="legaladvEtcRepPoin" type="STRING" size="256"/>
+          <Column id="legaladvOutReqTit" type="STRING" size="256"/>
+          <Column id="legaladvOutReqLyrid" type="STRING" size="256"/>
+          <Column id="legaladvOutReqRepdate" type="STRING" size="256"/>
+          <Column id="legaladvOutReqDate" type="STRING" size="256"/>
+          <Column id="legaladvOutReqFact" type="STRING" size="256"/>
+          <Column id="legaladvOutReqQues" type="STRING" size="256"/>
+          <Column id="legaladvOutReqReq" type="STRING" size="256"/>
+          <Column id="reqMgr" type="STRING" size="256"/>
+          <Column id="repMgr" type="STRING" size="256"/>
+          <Column id="advTit" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoLyrName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item3" compid="dps_insert.req_date" propid="value" datasetid="ds_legal" columnid="legaladvReqDate"/>
+      <BindItem id="item0" compid="dps_legal.legaladv_no" propid="value" datasetid="ds_legal" columnid="legaladvLawAdvReqNo"/>
+      <BindItem id="item1" compid="dps_insert.out_dept" propid="value" datasetid="ds_legal" columnid="legaladvReqDeptCode"/>
+      <BindItem id="item2" compid="dps_insert.legal_mgr" propid="value" datasetid="ds_legal" columnid="reqMgr"/>
+      <BindItem id="item4" compid="dps_insert.lawAdv_code" propid="value" datasetid="ds_legal" columnid="legaladvLawAdvCode"/>
+      <BindItem id="item5" compid="dps_insert.open_wtr" propid="value" datasetid="ds_legal" columnid="legaladvOpenWtr"/>
+      <BindItem id="item6" compid="dps_insert00.adv_tit" propid="value" datasetid="ds_legal" columnid="legaladvAdvTit"/>
+      <BindItem id="item7" compid="dps_insert00.fact_rela" propid="value" datasetid="ds_legal" columnid="legaladvFactRela"/>
+      <BindItem id="item8" compid="dps_insert00.ques_issu" propid="value" datasetid="ds_legal" columnid="legaladvQuesIssu"/>
+      <BindItem id="item9" compid="dps_insert00.etc" propid="value" datasetid="ds_legal" columnid="legaladvEtc"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";]]></Script>
+  </Form>
+</FDL>

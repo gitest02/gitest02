@@ -1,0 +1,44 @@
+package approval.lawmapper.service.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import approval.lawmapper.vo.ApprovalDefVO;
+import approval.lawmapper.vo.ApprovalProgVO;
+import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+
+@Repository("approProDAO")
+public class ApprovalProgDAO extends EgovAbstractDAO {
+
+	@Autowired
+	private SqlSession session;
+	
+	//작성자 조회
+	@SuppressWarnings("unchecked")
+	public List<ApprovalProgVO> getApprovalWriter(String sabun) {		
+		return session.selectList("approvalProg.getApprovalWriter", sabun);
+	} 											
+	
+	//기안자&결재자 등록
+	public void insertProg(ApprovalDefVO vo) throws SQLException{
+		
+		session.insert("approvalProg.getApprovalProgInsert", vo);
+		session.insert("approvalProg.getApprovalProg", vo);
+	}
+	
+	//기안자&결재자 수정
+	public void updateProg(ApprovalDefVO vo) throws SQLException{
+		
+		session.update("approvalProg.getApprovalProgUpdate", vo);
+		session.update("approvalProg.getApprovalUpdate", vo);
+	}
+
+//	//기안 정보 조회 (reload)
+//	public List<ApprovalTotalVO> getApprovalVita(ApprovalTotalVO approvalTotalVO) {
+//		return list("approvalProg.getApprovalVita", approvalTotalVO);
+//	}	
+}

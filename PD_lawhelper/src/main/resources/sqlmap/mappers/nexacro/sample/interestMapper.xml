@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nexacro.sample.service.dao.mybatis.InterestDao">
+<resultMap type="nexacro.sample.vo.InterestVo" id="interestVo">
+		<result property="interestId" column="INTEREST_ID"/>
+		<result property="interestCode" column="INTEREST_CODE"/>
+		<result property="interestStday" column="INTEREST_STDAY"/>
+		<result property="interestEnday" column="INTEREST_ENDAY"/>
+		<result property="interestRate" column="INTEREST_RATE"/>
+		<result property="interestRegistDate" column="INTEREST_REGIST_DATE"/>
+		<result property="interestInput" column="INTEREST_INPUT"/>	
+	</resultMap>
+<select id="selectInterestList" resultMap="interestVo">
+
+		SELECT INTEREST_ID, INTEREST_CODE, INTEREST_STDAY, INTEREST_ENDAY, INTEREST_RATE, INTEREST_REGIST_DATE, INTEREST_INPUT 
+		FROM BOND.TAB_INTEREST
+		ORDER BY INTEREST_REGIST_DATE DESC
+	
+
+</select>
+<select id="selectInterestList1" resultMap="interestVo">
+
+		SELECT INTEREST_ID, INTEREST_CODE, INTEREST_STDAY, INTEREST_ENDAY, INTEREST_RATE, INTEREST_REGIST_DATE, INTEREST_INPUT 
+		FROM BOND.TAB_INTEREST
+		WHERE INTEREST_ID=#interestId#
+		ORDER BY INTEREST_REGIST_DATE DESC
+
+</select>
+
+ <insert id="insertInterestVo"  parameterType="nexacro.sample.vo.InterestVo">
+       INSERT INTO BOND.TAB_INTEREST (
+       INTEREST_ID,INTEREST_STDAY, INTEREST_ENDAY, INTEREST_RATE, INTEREST_REGIST_DATE, INTEREST_INPUT 
+        )VALUES(
+       	#{interestId},
+        #{interestStday},
+        #{interestEnday},
+        #{interestRate},
+        SYSDATE,
+        #{interestInput}
+        )
+</insert>
+
+<delete id="deleteInterestVo" parameterType="nexacro.sample.vo.InterestVo">
+        DELETE FROM BOND.TAB_INTEREST
+        WHERE INTEREST_ID=#{interestId}
+
+
+</delete>
+</mapper>

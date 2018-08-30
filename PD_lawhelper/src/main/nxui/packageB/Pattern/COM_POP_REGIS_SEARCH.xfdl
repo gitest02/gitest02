@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COM_POP_REGIS_SEARCH" classname="COM_POP_REGIS_SEARCH" left="0" top="0" width="670" height="400" titletext="소 제기 의뢰 검색" scrollbars="autoboth">
+    <Layouts>
+      <Layout>
+        <Static id="Title" taborder="0" text="소 제기 의뢰 검색" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Div id="div_setting" taborder="1" text="Div00" left="0%" top="52" right="0%" height="55" style="color:transparent;">
+          <Layouts>
+            <Layout width="200" height="150">
+              <Static id="static_setting" taborder="0" text="Static00" left="1%" top="0" right="1%" height="55" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:transparent;"/>
+              <Static id="stick1" taborder="1" text="Static00" left="15%" top="5" right="2%" height="22" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:transparent;" onclick="div_setting_stick1_onclick"/>
+              <Static id="Static00" taborder="2" text="Static00" left="15%" top="27" right="2%" height="22" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:transparent;"/>
+              <Static id="Static01" taborder="3" text="의뢰번호" left="2%" top="5" right="83%" height="22" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static02" taborder="4" text="의뢰일자" left="2%" top="27" right="83%" height="22" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static03" taborder="5" text="소송제기분류" left="33%" top="5" right="54%" height="22" style="border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;" position="absolute"/>
+              <Static id="Static04" taborder="6" text="회신여부" left="64.33%" top="5" right="25.67%" height="22" style="border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;"/>
+              <Edit id="edt_No" taborder="7" left="17.5%" top="7" right="67.5%" height="18"/>
+              <Combo id="combo_Clas_Code" taborder="8" left="46.42%" top="7" right="36.12%" height="18" onitemchanged="div_setting_Combo00_onitemchanged"/>
+              <Radio id="radio_Wtr" taborder="9" left="75.22%" top="9" right="2.54%" height="15" onitemclick="div_setting_Radio00_onitemclick" columncount="3" codecolumn="codeNo" datacolumn="codeName" innerdataset="@ds_search_wtr" style="buttonimage:URL('theme://images\img_WF_Radio.png');buttonalign:left middle;buttonsize:11;buttongradation:linear 0,0 #c5d1d9ff 100,100 #ebf1f5ff;color:black;padding:0 0 0 0;align:left middle;" positionstep="0">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows/>
+                </Dataset>
+              </Radio>
+              <Calendar id="cal_Req_Date1" taborder="10" left="17.5%" top="29" right="63.58%" height="18"/>
+              <Static id="Static05" taborder="11" text="~" left="37.91%" top="33" right="60.6%" height="14"/>
+              <Calendar id="cal_Req_Date2" taborder="12" left="41.49%" top="29" right="39.55%" height="18" enable="false"/>
+              <Button id="btn_search" taborder="13" text="검색" left="80%" top="30" height="16" width="55" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10 50;color:#444444ff;padding:0 0 0 10;align:center middle;"/>
+              <Button id="btn_clean" taborder="14" text="초기화" left="89.25%" top="30" height="16" onclick="div_setting_Button01_onclick" width="55" style="background:@gradation URL('theme://images\btn_MF_Refresh_O.png') 5 150;color:#444444ff;padding:0 0 0 12;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="2" text="소 제기 의뢰 현황" left="1%" top="127" right="79.7%" height="23" onclick="Static00_onclick" style="align:left top;font:bold 9 Dotum;"/>
+        <Grid id="grd_RaisReq" taborder="3" useinputpanel="false" left="1%" top="155" right="1%" height="210">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="98"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="107"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="의뢰번호"/>
+                <Cell col="1" text="분류코드"/>
+                <Cell col="2" text="회신여부"/>
+                <Cell col="3" text="의뢰자ID"/>
+                <Cell col="4" text="의뢰일자"/>
+                <Cell col="5" text="회신일자"/>
+                <Cell col="6" text="소제기여부"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_check" taborder="4" text="확인" left="76.72%" top="370" height="20" width="70"/>
+        <Button id="btn_close" taborder="5" text="닫기" left="88.51%" top="370" height="20" right="1%"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_search_wtr">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">전체</Col>
+            <Col id="codeNo">0</Col>
+            <Col id="useYn"/>
+          </Row>
+          <Row>
+            <Col id="codeName">회신</Col>
+            <Col id="codeNo">1</Col>
+            <Col id="useYn"></Col>
+          </Row>
+          <Row>
+            <Col id="codeName">미회신</Col>
+            <Col id="codeNo">2</Col>
+            <Col id="useYn"></Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_raisreq_wtr">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">미회신</Col>
+            <Col id="codeNo">N</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">회신</Col>
+            <Col id="codeNo">Y</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_clas_code">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_raisreq">
+        <ColumnInfo>
+          <Column id="lawRaisreqNo" type="STRING" size="256"/>
+          <Column id="lawRaisreqReqId" type="STRING" size="256"/>
+          <Column id="lawRaisreqClasCode" type="STRING" size="256"/>
+          <Column id="lawRaisreqRea" type="STRING" size="256"/>
+          <Column id="lawRaisreqEtcPoin" type="STRING" size="256"/>
+          <Column id="lawRaisreqReqDate" type="STRING" size="256"/>
+          <Column id="lawRaisreqRepWtr" type="STRING" size="256"/>
+          <Column id="lawRaisreqWtr" type="STRING" size="256"/>
+          <Column id="lawRaisreqDalwCont" type="STRING" size="256"/>
+          <Column id="lawRaisreqExptDate" type="STRING" size="256"/>
+          <Column id="lawRaisreqRepCont" type="STRING" size="256"/>
+          <Column id="lawRaisreqEtcreqPoin" type="STRING" size="256"/>
+          <Column id="lawRaisreqRepDate" type="STRING" size="256"/>
+          <Column id="lawRaisreqIssuPoin" type="STRING" size="256"/>
+          <Column id="lawRaisreqTempSaveWtr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="grd_RaisReq" propid="" datasetid="ds_raisreq" columnid=""/>
+    </Bind>
+  </Form>
+</FDL>

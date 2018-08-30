@@ -1,0 +1,32 @@
+package register.lawmapper.vo;
+
+public class DayVo {
+	private String year;
+	private String month;
+	private String date;
+	private String ymd;
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getYmd() {
+		return ymd;
+	}
+	public void setYmd(String ymd) {
+		this.ymd = ymd;
+	}
+}

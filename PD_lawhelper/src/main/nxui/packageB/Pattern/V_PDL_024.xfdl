@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_024" classname="V_PDL_024" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="준비서면" left="0.9%" top="8" width="98.2%" height="35" style="align:left top;padding:10 0 0 10;"/>
+        <Div id="Div01" taborder="1" left="0.9%" top="44" width="98.2%" height="44" style="background:lavenderblush;border:1 solid #c8c8c8ff ;">
+          <Layouts>
+            <Layout width="982" height="44">
+              <Div id="Div00" taborder="12" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="3" left="4.61%" top="4" width="15.73%" height="25" style="selectbackground:blue;" enable="false"/>
+                    <Combo id="Combo00" taborder="4" text="Combo00" left="45.96%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div01" taborder="13" text="소송관리번호" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;font:9 Dotum;"/>
+              <Button id="Button00" taborder="14" text="검색" left="28.06%" top="9" width="8.47%" height="26" style="image:URL('theme://images\searchBtn.png');" onclick="Div01_Button00_onclick"/>
+              <Button id="Button01" taborder="15" text="초기화" left="90.41%" top="9" width="8.47%" height="26" style="image:URL('theme://images\resetBtn.png');" onclick="Div01_Button01_onclick" visible="false"/>
+              <Div id="Div02" taborder="16" text="심급" left="38.16%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;font:9 Dotum;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div05" taborder="2" left="0.9%" top="111" width="98.2%" height="114" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="36" text="Div09" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Edit id="Edit00" taborder="39" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit01" taborder="40" left="39.78%" top="4" width="15.73%" height="26" enable="false"/>
+                    <Edit id="Edit02" taborder="41" left="72.92%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div11" taborder="37" text="Div11" left="8.47%" top="72" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div10" taborder="38" text="Div10" left="8.47%" top="38" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="40" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit01" taborder="41" left="39.78%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="39" text="사건번호" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div05" taborder="40" text="수행법원" left="0.51%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div06" taborder="41" text="심급명" left="0.51%" top="72" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div00" taborder="42" text="소송진행상태" left="32.45%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div01" taborder="43" text="소제기일자" left="32.45%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div02" taborder="44" text="판사" left="62.65%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div04" taborder="3" text="심급기본사항" left="0.9%" top="92" width="982" height="15" style="align:left middle;padding:0 0 0 10;"/>
+        <Div id="Div02" taborder="4" text="준비서면목록" left="0.9%" top="237" width="982" height="15" style="align:left middle;padding:0 0 0 10;"/>
+        <Button id="Button03" taborder="5" text="신규" onclick="Button03_onclick" left="81.6%" top="231" width="8.5%" height="26" style="image:URL('theme://images\insertBtn.png');" visible="false"/>
+        <Button id="Button00" taborder="6" text="삭제" left="90.4%" top="231" width="8.5%" height="26" style="image:URL('theme://images\deleteBtn.png');" onclick="Button00_onclick" visible="false"/>
+        <Grid id="Grid00" taborder="7" useinputpanel="false" left="0.9%" top="263" width="98.2%" height="92" binddataset="ds_preiwr" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="45"/>
+                <Column size="90"/>
+                <Column size="140"/>
+                <Column size="497"/>
+                <Column size="110"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="변론차수"/>
+                <Cell col="2" text="쟁점사항구분"/>
+                <Cell col="3" text="준비서면제목"/>
+                <Cell col="4" text="작성일자"/>
+                <Cell col="5" text="완료여부"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow+1"/>
+                <Cell col="1" text="bind:preIwrDfsDeg"/>
+                <Cell col="2" text="bind:preIwrIssuSepCode"/>
+                <Cell col="3" text="bind:preIwrName"/>
+                <Cell col="4" text="bind:preIwrWritDate"/>
+                <Cell col="5" text="bind:preIwrCompWtr"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div03" taborder="8" left="0.9%" top="364" width="98.2%" height="197" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="43" text="Div09" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="94.83%" height="25"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div10" taborder="44" text="Div10" left="8.47%" top="38" width="91.02%" height="83" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <TextArea id="TextArea00" taborder="10" left="4.61%" top="4" width="94.83%" height="73" style="padding:4 4 4 4;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div11" taborder="46" text="Div11" left="8.47%" top="120" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Combo id="Combo00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" innerdataset="@ds_instance_code" codecolumn="classNo" datacolumn="className" index="-1"/>
+                    <Combo id="Combo01" taborder="3" left="34.04%" top="4" width="15.73%" height="25" innerdataset="@ds_issu_code" codecolumn="classNo" datacolumn="className" index="-1"/>
+                    <Combo id="Combo02" taborder="4" left="63.37%" top="4" width="15.73%" height="25" innerdataset="@ds_wtr" codecolumn="classNo" datacolumn="className" index="-1"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="47" text="준비서면제목" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div05" taborder="48" text="준비서면내용" left="0.51%" top="38" width="11.73%" height="83" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div06" taborder="49" text="변론차수" left="0.51%" top="120" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div01" taborder="50" text="Div11" left="8.47%" top="154" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="60">
+                    <Edit id="Edit01" taborder="1" left="34.04%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00" taborder="51" text="첨부파일" left="0.51%" top="154" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div02" taborder="52" text="쟁점사항구분" left="27.45%" top="120" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div03" taborder="53" text="완료여부" left="54.08%" top="120" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div07" taborder="54" text="외부작성변호사" left="27.45%" top="154" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="Button01" taborder="9" text="저장" left="90.5%" top="567" width="8.5%" height="26" style="image:URL('theme://images\saveBtn.png');" onclick="Button01_onclick" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lawsuit">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="lawRaisreqNo" type="STRING" size="256"/>
+          <Column id="lawsuitAplCortCode" type="STRING" size="256"/>
+          <Column id="lawsuitAplCaseCode" type="STRING" size="256"/>
+          <Column id="lawsuitCaseTyCode" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepcode" type="STRING" size="256"/>
+          <Column id="lawsuitAsitParcWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaCaseNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaChg" type="STRING" size="256"/>
+          <Column id="lawsuitTempReqiDate" type="STRING" size="256"/>
+          <Column id="lawsuitRaisRea" type="STRING" size="256"/>
+          <Column id="lawsuitCostCfnApldate" type="STRING" size="256"/>
+          <Column id="lawsuitConcDate" type="STRING" size="256"/>
+          <Column id="lawsuitFulfDetmWtr" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="instAdmCaseNo" type="STRING" size="256"/>
+          <Column id="instAdmPrgrCode" type="STRING" size="256"/>
+          <Column id="instAdmClamVop" type="STRING" size="256"/>
+          <Column id="instAdmCortCode" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="instAdmRaisreqDate" type="STRING" size="256"/>
+          <Column id="instAdmJudId" type="STRING" size="256"/>
+          <Column id="instAdmJudName" type="STRING" size="256"/>
+          <Column id="instAdmEntLyrName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preiwr">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="preIwrNo" type="STRING" size="256"/>
+          <Column id="preIwrDfsDeg" type="STRING" size="256"/>
+          <Column id="preIwrName" type="STRING" size="256"/>
+          <Column id="preIwrIssuSepCode" type="STRING" size="256"/>
+          <Column id="preIwrWritDate" type="STRING" size="256"/>
+          <Column id="preIwrCompWtr" type="STRING" size="256"/>
+          <Column id="preIwrCont" type="STRING" size="256"/>
+          <Column id="preIwrOutLyrId" type="STRING" size="256"/>
+          <Column id="preIwrOutLyrName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_instance_code">
+        <ColumnInfo>
+          <Column id="classNo" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="classNo">1</Col>
+            <Col id="className">변론차수1</Col>
+          </Row>
+          <Row>
+            <Col id="classNo">2</Col>
+            <Col id="className">변론차수2</Col>
+          </Row>
+          <Row>
+            <Col id="classNo">3</Col>
+            <Col id="className">변론차수3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_issu_code">
+        <ColumnInfo>
+          <Column id="classNo" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="classNo">001</Col>
+            <Col id="className">쟁점사항1</Col>
+          </Row>
+          <Row>
+            <Col id="classNo">002</Col>
+            <Col id="className">쟁점사항2</Col>
+          </Row>
+          <Row>
+            <Col id="classNo">003</Col>
+            <Col id="className">쟁점사항3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_wtr">
+        <ColumnInfo>
+          <Column id="classNo" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="classNo">Y</Col>
+            <Col id="className">완료</Col>
+          </Row>
+          <Row>
+            <Col id="classNo">N</Col>
+            <Col id="className">미완료</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div01.Div00.Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAdmNo"/>
+      <BindItem id="item1" compid="Div01.Div00.Combo00" propid="value" datasetid="ds_lawsuit" columnid="instAdmCode"/>
+      <BindItem id="item2" compid="Div05.Div09.Edit00" propid="value" datasetid="ds_lawsuit" columnid="instAdmCaseNo"/>
+      <BindItem id="item3" compid="Div05.Div09.Edit01" propid="value" datasetid="ds_lawsuit" columnid="instAdmPrgrCode"/>
+      <BindItem id="item4" compid="Div05.Div09.Edit02" propid="value" datasetid="ds_lawsuit" columnid="instAdmJudName"/>
+      <BindItem id="item5" compid="Div05.Div10.Edit00" propid="value" datasetid="ds_lawsuit" columnid="instAdmCortCode"/>
+      <BindItem id="item6" compid="Div05.Div10.Edit01" propid="value" datasetid="ds_lawsuit" columnid="instAdmRaisreqDate"/>
+      <BindItem id="item7" compid="Div05.Div11.Edit00" propid="value" datasetid="ds_lawsuit" columnid="instAdmName"/>
+      <BindItem id="item8" compid="Div03.Div09.Edit00" propid="value" datasetid="ds_preiwr" columnid="preIwrName"/>
+      <BindItem id="item9" compid="Div03.Div10.TextArea00" propid="value" datasetid="ds_preiwr" columnid="preIwrCont"/>
+      <BindItem id="item10" compid="Div03.Div11.Combo00" propid="value" datasetid="ds_preiwr" columnid="preIwrDfsDeg"/>
+      <BindItem id="item11" compid="Div03.Div11.Combo01" propid="value" datasetid="ds_preiwr" columnid="preIwrIssuSepCode"/>
+      <BindItem id="item12" compid="Div03.Div11.Combo02" propid="value" datasetid="ds_preiwr" columnid="preIwrCompWtr"/>
+      <BindItem id="item13" compid="Div03.Div01.Edit01" propid="value" datasetid="ds_preiwr" columnid="preIwrOutLyrName"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+this.Div01_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+    objChildFrame.init("chf_popup2", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_026.xfdl");
+    var objParam = {};
+    objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+
+}
+
+this.fn_popupCallback = function(strID, strTemp)
+{
+	this.Button00.set_visible(true);  //검색
+	this.Button01.set_visible(true);  //초기화
+	this.Button03.set_visible(true);  //신규
+	this.Div01.Button01.set_visible(true);
+	
+	var strTempSplit = strTemp.split("/");
+	if(strTemp != undefined){
+		this.ds_search.setColumn(0, "lawsuitAdmNo", strTempSplit[0]);
+		this.ds_search.setColumn(0, "instAdmCode", strTempSplit[1]);
+		this.getLawsuitInfo();
+		this.getPreList();
+	}
+}
+
+
+this.getLawsuitInfo = function() {
+	var oDatas =  {
+		  svcid : "lawSuitInfo",
+		  sController : "getLawsuitInfo.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_lawsuit=ds_lawsuit"],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+
+}
+
+//여기가 이제 grid에 data 넣는 거다!!
+this.getPreList = function(){
+	var oDatas =  {
+		  svcid : "preiwrList",
+		  sController : "getPreiwrList.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_preiwr=ds_preiwr"],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});		
+}	
+
+
+//신규 눌렀을 때
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var lyrid = "2013082601";
+	var lyrName = "박지윤";
+	var lawsuitAdmNo = this.ds_lawsuit.getColumn(0, "lawsuitAdmNo");
+	var instAdmCode = this.ds_lawsuit.getColumn(0, "instAdmCode");
+	this.ds_preiwr.insertRow(0);
+	this.ds_preiwr.setColumn(0, "preIwrOutLyrId", lyrid);	
+	this.ds_preiwr.setColumn(0, "preIwrOutLyrName", lyrName);	
+	this.ds_preiwr.setColumn(0, "lawsuitAdmNo", lawsuitAdmNo);	
+	this.ds_preiwr.setColumn(0, "instAdmCode", instAdmCode);	
+}
+
+//저장 눌렀을 때
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	rowCnt = this.ds_preiwr.rowcount;
+	for(i = 0; i<rowCnt; i++) {
+		var preIwrName = this.ds_preiwr.getColumn(i, "preIwrName");
+		var preIwrCont = this.ds_preiwr.getColumn(i, "preIwrCont");	
+		var preIwrDfsDeg = this.ds_preiwr.getColumn(i, "preIwrDfsDeg");
+		var preIwrIssuSepCode = this.ds_preiwr.getColumn(i, "preIwrIssuSepCode");	
+		var preIwrCompWtr = this.ds_preiwr.getColumn(i, "preIwrCompWtr");	
+	
+		if(this.nullChk(preIwrName, "준비서면제목을 입력하세요")) {
+			return;
+		}
+		if(this.nullChk(preIwrCont, "준비서면내용을 입력하세요")) {
+			return;
+		}
+		if(this.nullChk(preIwrDfsDeg, "변론차수를 선택하세요")) {
+			return;
+		}
+		if(this.nullChk(preIwrIssuSepCode, "쟁정사항을 선택하세요")) {
+			return;
+		}
+		if(this.nullChk(preIwrCompWtr, "완료여부를 선택하세요")) {
+			return;
+		}
+	}
+	var oDatas =  {
+		  svcid : "preiwrChange",
+		  sController : "preiwrChange.do",
+		  inds :["ds_preiwr=ds_preiwr:U"],
+		  outds :[],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+		
+	alert("저장 되었습니다.");
+	
+}
+
+//NULL 체크
+this.nullChk = function(val, text) 
+{
+	if(val == "" || val == null) {
+		alert(text);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+//삭제 버튼 눌렀을 때
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var row = this.ds_preiwr.rowposition;
+	if(this.ds_preiwr.rowcount == 0){
+		alert("삭제할 데이터가 없습니다.");
+		return;
+    }
+	this.ds_preiwr.deleteRow(row);	
+}
+
+//초기화 버튼 눌렀을 때
+this.Div01_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_preiwr.deleteAll();
+	this.ds_lawsuit.deleteAll();
+	this.Button00.set_visible(false);
+	this.Button01.set_visible(false);
+	this.Button03.set_visible(false);
+	this.Div01.Button01.set_visible(false);
+}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_OPR_23" classname="V_OPR_23" left="0" top="0" width="1000" height="600" titletext="법령해석례 본문" style="border:1 solid #808080ff ;">
+    <Layouts>
+      <Layout>
+        <Div id="div_contents_20" taborder="0" left="1.4%" top="12" width="97.8%" height="556" style="border:0 none #808080ff ;">
+          <Layouts>
+            <Layout>
+              <FileUpload id="FileUpload00" taborder="25" retry="0" index="0" onsuccess="upload_onsuccess" onerror="upload_onerror" onitemchanged="addFile" left="60.12%" top="1.98%" right="13.19%" height="24" style="itemheight:24;buttontext:파일추가;"/>
+              <Grid id="Grid00" taborder="26" binddataset="ds_expc_Output" useinputpanel="false" autofittype="col" fillareatype="linerow" left="2.86%" top="68" right="3.37%" height="194">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="40"/>
+                      <Column size="80"/>
+                      <Column size="70"/>
+                      <Column size="80"/>
+                      <Column size="110"/>
+                      <Column size="85"/>
+                      <Column size="100"/>
+                      <Column size="85"/>
+                      <Column size="60"/>
+                      <Column size="100"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="100"/>
+                      <Column size="80"/>
+                      <Column size="100"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="50"/>
+                      <Column size="50"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell displaytype="checkbox" edittype="checkbox" text="chk"/>
+                      <Cell col="1" text="일련번호"/>
+                      <Cell col="2" text="안건명"/>
+                      <Cell col="3" text="안건번호"/>
+                      <Cell col="4" text="질의기관코드"/>
+                      <Cell col="5" text="질의기관명"/>
+                      <Cell col="6" text="회신기관코드"/>
+                      <Cell col="7" text="회신기관명"/>
+                      <Cell col="8" text="회신일"/>
+                      <Cell col="9" text="해석례분야명"/>
+                      <Cell col="10" text="상세링크"/>
+                      <Cell col="11" text="해석일자"/>
+                      <Cell col="12" text="해석기관코드"/>
+                      <Cell col="13" text="해석기관명"/>
+                      <Cell col="14" text="관리기관코드"/>
+                      <Cell col="15" text="등록일시"/>
+                      <Cell col="16" text="질의요지"/>
+                      <Cell col="17" text="회답"/>
+                      <Cell col="18" text="이유"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                      <Cell col="1" text="bind:expcno"/>
+                      <Cell col="2" text="bind:itemname"/>
+                      <Cell col="3" text="bind:itemno"/>
+                      <Cell col="4" text="bind:quesorgcode"/>
+                      <Cell col="5" text="bind:quesorgname"/>
+                      <Cell col="6" text="bind:replorgcode"/>
+                      <Cell col="7" text="bind:replorgname"/>
+                      <Cell col="8" text="bind:replydate"/>
+                      <Cell col="9" text="bind:classname"/>
+                      <Cell col="10" text="bind:detaillink"/>
+                      <Cell col="11" text="bind:analyzedate"/>
+                      <Cell col="12" text="bind:analyzeorgcode"/>
+                      <Cell col="13" text="bind:analyzeorgname"/>
+                      <Cell col="14" text="bind:careorgcode"/>
+                      <Cell col="15" text="bind:regdate"/>
+                      <Cell col="16" text="bind:questext"/>
+                      <Cell col="17" text="bind:repltext"/>
+                      <Cell col="18" text="bind:reasontext"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static10" taborder="28" text="* A2셀부터 데이터를 넣어주세요" onclick="div_contents_Static10_onclick" left="4.09%" top="44" right="3.99%" height="22" style="color:red;font:12 Dotum;"/>
+              <Static id="Static00" taborder="29" text="* A1 ~ R1 번까지 순서대로 위 그림과 같이 컬럼명을 넣어주세요." left="3.27%" top="311" right="45.09%" height="61" style="font:bold 10 arial;"/>
+              <Static id="Static01" taborder="30" text="예시" left="1.53%" top="254" right="92.64%" height="25" style="align:center;font:bold 10 arial;"/>
+              <ImageViewer id="ImageViewer00" taborder="31" image="URL('img::precedentSample.png')" stretch="fixaspectratio" left="2.76%" top="281" right="3.48%" height="51" style="border:0 solid #808080 ;"/>
+              <Static id="Static02" taborder="32" text="일련번호 : EXPCNO" left="2.97%" top="355" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static04" taborder="33" text="안건명 : ITEMNAME" left="2.97%" top="373" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static05" taborder="34" text="안건번호 : ITEMNO" left="2.97%" top="391" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static06" taborder="35" text="질의기관코드 : QUESORGCODE" left="2.97%" top="409" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static03" taborder="36" text="질의기관명 : QUESORGNAME" onclick="Static00_onclick" left="2.97%" top="427" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static11" taborder="37" text="회신기관코드 : REPLORGCODE" left="2.97%" top="445" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static07" taborder="38" text="회신기관명 : REPLORGNAME" left="2.97%" top="463" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static12" taborder="39" text="회신일 : REPLYDATE" left="2.97%" top="481" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static08" taborder="40" text="해석례분야명 : CLASSNAME" left="29.96%" top="355" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static09" taborder="41" text="상세링크 : DETAILLINK" left="29.96%" top="373" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static13" taborder="42" text="해석일자 : ANALYZEDATE" left="29.96%" top="391" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static14" taborder="43" text="해석기관코드 : ANALYZEORGCODE" left="29.96%" top="409" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static15" taborder="44" text="해석기관명 : ANALYZEORGNAME" onclick="Static00_onclick" left="29.96%" top="427" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static16" taborder="45" text="관리기관코드 : CAREORGCODE" left="29.96%" top="445" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static17" taborder="46" text="등록일시 : REGDATE" left="29.96%" top="463" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static18" taborder="47" text="질의요지 : QUESTEXT" left="29.96%" top="481" width="250" height="20" style="font:bold 10 arial;"/>
+              <Button id="btn_close" taborder="48" text="닫기" onclick="btn_close_onclick" left="91.1%" top="522" right="3.37%" height="25" style="bordertype:normal 0 0 ;"/>
+              <Static id="Static19" taborder="49" text="회답 : REPLTEXT" left="56.95%" top="355" width="250" height="20" style="font:bold 10 arial;"/>
+              <Static id="Static20" taborder="50" text="이유 : REASONTEXT" left="56.95%" top="373" width="250" height="20" style="font:bold 10 arial;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="Button01" taborder="1" text="저장" left="87.2%" top="3.83%" width="7%" height="4%" onclick="div_contents_Button01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_select">
+        <ColumnInfo>
+          <Column id="expcno" type="STRING" size="100"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_expc_Output">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="expcno" type="STRING" size="100"/>
+          <Column id="itemname" type="STRING" size="200"/>
+          <Column id="itemno" type="STRING" size="200"/>
+          <Column id="quesorgcode" type="STRING" size="100"/>
+          <Column id="quesorgname" type="STRING" size="200"/>
+          <Column id="replorgcode" type="STRING" size="200"/>
+          <Column id="replorgname" type="STRING" size="200"/>
+          <Column id="replydate" type="STRING" size="50"/>
+          <Column id="classname" type="STRING" size="200"/>
+          <Column id="detaillink" type="STRING" size="200"/>
+          <Column id="analyzedate" type="STRING" size="100"/>
+          <Column id="analyzeorgcode" type="STRING" size="200"/>
+          <Column id="analyzeorgname" type="STRING" size="200"/>
+          <Column id="careorgcode" type="STRING" size="100"/>
+          <Column id="regdate" type="STRING" size="50"/>
+          <Column id="questext" type="STRING" size="2000"/>
+          <Column id="repltext" type="STRING" size="4000"/>
+          <Column id="reasontext" type="STRING" size="4194304000"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_expc_Import">
+        <ColumnInfo>
+          <Column id="expcno" type="STRING" size="100"/>
+          <Column id="itemname" type="STRING" size="200"/>
+          <Column id="itemno" type="STRING" size="200"/>
+          <Column id="quesorgcode" type="STRING" size="100"/>
+          <Column id="quesorgname" type="STRING" size="200"/>
+          <Column id="replorgcode" type="STRING" size="200"/>
+          <Column id="replorgname" type="STRING" size="200"/>
+          <Column id="replydate" type="STRING" size="50"/>
+          <Column id="classname" type="STRING" size="200"/>
+          <Column id="detaillink" type="STRING" size="200"/>
+          <Column id="analyzedate" type="STRING" size="100"/>
+          <Column id="analyzeorgcode" type="STRING" size="200"/>
+          <Column id="analyzeorgname" type="STRING" size="200"/>
+          <Column id="careorgcode" type="STRING" size="100"/>
+          <Column id="regdate" type="STRING" size="50"/>
+          <Column id="questext" type="STRING" size="2000"/>
+          <Column id="repltext" type="STRING" size="4000"/>
+          <Column id="reasontext" type="STRING" size="4194304000"/>
+          <Column id="userid" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[
+include "Lib::Comm.xjs";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+
+}
+
+//파일 추가 누르면 자동으로 그리드에 출력
+this.addFile = function(obj:FileUpload,  e:nexacro.FileUploadItemChangeEventInfo)
+{
+	trace("@@@@@@@@@@@@@@@@@@@");
+	var value = obj.value;
+	var fileEx = value.slice(value.lastIndexOf(".")+1).toLowerCase();
+	trace(fileEx);
+	if(fileEx!="xls" && fileEx!="xlsx"){
+		alert("xls 또는 xlsx 파일양식만 가능합니다.");
+		obj.deleteItem(0);
+		obj.appendItem();
+		return false;
+	}
+	
+	var itemCount=this.div_contents_20.FileUpload00.getItemCount(true);
+	if(itemCount==0){
+		alert("파일을 첨부해주세요.");
+		return false;
+	}
+	
+	var url= "http://localhost:8080/nexacro-egov/expcExcelUpload.do";
+	this.div_contents_20.FileUpload00.upload(url);
+}
+
+this.upload_onerror = function(obj:FileUpload,  e:nexacro.FileUploadErrorEventInfo)
+{
+	alert(e.errormsg);
+}
+
+this.upload_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadLoadEventInfo)
+{	
+	if(e.errorcode<0){
+		alert("오류 : "+e.errormsg);
+	}
+	trace("onsuccess errorcode=" + e.errorcode + ", errormsg=" + e.errormsg   + ", datasets=" + e.datasets + ", url=" + e.url);
+	
+	//Only Runtime
+		if(nexacro.Browser == "Runtime" && e.datasets)
+		{
+			var outputDatasets = e.datasets;
+			
+			var outDs = outputDatasets[0];
+			var ds = this.ds_expc_Output;
+			ds.assign(outDs); 
+			trace(outDs.saveXML());
+		} 
+}
+
+// 저장 클릭시
+this.div_contents_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.fn_import()){	
+		var valChk=this.fn_valueCheck();
+		if(valChk=="update"){
+			var save = confirm("DB에 이미 값이 있습니다. 수정하시겠습니까? ("+this.ds_select.getColumn(0,"expcno")+")");
+			if(save){
+				this.fn_save();
+			}else{
+				alert("등록을 취소하셨습니다.");
+			}
+		}else if(valChk=="insert"){
+			this.fn_save();
+		}else{
+			alert("등록을 취소하셨습니다.");
+		}
+	}
+}
+
+//파일 자동 추가
+this.fn_import = function(){
+	var ds = this.ds_expc_Import;
+	var outds = this.ds_expc_Output;
+	var cnt=0;
+	ds.clearData();
+	for(var i=0; i<outds.rowcount;i++){
+		var chkCol = outds.getColumn(i,"chk");
+		if(chkCol != undefined && chkCol != 0){
+			ds.addRow();
+			ds.copyRow(ds.getRowCount()-1,outds,i);
+			cnt++;	
+		}
+	}
+	if(cnt==0){
+		alert("1개 이상의 행을 선택해주세요.");
+		return false;
+	}
+	return true;
+}
+
+// 판례 일련번호 중복 체크하고 나머지 내용이 DB에 없으면 insert, 있으면 update.
+this.fn_valueCheck = function(){
+	this.ds_select.clearData();
+	var chk="close";
+	var search = {
+		svcid : "select",
+		sController : "expcExcelSearch.do",
+		inds : ["ds_expc_Import=ds_expc_Import"],
+		outds : ["ds_select=ds_select"],
+		args : [],
+		bAsync : false,
+		nDataTyep : 2, //ssv 타입
+		bCompress : false,				
+	};
+
+	var save = confirm("데이터를 입력하시겠습니까?");
+	if(save){
+		Iject.transaction(this,search,function(){
+			if(this.errorcode < 0){
+			   Iject.alert(this.errormsg);
+			   return false;
+			}else{
+				var pThis = this.fobj;
+				var expcno = pThis.ds_select.getColumn(0,"expcno");
+				trace("this.ds_select : " + pThis.ds_select.saveXML());
+				if(expcno == undefined){
+					chk="insert";
+				}else{
+					chk="update";
+				}
+			}	
+		});	
+	}else{
+		return chk;
+	}
+	return chk;
+}
+
+//저장
+this.fn_save = function(){
+//odatas 정의
+	var oDatas = {
+		svcid : "insert",
+		sController : "expcInsert.do",
+		inds : ["ds_expc_Import = ds_expc_Import"],
+		outds : [],
+		args : [],
+		bAsync : false,
+		nDataTyep : 2, //ssv 타입
+		bCompress : false,				
+	};
+	
+	//로그 기록 남기기 위한 유저 아이디 값 받기
+	var userid = application.gds_userInfo.getColumn(0, "userid");
+	this.ds_expc_Import.setColumn(0, "userid", userid);
+	
+	Iject.transaction(this,oDatas,function(){
+		if(this.errorcode < 0){
+			Iject.alert(this.errormsg);
+			return false;
+			}
+		else{
+			var pThis = this.fobj;
+			trace("this.ds_expc_Output : " + pThis.ds_expc_Output.saveXML());
+			alert("등록 완료");
+		}
+	});	
+}
+
+// 닫기 클릭시
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

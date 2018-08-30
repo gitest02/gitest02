@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Example_pattern" classname="Example_pattern" left="0" top="0" width="989" height="600" titletext="New Form" scrollbars="none">
+    <Layouts>
+      <Layout description="판결보고">
+        <Static id="Static00" taborder="0" text="판결보고" left="1%" top="0" right="1%" height="42" style="background:transparent URL('img::bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Div id="Div00" taborder="1" left="0%" top="52" right="0%" height="548">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" left="1.01%" top="0" right="1.01%" height="36" onclick="Div00_Static00_onclick" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static01" taborder="1" text="소송관리번호" left="1.9%" top="6" right="84%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Button id="Button00" taborder="5" text="검색" left="30.2%" top="9" height="20" width="70" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;" onclick="Div00_Button00_onclick"/>
+              <Edit id="Edit00" taborder="7" left="16.3%" top="6" right="70.3%" height="25" oneditclick="Div00_Edit00_oneditclick" value="Grid는 특이점 없을시"/>
+              <Static id="Static06" taborder="10" text="심급" left="38.7%" top="6" right="50.2%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Combo id="cb_searchLawClassName" taborder="12" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="50.4%" top="6" width="15%" height="24"/>
+              <Calendar id="Calendar00" taborder="13" left="79.6%" top="424" right="6.4%" height="24"/>
+              <Button id="Button02" taborder="14" text="초기화" onclick="Div00_Button00_onclick" left="91.4%" top="8" width="70" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;"/>
+              <Static id="Static08" taborder="17" onclick="Div00_Static00_onclick" left="1.13%" top="68" right="0.92%" height="67" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static09" taborder="18" text="당사원피고구분" left="1.62%" top="72" right="88.15%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Static id="Static10" taborder="19" text="신청사건번호" left="26.95%" top="73" right="63.53%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Combo id="cb_searchLawClassName01" taborder="20" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="12.46%" top="74" width="13.48%" height="24"/>
+              <Edit id="Edit02" taborder="21" oneditclick="Div00_Edit00_oneditclick" left="36.89%" top="72" right="49.8%" height="26"/>
+              <Static id="Static11" taborder="22" text="신청사건번호" left="51.57%" top="73" right="40.02%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Combo id="cb_searchLawClassName02" taborder="23" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="60.28%" top="74" width="14.29%" height="24"/>
+              <Static id="Static12" taborder="24" text="판사" left="75.08%" top="73" right="16.51%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Combo id="cb_searchLawClassName03" taborder="25" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="84.6%" top="74" width="14.39%" height="24"/>
+              <Static id="Static13" taborder="26" text="상대담당자" left="1.72%" top="105" right="88.35%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Edit id="Edit03" taborder="27" oneditclick="Div00_Edit00_oneditclick" left="12.5%" top="104" right="74.08%" height="28"/>
+              <Static id="Static14" taborder="28" text="신청법원" left="51.57%" top="105" right="40.02%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Static id="Static15" taborder="30" text="상대담당대리인" left="26.95%" top="105" right="63.53%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Edit id="Edit05" taborder="31" oneditclick="Div00_Edit00_oneditclick" left="36.78%" top="105" right="49.9%" height="26"/>
+              <Combo id="cb_searchLawClassName04" taborder="32" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="60.28%" top="106" width="14.29%" height="24"/>
+              <Static id="Static16" taborder="33" onclick="Div00_Static00_onclick" left="1.13%" top="238" right="0.92%" height="72" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static17" taborder="34" onclick="Div00_Static00_onclick" left="1.13%" top="164" right="0.92%" height="72" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static18" taborder="35" onclick="Div00_Static00_onclick" left="7.4%" top="736" right="-5.37%" height="72" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static02" taborder="37" text="판결일자" left="1.74%" top="169" right="88.32%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Combo id="cb_searchLawClassName00" taborder="38" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="85.55%" top="170" width="13.01%" height="24"/>
+              <Edit id="Edit01" taborder="39" oneditclick="Div00_Edit00_oneditclick" left="11.68%" top="201" right="77.05%" height="27"/>
+              <Static id="Static03" taborder="40" text="판결내용" left="1.74%" top="241" right="88.32%" height="67" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Edit id="Edit04" taborder="41" oneditclick="Div00_Edit00_oneditclick" left="11.68%" top="241" right="1.43%" height="67"/>
+              <Static id="Static04" taborder="42" onclick="Div00_Static00_onclick" left="1.13%" top="340" right="0.92%" height="114" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Edit id="Edit06" taborder="47" oneditclick="Div00_Edit00_oneditclick" left="1.84%" top="372" right="49.69%" height="79"/>
+              <Static id="Static21" taborder="48" text="청구소가" left="51.02%" top="345" right="36.27%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Edit id="Edit07" taborder="49" oneditclick="Div00_Edit00_oneditclick" left="63.93%" top="344" right="22.75%" height="28"/>
+              <Static id="Static22" taborder="50" text="판결사항" left="51.02%" top="372" right="36.27%" height="80" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Edit id="Edit08" taborder="51" oneditclick="Div00_Edit00_oneditclick" left="63.93%" top="372" right="1.74%" height="79"/>
+              <Combo id="cb_searchLawClassName05" taborder="52" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="11.68%" top="170" width="13.52%" height="24"/>
+              <Static id="Static23" taborder="53" text="총분담비율" left="1.74%" top="201" right="88.32%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Static id="Static24" taborder="54" text="이행권고결정여부" left="25.51%" top="201" right="63.11%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Static id="Static25" taborder="55" text="판결송달일자" left="25.51%" top="169" right="63.11%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Combo id="cb_searchLawClassName06" taborder="56" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="37.09%" top="170" width="13.52%" height="24"/>
+              <Combo id="cb_searchLawClassName07" taborder="57" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="37.09%" top="202" width="13.52%" height="24"/>
+              <Static id="Static26" taborder="58" text="판결확정일자" left="51.74%" top="169" right="39.34%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Static id="Static27" taborder="59" text="소송비용확정신청일자" left="51.74%" top="201" right="33.81%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Combo id="cb_searchLawClassName08" taborder="60" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="60.86%" top="170" width="13.52%" height="24"/>
+              <Combo id="cb_searchLawClassName09" taborder="61" value="== 전체 ==" innerdataset="ds_lawClass" codecolumn="lawClassName" datacolumn="lawClassName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="66.6%" top="202" width="13.52%" height="24"/>
+              <Static id="Static28" taborder="62" text="승패소구분" left="75.31%" top="169" right="14.75%" height="28" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Button id="Button01" taborder="69" text="결재" left="68.14%" top="488" right="25.1%" height="34"/>
+              <Button id="Button03" taborder="70" text="저장" left="76.33%" top="488" right="16.91%" height="34"/>
+              <Button id="Button04" taborder="71" text="닫기" left="84.53%" top="488" right="8.71%" height="34"/>
+              <Grid id="Grid00" taborder="72" useinputpanel="false" left="1.23%" top="483" right="66.39%" height="53">
+                <Formats/>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="4" text="소송기본사항" cssclass="sta_WF_SubTitle1" left="14" top="96" width="250" height="21" onclick="Static01_onclick"/>
+        <Static id="Static02" taborder="5" text="심급 판결사항" onclick="Static01_onclick" cssclass="sta_WF_SubTitle1" left="14" top="192" width="250" height="21"/>
+        <Static id="Static03" taborder="6" text="피고사항목록" onclick="Static01_onclick" cssclass="sta_WF_SubTitle1" left="14" top="368" width="250" height="21"/>
+        <Static id="Static04" taborder="7" text="결재 진행 상태" onclick="Static01_onclick" cssclass="sta_WF_SubTitle1" left="14" top="512" width="250" height="21"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>

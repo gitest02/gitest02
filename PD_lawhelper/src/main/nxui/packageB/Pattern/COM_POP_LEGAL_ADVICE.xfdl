@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COM_POP_LEGAL_ADVICE" classname="COM_POP_LEGAL_ADVICE" left="0" top="0" width="750" height="400" titletext="법률 자문 의뢰 목록">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="법률 자문 의뢰 목록" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Div id="Div00" taborder="1" text="Div00" left="0%" top="52" right="0.13%" height="70" style="color:transparent;">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="Static00" left="1%" top="0" right="1%" height="70" onclick="Div00_Static00_onclick" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:transparent;"/>
+              <Static id="Static01" taborder="1" text="Static01" left="15%" top="5" right="2%" height="30" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:transparent;"/>
+              <Static id="Static02" taborder="2" text="Static02" left="15%" top="35" right="2%" height="30" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:transparent;"/>
+              <Static id="Static03" taborder="3" text="의뢰번호" left="2%" top="5" right="83%" height="30" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static04" taborder="4" text="법률자문구분" left="2%" top="35" right="83%" height="30" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static05" taborder="5" text="의뢰일자" left="40%" top="5" right="45%" height="30" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static06" taborder="6" text="회신여부" left="40%" top="35" right="45%" height="30" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:center middle;font:bold 9 Dotum;"/>
+              <Edit id="Pop_Advice_num" taborder="7" left="17.5%" top="10" right="60.5%" height="20"/>
+              <Calendar id="Pop_Advice_cal1" taborder="8" left="55.5%" top="10" right="30%" height="20"/>
+              <Static id="Static07" taborder="9" text="~" left="71.56%" top="15" right="25.9%" height="15"/>
+              <Calendar id="Pop_Advice_cal2" taborder="10" left="74.5%" top="10" right="11%" height="21" enable="false"/>
+              <Combo id="Pop_Advice_combo" taborder="11" left="17.5%" top="40" right="60.5%" height="20"/>
+              <Radio id="Radio00" taborder="12" left="55.5%" top="40" right="20%" height="20" columncount="3" innerdataset="@ds_search_wtr" codecolumn="codeName" style="color:black;"/>
+              <Button id="Button00" taborder="13" text="검색" left="81%" top="40" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10 50;color:#444444ff;padding:0 0 0 10;align:center middle;" right="11%"/>
+              <Button id="Button01" taborder="14" text="초기화" left="90%" top="40" height="20" right="3%" style="background:@gradation URL('theme://images\btn_MF_Refresh_O.png') 0 50;color:#444444ff;padding:0 0 0 10;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Law_Advice_Grid" taborder="2" useinputpanel="false" left="1.07%" top="140" right="1.07%" height="245">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="284"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="의뢰번호"/>
+                <Cell col="1" text="자문구분"/>
+                <Cell col="2" text="의뢰제목"/>
+                <Cell col="3" text="회신여부"/>
+                <Cell col="4" text="의뢰일자"/>
+                <Cell col="5" text="의뢰담당자"/>
+                <Cell col="6" text="회신일자"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_search_wtr">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">전체</Col>
+            <Col id="codeNo"/>
+          </Row>
+          <Row>
+            <Col id="codeName">회신</Col>
+            <Col id="codeNo">Y</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">미회신</Col>
+            <Col id="codeNo">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>

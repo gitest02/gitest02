@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="addfile" classname="COM_POP_ADDFILE" left="0" top="0" width="700" height="400" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="첨부파일" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Button id="vtn_exit" taborder="5" text="닫기" top="230" height="20" right="1%" width="70"/>
+        <Grid id="Grid00" taborder="6" useinputpanel="false" left="1%" top="52" right="1%" height="165" scrollbars="fixedvert">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="300"/>
+                <Column size="100"/>
+                <Column size="166"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="일련번호"/>
+                <Cell col="2" text="파일이름"/>
+                <Cell col="3" text="크기"/>
+                <Cell col="4" text="등록일자"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_cancel" taborder="8" text="등록취소" left="13.57%" top="230" height="20" width="70"/>
+        <Button id="btn_del" taborder="9" text="파일삭제" left="25.71%" top="230" height="20" width="70"/>
+        <Grid id="Grid01" taborder="10" useinputpanel="false" left="1%" top="270" right="1%" height="70" scrollbars="fixedvert" binddataset="FileUp" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="256"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="파일이름"/>
+                <Cell col="1" text="사이즈"/>
+                <Cell col="2" text="PC파일경로"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_addf" taborder="11" text="저장" top="375" right="2%" height="20" width="70" visible="false"/>
+        <Button id="btn_down" taborder="12" text="파일저장" left="77.14%" top="230" height="20" width="70"/>
+        <Edit id="Edit00" taborder="13" left="1%" top="345" right="1%" height="20" enable="false" visible="false"/>
+        <Button id="Button00" taborder="16" text="파일검색" left="1%" top="230" height="20" width="70" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="FileUp">
+        <ColumnInfo>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+          <Column id="filePath" type="STRING" size="256"/>
+          <Column id="del" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_file">
+        <ColumnInfo>
+          <Column id="addFileRelSeq" type="STRING" size="256"/>
+          <Column id="addFilePcFile" type="STRING" size="256"/>
+          <Column id="addFilePcFileExt" type="STRING" size="256"/>
+          <Column id="addFileSize" type="STRING" size="256"/>
+          <Column id="addFileSerPath" type="STRING" size="256"/>
+          <Column id="addFileSerFileName" type="STRING" size="256"/>
+          <Column id="addFileDel" type="STRING" size="256"/>
+          <Column id="addFileRegDate" type="STRING" size="256"/>
+          <Column id="addFileChanDate" type="STRING" size="256"/>
+          <Column id="addFileAdmName" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="preAddFileSeq" type="STRING" size="256"/>
+          <Column id="preIwrNo" type="STRING" size="256"/>
+          <Column id="edocAddFileSeq" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_addFileRelSeq">
+        <ColumnInfo>
+          <Column id="addFileRelSeq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_addFile">
+        <ColumnInfo>
+          <Column id="addFileRelSeq" type="STRING" size="256"/>
+          <Column id="addFilePcFile" type="STRING" size="256"/>
+          <Column id="addFilePcFileExt" type="STRING" size="256"/>
+          <Column id="addFileSize" type="STRING" size="256"/>
+          <Column id="addFileSerPath" type="STRING" size="256"/>
+          <Column id="addFileSerFileName" type="STRING" size="256"/>
+          <Column id="addFileDel" type="STRING" size="256"/>
+          <Column id="addFileRegDate" type="STRING" size="256"/>
+          <Column id="addFileChanDate" type="STRING" size="256"/>
+          <Column id="addFileAdmName" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="preAddFileSeq" type="STRING" size="256"/>
+          <Column id="preIwrNo" type="STRING" size="256"/>
+          <Column id="edocAddFileSeq" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Grid00" propid="" datasetid="ds_file" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+this.extUp;     //file upload object
+this.extDown;   //file download object
+this.fileConfig = {
+		host : "http://localhost:8080/PD_lawhelper/",
+		uploadUrl : "file/saveFile.jsp?path=nexacro-egov/repository",
+		downloadUrl : "file/downloadFile.jsp?path=nexacro/repository&fileName=",
+		deleteUrl : "file/deleteFile.jsp?path=nexacro/repository",
+		downImage : "Images::fileUpDownload/img_file.png",
+		delImage : "Images::fileUpDownload/btn_del.png",
+		allowTypes : ["jpg","jpeg","gif","png","bmp","txt","zip","7z","gzip","doc","docx","ppt","pptx","xls","xlsx","pdf"],
+		maxCount : 10,
+		maxSize : "200MB",
+		maxTotalSize : "200MB"
+	};
+	
+//아이콘별 확장자 목록.
+this.iconInfo = {
+		file_icon_ZIP: ["zip","rar","7z"],
+		file_icon_IMG: ["jpg", "jpeg", "gif", "png", "bmp"],
+		file_icon_TXT: ["txt", "xml"],
+		file_icon_DOC: ["doc", "docx"],
+		file_icon_XLS: ["xls", "xlsx"],
+		file_icon_PPT: ["ppt", "pptx"],
+		file_icon_PDF: ["pdf"],
+		file_icon_ETC: ["etc"] //위 확장자 목록에 일치하지 않을 경우. default icon
+	};
+	 
+	 
+//확장자별 아이콘 정보	 
+this.extToIcon = {}; 	 
+	 
+	 
+
+
+//XHR2 진행처리용
+this.tranFiles = {
+	added : [],				// 업로드 파일 정보
+	downloaded : [],		// 다운로드 파일 정보
+	transferFileSize : 0,	// 현재까지 전송된 파일 크기
+	transferFileIndex : 0,	// 현재 전송중인 파일 인덱스
+	preFileSizeSum : 0		// 현재까지 전송된 파일크기 합계
+};
+
+
+this.transferType = "all";
+
+this.FileUpDownload_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.initFile();
+}
+
+
+/**
+ * File upload/download 샘플실행을 위한 초기화
+ * 
+ *
+ */
+this.initFile = function()
+{
+	//확장자별 파일아이콘 설정.
+	this.initExtToIcon();
+	
+	//==============================================
+	//	파일 업로드 컴포넌트 생성 및 설정
+	//==============================================	
+	var name = Eco.getUniqueId("extUpload_");
+	var extUp = new nexacro.ExtFileUpload(name, this);
+	this.addChild(extUp.name, extUp);
+	this.extUp = extUp;
+	
+	extUp.set_multiselect(true);
+	extUp.setResponseZone(this, this.st_helpMessage, this.grd_files);	
+	
+	// == Event 설정 ==
+	//	파일 다이얼로그를 통해 파일을 선택했을 때 발생하는 이벤트입니다
+	extUp.addEventHandler("onchange", this.extUpload_onchange, this);
+	
+	//통신 성공시에 발생하는 이벤트입니다
+	extUp.addEventHandler("onsuccess", this.extUpload_onsuccess, this);
+    
+    //통신 오류 시 발생하는 이벤트입니다.
+	extUp.addEventHandler("onerror", this.extUpload_onerror, this);
+	
+	//HTML5 Only : XMLHttpRequest가 데이터를 보내거나 받는 동안 서버에서 정의된 간격으로 발생합니다.
+	extUp.addEventHandler("onprogress", this.extUpload_onprogress, this);
+	
+	//HTML5 Only : XMLHttpRequest 통신시 readystate 속성 변경 event
+	extUp.addEventHandler("onreadystatechange", this.extUpload_onreadystatechange, this);		
+	
+	extUp.show();
+	
+	//==============================================
+	//	파일 다운로드 컴포넌트 생성 및 설정
+	//==============================================		
+	var name = Eco.getUniqueId("extDownload_");
+	var extDown = new nexacro.ExtFileDownload(name, this);
+	this.addChild(extDown.name, extDown);
+	this.extDown = extDown;
+		
+
+	// == Event 설정 ==
+    //통신 성공시에 발생하는 이벤트입니다
+    extDown.addEventHandler("onsuccess", this.extDownload_onsuccess, this);
+    
+    //통신 오류 시 발생하는 이벤트입니다.
+	extDown.addEventHandler("onerror", this.extDownload_onerror, this);
+	
+	//HTML5 Only : XMLHttpRequest가 데이터를 보내거나 받는 동안 서버에서 정의된 간격으로 발생합니다.
+	extDown.addEventHandler("onprogress", this.extDownload_onprogress, this);
+	
+	extDown.show();
+	
+
+	//==============================================
+	//	브라우저별 기능 표시
+	//==============================================	
+	//Drag and Drop 미지원 브라우저 확인.
+	if(extUp.support.FileAPI == false) 
+	{
+		this.st_helpMessage.set_visible(false);
+		
+		this.st_support_dnd.style.set_color("red");
+		this.st_support_dnd.set_text("• Drag and Drop 미지원");
+	}
+	
+	//XHR2와 FileAPI 지원하지 않을 경우 그리드 format 변경. ex) file 전송량 표시용 progress bar
+	if (!extUp.support.XHR2)
+	{
+		this.grd_files.setFormat("format1");
+		this.grd_download.setFormat("format1");
+		
+		this.st_support_progressBar.style.set_color("red");
+		this.st_support_progressBar.set_text("• ProgressBar 미지원");
+	}	
+	
+	
+	//Multiple File Selection.
+	if (!extUp.support.MultipleInput)
+	{
+		this.st_support_multiple.style.set_color("red");
+		this.st_support_multiple.set_text("• File 다중선택 미지원");
+	}
+	else
+	{
+        //safari5 multiple 파일 추가시 파일사이즈 0 버그 - 단건방식으로 처리
+        //nexacro.BrowserVersion은 5.1.7에서 5만 리턴함.		
+		if (((nexacro.Browser == "Safari") && (nexacro.BrowserVersion == 5)) && (this.extUp.multiselect == true))
+		{
+		   this.st_support_multiple.style.set_color("blue");
+		   this.st_support_multiple.set_text("• File 다중선택 지원(※Safari 버그로 단건 처리)");
+		}		
+	}	
+
+}
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	fn_FileInfoSet();
+}
+
+this.fn_FileInfoSet = function(){
+	
+	alert("들어왓다");
+// 	var idx;
+// 	var nRow;
+// 	var strFullpath;
+// 	var vFile;
+// 	var nFileSize;
+// 	var arrRet;
+// 	
+// 	var objFileDlg = new FileDialog();
+// 	arrRet = objFileDlg.open("FileOpen", FileDialog.MULTILOAD);
+// 	
+// 	if(!arrRet) return;
+// 	
+// 	for(var i=0; i<arrRet.length; i++)
+// 	{
+// 		if(data == undefined)
+// 			strFullpath = arrRet[i].fullpath;
+// 		else
+// 			strFullpath = arrRet[i];
+// 			
+// 		nRow = ds_file.findRow("addFileRelSeq", fn_getFileName(strFullpath));
+// 		
+// 		if(nRow > -1)
+// 		{
+// 			alert("중복되는 파일명이 있습니다.\nFile Name: " + fn_getFileName(strFullpath));
+// 		} else {
+// 			nFileSize = fn_getFileSize(strFullpath).split("/");
+// 			
+// 			idx = ds_file.addRow();
+// 			ds_file.setColumn(idx, "addFileRelSeq", fn_getFileName(strFullpath));
+// 		}
+// 		
+// 	}
+}
+]]></Script>
+  </Form>
+</FDL>

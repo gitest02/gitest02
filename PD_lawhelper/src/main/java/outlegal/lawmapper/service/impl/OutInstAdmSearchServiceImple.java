@@ -1,0 +1,31 @@
+package outlegal.lawmapper.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import outlegal.lawmapper.service.OutInstAdmSearchService;
+import outlegal.lawmapper.service.dao.OutInstAdmSearchDAO;
+import outlegal.lawmapper.vo.OutFixinfoVO;
+import outlegal.lawmapper.vo.OutInstAdmSearchVO;
+
+@Service("outInstAdmSearchService")
+public class OutInstAdmSearchServiceImple implements OutInstAdmSearchService {
+
+	@Resource(name = "outInstAdmSearchDAO")
+	private OutInstAdmSearchDAO outInstAdmSearchDAO;
+
+	// 소송관리번호 검색
+	@Override
+	public List<OutInstAdmSearchVO> getInstAdmList(OutInstAdmSearchVO outInstAdmSearchVO) {
+		return outInstAdmSearchDAO.getInstAdmList(outInstAdmSearchVO);
+	}
+	
+	@Override
+	public List<OutInstAdmSearchVO> getLawsuitInfo(OutInstAdmSearchVO outInstAdmSearchVO) {
+		return outInstAdmSearchDAO.getLawsuitInfo(outInstAdmSearchVO);
+	}	
+	
+}

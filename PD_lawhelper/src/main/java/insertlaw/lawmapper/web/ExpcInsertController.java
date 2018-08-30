@@ -1,0 +1,169 @@
+package insertlaw.lawmapper.web;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import insertlaw.lawmapper.service.ExpcInsertService;
+import insertlaw.lawmapper.service.PrecedentInsertService;
+import insertlaw.lawmapper.vo.ExpcListVO;
+import insertlaw.lawmapper.vo.PrecedentInsertVO;
+
+import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import util.com.utils.InsertLog;
+
+import com.nexacro.spring.annotation.ParamDataSet;
+import com.nexacro.spring.data.NexacroResult;
+import com.nexacro.xapi.data.DataSet;
+import com.nexacro.xapi.data.datatype.PlatformDataType;
+
+@Controller
+public class ExpcInsertController {
+	private static final Logger log = LoggerFactory
+			.getLogger(ExpcInsertController.class);
+	
+	private static final String SP = File.separator;
+	private static final String PREFIX = "";
+	private static final String PATH = "WEB-INF" + SP + "upload";
+	
+	@Resource
+	InsertLog insertLog;
+	
+	@Autowired
+	private WebApplicationContext appContext;
+	
+	@Resource(name = "expcInsertService")
+	private ExpcInsertService expcInsertService;
+
+	private String getFilePath() {
+		ServletContext sc = appContext.getServletContext();
+		String realPath = sc.getRealPath("/");
+		String uploadPath = realPath + PATH;
+		return uploadPath;
+	}
+
+	@RequestMapping("/expcExcelUpload.do")
+	public NexacroResult precedentInsert(HttpServletRequest request)
+			throws Exception {
+
+		if (!(request instanceof MultipartHttpServletRequest)) {
+			System.out.println("첨부파일이 아닙니다.");
+			return new NexacroResult();
+		}
+
+		DataSet resultDs = createDatasetExcel();
+
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+
+		// files..
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+		String filePath = getFilePath();
+
+		Set<String> keySet = fileMap.keySet();
+		for (String name : keySet) {
+
+			MultipartFile multipartFile = fileMap.get(name);
+
+			String originalFilename = multipartFile.getOriginalFilename();
+
+			// IE에서 파일업로드 시 DataSet 파라매터의 Content-Type이 설정되지 않아 여기로 옴. 무시.
+			if (originalFilename == null || originalFilename.length() == 0) {
+				continue;
+			}
+
+			File destination = new File(filePath + SP + originalFilename);
+			// multipartFile.transferTo(destination);
+			InputStream inputStream = multipartFile.getInputStream();
+			FileCopyUtils.copy(inputStream, new FileOutputStream(destination));
+
+			if (log.isDebugEnabled()) {
+				log.debug("uploaded file write success. file="
+						+ originalFilename);
+			}
+
+			expcInsertService.excelTodataset(destination, resultDs);
+
+			if (destination.exists()) {
+				destination.delete();
+			}
+		}
+		NexacroResult result = new NexacroResult();
+		result.addDataSet(resultDs);
+		return result;
+	}
+
+	@Transactional
+	@RequestMapping("/expcInsert.do")
+	public NexacroResult expcInsert(
+			@ParamDataSet(name = "ds_expc_Import", required = false) List<ExpcListVO> expcListVO,
+			HttpServletRequest req) throws SQLException {
+		expcInsertService.expcInsert(expcListVO);
+
+		NexacroResult result = new NexacroResult();
+
+		if (result != null) {
+			insertLog.insertData(expcListVO.get(0).getUserid(), "법령 해석례 등록",
+					req);
+		}
+		return result;
+	}
+
+	@RequestMapping("/expcExcelSearch.do")
+	public NexacroResult expcExcelSearch(
+			@ParamDataSet(name = "ds_expc_Import", required = false) List<ExpcListVO> expcListVO) {
+		ExpcListVO select = expcInsertService.excelSearch(expcListVO);
+
+		NexacroResult result = new NexacroResult();
+
+		if (select != null) {
+			DataSet ds = new DataSet("ds_select");
+			ds.addColumn("expcno", PlatformDataType.STRING);
+			int row = ds.newRow();
+			ds.set(row, "expcno", select.getExpcno());
+			result.addDataSet(ds);
+		}
+		return result;
+	}
+
+	private DataSet createDatasetExcel() {
+		DataSet ds = new DataSet("ds_expc_Output");
+		ds.addColumn("chk", PlatformDataType.STRING);
+		ds.addColumn("expcno", PlatformDataType.STRING);
+		ds.addColumn("itemname", PlatformDataType.STRING);
+		ds.addColumn("itemno", PlatformDataType.STRING);
+		ds.addColumn("quesorgcode", PlatformDataType.STRING);
+		ds.addColumn("quesorgname", PlatformDataType.STRING);
+		ds.addColumn("replorgcode", PlatformDataType.STRING);
+		ds.addColumn("replorgname", PlatformDataType.STRING);
+		ds.addColumn("replydate", PlatformDataType.STRING);
+		ds.addColumn("classname", PlatformDataType.STRING);
+		ds.addColumn("detaillink", PlatformDataType.STRING);
+		ds.addColumn("analyzedate", PlatformDataType.STRING);
+		ds.addColumn("analyzeorgcode", PlatformDataType.STRING);
+		ds.addColumn("analyzeorgname", PlatformDataType.STRING);
+		ds.addColumn("careorgcode", PlatformDataType.STRING);
+		ds.addColumn("regdate", PlatformDataType.STRING);
+		ds.addColumn("questext", PlatformDataType.STRING);
+		ds.addColumn("repltext", PlatformDataType.STRING);
+		ds.addColumn("reasontext", PlatformDataType.STRING);
+		return ds;
+	}
+}

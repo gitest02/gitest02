@@ -1,0 +1,62 @@
+package legal.lawmapper.web;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import legal.lawmapper.service.AlesSueService;
+import legal.lawmapper.vo.AlesSueVO;
+import nexacro.sample.web.AdvancedFileController;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.spring.annotation.ParamDataSet;
+import com.nexacro.spring.data.NexacroResult;
+
+@Controller
+public class AlesSueController {
+	
+	private static final Logger log = LoggerFactory
+			.getLogger(AdvancedFileController.class);
+
+	@Resource
+	private Validator validator;
+
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		dataBinder.setValidator(this.validator);
+	}
+
+	@Resource(name="alesSueService")
+	AlesSueService alesSueService;
+	
+	@RequestMapping("/getAlesSueInfo.do")
+	public NexacroResult getAlesSueDetailListSelect(
+			@ParamDataSet(name = "ds_search", required = false) AlesSueVO alesSueVo) {
+		
+		List<AlesSueVO> list = alesSueService.getAlesList(alesSueVo);
+		
+		NexacroResult result = new NexacroResult();
+		result.addDataSet("ds_ales_sue", list);
+
+		return result;
+
+	}
+
+	@RequestMapping("/getAlesSueChange.do")
+	public NexacroResult preiwrChange(
+			@ParamDataSet(name = "ds_ales_sue", required = false) List<AlesSueVO> listVO) {
+
+		alesSueService.alesSueChange(listVO);
+
+		NexacroResult result = new NexacroResult();
+
+		return result;
+	}
+}

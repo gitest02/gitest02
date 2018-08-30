@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="FILE" classname="FILE" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="공통 파일 관리" left="64.7%" top="4" right="15.9%" height="48" style="align:center;font:bold 12 arial;"/>
+        <Static id="Static01" taborder="1" text="공통파일관리" left="1%" top="64" right="91.2%" height="28" style="background:lavenderblush;border:2 solid #c8c8c8ff ;color:#133678ff;" onclick="Static01_onclick"/>
+        <Edit id="Edit3" taborder="3" left="20%" top="64" right="61.5%" height="28" onchanged="edit3_OnChanged" onkeydown="edit3_OnKeyDown" oneditclick="Edit3_oneditclick"/>
+        <Button id="Button02" taborder="6" text="다른이름으로 저장" left="52.8%" top="64" right="32.1%" height="27" onclick="Button02_onclick"/>
+        <Grid id="Grid0" taborder="10" useinputpanel="false" left="1.6%" top="96" right="1.6%" height="496" autofittype="col" binddataset="FileUp" onheadclick="Grid0_OnHeadClick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="67"/>
+                <Column size="85"/>
+                <Column size="69"/>
+                <Column size="101"/>
+                <Column size="95"/>
+                <Column size="124"/>
+                <Column size="74"/>
+                <Column size="97"/>
+                <Column size="82"/>
+                <Column size="66"/>
+                <Column size="108"/>
+                <Column size="110"/>
+                <Column size="108"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="60" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox" style="cursor:arrow;" editdisplay="edit"/>
+                <Cell col="1" text="일련번호"/>
+                <Cell col="2" text="채무자번호"/>
+                <Cell col="3" text="파일이름"/>
+                <Cell col="4" text="파일확장자"/>
+                <Cell col="5" text="파일종류"/>
+                <Cell col="6" text="파일크기"/>
+                <Cell col="7" text="삭제여부"/>
+                <Cell col="8" text="수정일시"/>
+                <Cell col="9" text="등록일시"/>
+                <Cell col="10" text="파일경로"/>
+                <Cell col="11" text="원본파일이름"/>
+                <Cell col="12" text="증명사진/파일"/>
+                <Cell col="13" text="다운로드횟수"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="SUM"/>
+                <Cell col="1" text="파일수"/>
+                <Cell col="2" text="0개"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="17" left="78.4%" top="610" right="13.7%" height="33"/>
+        <Button id="button3" taborder="20" text="검색" left="38.4%" top="64" right="54.4%" height="27" onclick="button3_OnClick"/>
+        <Button id="Button9" taborder="22" text="삭제" left="68%" top="64" right="24.8%" height="27" onclick="Button9_OnClick"/>
+        <Button id="Button4" taborder="23" text="파일이름변경" onclick="Button4_OnClick" left="75.2%" top="65" right="8.3%" height="27"/>
+        <Button id="Button1" taborder="24" text="닫기" left="91.6%" top="65" right="1.2%" height="27" onclick="Button1_OnClick"/>
+        <Combo id="list_com" taborder="25" left="8.8%" top="64" right="80.1%" height="27" codecolumn="code" datacolumn="value" innerdataset="@File" onitemchanged="list_com_onitemchanged" onchar="list_com_onitemchanged"/>
+        <FileUpload id="FileUpload01" taborder="27" retry="0" index="0" left="46%" top="64" right="47.2%" height="26" scrollbars="none"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="FileUp">
+        <ColumnInfo>
+          <Column id="addFileCheck" type="STRING" size="256"/>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="addFileRelNum" type="STRING" size="256"/>
+          <Column id="addFileSerFileName" type="STRING" size="256"/>
+          <Column id="addFileSize" type="STRING" size="256"/>
+          <Column id="addFileDel" type="STRING" size="256"/>
+          <Column id="addFileSerPath" type="STRING" size="256"/>
+          <Column id="addFileChanDate" type="STRING" size="256"/>
+          <Column id="addFileRegDate" type="STRING" size="256"/>
+          <Column id="addFilePcFileExt" type="STRING" size="256"/>
+          <Column id="addFilePcFile" type="STRING" size="256"/>
+          <Column id="imgFile" type="STRING" size="256"/>
+          <Column id="addFileDownCount" type="STRING" size="256"/>
+          <Column id="addFileCode" type="STRING" size="256"/>
+          <Column id="count" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="File">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">001</Col>
+            <Col id="value">파일이름</Col>
+          </Row>
+          <Row>
+            <Col id="code">002</Col>
+            <Col id="value">파일확장자</Col>
+          </Row>
+          <Row>
+            <Col id="code">003</Col>
+            <Col id="value">삭제여부</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="FileName">
+        <ColumnInfo>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>

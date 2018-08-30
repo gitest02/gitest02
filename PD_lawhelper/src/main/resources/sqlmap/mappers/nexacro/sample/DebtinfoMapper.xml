@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="debtinfo.lawmapper.service.dao.DebtinfoMapper">
+
+	<resultMap type="debtinfo.lawmapper.vo.DebtOccVO" id="DebtOccVO">
+		<result property="debtorListNo" column="DEBTOR_LIST_NO" />
+		<result property="debtorOccNo" column="DEBTOR_OCC_NO" />
+		<result property="debtorOccStartdate" column="DEBTOR_OCC_STARTDATE" />
+		<result property="debtorOccEnddate" column="DEBTOR_OCC_ENDDATE" />
+		<result property="debtorOccCode" column="DEBTOR_OCC_CODE" />
+		<result property="debtorOccReason" column="DEBTOR_OCC_REASON" />
+		<result property="debtorOccCheck" column="DEBTOR_OCC_CHECK" />
+		<result property="debtorOccPrice" column="DEBTOR_OCC_PRICE" />
+		<result property="debtorOccRegistDate" column="DEBTOR_OCC_REGIST_DATE" />
+		<result property="debtorOccInput" column="DEBTOR_OCC_INPUT" />
+		<result property="debtorOccEtc" column="DEBTOR_OCC_ETC" />
+		<result property="debtorOccEtc" column="DEBTOR_OCC_INTEREST" />
+	</resultMap>
+	<resultMap type="debtinfo.lawmapper.vo.DebtReVO" id="DebtReVO">
+		<result property="moneyInNo" column="MONEY_IN_NO" />
+		<result property="debtorListNo" column="DEBTOR_LIST_NO" />
+		<result property="moneyInSum" column="MONEY_IN_SUM" />
+		<result property="moneyInCode" column="MONEY_IN_CODE" />
+		<result property="moneyInReason" column="MONEY_IN_REASON" />
+		<result property="moneyInInterest" column="MONEY_IN_INTEREST" />
+		<result property="moneyInDayin" column="MONEY_IN_DAYIN" />
+		<result property="moneyInRegistDate" column="MONEY_IN_REGIST_DATE" />
+		<result property="moneyInInput" column="MONEY_IN_INPUT" />
+		<result property="moneyInEtc" column="MONEY_IN_ETC" />
+	</resultMap>
+	<resultMap type="debtinfo.lawmapper.vo.DebtStopVO" id="DebtStopVO">
+		<result property="adminStopNo" column="ADMIN_STOP_NO" />
+		<result property="debtorListNo" column="DEBTOR_LIST_NO" />
+		<result property="adminStopSignCheck" column="ADMIN_STOP_SIGN_CHECK" />
+		<result property="adminStopReasonCode" column="ADMIN_STOP_REASON_CODE" />
+		<result property="adminStopReason" column="ADMIN_STOP_REASON" />
+		<result property="adminStopMoney" column="ADMIN_STOP_MONEY" />
+		<result property="adminStopInterest" column="ADMIN_STOP_INTEREST" />
+		<result property="adminStopDebtReturnMoney" column="ADMIN_STOP_DEBT_RETURN_MONEY" />
+		<result property="adminStopRequestDate" column="ADMIN_STOP_REQUEST_DATE" />
+		<result property="adminStopSignEiNo" column="ADMIN_STOP_SIGN_EI_NO" />
+		<result property="adminStopSignDate" column="ADMIN_STOP_SIGN_DATE" />
+		<result property="adminStopSignerComment" column="ADMIN_STOP_SIGNER_COMMENT" />
+		<result property="adminStopProgressSummary" column="ADMIN_STOP_PROGRESS_SUMMARY" />
+		<result property="adminStopRegistDate" column="ADMIN_STOP_REGIST_DATE" />
+		<result property="adminStopInput" column="ADMIN_STOP_INPUT" />
+		<result property="adminStopEtc" column="ADMIN_STOP_ETC" />
+		<result property="adminStopCd" column="ADMIN_STOP_CD" />
+	</resultMap>
+	<resultMap type="debtinfo.lawmapper.vo.DebtGiveUpVO" id="DebtGiveUpVO">
+		<result property="giveUpNo" column="GIVE_UP_NO" />
+		<result property="giveUpNo" column="DEBTOR_LIST_NO" />
+		<result property="giveUpSign" column="GIVE_UP_SIGN" />
+		<result property="giveUpReasonCode" column="GIVE_UP_REASON_CODE" />
+		<result property="giveUpReason" column="GIVE_UP_REASON" />
+		<result property="giveUpMoney" column="GIVE_UP_MONEY" />
+		<result property="giveUpObtainMoney" column="GIVE_UP_OBTAIN_MONEY" />
+		<result property="giveUpReturnExpectMoney" column="GIVE_UP_RETURN_EXPECT_MONEY" />
+		<result property="giveUpInterest" column="GIVE_UP_INTEREST" />
+		<result property="giveUpReturnMoney" column="GIVE_UP_RETURN_MONEY" />
+		<result property="giveUpRemainDebtorMoney" column="GIVE_UP_REMAIN_DEBTOR_MONEY" />
+		<result property="giveUpRequestDate" column="GIVE_UP_REQUEST_DATE" />
+		<result property="giveUpDecideManNum" column="GIVE_UP_DECIDE_MAN_NUM" />
+		<result property="giveUpObtainDate" column="GIVE_UP_OBTAIN_DATE" />
+		<result property="giveUpTotalOpinion" column="GIVE_UP_TOTAL_OPINION" />
+		<result property="giveUpDecideManOpinion" column="GIVE_UP_DECIDE_MAN_OPINION" />
+		<result property="giveUpProgressSummary" column="GIVE_UP_PROGRESS_SUMMARY" />
+		<result property="giveUpRegistDate" column="GIVE_UP_REGIST_DATE" />
+		<result property="giveUpInput" column="GIVE_UP_INPUT" />
+		<result property="giveUpEtc" column="GIVE_UP_ETC" />
+		<result property="giveUpCd" column="GIVE_UP_CD" />
+	</resultMap>
+
+
+	<!-- 채무등록 리스트 가져오기(select) -->
+	<select id="debtorOccList" resultMap="DebtOccVO">
+		SELECT
+			DEBTOR_OCC_NO,
+			DEBTOR_OCC_STARTDATE,
+			DEBTOR_OCC_ENDDATE,
+			DEBTOR_OCC_REASON,
+			DEBTOR_OCC_CHECK,
+			DEBTOR_OCC_PRICE,
+			DEBTOR_OCC_INPUT,
+			DEBTOR_OCC_ETC
+		FROM BOND.TAB_DEBTOR_OCC
+		WHERE DEBTOR_OCC_NO = 'OC20160725045'
+	</select>
+
+	<!-- 환입관리 리스트 가져오기(select) -->
+	<select id="debtorReList" resultMap="DebtReVO">
+		SELECT
+			MONEY_IN_NO, 
+			MONEY_IN_SUM, 
+			MONEY_IN_INTEREST, 
+			MONEY_IN_DAYIN, 
+			MONEY_IN_INPUT, 
+			MONEY_IN_REASON, 
+			MONEY_IN_ETC, 
+			(SELECT 
+				NAME 
+			FROM B_INSA
+			WHERE SABUN=MONEY_IN_INPUT) INPUT_NAME, 
+			(SELECT 
+				SABUN||'('||NAME||')' TEST 
+			FROM B_INSA
+			WHERE SABUN=MONEY_IN_INPUT) SABUN_NAME
+		FROM BOND.TAB_MONEY_IN
+	</select>
+
+	<!-- 정지품의 리스트 가져오기(select) -->
+	<select id="debtorStopList" resultMap="DebtStopVO">
+		SELECT
+			ADMIN_STOP_NO, 
+			ADMIN_STOP_SIGN_CHECK, 
+			ADMIN_STOP_REASON, 
+			ADMIN_STOP_MONEY, 
+			ADMIN_STOP_INTEREST, 
+			ADMIN_STOP_DEBT_RETURN_MONEY, 
+			ADMIN_STOP_REQUEST_DATE, 
+			ADMIN_STOP_SIGN_EI_NO, 
+			ADMIN_STOP_SIGN_DATE, 
+			ADMIN_STOP_SIGNER_COMMENT, 
+			ADMIN_STOP_PROGRESS_SUMMARY, 
+			ADMIN_STOP_INPUT, 
+			ADMIN_STOP_ETC, 
+			(SELECT 
+				NAME 
+			FROM B_INSA
+			WHERE SABUN=ADMIN_STOP_INPUT) INPUT_NAME, 
+			(SELECT 
+				SABUN||'('||NAME||')' TEST 
+			FROM B_INSA
+			WHERE SABUN=ADMIN_STOP_INPUT) SABUN_NAME, 
+			(SELECT 
+				SABUN||'('||NAME||')' TEST 
+			FROM B_INSA
+			WHERE SABUN=ADMIN_STOP_SIGN_EI_NO) SIGNER_SABUN_NAME
+		FROM BOND.TAB_ADMIN_STOP
+	</select>
+
+	<!-- 포기품의 리스트 가져오기(select) -->
+	<select id="debtorGiveUpList" resultMap="DebtGiveUpVO">
+		SELECT 
+			GIVE_UP_NO, 
+			GIVE_UP_SIGN, 
+			GIVE_UP_REASON,
+			GIVE_UP_MONEY, 
+			NVL(GIVE_UP_OBTAIN_MONEY, 0) GIVE_UP_OBTAIN_MONEY, 
+			GIVE_UP_RETURN_EXPECT_MONEY, 
+			GIVE_UP_INTEREST, 
+			GIVE_UP_RETURN_MONEY, 
+			GIVE_UP_REMAIN_DEBTOR_MONEY, 
+			GIVE_UP_REQUEST_DATE, 
+			GIVE_UP_DECIDE_MAN_NUM, 
+			GIVE_UP_OBTAIN_DATE, 
+			GIVE_UP_TOTAL_OPINION, 
+			GIVE_UP_DECIDE_MAN_OPINION, 
+			GIVE_UP_PROGRESS_SUMMARY, 
+			GIVE_UP_INPUT, 
+			GIVE_UP_ETC, 
+			(SELECT 
+				INSA_NAME 
+			FROM C_INSA
+			WHERE INSA_SABUN=GIVE_UP_INPUT) INPUT_NAME, 
+			(SELECT 
+				INSA_SABUN||'('||INSA_NAME||')' TEST 
+			FROM C_INSA
+			WHERE INSA_SABUN=GIVE_UP_INPUT) SABUN_NAME, 
+			(SELECT 
+				INSA_SABUN||'('||INSA_NAME||')' TEST 
+			FROM C_INSA
+			WHERE INSA_SABUN=GIVE_UP_DECIDE_MAN_NUM) SIGNER_SABUN_NAME
+		FROM BOND.TAB_GIVE_UP
+	</select>
+	
+</mapper>

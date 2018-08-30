@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="approvalProg">
+
+	<resultMap type="approval.lawmapper.vo.ApprovalDefVO" id="approvalDefVO">
+		<result property="aprvprgrInfoUpSeq" column="APRVPRGR_INFO_UP_SEQ" />
+		<result property="aprvprgrInfoWritSabun" column="APRVPRGR_INFO_WRIT_SABUN" />
+		<result property="aprvprgrInfoWrit" column="APRVPRGR_INFO_WRIT" />
+		<result property="aprvprgrInfoWritDeptCode" column="APRVPRGR_INFO_WRIT_DEPT_CODE" />
+		<result property="aprvprgrInfoWritDeptName" column="APRVPRGR_INFO_WRIT_DEPT_NAME" />
+		<result property="aprvprgrInfoWritDate" column="APRVPRGR_INFO_WRIT_DATE" />
+		<result property="aprvprgrInfoWritCont" column="APRVPRGR_INFO_WRIT_CONT" />
+		<result property="aprvprgrInfoWritTit" column="APRVPRGR_INFO_WRIT_TIT" />
+		<result property="aprvprgrInfoStepCode" column="APRVPRGR_INFO_STEP_CODE" />
+		<result property="aprvprgrInfoBookNo" column="APRVPRGR_INFO_BOOK_NO" />
+		<result property="aprvprgrInfoSeq" column="APRVPRGR_INFO_SEQ" />
+		<result property="aprvInfoSeq" column="APRV_INFO_SEQ" />
+		<result property="aprvInfoSabun" column="APRV_INFO_SABUN" />
+		<result property="aprvInfoName" column="APRV_INFO_NAME" />
+		<result property="aprvInfoDeptCode" column="APRV_INFO_DEPT_CODE" />
+		<result property="aprvInfoDeptName" column="APRV_INFO_DEPT_NAME" />
+		<result property="aprvInfoCondCode" column="APRV_INFO_COND_CODE" />
+		<result property="aprvInfoProcDate" column="APRV_INFO_PROC_DATE" />
+		<result property="aprvInfoReqDate" column="APRV_INFO_REQ_DATE" />
+		<result property="aprvInfoFinWtr" column="APRV_INFO_FIN_WTR" />
+		<result property="aprvInfoCont" column="APRV_INFO_CONT" />
+		<result property="aprvlineAdmProcCode" column="APRVLINE_ADM_PROC_CODE" />
+		<result property="aprvlineAdmSeq" column="APRVLINE_ADM_SEQ" />
+		<result property="aprvlineAdmAprvId" column="APRVLINE_ADM_APRV_ID" />
+		<result property="aprvlineAdmAprvDeptId" column="APRVLINE_ADM_APRV_DEPT_ID" />
+		<result property="aprvlineAdmUpAprvcode" column="APRVLINE_ADM_UP_APRVCODE" />
+		<result property="aprvlineAdmUpSeq" column="APRVLINE_ADM_UP_SEQ" />
+		<result property="aprvlineAdmAdWtr" column="APRVLINE_ADM_AD_WTR" />
+		<result property="aprvlineAdmUpId" column="APRVLINE_ADM_UP_ID" />
+	</resultMap>	
+	
+	<resultMap type="approval.lawmapper.vo.ApprovalProgVO" id="approvalProgVO">
+		<result property="insaSabun" column="INSA_SABUN" />
+		<result property="insaJoinGbnCode" column="INSA_JOIN_GBN_CODE" />
+		<result property="insaRetireDay" column="INSA_RETIRE_DAY" />
+		<result property="insaPutWtr" column="INSA_PUT_WTR" />
+		<result property="insaClassGbnCode" column="INSA_CLASS_GBN_CODE" />
+		<result property="insaName" column="INSA_NAME" />
+		<result property="insaRegBirth" column="INSA_REG_BIRTH" />
+		<result property="insaEngName" column="INSA_ENG_NAME" />
+		<result property="insaPhone" column="INSA_PHONE" />
+		<result property="insaHp" column="INSA_HP" />
+		<result property="insaCarrier" column="INSA_CARRIER" />
+		<result property="insaPosGbnCode" column="INSA_POS_GBN_CODE" />
+		<result property="insaCmpRegNo" column="INSA_CMP_REG_NO" />
+		<result property="insaSex" column="INSA_SEX" />
+		<result property="insaYears" column="INSA_YEARS" />
+		<result property="insaEmail" column="INSA_EMAIL" />
+		<result property="insaZip" column="INSA_ZIP" />
+		<result property="insaAddr1" column="INSA_ADDR1" />
+		<result property="insaAddr2" column="INSA_ADDR2" />
+		<result property="insaMilWtr" column="INSA_MIL_WTR" />
+		<result property="insaHomePhone" column="INSA_HOME_PHONE" />
+		<result property="insaSalary" column="INSA_SALARY" />
+		<result property="insaKosaRegWtr" column="INSA_KOSA_REG_WTR" />
+		<result property="insaKosaClass" column="INSA_KOSA_CLASS" />
+		<result property="insaDeptCode" column="INSA_DEPT_CODE" />
+		<result property="insaPsw" column="INSA_PSW" />
+	</resultMap>
+	
+	
+ 	<!-- 작성자 정보 조회 --> 
+	<select id="getApprovalWriter" parameterType="String" resultMap="approvalProgVO">
+        SELECT T1.INSA_SABUN
+                ,T1.INSA_NAME
+                ,T1.INSA_DEPT_CODE
+                ,T2.CODE_NAME INSA_DEPT_NAME
+        FROM
+                PD_LAW.TAB_INSA T1, PD_LAW.CMM_CODE_DETAIL T2
+        WHERE
+                INSA_SABUN = #{sabun}
+                AND CLASS_CODE = 'S01'
+                AND T1.INSA_DEPT_CODE = T2.CODE_NO
+		        T2.INSA_SABUN = #{insaSabun}
+	</select>
+	
+	<!-- 기안자등록 --> 
+	<insert id="getApprovalProgInsert" parameterType="approval.lawmapper.vo.ApprovalDefVO">	
+		INSERT INTO PD_LAW.TAB_APRVPRGR_INFO
+				(
+				APRVPRGR_INFO_STEP_CODE
+				,APRVPRGR_INFO_BOOK_NO
+				,APRVPRGR_INFO_SEQ
+				,APRVPRGR_INFO_UP_SEQ
+				,APRVPRGR_INFO_WRIT_SABUN
+				,APRVPRGR_INFO_WRIT
+				,APRVPRGR_INFO_WRIT_DEPT_CODE
+				,APRVPRGR_INFO_WRIT_DEPT_NAME
+				,APRVPRGR_INFO_WRIT_DATE
+				,APRVPRGR_INFO_WRIT_CONT
+				,APRVPRGR_INFO_WRIT_TIT
+				)
+		 VALUES
+				(
+				#{aprvprgrInfoStepCode,jdbcType=VARCHAR}
+				,#{aprvprgrInfoBookNo,jdbcType=VARCHAR}
+				,APPROVAL_SEQ.NEXTVAL
+				,#{aprvprgrInfoUpSeq,jdbcType=VARCHAR}
+				,#{aprvprgrInfoWritSabun,jdbcType=VARCHAR}
+				,#{aprvprgrInfoWrit,jdbcType=VARCHAR}
+				,#{aprvprgrInfoWritDeptCode,jdbcType=VARCHAR}
+				,#{aprvprgrInfoWritDeptName,jdbcType=VARCHAR}
+				,TO_CHAR(SYSDATE, 'YYYYMMDD')
+				,#{aprvprgrInfoWritCont,jdbcType=VARCHAR}
+				,#{aprvprgrInfoWritTit,jdbcType=VARCHAR}
+				)
+       
+	</insert>
+	
+	<!-- 결재자등록 --> 
+ 	<insert id="getApprovalProg" parameterType="approval.lawmapper.vo.ApprovalDefVO">	
+		INSERT INTO PD_LAW.TAB_APRV_INFO
+				(
+				APRVPRGR_INFO_STEP_CODE	
+				,APRVPRGR_INFO_BOOK_NO	
+				,APRVPRGR_INFO_SEQ	
+				,APRV_INFO_SEQ	
+				,APRV_INFO_SABUN	
+				,APRV_INFO_NAME	
+				,APRV_INFO_DEPT_CODE	
+				,APRV_INFO_DEPT_NAME	
+				,APRV_INFO_COND_CODE	
+				,APRV_INFO_PROC_DATE	
+				,APRV_INFO_REQ_DATE	
+				,APRV_INFO_FIN_WTR	
+				,APRV_INFO_CONT	
+				)		
+		 VALUES
+				(
+				#{aprvprgrInfoStepCode,jdbcType=VARCHAR}
+				,#{aprvprgrInfoBookNo,jdbcType=VARCHAR}
+				,APPROVAL_SEQ.CURRVAL						<!-- 수정해야 할 듯 : NEXTVAL로 -->
+				,'1'
+				,#{aprvInfoSabun,jdbcType=VARCHAR}
+				,#{aprvInfoName,jdbcType=VARCHAR}
+				,#{aprvInfoDeptCode,jdbcType=VARCHAR}
+				,#{aprvInfoDeptName,jdbcType=VARCHAR}
+				,#{aprvInfoCondCode,jdbcType=VARCHAR}
+				,#{aprvInfoProcDate,jdbcType=VARCHAR}
+				,TO_CHAR(SYSDATE, 'YYYYMMDD')
+				,#{aprvInfoFinWtr,jdbcType=VARCHAR}
+				,#{aprvInfoCont,jdbcType=VARCHAR}
+		)
+       
+	</insert>
+	
+	<!-- 기안자 수정 --> 
+	<update id="getApprovalProgUpdate"  parameterType="approval.lawmapper.vo.ApprovalDefVO">
+		UPDATE  PD_LAW.TAB_APRVPRGR_INFO 
+		SET
+				APRVPRGR_INFO_STEP_CODE = #{aprvprgrInfoStepCode}
+				,APRVPRGR_INFO_BOOK_NO = #{aprvprgrInfoBookNo}
+				,APRVPRGR_INFO_UP_SEQ = #{aprvprgrInfoUpSeq}
+				,APRVPRGR_INFO_WRIT_SABUN = #{aprvprgrInfoWritSabun}
+				,APRVPRGR_INFO_WRIT = #{aprvprgrInfoWrit}
+				,APRVPRGR_INFO_WRIT_DEPT_CODE = #{aprvprgrInfoWritDeptCode}
+				,APRVPRGR_INFO_WRIT_DEPT_NAME = #{aprvprgrInfoWritDeptName}
+				,APRVPRGR_INFO_WRIT_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')
+				,APRVPRGR_INFO_WRIT_CONT = #{aprvprgrInfoWritCont}
+				,APRVPRGR_INFO_WRIT_TIT = #{aprvprgrInfoWritTit}
+		WHERE
+				APRVPRGR_INFO_BOOK_NO = #{aprvprgrInfoBookNo}
+		AND 	APRVPRGR_INFO_SEQ =  #{aprvprgrInfoSeq}
+	</update>
+	
+	<!-- 결재자 수정 --> 
+	<update id="getApprovalUpdate"  parameterType="approval.lawmapper.vo.ApprovalDefVO">
+		UPDATE  PD_LAW.TAB_APRV_INFO 
+		SET
+				APRVPRGR_INFO_STEP_CODE = #{aprvprgrInfoStepCode}
+				,APRVPRGR_INFO_BOOK_NO = #{aprvprgrInfoBookNo}
+				,APRV_INFO_SABUN = #{aprvInfoSabun}
+				,APRV_INFO_NAME = #{aprvInfoName}
+				,APRV_INFO_DEPT_CODE = #{aprvInfoDeptCode}
+				,APRV_INFO_DEPT_NAME = #{aprvInfoDeptName}
+				,APRV_INFO_COND_CODE = #{aprvInfoCondCode}
+				,APRV_INFO_PROC_DATE = #{aprvInfoProcDate}
+				,APRV_INFO_REQ_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')
+				,APRV_INFO_FIN_WTR = #{aprvInfoFinWtr}
+				,APRV_INFO_CONT	= #{aprvInfoCont}
+		WHERE
+				APRVPRGR_INFO_BOOK_NO = #{aprvprgrInfoBookNo}
+		AND 	APRV_INFO_SEQ =  #{aprvInfoSeq}
+		AND 	APRVPRGR_INFO_SEQ =  #{aprvprgrInfoSeq}
+				
+	</update>
+	 
+ 	<!-- 작성내용조회 --> 
+<!-- 	<select id="getApprovalVita" parameterClass="approvalTotalVO" resultClass="egovMap"> -->
+ 		<!-- SELECT T1.APRVPRGR_INFO_STEP_CODE     -->
+<!-- 		        ,T1.APRVPRGR_INFO_BOOK_NO     -->
+<!-- 		        ,T1.APRVPRGR_INFO_SEQ     -->
+<!-- 		        ,T1.APRVPRGR_INFO_UP_SEQ     -->
+<!-- 		        ,T1.APRVPRGR_INFO_WRIT_SABUN     -->
+<!-- 		        ,T1.APRVPRGR_INFO_WRIT     -->
+<!-- 		        ,T1.APRVPRGR_INFO_WRIT_DEPT_CODE     -->
+<!-- 		        ,T1.APRVPRGR_INFO_WRIT_DEPT_NAME     -->
+<!-- 		        ,T1.APRVPRGR_INFO_WRIT_DATE     -->
+<!-- 		        ,T1.APRVPRGR_INFO_WRIT_CONT     -->
+<!-- 		        ,T1.APRVPRGR_INFO_WRIT_TIT -->
+<!-- 		        ,T2.APRV_INFO_SEQ     -->
+<!-- 		        ,T2.APRV_INFO_SABUN     -->
+<!-- 		        ,T2.APRV_INFO_NAME     -->
+<!-- 		        ,T2.APRV_INFO_DEPT_CODE     -->
+<!-- 		        ,T2.APRV_INFO_DEPT_NAME     -->
+<!-- 		        ,T2.APRV_INFO_COND_CODE     -->
+<!-- 		        ,T2.APRV_INFO_PROC_DATE     -->
+<!-- 		        ,T2.APRV_INFO_REQ_DATE     -->
+<!-- 		        ,T2.APRV_INFO_FIN_WTR     -->
+<!-- 		        ,T2.APRV_INFO_CONT      -->
+<!-- 		FROM  -->
+<!-- 		        TAB_APRVPRGR_INFO T1, TAB_APRV_INFO T2 -->
+<!-- 		WHERE  -->
+<!-- 				T1.APRVPRGR_INFO_BOOK_NO = T2.APRVPRGR_INFO_BOOK_NO -->
+<!--                 AND T1.APRVPRGR_INFO_STEP_CODE = T2.APRVPRGR_INFO_STEP_CODE -->
+<!--                 AND T1.APRVPRGR_INFO_SEQ = T2.APRVPRGR_INFO_SEQ -->
+<!-- 				AND T1.APRVPRGR_INFO_BOOK_NO = #aprvprgrInfoBookNo# --> 
+<!-- 	</select>  -->
+	
+</mapper>

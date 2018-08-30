@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_022" classname="V_PDL_022" left="0" top="0" width="1000" height="600" titletext="New Form" onload="v_pdl_022_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="0" left="0.9%" top="56" width="98.3%" height="79" style="background:lavenderblush;border:1 solid #c8c8c8ff ;">
+          <Layouts>
+            <Layout width="982" height="74">
+              <Div id="Div03" taborder="9" left="8.46%" top="4" width="91.03%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Calendar id="Date2" taborder="8" enable="false" left="63.1%" top="4" width="16.63%" height="25"/>
+                    <Div id="Div00" taborder="9" text="~" left="60.49%" top="4" width="1.68%" height="25"/>
+                    <Calendar id="Date1" taborder="10" onchanged="req_date1_OnChanged" left="42.65%" top="4" width="16.84%" height="25"/>
+                    <Combo id="combo_Clas_Code" taborder="11" left="5.16%" top="4" right="71.94%" height="25" innerdataset="@ds_lawsuitType" codecolumn="codeNo" datacolumn="codeName"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div05" taborder="11" text="기준일자" left="35.07%" top="4" width="11.72%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout/>
+                </Layouts>
+              </Div>
+              <Div id="Div00" taborder="12" left="0.51%" top="38" width="98.98%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Button id="btn_search" taborder="11" text="검색" onclick="cellClick" left="81.82%" top="4" width="8.42%" height="26" style="image:URL('img::btn_TF_Search.png');"/>
+                    <Button id="btn_clean" taborder="12" text="초기화" onclick="Div01_Div03_reset_btn_onclick" left="91.25%" top="4" width="8.42%" height="26" style="image:URL('img::btn_MF_Refresh_O.png');"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Static id="Static00" taborder="13" text="소송유형" left="0.51%" top="4" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#444444ff;align:center middle;" width="11.72%"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="1" text="소송 종결 현황" left="0.8%" top="133" width="10.7%" height="35" style="align:center top;padding:10 0 0 10;">
+          <Layouts>
+            <Layout width="313" height="35"/>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="2" useinputpanel="false" left="0.8%" top="160" height="402" binddataset="ds_lawsuitendstat" width="98.2%" oncelldblclick="cellClick" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="78"/>
+                <Column size="77"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" colspan="2" text="판결"/>
+                <Cell col="3" colspan="2" text="재판외화해"/>
+                <Cell col="5" colspan="2" text="조정안"/>
+                <Cell col="7" colspan="2" text="합계"/>
+                <Cell row="1" text="소송유형"/>
+                <Cell row="1" col="1" text="건수"/>
+                <Cell row="1" col="2" text="금액"/>
+                <Cell row="1" col="3" text="건수"/>
+                <Cell row="1" col="4" text="금액"/>
+                <Cell row="1" col="5" text="건수"/>
+                <Cell row="1" col="6" text="금액"/>
+                <Cell row="1" col="7" text="건수"/>
+                <Cell row="1" col="8" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:lawsuitCaseTyCode"/>
+                <Cell col="1" text="bind:cntJudg"/>
+                <Cell col="2" text="bind:sumJudg"/>
+                <Cell col="3" text="bind:cntReconcil"/>
+                <Cell col="4" text="bind:sumReconcil"/>
+                <Cell col="5" text="bind:cntMediation"/>
+                <Cell col="6" text="bind:sumMediation"/>
+                <Cell col="7" expr="expr:parseInt(cntJudg)+parseInt(cntMediation)+parseInt(cntReconcil)"/>
+                <Cell col="8" expr="expr:parseInt(sumJudg)+parseInt(sumReconcil)+parseInt(sumMediation)"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="통계"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button01" taborder="3" text="닫기" onclick="Div01_Div03_reset_btn_onclick" left="90.2%" top="568" width="8.4%" height="26" style="image:URL('img::small_close.png');"/>
+        <Static id="Static01" taborder="4" text="소송 종결 현황" onclick="Static01_onclick" left="1%" top="6" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_search_wtr">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">전체</Col>
+            <Col id="codeNo">2</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">회신</Col>
+            <Col id="codeNo">1</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">미회신</Col>
+            <Col id="codeNo">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_raisreq_count">
+        <ColumnInfo>
+          <Column id="pladefSepCode" type="STRING" size="256"/>
+          <Column id="plade001" type="STRING" size="256"/>
+          <Column id="plade002" type="STRING" size="256"/>
+          <Column id="pladeSum" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="pladeLawConcSepcode" type="STRING" size="256"/>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="lawsuitCaseTyCode" type="STRING" size="256"/>
+          <Column id="lawsuitCaseTyCodeCount" type="STRING" size="256"/>
+          <Column id="lawRaisreqClasCode" type="STRING" size="256"/>
+          <Column id="lawsuit001" type="STRING" size="256"/>
+          <Column id="lawsuit002" type="STRING" size="256"/>
+          <Column id="lawsuit003" type="STRING" size="256"/>
+          <Column id="lawsuit004" type="STRING" size="256"/>
+          <Column id="lawsuit005" type="STRING" size="256"/>
+          <Column id="lawsuit099" type="STRING" size="256"/>
+          <Column id="lawsuitSum" type="STRING" size="256"/>
+          <Column id="instAdmVodSepcode" type="STRING" size="256"/>
+          <Column id="lawRaisreqReqDate1" type="STRING" size="256"/>
+          <Column id="lawRaisreqReqDate2" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_clas_code">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_raisreq">
+        <ColumnInfo>
+          <Column id="lawRaisreqNo" type="STRING" size="256"/>
+          <Column id="lawRaisreqReqId" type="STRING" size="256"/>
+          <Column id="lawRaisreqClasCode" type="STRING" size="256"/>
+          <Column id="lawRaisreqRea" type="STRING" size="256"/>
+          <Column id="lawRaisreqEtcPoin" type="STRING" size="256"/>
+          <Column id="lawRaisreqReqDate" type="STRING" size="256"/>
+          <Column id="lawRaisreqRepWtr" type="STRING" size="256"/>
+          <Column id="lawRaisreqWtr" type="STRING" size="256"/>
+          <Column id="lawRaisreqDalwCont" type="STRING" size="256"/>
+          <Column id="lawRaisreqExptDate" type="STRING" size="256"/>
+          <Column id="lawRaisreqRepCont" type="STRING" size="256"/>
+          <Column id="lawRaisreqEtcreqPoin" type="STRING" size="256"/>
+          <Column id="lawRaisreqRepDate" type="STRING" size="256"/>
+          <Column id="lawRaisreqIssuPoin" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_date">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">전체</Col>
+            <Col id="code"/>
+          </Row>
+          <Row>
+            <Col id="value">민사</Col>
+            <Col id="code">001</Col>
+          </Row>
+          <Row>
+            <Col id="value">형사</Col>
+            <Col id="code">002</Col>
+          </Row>
+          <Row>
+            <Col id="value">특허</Col>
+            <Col id="code">003</Col>
+          </Row>
+          <Row>
+            <Col id="value">행정</Col>
+            <Col id="code">004</Col>
+          </Row>
+          <Row>
+            <Col id="value">가사</Col>
+            <Col id="code">005</Col>
+          </Row>
+          <Row>
+            <Col id="value">기타</Col>
+            <Col id="code">099</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lawsuitType">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_lawsuitendstat">
+        <ColumnInfo>
+          <Column id="lawsuitCaseTyCode" type="STRING" size="256"/>
+          <Column id="cntJudg" type="STRING" size="256"/>
+          <Column id="sumJudg" type="STRING" size="256"/>
+          <Column id="cntMediation" type="STRING" size="256"/>
+          <Column id="sumMediation" type="STRING" size="256"/>
+          <Column id="cntReconcil" type="STRING" size="256"/>
+          <Column id="sumReconcil" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[//로딩시
+this.v_pdl_022_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	lyrid = "2013082601";
+	this.outSet(lyrid);
+	this.comboSetup();
+}
+
+this.comboSetup = function()
+{
+	var oDatas =  {
+		svcid : "comboList",
+		sController : "ComboList.do",
+		inds :["ds_code=ds_code"],
+		outds :["ds_combo=ds_combo"],
+		args  : [],
+		bAsync : true,
+		nDataType : 0,
+		bCompress :false,
+	};
+	Iject.transaction(this,oDatas,function(){
+		var pThis = this.fobj;
+	});
+}
+
+this.Div01_Div03_searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//	lyrid = SubStr(gb_Param,"4","10");
+	lyrid = "2013082601";
+	this.outSet(lyrid);	
+}
+
+this.outSet = function(lyrid)
+{
+	var legaladvLawAdvReqNo = this.Div01.Div00.out_no.value;
+	var legaladvReqDate1 = this.Div01.Div00.req_date1.value;
+	var legaladvReqDate2 = this.Div01.Div00.req_date2.value;
+	var legaladvRepWtr = this.Div01.Div03.radio_Wtr.value;
+	var legaladvLawAdvCode = this.Div01.Div03.lawAdv_code.value;
+	if((legaladvReqDate1 != null && legaladvReqDate2 == null) || legaladvReqDate1 > legaladvReqDate2){
+		var temp = legaladvReqDate1;
+		legaladvReqDate1 = legaladvReqDate2;
+		legaladvReqDate2 = temp;
+		this.Div01.Div00.req_date1.set_value(legaladvReqDate1);
+		this.Div01.Div00.req_date2.set_value(legaladvReqDate2);		
+		this.Div01.Div00.req_date1.setFocus();
+		this.Div01.Div00.out_no.setFocus();
+	}
+
+	this.ds_search.setColumn(0,"legaladvLawAdvReqNo", legaladvLawAdvReqNo);
+	this.ds_search.setColumn(0,"legaladvReqDate1", legaladvReqDate1);
+	this.ds_search.setColumn(0,"legaladvReqDate2", legaladvReqDate2);
+	this.ds_search.setColumn(0,"legaladvRepWtr", legaladvRepWtr);
+	this.ds_search.setColumn(0,"legaladvLawAdvCode", legaladvLawAdvCode);
+	this.ds_search.setColumn(0,"legaladvOutReqLyrid", lyrid);
+	
+	this.outList();
+}
+
+this.outList = function()
+{
+	var oDatas =  {
+		svcid : "outList",
+		sController : "OutList.do",
+		inds :["ds_search=ds_search"],
+		outds :["ds_out=ds_out"],
+		args  : [],
+		bAsync : true,
+		nDataType : 0,
+		bCompress :false,
+	};
+	Iject.transaction(this,oDatas,function(){
+		var pThis = this.fobj;
+	});
+}
+
+//초기화
+this.Div01_Div03_reset_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.Div01.Div00.out_no.set_value("");
+	this.Div01.Div00.req_date1.set_value(null);
+	this.Div01.Div00.req_date2.set_value(null);
+	this.Div01.Div00.req_date2.set_enable(false);
+	this.Div01.Div03.radio_Wtr.set_index(0);
+	this.Div01.Div03.lawAdv_code.set_index(0);
+	this.outSet(lyrid);	
+}
+
+//캘린더
+this.req_date1_OnChanged = function() {
+
+	var req_date1 = this.Div01.Div00.req_date1.value;
+
+	if(req_date1 != null){
+		var startDate = new Date();
+		var endDate = new Date();
+		var day = 1000*60*60*24;
+		
+		startDate.setFullYear(this.Div01.Div00.req_date1.getYear());
+ 		startDate.setMonth(this.Div01.Div00.req_date1.getMonth());
+		startDate.setDate(this.Div01.Div00.req_date1.getDay());
+	
+		endDate.setTime(startDate.getTime() + (day * 31));
+		
+		var year;
+		var month;
+		var date;
+		
+		year = endDate.getYear();
+		
+		if(endDate.getMonth() < 10) {
+			month = "0" + endDate.getMonth();
+		} else {
+			month = endDate.getMonth();
+		}
+		
+		if(endDate.getDate() < 10) {
+			date = "0" + endDate.getDate();
+		} else {
+			date = endDate.getDate();
+		}
+		
+		var req_date2 = year + month + date;
+	
+		this.Div01.Div00.req_date2.set_enable(true);
+		this.Div01.Div00.req_date2.setFocus();
+		this.Div01.Div00.req_date2.dropdown();
+		this.Div01.Div00.req_date2.set_value(req_date2);	
+		
+	}
+
+}
+
+this.search_onkeydown = function(obj:FileUpload,e:nexacro.KeyEventInfo) 
+{
+	if(e.keycode == 13) {
+		lyrid = "2013082601";
+		this.outSet(lyrid);		
+	}
+}
+
+//조회하기
+this.cellClick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{	
+	var legaladvLawAdvReqNo = this.ds_out.getColumn(e.row, "legaladvLawAdvReqNo");
+	this.close(legaladvLawAdvReqNo);
+}
+
+
+
+]]></Script>
+  </Form>
+</FDL>

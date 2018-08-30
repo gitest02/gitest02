@@ -1,0 +1,32 @@
+package stats.lawmapper.vo;
+
+public class UserVo {
+	private String insa_sabun;
+	private String insa_name;
+	private String insa_email;
+	private String rownum;
+	public String getInsa_sabun() {
+		return insa_sabun;
+	}
+	public String getRownum() {
+		return rownum;
+	}
+	public void setRownum(String rownum) {
+		this.rownum = rownum;
+	}
+	public void setInsa_sabun(String insa_sabun) {
+		this.insa_sabun = insa_sabun;
+	}
+	public String getInsa_name() {
+		return insa_name;
+	}
+	public void setInsa_name(String insa_name) {
+		this.insa_name = insa_name;
+	}
+	public String getInsa_email() {
+		return insa_email;
+	}
+	public void setInsa_email(String insa_email) {
+		this.insa_email = insa_email;
+	}
+}

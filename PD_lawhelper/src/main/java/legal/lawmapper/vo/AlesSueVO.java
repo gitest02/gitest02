@@ -1,0 +1,64 @@
+package legal.lawmapper.vo;
+
+import com.nexacro.spring.data.DataSetRowTypeAccessor;
+
+/*
+ * TAB_ALES_SUE			응소제소정보
+ * 
+ LAWSUIT_ADM_NO				소송관리번호			VARCHAR2
+ ALES_SUE_ISSU_POINT		쟁점사항				VARCHAR2
+ ALES_SUE_REQ_CONT			의뢰내용				VARCHAR2
+ ALES_SUE_REPO_DATE			보고날짜				VARCHAR2
+ */
+
+public class AlesSueVO implements DataSetRowTypeAccessor {
+	
+	private int rowType;
+	
+	private String lawsuitAdmNo;
+	private String alesSueIssuPoin;
+	private String alesSueReqCont;
+	private String alesSueRepoDate;
+
+	@Override
+	public int getRowType() {
+		return rowType;
+	}
+
+	@Override
+	public void setRowType(int rowType) {
+		this.rowType = rowType;
+	}
+
+	public String getAlesSueReqCont() {
+		return alesSueReqCont;
+	}
+
+	public void setAlesSueReqCont(String alesSueReqCont) {
+		this.alesSueReqCont = alesSueReqCont;
+	}
+
+	public String getAlesSueRepoDate() {
+		return alesSueRepoDate;
+	}
+
+	public void setAlesSueRepoDate(String alesSueRepoDate) {
+		this.alesSueRepoDate = alesSueRepoDate;
+	}
+
+	public String getLawsuitAdmNo() {
+		return lawsuitAdmNo;
+	}
+
+	public void setLawsuitAdmNo(String lawsuitAdmNo) {
+		this.lawsuitAdmNo = lawsuitAdmNo;
+	}
+
+	public String getAlesSueIssuPoin() {
+		return alesSueIssuPoin;
+	}
+
+	public void setAlesSueIssuPoin(String alesSueIssuPoin) {
+		this.alesSueIssuPoin = alesSueIssuPoin;
+	}
+}

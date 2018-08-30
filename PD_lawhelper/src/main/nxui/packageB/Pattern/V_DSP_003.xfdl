@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LEGAL_OFFICIAL_CHECK" classname="V_DSP_003" left="0" top="0" width="500" height="380" titletext="LEGAL_OFFICIAL_CHECK">
+    <Layouts>
+      <Layout>
+        <Div id="dsp_offi" taborder="0" left="0.98%" top="50" right="0.98%" height="37" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Edit id="legal_input" taborder="7" oneditclick="Div00_Edit00_oneditclick" left="34.84%" top="5" right="25.61%" height="25"/>
+              <Button id="btn_search" taborder="8" text="검색  " onclick="Div00_Button00_onclick" left="75%" top="7" width="56" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;align:right middle;"/>
+              <Combo id="Search1" taborder="9" innerdataset="@ds_officialType" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="12.5%" top="5" width="21.93%" height="24" value="null"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_search" taborder="1" useinputpanel="false" left="1%" top="125" right="1%" height="250" scrollbars="alwaysvert" binddataset="ds_official">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="법률관계자번호"/>
+                <Cell col="1" text="소속명"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="이메일"/>
+                <Cell col="4" text="연락처"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:legalOfficialinfoRelaNo"/>
+                <Cell col="1" text="bind:legalOfficialinfoLyrPsw"/>
+                <Cell col="2" text="bind:legalOfficialinfoRelaSep"/>
+                <Cell col="3" text="bind:legalOfficialinfoTeamname"/>
+                <Cell col="4" text="bind:legalOfficialinfoLyrName"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="2" text="법률관계자 정보 조회" left="0.98%" top="0" right="0.98%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;align:center middle;font:bold 12 굴림;"/>
+        <Static id="Static00" taborder="3" text="법률관계자 목록" left="1.8%" top="101" right="76.8%" height="24"/>
+        <Button id="btn_legal" taborder="4" text="신규" left="84.8%" top="101" right="2%" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_officialType">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_official">
+        <ColumnInfo>
+          <Column id="legalOfficialinfoRelaNo" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoLyrPsw" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoRelaSep" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoTeamname" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoLyrName" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoMail" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoPhone" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoHdpn" type="STRING" size="256"/>
+          <Column id="legalOfficialinfoCityCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

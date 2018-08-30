@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_008" classname="V_PDL_008" left="0" top="0" width="600" height="400" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="8" text="Div00" left="0.83%" top="3" right="1.5%" height="396">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" useinputpanel="false" fillareatype="linerow" left="1.88%" top="56" right="0.85%" height="321">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="125"/>
+                      <Column size="65"/>
+                      <Column size="80"/>
+                      <Column size="90"/>
+                      <Column size="105"/>
+                      <Column size="105"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="소송관리번호"/>
+                      <Cell col="1" text="심급"/>
+                      <Cell col="2" text="심급명"/>
+                      <Cell col="3" text="원피고구분"/>
+                      <Cell col="4" text="원피고명"/>
+                      <Cell col="5" text="소송담당자명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell/>
+                      <Cell col="1"/>
+                      <Cell col="2"/>
+                      <Cell col="3"/>
+                      <Cell col="4"/>
+                      <Cell col="5"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Combo id="Combo00" taborder="1" text="전체" left="10.02%" top="21" right="59.93%" height="21"/>
+              <Edit id="Edit00" taborder="2" left="41.65%" top="21" right="18.63%" height="21"/>
+              <Button id="Button00" taborder="3" text="검색" cssclass="btn_WF_Search" left="82.43%" top="21" right="6.5%" height="21" style="align:center;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

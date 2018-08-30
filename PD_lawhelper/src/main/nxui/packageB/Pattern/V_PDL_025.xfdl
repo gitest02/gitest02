@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_025" classname="V_PDL_025" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="서증관리" left="0.9%" top="8" width="98.2%" height="35" style="align:left top;padding:10 0 0 10;"/>
+        <Div id="Div01" taborder="1" left="0.9%" top="44" width="98.2%" height="44" style="background:lavenderblush;border:1 solid #c8c8c8ff ;">
+          <Layouts>
+            <Layout width="982" height="44">
+              <Div id="Div00" taborder="17" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="6" left="4.61%" top="4" width="15.73%" height="25" style="selectbackground:blue;" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div01" taborder="18" text="소송관리번호" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;font:9 Dotum;"/>
+              <Button id="Button00" taborder="19" text="검색" left="28.06%" top="9" width="8.47%" height="26" style="image:URL('theme://images\searchBtn.png');" onclick="Div01_Button00_onclick"/>
+              <Button id="resetBtn" taborder="20" text="초기화" left="90.41%" top="9" width="8.47%" height="26" style="image:URL('theme://images\resetBtn.png');" visible="false" onclick="Div01_Button01_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div05" taborder="2" left="0.9%" top="111" width="98.2%" height="114" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="45" text="Div09" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Edit id="Edit00" taborder="42" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit01" taborder="43" left="39.78%" top="4" width="15.73%" height="26" enable="false"/>
+                    <Edit id="Edit02" taborder="44" left="72.92%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div11" taborder="46" text="Div11" left="8.47%" top="72" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit01" taborder="1" left="39.78%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div10" taborder="47" text="Div10" left="8.47%" top="38" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="42" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit01" taborder="43" left="39.78%" top="4" width="48.88%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="48" text="신청사건번호" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div05" taborder="49" text="당사원피고구분" left="0.51%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div06" taborder="50" text="피고" left="0.51%" top="72" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div00" taborder="51" text="사건유형" left="32.45%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div01" taborder="52" text="소송제기사유" left="32.45%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div02" taborder="53" text="소제기의뢰번호" left="62.65%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div03" taborder="54" text="피고" left="32.45%" top="72" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div04" taborder="3" text="소송기본사항" left="0.9%" top="92" width="982" height="15" style="align:left middle;padding:0 0 0 10;"/>
+        <Div id="Div02" taborder="4" text="사건호증목록" left="0.9%" top="237" width="982" height="15" style="align:left middle;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="15"/>
+          </Layouts>
+        </Div>
+        <Button id="eulDeleteBtn" taborder="6" text="삭제" left="90.4%" top="229" width="8.5%" height="26" style="image:URL('theme://images\deleteBtn.png');" visible="false" onclick="eulDeleteBtn_onclick"/>
+        <Grid id="Grid00" taborder="7" useinputpanel="false" left="0.9%" top="259" width="48.6%" height="158" binddataset="ds_edoc_gap" autosizingtype="none" autofittype="col" oncellclick="gapCellClick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="45"/>
+                <Column size="60"/>
+                <Column size="291"/>
+                <Column size="90"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="4" text="갑호증"/>
+                <Cell col="4"/>
+                <Cell row="1" text="No"/>
+                <Cell row="1" col="1" text="종류"/>
+                <Cell row="1" col="2" text="명칭"/>
+                <Cell row="1" col="3" text="작성일"/>
+                <Cell row="1" col="4"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow+1"/>
+                <Cell col="1" text="bind:edocAdmHozkindSepCode"/>
+                <Cell col="2" text="bind:edocAdmName"/>
+                <Cell col="3" text="bind:edocAdmWritDate"/>
+                <Cell col="4" text="bind:rowNum"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div03" taborder="8" left="0.9%" top="450" width="98.2%" height="114" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="55" text="Div09" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Combo id="Combo00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" index="0" innerdataset="@ds_hoz_sepcode" codecolumn="codeNo" datacolumn="codeName" value="001" text="갑호증"/>
+                    <Edit id="Edit01" taborder="1" left="33.93%" top="4" width="15.73%" height="25"/>
+                    <Combo id="Combo01" taborder="2" left="63.26%" top="4" width="15.73%" height="25" innerdataset="@ds_hozkind_sepcode" codecolumn="codeNo" datacolumn="codeName" index="0" value="001" text="사건종류1"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div10" taborder="56" text="Div10" left="8.47%" top="38" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="45.06%" height="25"/>
+                    <Calendar id="Calendar00" taborder="1" left="63.26%" top="4" width="15.73%" height="25"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div11" taborder="57" left="8.47%" top="72" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35"/>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="58" text="호증구분" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div05" taborder="59" text="명칭" left="0.51%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div06" taborder="60" text="첨부파일" left="0.51%" top="72" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div00" taborder="65" text="호증번호" left="27.35%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div01" taborder="67" text="호증종류" left="53.98%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div07" taborder="69" text="작성일" left="53.98%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="saveBtn" taborder="9" text="저장" left="90.5%" top="567" width="8.5%" height="26" style="image:URL('theme://images\saveBtn.png');" onclick="Button01_onclick" visible="false"/>
+        <Div id="Div06" taborder="11" text="사건호증추가" left="0.9%" top="426" width="982" height="15" style="align:left middle;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="15"/>
+          </Layouts>
+        </Div>
+        <Grid id="Grid02" taborder="12" useinputpanel="false" left="50.5%" top="259" width="48.6%" height="158" binddataset="ds_edoc_eul" autosizingtype="none" autofittype="col" oncellclick="eulCellClick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="45"/>
+                <Column size="60"/>
+                <Column size="291"/>
+                <Column size="90"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="4" text="을호증"/>
+                <Cell col="4"/>
+                <Cell row="1" text="No."/>
+                <Cell row="1" col="1" text="종류"/>
+                <Cell row="1" col="2" text="명칭"/>
+                <Cell row="1" col="3" text="작성일"/>
+                <Cell row="1" col="4"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow+1"/>
+                <Cell col="1" text="bind:edocAdmHozkindSepCode"/>
+                <Cell col="2" text="bind:edocAdmName"/>
+                <Cell col="3" text="bind:edocAdmWritDate"/>
+                <Cell col="4" text="bind:rowNum"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="gapDeleteBtn" taborder="13" text="삭제" left="40.9%" top="229" width="8.5%" height="26" style="image:URL('theme://images\deleteBtn.png');" visible="false" onclick="gapDeleteBtn_onclick"/>
+        <Button id="insertBtn" taborder="14" text="신규" left="90.4%" top="421" width="8.5%" height="26" style="image:URL('theme://images\insertBtn.png');" visible="false" onclick="insertBtn_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lawsuit">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="lawRaisreqNo" type="STRING" size="256"/>
+          <Column id="lawsuitAplCortCode" type="STRING" size="256"/>
+          <Column id="lawsuitAplCaseCode" type="STRING" size="256"/>
+          <Column id="lawsuitCaseTyCode" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepcode" type="STRING" size="256"/>
+          <Column id="lawsuitAsitParcWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaCaseNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaChg" type="STRING" size="256"/>
+          <Column id="lawsuitTempReqiDate" type="STRING" size="256"/>
+          <Column id="lawsuitRaisRea" type="STRING" size="256"/>
+          <Column id="lawsuitCostCfnApldate" type="STRING" size="256"/>
+          <Column id="lawsuitConcDate" type="STRING" size="256"/>
+          <Column id="lawsuitFulfDetmWtr" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="instAdmCaseNo" type="STRING" size="256"/>
+          <Column id="instAdmPrgrCode" type="STRING" size="256"/>
+          <Column id="instAdmClamVop" type="STRING" size="256"/>
+          <Column id="instAdmCortCode" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="instAdmRaisreqDate" type="STRING" size="256"/>
+          <Column id="instAdmJudId" type="STRING" size="256"/>
+          <Column id="instAdmJudName" type="STRING" size="256"/>
+          <Column id="instAdmEntLyrName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_edoc" oncolumnchanged="dataChange">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="edocAdmHozSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmHozNo" type="STRING" size="256"/>
+          <Column id="edocAdmHozkindSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmName" type="STRING" size="256"/>
+          <Column id="edocAdmWritDate" type="STRING" size="256"/>
+          <Column id="rowNum" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_edoc_eul">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="edocAdmHozSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmHozNo" type="STRING" size="256"/>
+          <Column id="edocAdmHozkindSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmName" type="STRING" size="256"/>
+          <Column id="edocAdmWritDate" type="STRING" size="256"/>
+          <Column id="rowNum" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_edoc_gap">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="edocAdmHozSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmHozNo" type="STRING" size="256"/>
+          <Column id="edocAdmHozkindSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmName" type="STRING" size="256"/>
+          <Column id="edocAdmWritDate" type="STRING" size="256"/>
+          <Column id="rowNum" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_hozkind_sepcode">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">사건종류1</Col>
+            <Col id="codeNo">001</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">사건종류2</Col>
+            <Col id="codeNo">002</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">사건종류3</Col>
+            <Col id="codeNo">003</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_hoz_sepcode">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">갑호증</Col>
+            <Col id="codeNo">001</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">을호증</Col>
+            <Col id="codeNo">002</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div01.Div00.Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAdmNo"/>
+      <BindItem id="item1" compid="Div05.Div09.Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAplCaseCode"/>
+      <BindItem id="item2" compid="Div05.Div09.Edit01" propid="value" datasetid="ds_lawsuit" columnid="lawsuitCaseTyCode"/>
+      <BindItem id="item3" compid="Div05.Div09.Edit02" propid="value" datasetid="ds_lawsuit" columnid="lawRaisreqNo"/>
+      <BindItem id="item4" compid="Div05.Div10.Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitCpPladefSepcode"/>
+      <BindItem id="item5" compid="Div05.Div10.Edit01" propid="value" datasetid="ds_lawsuit" columnid="lawsuitRaisRea"/>
+      <BindItem id="item6" compid="Div05.Div11.Edit00" propid="value" datasetid="ds_lawsuit" columnid="pladefName"/>
+      <BindItem id="item7" compid="Div05.Div11.Edit01" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAplCortCode"/>
+      <BindItem id="item9" compid="Div03.Div09.Combo00" propid="value" datasetid="ds_edoc" columnid="edocAdmHozSepCode"/>
+      <BindItem id="item10" compid="Div03.Div09.Edit01" propid="value" datasetid="ds_edoc" columnid="edocAdmHozNo"/>
+      <BindItem id="item11" compid="Div03.Div09.Combo01" propid="value" datasetid="ds_edoc" columnid="edocAdmHozkindSepCode"/>
+      <BindItem id="item12" compid="Div03.Div10.Edit00" propid="value" datasetid="ds_edoc" columnid="edocAdmName"/>
+      <BindItem id="item13" compid="Div03.Div10.Calendar00" propid="value" datasetid="ds_edoc" columnid="edocAdmWritDate"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";
+
+this.Div01_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+    objChildFrame.init("chf_popup2", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_026.xfdl");
+    var objParam = {};
+    objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+
+}
+
+this.fn_popupCallback = function(strID, strTemp)
+{
+	this.gapDeleteBtn.set_visible(true);
+	this.eulDeleteBtn.set_visible(true);
+	this.insertBtn.set_visible(true);
+	this.saveBtn.set_visible(true);
+	this.Div01.resetBtn.set_visible(true);
+	
+	var strTempSplit = strTemp.split("/");
+	if(strTemp != undefined){
+		this.ds_search.setColumn(0, "lawsuitAdmNo", strTempSplit[0]);
+		this.ds_search.setColumn(0, "instAdmCode", strTempSplit[1]);
+		this.getLawsuitInfo();
+		this.getEdocList();
+		this.ds_edoc.filter("edocAdmHozSepCode == '001'");
+		this.ds_edoc_gap.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("edocAdmHozSepCode == '002'");
+		this.ds_edoc_eul.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("");
+		
+	}
+}
+
+this.getLawsuitInfo = function() {
+	var oDatas =  {
+		  svcid : "lawSuitInfo",
+		  sController : "getLawsuitInfo.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_lawsuit=ds_lawsuit"],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+
+}
+
+this.getEdocList = function() {
+	var oDatas =  {
+		  svcid : "edocAdmList",
+		  sController : "getEdocAdmList.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_edoc=ds_edoc1"],
+		  args  : [],
+		  bAsync : false,
+		  nDataType : 0,
+		  bCompress :true,
+	};
+	
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var oDatas =  {
+		  svcid : "edocChange",
+		  sController : "edocChange.do",
+		  inds :["ds_edoc=ds_edoc:U"],
+		  outds :[],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+
+ 		var pThis = this.fobj;
+	});		
+}
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var oDatas =  {
+		  svcid : "edocAdmInsert",
+		  sController : "getEdocAdmList.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_edoc=ds_edoc1"],
+		  args  : [],
+		  bAsync : false,
+		  nDataType : 0,
+		  bCompress :true,
+	};
+	
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+}
+
+this.Div01_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_edoc.deleteAll();
+	this.ds_edoc_gap.deleteAll();
+	this.ds_edoc_eul.deleteAll();	
+	this.ds_lawsuit.deleteAll();
+	this.Button00.set_visible(false);
+	this.Button01.set_visible(false);
+	this.Button02.set_visible(false);
+	this.Button03.set_visible(false);
+	this.Div01.Button01.set_visible(false);
+}
+
+this.gapDeleteBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var rowPos = this.ds_edoc_gap.rowposition;
+	var oriNo = this.ds_edoc_gap.getColumn(rowPos, "rowNum");
+	var oriIndex = this.ds_edoc.findRowExpr("rowNum == " + oriNo);
+	this.ds_edoc.deleteRow(oriIndex);
+	this.ds_edoc_gap.deleteRow(rowPos);
+}
+
+this.eulDeleteBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var rowPos = this.ds_edoc_eul.rowposition;
+	var oriNo = this.ds_edoc_eul.getColumn(rowPos, "rowNum");
+	var oriIndex = this.ds_edoc.findRowExpr("rowNum == " + oriNo);
+	this.ds_edoc.deleteRow(oriIndex);
+	this.ds_edoc_eul.deleteRow(rowPos);
+}
+
+this.gapCellClick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{
+	var rowPos = this.ds_edoc_gap.rowposition;
+	var rowNum = this.ds_edoc_gap.getColumn(rowPos, "rowNum");
+	this.ds_edoc.filter("rowNum == " + rowNum);
+	this.ds_edoc.filter("");
+	var objIndex = this.ds_edoc.findRowExpr("rowNum == " + rowNum);
+	this.ds_edoc.set_rowposition(objIndex);
+
+	
+}
+
+this.eulCellClick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{
+	var rowPos = this.ds_edoc_eul.rowposition;
+	var rowNum = this.ds_edoc_eul.getColumn(rowPos, "rowNum");
+	this.ds_edoc.filter("rowNum == " + rowNum);
+	this.ds_edoc.filter("");
+	var objIndex = this.ds_edoc.findRowExpr("rowNum == " + rowNum);
+	this.ds_edoc.set_rowposition(objIndex);
+}
+
+this.dataChange = function(obj:Dataset,e:nexacro.DSColChangeEventInfo)
+{		
+ 		var objRowPos = obj.rowposition;
+ 		var objRowNum = obj.getColumn(objRowPos, "rowNum");
+		var objSepCode = obj.getColumn(objRowPos, "edocAdmHozSepCode");
+		var gapSepCode = this.ds_edoc_gap.getColumn(this.ds_edoc_gap.rowposition, "edocAdmHozSepCode");
+		var eulSepCode = this.ds_edoc_eul.getColumn(this.ds_edoc_eul.rowposition, "edocAdmHozSepCode");		
+		
+		this.ds_edoc.filter("edocAdmHozSepCode == '001'");
+		this.ds_edoc_gap.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("edocAdmHozSepCode == '002'");
+		this.ds_edoc_eul.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("");
+		
+		var objIndex = this.ds_edoc.findRowExpr("rowNum == " + objRowNum);
+		this.ds_edoc.set_rowposition(objIndex);
+
+		if(objSepCode == gapSepCode) {
+			var gapIndex = this.ds_edoc_gap.findRowExpr("rowNum == " + objRowNum);
+			this.ds_edoc_gap.set_rowposition(gapIndex);
+		} else {
+			var eulIndex = this.ds_edoc_eul.findRowExpr("rowNum == " + objRowNum);
+			this.ds_edoc_eul.set_rowposition(eulIndex);
+		}
+
+}
+this.insertBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_edoc.insertRow(0);
+	this.ds_edoc.setColumn(0, "lawsuitAdmNo", this.ds_lawsuit.getColumn(0, "lawsuitAdmNo"));
+	
+}
+]]></Script>
+  </Form>
+</FDL>

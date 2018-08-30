@@ -1,0 +1,73 @@
+package debtinfo.lawmapper.web;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.spring.data.NexacroResult;
+
+import debtinfo.lawmapper.service.DebtinfoService;
+import debtinfo.lawmapper.vo.DebtGiveUpVO;
+import debtinfo.lawmapper.vo.DebtOccVO;
+import debtinfo.lawmapper.vo.DebtReVO;
+import debtinfo.lawmapper.vo.DebtStopVO;
+
+
+@Controller
+public class DebtinfoController {
+	private static final Logger log = LoggerFactory.getLogger(DebtinfoController.class);
+	
+	@Resource(name="DebtinfoServiceImpl")
+	private DebtinfoService debtinfoService;
+	
+	//채무등록 리스트 가져오기(select)
+	@RequestMapping(value = "debtOccList.do")
+	public NexacroResult debtOccList(){
+		List<DebtOccVO> ds_occur = debtinfoService.debtorOccList();
+		
+		NexacroResult result = new NexacroResult();
+		result.addDataSet("ds_occur", ds_occur);
+		
+		return result;
+	}
+	
+	//환입관리 리스트 가져오기(select)
+	@RequestMapping(value = "debtReList.do")
+	public NexacroResult debtReList(){
+		List<DebtReVO> ds_return = debtinfoService.debtorReList();
+		
+		NexacroResult result = new NexacroResult();
+		result.addDataSet("ds_return ", ds_return );
+		
+		return result;
+	}
+	
+	//정지품의 리스트 가져오기(select)
+	@RequestMapping(value = "debtStopList.do")
+	public NexacroResult debtStopList(){
+		List<DebtStopVO> ds_stop = debtinfoService.debtorStopList();
+		
+		NexacroResult result = new NexacroResult();
+		result.addDataSet("ds_stop", ds_stop);
+		
+		return result;
+	}
+	
+	//포기품의 리스트 가져오기(select)
+	@RequestMapping(value = "debtGiveUpList.do")
+	public NexacroResult debtGiveUpList(){
+		List<DebtGiveUpVO> ds_giveUp = debtinfoService.debtorGiveUpList();
+		
+		NexacroResult result = new NexacroResult();
+		result.addDataSet("ds_giveUp", ds_giveUp);
+		
+		return result;
+	}
+	
+	
+}

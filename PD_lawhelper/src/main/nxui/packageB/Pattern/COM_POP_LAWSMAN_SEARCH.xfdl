@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COM_POP_LAWSMAN_SEARCH" classname="COM_POP_LAWSMAN_SEARCH" left="0" top="0" width="600" height="400" titletext="소송관리번호 조회">
+    <Layouts>
+      <Layout>
+        <Static id="lawsman_main" taborder="0" text="소송관리번호 조회" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Div id="lawsman_div_01" taborder="1" text="Div00" left="0%" top="52" right="0%" height="30" style="color:transparent;">
+          <Layouts>
+            <Layout width="600" height="50">
+              <Static id="Static00" taborder="0" text="Static00" left="1%" top="0" right="1%" height="30" onclick="lawsman_div_01_Static00_onclick" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:transparent;"/>
+              <Combo id="Search1" taborder="1" left="10%" top="5" right="70%" height="20" index="-1" onitemchanged="lawsman_div_01_Combo00_onitemchanged" innerdataset="@div_combo" codecolumn="value" datacolumn="id"/>
+              <Edit id="legal_input" taborder="2" left="31%" top="5" right="25%" height="20" oneditclick="lawsman_div_01_Edit00_oneditclick"/>
+              <Button id="btn_search" taborder="3" text="검색" left="76%" top="5" height="20" width="70" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;color:#444444ff;padding:0 0 0 5;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_Search" taborder="2" useinputpanel="false" left="1%" top="95" right="1%" height="302" style="font:9 Dotum;" selectscrollmode="default" onheadclick="grd_Search_onheadclick" oncelldblclick="grd_Search_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="50"/>
+                <Column size="160"/>
+                <Column size="78"/>
+                <Column size="120"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+              </Rows>
+              <Band id="head">
+                <Cell celltype="none" text="소송관리번호"/>
+                <Cell col="1" text="심급"/>
+                <Cell col="2" text="심급명"/>
+                <Cell col="3" text="원피고구분"/>
+                <Cell col="4" text="원피고명"/>
+                <Cell col="5" text="소송담당자명"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="div_combo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">전체</Col>
+            <Col id="value">0</Col>
+          </Row>
+          <Row>
+            <Col id="id">소제기의뢰번호</Col>
+            <Col id="value">1</Col>
+          </Row>
+          <Row>
+            <Col id="id">심급명</Col>
+            <Col id="value">2</Col>
+          </Row>
+          <Row>
+            <Col id="id">원피고명</Col>
+            <Col id="value">3</Col>
+          </Row>
+          <Row>
+            <Col id="id">소송담당자</Col>
+            <Col id="value">4</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="grd_lawsuit_no">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepCode" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_instanceType_cp">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="grd_lawsuit_no_cp">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepCode" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_instanceType">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/**************************************************************************
+Name			:	COM_POP_LAWSMAN_SEARCH
+TITLE			:	소송관리번호 조회
+Desc			:	소송관리번호 조회
+작성자			:	공태호
+작성일			:	2018.08.03
+업데이트일		:	
+변경사항		:	
+***************************************************************************/
+
+include "Lib::Comm.xjs";
+
+/**********************
+1. Form onload
+- 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 발생하는 이벤트
+
+
+*/
+this.COM_POP_LAWSMAN_SEARCH_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	code_select(); // 코드 호출.
+	
+	comboSetup(); // 콤보데이터 분할
+	
+	this.lawsman_div_01.legal_input.setFocus();//edit에 포커스
+	
+	LawNosearch(); // 소송관리번호 조회
+	
+}
+
+/*===============================================================================
+ * 2. Dataset 관련 Script
+ *=============================================================================*/
+/********************************************************************************
+ * Desc		: Code 데이터 분할
+ * Param	: 없음
+ * Return	: 없음
+ *******************************************************************************/
+this.comboSetup = function()
+{
+	var str=0;
+	
+	for(var i=0; i<=ds_cmmCd.rowcount;i++)
+	{
+		if(ds_cmmCd.getColumn(i,"classCode")=="GO1" && ds_cmmCd.getColumn(i, "useYn")=="Y")
+		{
+			this.ds_instanceType.addRow();
+			this.ds_instanceType.setColumn(str, "codeNo", ds_cmmCd.getColumn(i,"codeNo"));
+			this.ds_instanceType.setColumn(str, "codeName", ds_cmmCd.getColumn(i,"codeName"));
+			str++;
+		}
+	}
+}//end comboSetup 
+
+/********************************************************************************
+ * Desc		: 소송관리번호 조회
+ * Param	: 없음
+ * Return	: 없음
+ *******************************************************************************/
+this.LawNosearch = function()
+{	
+	var search1 = this.lawsman_div_01.Search1.value();
+	var search2 = this.lawsman_div_01.legal_input.text();
+	
+	var strParam = "";
+	strParam+="selectedId="+"\""+search1+"\"";
+	strParam+=", selectedId1"+"\""+search2+"\"";
+	
+	var oDatas = 
+	{
+	  svcid : "select",
+	  sController : "LawNoSearch.do",			 
+	  inds :[],
+	  outds :["grd_lawsuit_no=ds_output"],			     
+	  args  : [strParam],
+	  bAsync : true,    // 비동기여부 (true : async  false: sync)
+	  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+	  bCompress :false,	 //			  
+	}
+	
+	Iject.transaction(this,oDatas,function(){
+		switch(svcid)
+		{
+			case "select" : 
+				if(errcd!="0")
+				{
+					this.alert("데이터가 정상적으로 조회되지 않았습니다.\n"+"관련사항: "+errmsg);
+					return false;
+				}
+				break;
+		}
+	});
+}
+
+
+
+/*****
+- 그리드 안의 내용물 클릭 시, 해당 팝업을 종료하고 데이터를 넘겨준다.
+**/
+this.grd_Search_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.close(grd_Search.getCellValue(e.row,0)+grd_Search.getCellValue(e.row,1));
+}
+
+this.LawNosearch_onclose = function(obj:Form, e:nexacro.CloseEventInfo)
+{
+	this.LawNoSearch.close();
+}
+]]></Script>
+  </Form>
+</FDL>

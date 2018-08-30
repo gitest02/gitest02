@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_012" classname="V_PDL_012" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="Div00" left="0%" top="0" right="0.2%" height="599">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="61" text="소송관리 번호" left="3.21%" top="19" right="87.37%" height="31" style="align:center;"/>
+              <Edit id="Edit00" taborder="62" left="12.83%" top="22" right="74.45%" height="21"/>
+              <Button id="Button00" taborder="63" text="검색" cssclass="btn_WF_Search" left="26.35%" top="22" right="67.43%" height="21" style="align:center;"/>
+              <Static id="Static01" taborder="64" text="심급" left="34.07%" top="19" right="60.72%" height="31" style="align:center;"/>
+              <Combo id="Combo00" taborder="65" left="40.98%" top="24" right="46.29%" height="21"/>
+              <Button id="Button01" taborder="68" text="초기화" left="88.38%" top="22" right="5.41%" height="21" style="align:center;"/>
+              <Static id="Static03" taborder="69" text="소송기본사항" left="0.8%" top="52" right="87.47%" height="41" style="align:center;font:bold 11 arial;"/>
+              <Static id="Static04" taborder="70" text="소송진행상태" left="3.21%" top="95" right="87.98%" height="28" style="align:center;"/>
+              <Static id="Static05" taborder="71" text="당사원피고구분" left="30.56%" top="95" right="56.71%" height="28" style="align:center;"/>
+              <Static id="Static06" taborder="72" text="신청사건번호" left="3.21%" top="124" right="87.58%" height="28" style="align:center;"/>
+              <Static id="Static07" taborder="73" text="평정금액" left="31.96%" top="124" right="59.12%" height="28" style="align:center;"/>
+              <Static id="Static08" taborder="74" text="상대담당자명" left="62.83%" top="124" right="27.86%" height="28" style="align:center;"/>
+              <Edit id="Edit01" taborder="75" left="12.83%" top="98" right="74.45%" height="21"/>
+              <Edit id="Edit02" taborder="76" left="12.83%" top="127" right="74.45%" height="21"/>
+              <Combo id="Combo02" taborder="78" left="40.98%" top="127" right="46.29%" height="21"/>
+              <Edit id="Edit03" taborder="79" left="74.55%" top="127" right="12.73%" height="21"/>
+              <Static id="Static22" taborder="111" text="원고목록" left="0.8%" top="148" right="90.98%" height="41" style="align:center;font:bold 11 arial;"/>
+              <Grid id="Grid00" taborder="112" useinputpanel="false" fillareatype="linerow" left="3.91%" top="180" right="5.31%" height="135">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="60"/>
+                      <Column size="80"/>
+                      <Column size="105"/>
+                      <Column size="130"/>
+                      <Column size="130"/>
+                      <Column size="150"/>
+                      <Column size="150"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="NO"/>
+                      <Cell col="1" text="일련번호"/>
+                      <Cell col="2" text="성명"/>
+                      <Cell col="3" text="원피고등록번호"/>
+                      <Cell col="4" text="청구소가"/>
+                      <Cell col="5" text="주요연락처전화번호"/>
+                      <Cell col="6" text="추가연락처전화번호"/>
+                      <Cell col="7" text="소송종결구분"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell/>
+                      <Cell col="1"/>
+                      <Cell col="2"/>
+                      <Cell col="3"/>
+                      <Cell col="4"/>
+                      <Cell col="5"/>
+                      <Cell col="6"/>
+                      <Cell col="7"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="Button09" taborder="113" text="닫기" left="88.38%" top="541" right="5.41%" height="21" style="align:center;"/>
+              <Button id="Button10" taborder="114" text="저장" left="81.56%" top="541" right="12.22%" height="21" style="align:center;"/>
+              <Button id="Button11" taborder="115" text="결제" left="74.75%" top="541" right="19.04%" height="21" style="align:center;"/>
+              <Button id="Button13" taborder="117" text="종결" left="88.38%" top="156" right="5.41%" height="21" style="align:center;"/>
+              <Combo id="Combo01" taborder="120" left="40.98%" top="98" right="46.29%" height="21"/>
+              <Static id="Static02" taborder="121" text="수행법원" left="61.02%" top="95" right="26.25%" height="28" style="align:center;"/>
+              <Combo id="Combo05" taborder="122" left="74.55%" top="98" right="12.73%" height="21" text="계약직"/>
+              <Static id="Static09" taborder="123" text="원고 조정안 상세내역" left="0.8%" top="316" right="81.46%" height="41" style="align:center;font:bold 11 arial;"/>
+              <Grid id="Grid01" taborder="124" useinputpanel="false" left="3.91%" top="353" right="76.55%" height="167" fillareatype="linerow">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="60"/>
+                      <Column size="135"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="NO"/>
+                      <Cell col="1" text="작성일자"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell/>
+                      <Cell col="1"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static10" taborder="125" text="작성일자" left="23.95%" top="354" right="67.13%" height="28" style="align:center;"/>
+              <Static id="Static11" taborder="126" text="조정내용" left="23.95%" top="410" right="67.13%" height="28" style="align:center;"/>
+              <Static id="Static12" taborder="127" text="기타조정안참고사항" left="23.95%" top="477" right="64.03%" height="28" style="align:center;"/>
+              <Combo id="Combo03" taborder="128" left="36.07%" top="358" right="46.29%" height="21"/>
+              <Static id="Static13" taborder="129" text="조정금액" left="57.62%" top="354" right="33.47%" height="28" style="align:center;"/>
+              <Edit id="Edit04" taborder="130" left="66.53%" top="358" right="20.74%" height="21"/>
+              <Static id="Static14" taborder="131" text="(원)" left="78.46%" top="355" right="17.33%" height="28" style="align:center;"/>
+              <TextArea id="TextArea00" taborder="132" left="36.07%" top="391" right="5.41%" height="60"/>
+              <TextArea id="TextArea01" taborder="133" left="36.07%" top="460" right="5.41%" height="60"/>
+              <Button id="Button03" taborder="134" text="삭제" left="88.38%" top="323" right="5.41%" height="21" style="align:center;"/>
+              <Button id="Button04" taborder="135" text="신규" onclick="Div00_Button14_onclick" left="81.56%" top="323" right="12.22%" height="21" style="align:center;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>

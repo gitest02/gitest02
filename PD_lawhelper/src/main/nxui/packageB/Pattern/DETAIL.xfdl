@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="DETAIL" classname="DETAIL" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="공동코드상세관리" left="0.78%" top="24" right="26.66%" height="49" style="background:transparent URL('img::bg_Cal_click.png') stretch;color:black;padding:0 0 0 10;"/>
+        <Div id="Div00" taborder="1" text="Div00" left="0.78%" top="73" right="26.66%" height="63">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="분류코드" left="0.13%" top="76" right="88.02%" height="37" style="background:gray;"/>
+              <Static id="Static01" taborder="1" text="상세코드" left="29.59%" top="1" right="57.26%" height="35" style="background:gray;"/>
+              <Edit id="Edit00" taborder="2" left="74.52%" top="0" right="7.81%" height="37"/>
+              <Static id="Static02" taborder="3" text="코드명" left="60.68%" top="1" right="26.16%" height="35" style="background:gray;"/>
+              <Edit id="Edit01" taborder="4" left="43.29%" top="1" right="40.41%" height="37"/>
+              <Button id="Button00" taborder="5" text="검색" left="93.15%" top="2" right="0.27%" height="34"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="2" text="분류코드" left="0.78%" top="73" right="89.94%" height="35" style="background:gray;"/>
+        <Combo id="Combo00" taborder="3" text="전체" left="10.35%" top="73" right="78.91%" height="38"/>
+        <Div id="Div01" taborder="4" text="Div01" left="0.88%" top="111" right="28.22%" height="67"/>
+        <Static id="Static02" taborder="5" text="공통코드상세리스트" left="0.78%" top="119" right="80.57%" height="39" style="font:bold 14 arial;"/>
+        <Grid id="Grid00" taborder="6" useinputpanel="false" left="0.78%" top="201" right="27.73%" height="172" binddataset="Dataset00">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="No"/>
+                <Cell col="1" disptype="normal" text="분류코드"/>
+                <Cell col="2" disptype="normal" text="분류명칭"/>
+                <Cell col="3" disptype="normal" text="상세코드"/>
+                <Cell col="4" disptype="normal" text="상세코드명"/>
+                <Cell col="5" disptype="normal" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:No"/>
+                <Cell col="1" disptype="normal" text="bind:분류코드"/>
+                <Cell col="2" disptype="normal" text="bind:분류명칭"/>
+                <Cell col="3" disptype="normal" text="bind:상세코드"/>
+                <Cell col="4" disptype="normal" text="bind:상세코드명"/>
+                <Cell col="5" disptype="normal" text="bind:사용여부"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div02" taborder="7" text="Div02" left="0.98%" top="407" right="27.83%" height="37">
+          <Layouts>
+            <Layout>
+              <Button id="Button00" taborder="0" text="저장" left="79.33%" top="11" right="12.01%" height="29" onclick="Div02_Button00_onclick"/>
+              <Button id="Button01" taborder="1" text="취소" left="89.11%" top="11" right="2.23%" height="29"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="8" text="공통코드상세" left="0.98%" top="404" right="79.39%" height="42" style="font:bold 12 arial;"/>
+        <Button id="Button00" taborder="9" text="신규" left="49.61%" top="419" right="44.34%" height="29"/>
+        <Grid id="Grid01" taborder="10" useinputpanel="false" left="0.88%" top="479" right="29%" height="289">
+          <Formats/>
+        </Grid>
+        <Static id="Static04" taborder="11" text="*분류코드" left="0.98%" top="488" right="89.94%" height="29" style="background:gray;align:center;"/>
+        <Static id="Static05" taborder="12" text="상세코드명2" left="0.98%" top="538" right="89.94%" height="29" style="background:gray;align:center;"/>
+        <Static id="Static06" taborder="13" text="기타코드2" left="1.07%" top="595" right="89.84%" height="29" style="background:gray;align:center;"/>
+        <Static id="Static07" taborder="14" text="*사용여부" left="0.88%" top="647" right="90.04%" height="29" style="background:gray;align:center;"/>
+        <Static id="Static08" taborder="15" text="수정일시" left="0.98%" top="711" right="89.94%" height="29" style="background:gray;align:center;"/>
+        <Combo id="Combo01" taborder="17" text="Combo01" left="11.72%" top="490" right="76.46%" height="30"/>
+        <Combo id="Combo02" taborder="18" text="Combo02" left="11.52%" top="539" right="76.66%" height="30"/>
+        <Combo id="Combo03" taborder="19" text="Combo03" left="11.43%" top="592" right="76.76%" height="30"/>
+        <Combo id="Combo04" taborder="20" text="Combo04" left="11.43%" top="648" right="76.76%" height="30"/>
+        <Static id="Static09" taborder="22" text="*상세코드" left="25.29%" top="492" right="66.41%" height="31" style="background:gray;align:center;"/>
+        <Edit id="Edit00" taborder="23" left="34.38%" top="493" right="53.52%" height="30"/>
+        <Static id="Static10" taborder="24" text="코드영문명" left="24.9%" top="543" right="66.8%" height="31" style="background:gray;align:center;"/>
+        <Static id="Static11" taborder="25" text="상세코드설명" left="24.51%" top="591" right="67.19%" height="31" style="background:gray;align:center;"/>
+        <Static id="Static12" taborder="26" text="소팅순서" left="24.32%" top="649" right="67.38%" height="31" style="background:gray;align:center;"/>
+        <Static id="Static13" taborder="27" text="상세코드명" left="48.54%" top="490" right="42.97%" height="41" style="background:gray;align:center;"/>
+        <Edit id="Edit01" taborder="28" left="58.01%" top="490" right="30.27%" height="41"/>
+        <Edit id="Edit02" taborder="29" left="33.98%" top="546" right="53.91%" height="29"/>
+        <Edit id="Edit03" taborder="30" left="33.59%" top="650" right="54.3%" height="30"/>
+        <Edit id="Edit04" taborder="31" left="33.98%" top="592" right="53.91%" height="30"/>
+        <Static id="Static14" taborder="32" text="기타코드1" left="48.24%" top="541" right="43.07%" height="31" style="background:gray;align:center;"/>
+        <Edit id="Edit05" taborder="33" left="57.71%" top="543" right="30.37%" height="34"/>
+        <Static id="Static15" taborder="34" text="등록일시" left="48.24%" top="644" right="43.65%" height="38" style="background:gray;align:center;"/>
+        <Edit id="Edit06" taborder="35" left="57.81%" top="647" right="30.27%" height="31"/>
+        <Edit id="Edit07" taborder="36" left="10.94%" top="711" right="77.15%" height="31"/>
+        <Static id="Static16" taborder="37" text="최종수정일시" left="23.93%" top="710" right="67.77%" height="31" style="background:gray;align:center;"/>
+        <Edit id="Edit08" taborder="38" left="33.59%" top="711" right="54.49%" height="31"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="No" type="INT" size="256"/>
+          <Column id="분류코드" type="STRING" size="256"/>
+          <Column id="분류명칭" type="STRING" size="256"/>
+          <Column id="상세코드" type="INT" size="256"/>
+          <Column id="상세코드명" type="STRING" size="256"/>
+          <Column id="사용여부" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="No">1</Col>
+            <Col id="분류코드">A01</Col>
+            <Col id="분류명칭">채무자구분</Col>
+            <Col id="상세코드">01</Col>
+            <Col id="상세코드명">개인</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="No">2</Col>
+            <Col id="분류코드">A01</Col>
+            <Col id="분류명칭">채무자구분</Col>
+            <Col id="상세코드">02</Col>
+            <Col id="상세코드명">법인</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="No">3</Col>
+            <Col id="분류코드">A01</Col>
+            <Col id="분류명칭">채무자구분</Col>
+            <Col id="상세코드">03</Col>
+            <Col id="상세코드명">외국인</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="No">4</Col>
+            <Col id="분류코드">A01</Col>
+            <Col id="분류명칭">채무자구분</Col>
+            <Col id="상세코드">99</Col>
+            <Col id="상세코드명">기타</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="No">5</Col>
+            <Col id="분류코드">A02</Col>
+            <Col id="분류명칭">상태코드</Col>
+            <Col id="상세코드">04</Col>
+            <Col id="상세코드명">완납</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="No">6</Col>
+            <Col id="분류코드">A02</Col>
+            <Col id="분류명칭">상태코드</Col>
+            <Col id="상세코드">03</Col>
+            <Col id="상세코드명">포기</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="No">7</Col>
+            <Col id="분류코드">A02</Col>
+            <Col id="분류명칭">상태코드</Col>
+            <Col id="상세코드">02</Col>
+            <Col id="상세코드명">정지</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="No">8</Col>
+            <Col id="분류코드">A02</Col>
+            <Col id="분류명칭">상태코드</Col>
+            <Col id="상세코드">99</Col>
+            <Col id="상세코드명">기타</Col>
+            <Col id="사용여부">Y</Col>
+          </Row>
+          <Row>
+            <Col id="상세코드">01</Col>
+            <Col id="상세코드명">정상</Col>
+            <Col id="사용여부">Y</Col>
+            <Col id="분류명칭">상태코드</Col>
+            <Col id="분류코드">A02</Col>
+            <Col id="No">9</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+this.Div02_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+}
+]]></Script>
+  </Form>
+</FDL>

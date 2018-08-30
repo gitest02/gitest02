@@ -1,0 +1,1028 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Debt_Info" classname="Debt_Info" left="0" top="0" width="1000" height="600" titletext="New Form" onload="debt_info_onload">
+    <Layouts>
+      <Layout>
+        <Div id="divWrapper" taborder="0%" left="0%" top="0%" right="0%" bottom="0%">
+          <Layouts>
+            <Layout>
+              <Div id="div_Top" taborder="0" left="0%" top="0%" right="0%" bottom="80%" text="div_Top" style="background:transparent;">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static04" taborder="4" text="채무자구분" left="1%" right="89.3%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" top="80%" height="20%"/>
+                    <Static id="Static00" taborder="5" text="총채무금액" left="1%" top="60%" right="89.3%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" height="20%"/>
+                    <Static id="Static01" taborder="6" text="상태" left="1%" top="20%" right="89.3%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" height="20%"/>
+                    <Static id="Static02" taborder="7" text="채무자번호" left="1%" top="0%" right="89.3%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" height="20%"/>
+                    <Static id="Static03" taborder="8" text="우편번호" left="1%" top="40%" right="89.3%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" height="20%"/>
+                    <Static id="Static05" taborder="9" text="Static05" left="85.7%" top="0%" style="background:lavenderblush;border:1 solid #c8c8c8ff ;" right="1%" height="100%"/>
+                    <ImageViewer id="ImageViewer00" taborder="10" left="85.9%" top="1.67%" right="1.2%" height="95%"/>
+                    <Static id="Static06" taborder="11" text="이름" left="29.8%" top="0%" right="60.5%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static07" taborder="12" text="전화번호" left="29.8%" top="20%" right="60.5%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static08" taborder="13" text="총상환금액" left="29.8%" top="60%" right="60.5%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static09" taborder="14" text="주민번호" left="29.8%" right="60.5%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" top="80%"/>
+                    <Static id="Static10" taborder="15" text="주소" left="29.8%" top="40%" right="60.5%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static11" taborder="16" text="담당자" left="57.3%" top="0%" right="33%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static12" taborder="17" text="잔여채무금액" left="57.3%" top="60%" right="33%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static13" taborder="18" text="시작일" left="57.3%" right="33%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" top="80%"/>
+                    <Static id="Static14" taborder="19" text="휴대폰번호" left="57.3%" top="20%" right="33%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static16" taborder="21" left="10.6%" top="0%" right="70.1%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static17" taborder="22" left="10.6%" top="20%" right="70.1%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static18" taborder="23" left="10.6%" top="40%" right="70.1%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" onclick="div_Top_Static18_onclick"/>
+                    <Static id="Static20" taborder="25" left="10.6%" top="80%" right="70.1%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" height="20%"/>
+                    <Static id="Static21" taborder="26" left="39.5%" top="0%" right="42.6%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" onclick="divWrapper_div_Top_Static21_onclick"/>
+                    <Static id="Static26" taborder="31" left="66.9%" top="0%" right="14.1%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" height="20%"/>
+                    <Static id="Static29" taborder="34" left="66.9%" top="80%" right="14.1%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" height="20%"/>
+                    <MaskEdit id="MaskEdit00" taborder="41" left="10.6%" top="60%" right="70.1%" height="20%" style="background:lemonchiffon;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <MaskEdit id="MaskEdit01" taborder="42" left="39.5%" top="60%" right="42.6%" height="20%" style="background:lemonchiffon;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <MaskEdit id="MaskEdit02" taborder="43" left="66.9%" top="60%" right="14.1%" height="20%" style="background:lemonchiffon;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static15" taborder="44" left="26.7%" top="60.83%" right="70.3%" height="18.33%" style="align:center middle;font:bold 9 굴림;" text="원"/>
+                    <Static id="Static19" taborder="45" text="원" left="82.7%" top="60.83%" right="14.3%" height="18.33%" style="align:center middle;font:bold 9 굴림;"/>
+                    <MaskEdit id="MaskEdit03" taborder="46" left="39.5%" top="20%" right="42.6%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <MaskEdit id="MaskEdit04" taborder="47" left="66.9%" top="20%" right="14.1%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <MaskEdit id="MaskEdit05" taborder="48" left="39.5%" top="80%" right="42.6%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Edit id="Edit00" taborder="49" left="39.5%" top="40%" right="26.9%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Edit id="Edit01" taborder="50" left="73.1%" top="40%" right="14.1%" height="20%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="div_Middle" taborder="1" text="div_Middle" left="0%" top="20%" right="0%" bottom="70%">
+                <Layouts>
+                  <Layout>
+                    <Button id="btn_DebtList" taborder="0" text="목록" left="93.82%" top="16.67%" right="1.62%" height="43.33%" onclick="btn_DebtList_onclick"/>
+                    <Static id="Static19" taborder="1" onclick="div_Top_Static19_onclick" left="84.9%" top="20%" right="6.89%" height="40%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static20" taborder="2" left="84.9%" top="58.33%" right="6.89%" height="40%" style="background:white;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static00" taborder="3" onclick="div_Top_Static19_onclick" left="76.7%" top="20%" right="15.1%" height="40%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static01" taborder="4" left="76.7%" top="58.33%" right="15.1%" height="40%" style="background:white;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static02" taborder="5" left="68.49%" top="58.33%" right="23.3%" height="40%" style="background:white;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static03" taborder="6" onclick="div_Top_Static19_onclick" left="68.49%" top="20%" right="23.3%" height="40%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                    <Static id="Static04" taborder="7" onclick="div_Top_Static19_onclick" left="60.28%" top="20%" right="31.51%" height="78.33%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" text="결재진행상태"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="div_Bottom" taborder="2" text="div_Bottom" left="0%" top="30%" right="0%" async="false" bottom="0%">
+                <Layouts>
+                  <Layout>
+                    <Tab id="Tab00" taborder="0" left="1%" top="59" right="1.1%" height="81.43%" tabindex="0" scrollbars="autoboth">
+                      <Tabpages>
+                        <Tabpage id="tabpage1" text="채무발생">
+                          <Layouts>
+                            <Layout>
+                              <Static id="Static05" taborder="0" left="1.02%" top="45.91%" right="1.02%" height="52.2%" style="background:lavenderblush;border:1 solid #c8c8c8ff ;"/>
+                              <Static id="Static02" taborder="1" text="채무발생번호" left="2%" top="48.43%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static00" taborder="2" text="*채무명의 획득여부" left="2%" top="56.29%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static01" taborder="3" text="입력자" left="2%" top="63.84%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static03" taborder="4" text="비고" left="2.05%" top="71.7%" right="85.16%" height="24.84%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Grid id="Grid00" taborder="7" useinputpanel="false" left="1.02%" top="10.69%" right="1.02%" height="33.65%" binddataset="ds_occur" autofittype="col">
+                                <Formats>
+                                  <Format id="default">
+                                    <Columns>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                    </Columns>
+                                    <Rows>
+                                      <Row size="24" band="head"/>
+                                      <Row size="24"/>
+                                    </Rows>
+                                    <Band id="head">
+                                      <Cell text="No."/>
+                                      <Cell col="1" text="채무발생번호"/>
+                                      <Cell col="2" text="발생일자"/>
+                                      <Cell col="3" text="종결일자"/>
+                                      <Cell col="4" text="채무명의 획득여부"/>
+                                      <Cell col="5" text="발생사유"/>
+                                      <Cell col="6" text="채무금액(원)"/>
+                                      <Cell col="7" text="입력자 성명"/>
+                                      <Cell col="8" text="비고"/>
+                                    </Band>
+                                    <Band id="body">
+                                      <Cell expr="currow+1"/>
+                                      <Cell col="1" text="bind:debtorOccNo"/>
+                                      <Cell col="2" text="bind:debtorOccStartdate"/>
+                                      <Cell col="3" text="bind:debtorOccEnddate"/>
+                                      <Cell col="4" text="bind:debtorOccCheck"/>
+                                      <Cell col="5" edittype="combo" text="bind:debtorOccReason" combodataset="ds_comboOcc" combocodecol="codeName" combodatacol="codeName"/>
+                                      <Cell col="6" text="bind:debtorOccPrice"/>
+                                      <Cell col="7" text="bind:inputName"/>
+                                      <Cell col="8"/>
+                                    </Band>
+                                  </Format>
+                                </Formats>
+                              </Grid>
+                              <Button id="Button00" taborder="8" text="결재" left="76.56%" top="0.94%" right="18.83%" height="8.18%"/>
+                              <Button id="Button01" taborder="9" text="신규" left="82.29%" top="0.94%" right="13.1%" height="8.18%"/>
+                              <Button id="Button02" taborder="10" text="저장" left="88.02%" top="0.94%" right="7.37%" height="8.18%"/>
+                              <Button id="Button03" taborder="11" text="삭제" left="93.76%" top="0.94%" right="1.64%" height="8.18%"/>
+                              <TextArea id="TextArea00" taborder="12" left="15.25%" top="71.7%" right="2.05%" height="24.84%" style="background:aliceblue;"/>
+                              <Static id="Static04" taborder="13" text="*발생사유" left="34.19%" top="56.29%" right="53.02%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static06" taborder="14" text="*발생일자" left="34.19%" top="48.43%" right="53.02%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static07" taborder="15" text="*채무금액" left="67.04%" top="56.29%" right="20.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static08" taborder="16" text="종결일자" left="67.04%" top="48.43%" right="20.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Edit id="Edit00" taborder="17" left="15.25%" top="48.43%" right="66.22%" height="7.23%" style="background:aliceblue;"/>
+                              <Edit id="Edit01" taborder="18" left="15.25%" top="63.84%" right="66.22%" height="7.23%" style="background:aliceblue;"/>
+                              <Radio id="Radio00" taborder="19" left="16.17%" top="56.29%" right="66.33%" height="7.23%" innerdataset="@ds_radioOcc" codecolumn="value" datacolumn="value" direction="vertical" style="font:bold 9 굴림;"/>
+                              <Calendar id="Calendar00" taborder="20" left="47.39%" top="48.43%" right="33.37%" height="7.23%" style="background:aliceblue;"/>
+                              <Calendar id="Calendar01" taborder="21" left="80.35%" top="48.43%" right="2%" height="7.23%" style="background:aliceblue;"/>
+                              <Combo id="Combo00" taborder="22" left="47.39%" top="56.29%" right="33.37%" height="7.23%" style="background:aliceblue;" innerdataset="@ds_comboOcc" codecolumn="codeName" datacolumn="codeName"/>
+                              <MaskEdit id="MaskEdit00" taborder="23" left="80.35%" top="56.29%" right="4.4%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static09" taborder="24" text="원" left="95.8%" top="56.29%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                            </Layout>
+                          </Layouts>
+                        </Tabpage>
+                        <Tabpage id="tabpage2" text="환입관리">
+                          <Layouts>
+                            <Layout>
+                              <Static id="Static05" taborder="0" left="1.02%" top="45.91%" right="1.02%" height="52.2%" style="background:lavenderblush;border:1 solid #c8c8c8ff ;"/>
+                              <Static id="Static02" taborder="1" text="채무환입번호" left="2%" top="48.43%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static00" taborder="2" text="입력자" left="2%" top="56.29%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static03" taborder="4" text="비고" left="2.05%" top="64.15%" right="85.16%" height="32.39%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Grid id="Grid00" taborder="7" useinputpanel="false" left="1.02%" top="10.69%" right="1.02%" height="33.65%" binddataset="ds_return" autofittype="col">
+                                <Formats>
+                                  <Format id="default">
+                                    <Columns>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                    </Columns>
+                                    <Rows>
+                                      <Row size="24" band="head"/>
+                                      <Row size="24"/>
+                                    </Rows>
+                                    <Band id="head">
+                                      <Cell text="No."/>
+                                      <Cell col="1" text="채무환입번호"/>
+                                      <Cell col="2" text="환입일자"/>
+                                      <Cell col="3" text="환입사유"/>
+                                      <Cell col="4" text="지연이자(원)"/>
+                                      <Cell col="5" text="환입금액(원)"/>
+                                      <Cell col="6" text="실입금금액(원)"/>
+                                      <Cell col="7" text="입력자성명"/>
+                                      <Cell col="8" text="비고"/>
+                                    </Band>
+                                    <Band id="body">
+                                      <Cell expr="currow+1"/>
+                                      <Cell col="1" text="bind:moneyInNo"/>
+                                      <Cell col="2" text="bind:moneyInDayin"/>
+                                      <Cell col="3" text="bind:moneyInReason"/>
+                                      <Cell col="4" text="bind:moneyInInterest"/>
+                                      <Cell col="5" text="bind:moneyInSum"/>
+                                      <Cell col="6" expr="parseInt(moneyInInterest)+parseInt(moneyInSum)"/>
+                                      <Cell col="7" text="bind:inputName"/>
+                                      <Cell col="8" text="bind:moneyInEtc"/>
+                                    </Band>
+                                  </Format>
+                                </Formats>
+                              </Grid>
+                              <Button id="Button01" taborder="9" text="신규" left="82.29%" top="0.94%" right="13.1%" height="8.18%"/>
+                              <Button id="Button02" taborder="10" text="저장" left="88.02%" top="0.94%" right="7.37%" height="8.18%"/>
+                              <Button id="Button03" taborder="11" text="취소" left="93.76%" top="0.94%" right="1.64%" height="8.18%"/>
+                              <TextArea id="TextArea00" taborder="12" left="15.25%" top="64.15%" right="33.37%" height="32.39%" style="background:aliceblue;"/>
+                              <Static id="Static04" taborder="13" text="*환입사유" left="34.9%" top="56.29%" right="52.3%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static06" taborder="14" text="*환입일자" left="34.9%" top="48.43%" right="52.3%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static07" taborder="15" text="*환입금액" left="66.94%" top="56.29%" right="20.06%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static08" taborder="16" text="지연이자" left="66.94%" top="48.43%" right="20.06%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Edit id="Edit00" taborder="17" left="15.25%" top="48.43%" right="65.51%" height="7.23%" style="background:aliceblue;"/>
+                              <Calendar id="Calendar00" taborder="20" left="48.11%" top="48.43%" right="33.47%" height="7.23%" style="background:aliceblue;" innerdataset="@ds_return" datecolumn="moneyInDayin"/>
+                              <Combo id="Combo00" taborder="22" left="48.11%" top="56.29%" right="33.47%" height="7.23%" style="background:aliceblue;" innerdataset="@ds_comboRe" codecolumn="codeName" datacolumn="codeName"/>
+                              <MaskEdit id="MaskEdit00" taborder="23" left="80.35%" top="56.29%" right="4.09%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static09" taborder="24" text="원" left="95.8%" top="56.29%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <Edit id="Edit01" taborder="25" left="15.25%" top="56.29%" right="65.51%" height="7.23%" style="background:aliceblue;"/>
+                              <MaskEdit id="MaskEdit01" taborder="26" left="80.35%" top="48.43%" right="4.09%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static01" taborder="27" text="원" left="95.8%" top="48.43%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static10" taborder="28" text="실입금금액" left="66.94%" top="64.15%" right="20.06%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit02" taborder="29" left="80.35%" top="64.15%" right="4.09%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static11" taborder="30" text="원" left="95.8%" top="64.15%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                            </Layout>
+                          </Layouts>
+                        </Tabpage>
+                        <Tabpage id="tabpage3" text="정지품의">
+                          <Layouts>
+                            <Layout>
+                              <Static id="Static05" taborder="0" left="1.02%" top="45.91%" right="1.02%" height="52.2%" style="background:lavenderblush;border:1 solid #c8c8c8ff ;"/>
+                              <Static id="Static02" taborder="1" text="정지품의번호" left="2%" top="48.43%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static00" taborder="2" text="입력자" left="2%" top="56.29%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static01" taborder="3" text="진행사항 요약" left="2.05%" top="64.15%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static03" taborder="4" text="비고" left="2.05%" top="72.01%" right="85.16%" height="24.84%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Grid id="Grid00" taborder="7" useinputpanel="false" left="1.02%" top="10.69%" right="1.02%" height="33.65%" binddataset="ds_stop" autofittype="col">
+                                <Formats>
+                                  <Format id="default">
+                                    <Columns>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                    </Columns>
+                                    <Rows>
+                                      <Row size="24" band="head"/>
+                                      <Row size="24"/>
+                                    </Rows>
+                                    <Band id="head">
+                                      <Cell text="No."/>
+                                      <Cell col="1" text="정지품의번호"/>
+                                      <Cell col="2" text="요청일자"/>
+                                      <Cell col="3" text="결재일자"/>
+                                      <Cell col="4" text="정지사유"/>
+                                      <Cell col="5" text="관리정지 결재여부"/>
+                                      <Cell col="6" text="전결권자 의견"/>
+                                      <Cell col="7" text="진행사항 요약"/>
+                                      <Cell col="8" text="정지금액(원)"/>
+                                      <Cell col="9" text="지연이자(원)"/>
+                                      <Cell col="10" text="채무환입금액(원)"/>
+                                      <Cell col="11" text="전결권자사번"/>
+                                      <Cell col="12" text="입력자성명"/>
+                                      <Cell col="13" text="비고"/>
+                                    </Band>
+                                    <Band id="body">
+                                      <Cell expr="currow+1"/>
+                                      <Cell col="1" text="bind:adminStopNo"/>
+                                      <Cell col="2" text="bind:adminStopRequestDate"/>
+                                      <Cell col="3" text="bind:adminStopSignDate"/>
+                                      <Cell col="4" text="bind:adminStopReason"/>
+                                      <Cell col="5" text="bind:adminStopSignCheck"/>
+                                      <Cell col="6" text="bind:adminStopSignerComment"/>
+                                      <Cell col="7" text="bind:adminStopProgressSummary"/>
+                                      <Cell col="8" text="bind:adminStopMoney"/>
+                                      <Cell col="9" text="bind:adminStopInterest"/>
+                                      <Cell col="10" text="bind:adminStopDebtReturnMoney"/>
+                                      <Cell col="11" text="bind:adminStopSignEiNo"/>
+                                      <Cell col="12" text="bind:inputName"/>
+                                      <Cell col="13" text="bind:adminStopEtc"/>
+                                    </Band>
+                                  </Format>
+                                </Formats>
+                              </Grid>
+                              <Button id="Button00" taborder="8" text="결재" left="76.56%" top="0.94%" right="18.83%" height="8.18%"/>
+                              <Button id="Button01" taborder="9" text="신규" left="82.29%" top="0.94%" right="13.1%" height="8.18%"/>
+                              <Button id="Button02" taborder="10" text="저장" left="88.02%" top="0.94%" right="7.37%" height="8.18%"/>
+                              <Button id="Button03" taborder="11" text="삭제" left="93.76%" top="0.94%" right="1.64%" height="8.18%"/>
+                              <TextArea id="TextArea00" taborder="12" left="15.25%" top="72.01%" right="2.05%" height="24.84%" style="background:aliceblue;"/>
+                              <Static id="Static04" taborder="13" text="*정지사유" left="34.19%" top="56.29%" right="53.02%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static06" taborder="14" text="*요청일자" left="34.19%" top="48.43%" right="53.02%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static07" taborder="15" text="*정지금액" left="67.04%" top="56.29%" right="20.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static08" taborder="16" text="지연이자" left="67.04%" top="48.43%" right="20.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Edit id="Edit00" taborder="17" left="15.25%" top="48.43%" right="66.22%" height="7.23%" style="background:aliceblue;"/>
+                              <Edit id="Edit01" taborder="18" left="15.25%" top="64.15%" right="33.37%" height="7.23%" style="background:aliceblue;"/>
+                              <Calendar id="Calendar00" taborder="20" left="47.39%" top="48.43%" right="33.37%" height="7.23%" style="background:aliceblue;" innerdataset="@ds_stop" datecolumn="adminStopRequestDate"/>
+                              <Combo id="Combo00" taborder="22" left="47.39%" top="56.29%" right="33.37%" height="7.23%" style="background:aliceblue;" innerdataset="@ds_comboStop" codecolumn="codeName" datacolumn="codeName"/>
+                              <MaskEdit id="MaskEdit00" taborder="23" left="80.35%" top="56.29%" right="3.99%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static09" taborder="24" text="원" left="95.8%" top="56.29%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit01" taborder="25" left="80.35%" top="64.15%" right="3.99%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static10" taborder="26" text="채무 환입금액" left="67.04%" top="64.15%" right="20.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static11" taborder="27" text="원" left="95.8%" top="64.15%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <Edit id="Edit02" taborder="28" left="15.25%" top="56.29%" right="66.22%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static12" taborder="29" text="원" left="95.8%" top="48.43%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit02" taborder="30" left="80.35%" top="48.43%" right="3.99%" height="7.23%" style="background:aliceblue;"/>
+                            </Layout>
+                          </Layouts>
+                        </Tabpage>
+                        <Tabpage id="tabpage4" text="포기품의">
+                          <Layouts>
+                            <Layout>
+                              <Static id="Static05" taborder="0" left="1.02%" top="45.91%" right="1.02%" height="52.2%" style="background:lavenderblush;border:1 solid #c8c8c8ff ;"/>
+                              <Static id="Static02" taborder="1" text="포기품의번호" left="2%" top="46.86%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static00" taborder="2" text="입력자" left="2%" top="54.4%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static03" taborder="4" text="비고" left="2.05%" top="84.59%" right="85.16%" height="12.89%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Grid id="Grid00" taborder="7" useinputpanel="false" left="1.02%" top="10.69%" right="1.02%" height="33.65%" binddataset="ds_giveUp" autofittype="col" scrollbars="autoboth">
+                                <Formats>
+                                  <Format id="default">
+                                    <Columns>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                      <Column size="80"/>
+                                    </Columns>
+                                    <Rows>
+                                      <Row size="24" band="head"/>
+                                      <Row size="24"/>
+                                    </Rows>
+                                    <Band id="head">
+                                      <Cell text="No."/>
+                                      <Cell col="1" text="포기품의번호"/>
+                                      <Cell col="2" text="요청일자"/>
+                                      <Cell col="3" text="포기사유"/>
+                                      <Cell col="4" text="종합의견"/>
+                                      <Cell col="5" text="진행사항요약"/>
+                                      <Cell col="6" text="포기금액(원)"/>
+                                      <Cell col="7" text="승인포기금액(원)"/>
+                                      <Cell col="8" text="환입예상금액(원)"/>
+                                      <Cell col="9" text="지연이자"/>
+                                      <Cell col="10" text="환입금액(원)"/>
+                                      <Cell col="11" text="잔여채무금액(원)"/>
+                                      <Cell col="12" text="입력자성명"/>
+                                      <Cell col="13" text="비고"/>
+                                    </Band>
+                                    <Band id="body">
+                                      <Cell expr="currow+1"/>
+                                      <Cell col="1" text="bind:giveUpNo"/>
+                                      <Cell col="2" text="bind:giveUpRequestDate"/>
+                                      <Cell col="3" text="bind:giveUpReason"/>
+                                      <Cell col="4" text="bind:giveUpTotalOpinion"/>
+                                      <Cell col="5" text="bind:giveUpProgressSummary"/>
+                                      <Cell col="6" text="bind:giveUpMoney"/>
+                                      <Cell col="7" text="bind:giveUpObtainMoney"/>
+                                      <Cell col="8" text="bind:giveUpReturnExpectMoney"/>
+                                      <Cell col="9" text="bind:giveUpInterest"/>
+                                      <Cell col="10" text="bind:giveUpReturnMoney"/>
+                                      <Cell col="11" text="bind:giveUpRemainDebtorMoney"/>
+                                      <Cell col="12" text="bind:inputName"/>
+                                      <Cell col="13" text="bind:giveUpEtc"/>
+                                    </Band>
+                                  </Format>
+                                </Formats>
+                              </Grid>
+                              <Button id="Button00" taborder="8" text="결재" left="76.56%" top="0.94%" right="18.83%" height="8.18%"/>
+                              <Button id="Button01" taborder="9" text="신규" left="82.29%" top="0.94%" right="13.1%" height="8.18%"/>
+                              <Button id="Button02" taborder="10" text="저장" left="88.02%" top="0.94%" right="7.37%" height="8.18%"/>
+                              <Button id="Button03" taborder="11" text="삭제" left="93.76%" top="0.94%" right="1.64%" height="8.18%"/>
+                              <Static id="Static04" taborder="13" text="*포기사유" left="33.98%" top="54.4%" right="52.41%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static06" taborder="14" text="*요청일자" left="33.98%" top="46.86%" right="52.41%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static07" taborder="15" text="승인 포기금액" left="67.55%" top="54.4%" right="19.75%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static08" taborder="16" text="지연이자" left="67.55%" top="46.86%" right="19.75%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Edit id="Edit00" taborder="17" left="15.15%" top="46.86%" right="66.33%" height="7.23%" style="background:aliceblue;"/>
+                              <Calendar id="Calendar00" taborder="20" left="47.9%" top="46.86%" right="32.75%" height="7.23%" style="background:aliceblue;" innerdataset="@ds_giveUp" datecolumn="giveUpRequestDate"/>
+                              <Combo id="Combo00" taborder="22" left="47.9%" top="54.4%" right="32.75%" height="7.23%" style="background:aliceblue;" innerdataset="@ds_comboGi" datacolumn="codeName" codecolumn="codeName"/>
+                              <MaskEdit id="MaskEdit00" taborder="23" left="80.55%" top="54.4%" right="4.2%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static09" taborder="24" text="원" left="95.8%" top="54.4%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit01" taborder="25" left="80.55%" top="46.86%" right="4.2%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static10" taborder="26" text="원" left="95.8%" top="46.86%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit02" taborder="27" left="80.55%" top="61.95%" right="4.2%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static11" taborder="28" text="원" left="95.8%" top="61.95%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static12" taborder="29" text="환입 예상금액" left="67.55%" top="61.95%" right="19.75%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static13" taborder="30" text="원" left="95.8%" top="69.5%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static14" taborder="31" text="잔여 채무금액" left="67.55%" top="69.5%" right="19.75%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit03" taborder="32" left="80.55%" top="69.5%" right="4.2%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static15" taborder="33" text="원" left="95.8%" top="77.04%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static16" taborder="34" text="*포기금액" left="67.55%" top="77.04%" right="19.75%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit04" taborder="35" left="80.55%" top="77.04%" right="4.2%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static17" taborder="36" text="원" left="95.8%" top="84.59%" right="1.64%" height="6.92%" style="align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static18" taborder="37" text="환입금액" left="67.55%" top="84.59%" right="19.75%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <MaskEdit id="MaskEdit05" taborder="38" left="80.55%" top="84.59%" right="4.2%" height="7.23%" style="background:aliceblue;"/>
+                              <Edit id="Edit02" taborder="39" left="15.15%" top="54.4%" right="66.33%" height="7.23%" style="background:aliceblue;"/>
+                              <Static id="Static01" taborder="40" text="종합의견" left="2.05%" top="61.95%" right="85.16%" height="14.78%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Static id="Static19" taborder="41" text="진행사항 요약" left="2%" top="77.04%" right="85.16%" height="7.23%" style="background:aliceblue;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                              <Edit id="Edit01" taborder="42" left="15.15%" top="77.04%" right="32.75%" height="7.23%" style="background:aliceblue;"/>
+                              <Edit id="Edit03" taborder="43" left="15.15%" top="84.59%" right="32.75%" height="12.89%" style="background:aliceblue;"/>
+                              <TextArea id="TextArea00" taborder="44" left="15.15%" top="61.95%" right="32.75%" height="14.47%" scrollbars="fixedvert" style="background:aliceblue;"/>
+                            </Layout>
+                          </Layouts>
+                        </Tabpage>
+                      </Tabpages>
+                    </Tab>
+                    <Static id="Static00" taborder="1" text="채무정보" left="2%" top="40" right="92%" height="20" style="font:bold 9 굴림;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="1" text="채무발생(0)" left="6.8%" top="651" right="82.1%" height="26" style="background:aliceblue;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;font:bold 9 굴림;" visible="false"/>
+        <Static id="Static01" taborder="2" text="채무환입(0)" left="17.8%" top="651" right="71.1%" height="26" style="background:aliceblue;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;font:bold 9 굴림;" visible="false"/>
+        <Static id="Static02" taborder="3" text="채무정지(0)" left="28.8%" top="651" right="60.1%" height="26" style="background:aliceblue;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;font:bold 9 굴림;" visible="false"/>
+        <Static id="Static03" taborder="4" text="채무포기(0)" left="39.8%" top="651" right="49.1%" height="26" style="background:aliceblue;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;font:bold 9 굴림;" visible="false"/>
+        <FileUpload id="FileUpload00" taborder="5" retry="0" index="0" left="1088" top="116" width="157" height="29" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_occur">
+        <ColumnInfo>
+          <Column id="debtorOccNo" type="STRING" size="256"/>
+          <Column id="debtorOccStartdate" type="STRING" size="256"/>
+          <Column id="debtorOccEnddate" type="STRING" size="256"/>
+          <Column id="debtorOccReason" type="STRING" size="256"/>
+          <Column id="debtorOccCheck" type="STRING" size="256"/>
+          <Column id="debtorOccPrice" type="STRING" size="256"/>
+          <Column id="debtorOccInput" type="STRING" size="256"/>
+          <Column id="debtorOccEtc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeOccur">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_return">
+        <ColumnInfo>
+          <Column id="moneyInNo" type="STRING" size="256"/>
+          <Column id="moneyInSum" type="STRING" size="256"/>
+          <Column id="moneyInReason" type="STRING" size="256"/>
+          <Column id="moneyInInterest" type="STRING" size="256"/>
+          <Column id="moneyInDayin" type="STRING" size="256"/>
+          <Column id="moneyInInput" type="STRING" size="256"/>
+          <Column id="moneyInEtc" type="STRING" size="256"/>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="moneyInCode" type="STRING" size="256"/>
+          <Column id="inputName" type="STRING" size="256"/>
+          <Column id="sabunName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeReturn">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stop">
+        <ColumnInfo>
+          <Column id="adminStopNo" type="STRING" size="256"/>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="adminStopSignCheck" type="STRING" size="256"/>
+          <Column id="adminStopReasonCode" type="STRING" size="256"/>
+          <Column id="adminStopReason" type="STRING" size="256"/>
+          <Column id="adminStopMoney" type="STRING" size="256"/>
+          <Column id="adminStopInterest" type="STRING" size="256"/>
+          <Column id="adminStopDebtReturnMoney" type="STRING" size="256"/>
+          <Column id="adminStopRequestDate" type="STRING" size="256"/>
+          <Column id="adminStopSignEiNo" type="STRING" size="256"/>
+          <Column id="adminStopSignDate" type="STRING" size="256"/>
+          <Column id="adminStopSignerComment" type="STRING" size="256"/>
+          <Column id="adminStopProgressSummary" type="STRING" size="256"/>
+          <Column id="adminStopInput" type="STRING" size="256"/>
+          <Column id="adminStopEtc" type="STRING" size="256"/>
+          <Column id="adminStopCd" type="STRING" size="256"/>
+          <Column id="inputName" type="STRING" size="256"/>
+          <Column id="sabunName" type="STRING" size="256"/>
+          <Column id="signerSabunName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeStop">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_giveUp">
+        <ColumnInfo>
+          <Column id="giveUpNo" type="STRING" size="256"/>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="giveUpSign" type="STRING" size="256"/>
+          <Column id="giveUpReasonCode" type="STRING" size="256"/>
+          <Column id="giveUpReason" type="STRING" size="256"/>
+          <Column id="giveUpMoney" type="STRING" size="256"/>
+          <Column id="giveUpObtainMoney" type="STRING" size="256"/>
+          <Column id="giveUpReturnExpectMoney" type="STRING" size="256"/>
+          <Column id="giveUpInterest" type="STRING" size="256"/>
+          <Column id="giveUpReturnMoney" type="STRING" size="256"/>
+          <Column id="giveUpRemainDebtorMoney" type="STRING" size="256"/>
+          <Column id="giveUpRequestDate" type="STRING" size="256"/>
+          <Column id="giveUpDecideManNum" type="STRING" size="256"/>
+          <Column id="giveUpObtainDate" type="STRING" size="256"/>
+          <Column id="giveUpTotalOpinion" type="STRING" size="256"/>
+          <Column id="giveUpDecideManOpinion" type="STRING" size="256"/>
+          <Column id="giveUpProgressSummary" type="STRING" size="256"/>
+          <Column id="giveUpInput" type="STRING" size="256"/>
+          <Column id="giveUpEtc" type="STRING" size="256"/>
+          <Column id="giveUpCd" type="STRING" size="256"/>
+          <Column id="inputName" type="STRING" size="256"/>
+          <Column id="sabunName" type="STRING" size="256"/>
+          <Column id="signerSabunName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeGiveUp">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="value">행방불명</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="value">사망</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="value">파산</Col>
+          </Row>
+          <Row>
+            <Col id="code">99</Col>
+            <Col id="value">기타</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_comboOcc">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_comboRe">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_comboStop">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_comboGi">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_radioOcc">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">0</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_radioStop">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">0</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_radioGi">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">0</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_debtor">
+        <ColumnInfo>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="debtorListCode" type="STRING" size="256"/>
+          <Column id="debtorListName" type="STRING" size="256"/>
+          <Column id="debtorListGooboon" type="STRING" size="256"/>
+          <Column id="debtorListTel" type="STRING" size="256"/>
+          <Column id="debtorListPhone" type="STRING" size="256"/>
+          <Column id="debtorListPostal" type="STRING" size="256"/>
+          <Column id="debtorListAddress1" type="STRING" size="256"/>
+          <Column id="debtorListAddress2" type="STRING" size="256"/>
+          <Column id="debtorListOwance" type="STRING" size="256"/>
+          <Column id="debtorListRepay" type="STRING" size="256"/>
+          <Column id="debtorListStatus" type="STRING" size="256"/>
+          <Column id="debtorListMgrNum" type="STRING" size="256"/>
+          <Column id="debtorListRegistDate" type="STRING" size="256"/>
+          <Column id="remainDebt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_file">
+        <ColumnInfo>
+          <Column id="addfilecode" type="STRING" size="256"/>
+          <Column id="addFileRelNum" type="STRING" size="256"/>
+          <Column id="addFileSerFileName" type="STRING" size="256"/>
+          <Column id="addFileSize" type="STRING" size="256"/>
+          <Column id="addFileDel" type="STRING" size="256"/>
+          <Column id="addFileSerPath" type="STRING" size="256"/>
+          <Column id="addFileChanDate" type="STRING" size="256"/>
+          <Column id="addFileRegDate" type="STRING" size="256"/>
+          <Column id="addFilePcFile" type="STRING" size="256"/>
+          <Column id="addFilePcFileExt" type="STRING" size="256"/>
+          <Column id="addFileDownCount" type="STRING" size="256"/>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="addFileCheck" type="STRING" size="256"/>
+          <Column id="imgFile" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_status">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">00</Col>
+            <Col id="value">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="value">정상</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="value">정지</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="value">포기</Col>
+          </Row>
+          <Row>
+            <Col id="code">04</Col>
+            <Col id="value">완납</Col>
+          </Row>
+          <Row>
+            <Col id="code">99</Col>
+            <Col id="value">기타</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="aprvprgrInfoStepCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoBookNo" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoUpSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritSabun" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWrit" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptName" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDate" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritCont" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritTit" type="STRING" size="256"/>
+          <Column id="aprvInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvInfoSabun" type="STRING" size="256"/>
+          <Column id="aprvInfoName" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptCode" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptName" type="STRING" size="256"/>
+          <Column id="aprvInfoCondCode" type="STRING" size="256"/>
+          <Column id="aprvInfoProcDate" type="STRING" size="256"/>
+          <Column id="aprvInfoReqDate" type="STRING" size="256"/>
+          <Column id="aprvInfoFinWtr" type="STRING" size="256"/>
+          <Column id="aprvInfoCont" type="STRING" size="256"/>
+          <Column id="aprvInfoCont2" type="STRING" size="256"/>
+          <Column id="aprvInfoCont3" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_check">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tabGrid">
+        <ColumnInfo>
+          <Column id="aprvprgrInfoStepCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoBookNo" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoUpSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritSabun" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWrit" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptName" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDate" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritCont" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritTit" type="STRING" size="256"/>
+          <Column id="aprvInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvInfoSabun" type="STRING" size="256"/>
+          <Column id="aprvInfoName" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptCode" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptName" type="STRING" size="256"/>
+          <Column id="aprvInfoCondCode" type="STRING" size="256"/>
+          <Column id="aprvInfoProcDate" type="STRING" size="256"/>
+          <Column id="aprvInfoReqDate" type="STRING" size="256"/>
+          <Column id="aprvInfoFinWtr" type="STRING" size="256"/>
+          <Column id="aprvInfoCont" type="STRING" size="256"/>
+          <Column id="aprvInfoCont2" type="STRING" size="256"/>
+          <Column id="aprvInfoCont3" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sign">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="value">결재진행중</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="value">결재진행취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="value">결재완료</Col>
+          </Row>
+          <Row>
+            <Col id="code">04</Col>
+            <Col id="value">결재취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">05</Col>
+            <Col id="value">반려</Col>
+          </Row>
+          <Row>
+            <Col id="code">06</Col>
+            <Col id="value">결재진행중</Col>
+          </Row>
+          <Row>
+            <Col id="code">07</Col>
+            <Col id="value">결재진행취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">08</Col>
+            <Col id="value">결재완료</Col>
+          </Row>
+          <Row>
+            <Col id="code">09</Col>
+            <Col id="value">결재취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="value">반려</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="value">결재진행중</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="value">결재진행취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">13</Col>
+            <Col id="value">결재완료</Col>
+          </Row>
+          <Row>
+            <Col id="code">14</Col>
+            <Col id="value">결재취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">15</Col>
+            <Col id="value">반려</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_positionCode">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_count1">
+        <ColumnInfo>
+          <Column id="column0" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_count2">
+        <ColumnInfo>
+          <Column id="column0" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_count3">
+        <ColumnInfo>
+          <Column id="column0" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_count4">
+        <ColumnInfo>
+          <Column id="column0" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="divWrapper.div_Top.Static16" propid="text" datasetid="ds_debtor" columnid="debtorListNo"/>
+      <BindItem id="item1" compid="divWrapper.div_Top.Static21" propid="text" datasetid="ds_debtor" columnid="debtorListName"/>
+      <BindItem id="item2" compid="divWrapper.div_Top.Static26" propid="text" datasetid="ds_debtor" columnid="debtorListMgrNum"/>
+      <BindItem id="item3" compid="divWrapper.div_Top.Static17" propid="text" datasetid="ds_debtor" columnid="debtorListStatus"/>
+      <BindItem id="item4" compid="divWrapper.div_Top.MaskEdit03" propid="value" datasetid="ds_debtor" columnid="debtorListTel"/>
+      <BindItem id="item5" compid="divWrapper.div_Top.MaskEdit04" propid="value" datasetid="ds_debtor" columnid="debtorListPhone"/>
+      <BindItem id="item6" compid="divWrapper.div_Top.Static18" propid="text" datasetid="ds_debtor" columnid="debtorListPostal"/>
+      <BindItem id="item7" compid="divWrapper.div_Top.Edit00" propid="value" datasetid="ds_debtor" columnid="debtorListAddress1"/>
+      <BindItem id="item8" compid="divWrapper.div_Top.Edit01" propid="value" datasetid="ds_debtor" columnid="debtorListAddress2"/>
+      <BindItem id="item9" compid="divWrapper.div_Top.MaskEdit00" propid="value" datasetid="ds_debtor" columnid="debtorListOwance"/>
+      <BindItem id="item10" compid="divWrapper.div_Top.MaskEdit01" propid="value" datasetid="ds_debtor" columnid="debtorListRepay"/>
+      <BindItem id="item11" compid="divWrapper.div_Top.MaskEdit02" propid="value" datasetid="ds_debtor" columnid="remainDebt"/>
+      <BindItem id="item12" compid="divWrapper.div_Top.Static20" propid="text" datasetid="ds_debtor" columnid="debtorListCode"/>
+      <BindItem id="item13" compid="divWrapper.div_Top.MaskEdit05" propid="value" datasetid="ds_debtor" columnid="debtorListGooboon"/>
+      <BindItem id="item14" compid="divWrapper.div_Top.Static29" propid="text" datasetid="ds_debtor" columnid="debtorListRegistDate"/>
+      <BindItem id="item16" compid="divWrapper.div_Middle.Static00" propid="expr" datasetid="ds_tabGrid" columnid=""/>
+      <BindItem id="item17" compid="divWrapper.div_Middle.Static19" propid="expr" datasetid="ds_tabGrid" columnid=""/>
+      <BindItem id="item18" compid="divWrapper.div_Middle.Static03" propid="expr" datasetid="ds_tabGrid" columnid=""/>
+      <BindItem id="item15" compid="divWrapper.div_Middle.Static02" propid="expr" datasetid="ds_positionCode" columnid=""/>
+      <BindItem id="item19" compid="divWrapper.div_Middle.Static01" propid="expr" datasetid="ds_positionCode" columnid=""/>
+      <BindItem id="item20" compid="divWrapper.div_Middle.Static20" propid="expr" datasetid="ds_positionCode" columnid=""/>
+      <BindItem id="item21" compid="divWrapper.div_Bottom.Tab00.tabpage1.Edit00" propid="value" datasetid="ds_occur" columnid="debtorOccNo"/>
+      <BindItem id="item22" compid="divWrapper.div_Bottom.Tab00.tabpage1.Calendar00" propid="value" datasetid="ds_occur" columnid="debtorOccStartdate"/>
+      <BindItem id="item23" compid="divWrapper.div_Bottom.Tab00.tabpage1.Calendar01" propid="value" datasetid="ds_occur" columnid="debtorOccEnddate"/>
+      <BindItem id="item24" compid="divWrapper.div_Bottom.Tab00.tabpage1.Radio00" propid="value" datasetid="ds_occur" columnid="debtorOccCheck"/>
+      <BindItem id="item25" compid="divWrapper.div_Bottom.Tab00.tabpage1.Combo00" propid="value" datasetid="ds_occur" columnid="debtorOccReason"/>
+      <BindItem id="item26" compid="divWrapper.div_Bottom.Tab00.tabpage1.MaskEdit00" propid="value" datasetid="ds_occur" columnid="debtorOccPrice"/>
+      <BindItem id="item27" compid="divWrapper.div_Bottom.Tab00.tabpage1.Edit01" propid="value" datasetid="ds_occur" columnid="sabunName"/>
+      <BindItem id="item28" compid="divWrapper.div_Bottom.Tab00.tabpage1.TextArea00" propid="value" datasetid="ds_occur" columnid="debtorOccEtc"/>
+      <BindItem id="item29" compid="divWrapper.div_Bottom.Tab00.tabpage2.Edit00" propid="value" datasetid="ds_return" columnid="moneyInNo"/>
+      <BindItem id="item30" compid="divWrapper.div_Bottom.Tab00.tabpage2.Calendar00" propid="value" datasetid="ds_return" columnid="moneyInDayin"/>
+      <BindItem id="item31" compid="divWrapper.div_Bottom.Tab00.tabpage2.MaskEdit01" propid="value" datasetid="ds_return" columnid="moneyInInterest"/>
+      <BindItem id="item32" compid="divWrapper.div_Bottom.Tab00.tabpage2.Edit01" propid="value" datasetid="ds_return" columnid="sabunName"/>
+      <BindItem id="item33" compid="divWrapper.div_Bottom.Tab00.tabpage2.Combo00" propid="value" datasetid="ds_return" columnid="moneyInReason"/>
+      <BindItem id="item34" compid="divWrapper.div_Bottom.Tab00.tabpage2.MaskEdit00" propid="value" datasetid="ds_return" columnid="moneyInSum"/>
+      <BindItem id="item35" compid="divWrapper.div_Bottom.Tab00.tabpage2.TextArea00" propid="value" datasetid="ds_return" columnid="moneyInEtc"/>
+      <BindItem id="item36" compid="divWrapper.div_Bottom.Tab00.tabpage2.MaskEdit02" propid="value" datasetid="ds_return" columnid=""/>
+      <BindItem id="item37" compid="divWrapper.div_Bottom.Tab00.tabpage3.Edit00" propid="value" datasetid="ds_stop" columnid="adminStopNo"/>
+      <BindItem id="item38" compid="divWrapper.div_Bottom.Tab00.tabpage3.Calendar00" propid="value" datasetid="ds_stop" columnid="adminStopRequestDate"/>
+      <BindItem id="item39" compid="divWrapper.div_Bottom.Tab00.tabpage3.MaskEdit02" propid="value" datasetid="ds_stop" columnid="adminStopInterest"/>
+      <BindItem id="item40" compid="divWrapper.div_Bottom.Tab00.tabpage3.Edit02" propid="value" datasetid="ds_stop" columnid="sabunName"/>
+      <BindItem id="item41" compid="divWrapper.div_Bottom.Tab00.tabpage3.Combo00" propid="value" datasetid="ds_stop" columnid="adminStopReason"/>
+      <BindItem id="item42" compid="divWrapper.div_Bottom.Tab00.tabpage3.MaskEdit00" propid="value" datasetid="ds_stop" columnid="adminStopMoney"/>
+      <BindItem id="item43" compid="divWrapper.div_Bottom.Tab00.tabpage3.Edit01" propid="value" datasetid="ds_stop" columnid="adminStopProgressSummary"/>
+      <BindItem id="item44" compid="divWrapper.div_Bottom.Tab00.tabpage3.MaskEdit01" propid="value" datasetid="ds_stop" columnid="adminStopDebtReturnMoney"/>
+      <BindItem id="item45" compid="divWrapper.div_Bottom.Tab00.tabpage3.TextArea00" propid="value" datasetid="ds_stop" columnid="adminStopEtc"/>
+      <BindItem id="item46" compid="divWrapper.div_Bottom.Tab00.tabpage4.Edit00" propid="value" datasetid="ds_giveUp" columnid="giveUpNo"/>
+      <BindItem id="item47" compid="divWrapper.div_Bottom.Tab00.tabpage4.Calendar00" propid="value" datasetid="ds_giveUp" columnid="giveUpRequestDate"/>
+      <BindItem id="item48" compid="divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit01" propid="value" datasetid="ds_giveUp" columnid="giveUpInterest"/>
+      <BindItem id="item49" compid="divWrapper.div_Bottom.Tab00.tabpage4.Edit02" propid="value" datasetid="ds_giveUp" columnid="sabunName"/>
+      <BindItem id="item50" compid="divWrapper.div_Bottom.Tab00.tabpage4.Combo00" propid="value" datasetid="ds_giveUp" columnid="giveUpReason"/>
+      <BindItem id="item51" compid="divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit00" propid="value" datasetid="ds_giveUp" columnid="giveUpObtainMoney"/>
+      <BindItem id="item52" compid="divWrapper.div_Bottom.Tab00.tabpage4.TextArea00" propid="value" datasetid="ds_giveUp" columnid="giveUpTotalOpinion"/>
+      <BindItem id="item53" compid="divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit02" propid="value" datasetid="ds_giveUp" columnid="giveUpReturnExpectMoney"/>
+      <BindItem id="item54" compid="divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit03" propid="value" datasetid="ds_giveUp" columnid="giveUpRemainDebtorMoney"/>
+      <BindItem id="item55" compid="divWrapper.div_Bottom.Tab00.tabpage4.Edit01" propid="value" datasetid="ds_giveUp" columnid="giveUpProgressSummary"/>
+      <BindItem id="item56" compid="divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit04" propid="value" datasetid="ds_giveUp" columnid="giveUpMoney"/>
+      <BindItem id="item57" compid="divWrapper.div_Bottom.Tab00.tabpage4.Edit03" propid="value" datasetid="ds_giveUp" columnid="giveUpEtc"/>
+      <BindItem id="item58" compid="divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit05" propid="value" datasetid="ds_giveUp" columnid="giveUpReturnMoney"/>
+      <BindItem id="item59" compid="Static00" propid="expr" datasetid="ds_count1" columnid=""/>
+      <BindItem id="item60" compid="Static01" propid="expr" datasetid="ds_count2" columnid=""/>
+      <BindItem id="item61" compid="Static02" propid="expr" datasetid="ds_count3" columnid=""/>
+      <BindItem id="item62" compid="Static03" propid="expr" datasetid="ds_count4" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";
+
+this.debt_info_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Iject.formOnload(obj);
+	this.debt_info_detail();
+	this.debtOcc_list();
+	this.debtRe_list();
+	this.debtStop_list();
+	this.debtGiveUp_list();
+}
+
+this.debt_info_detail = function()
+{
+	var oDatas = {
+				svcid : "debtorDetail",
+				sController : "debtorDetail.do",
+				inds : [],
+				outds : ["ds_debtor=ds_debtor"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_debtor : " + this.ds_debtor.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object	      
+	       trace(" ds_debtor : " + pThis.ds_debtor.saveXML());
+	});
+}
+
+
+//채무등록 리스트 가져오기(select)
+this.debtOcc_list = function()
+{
+	var oDatas = {
+				svcid : "debtOcc",
+				sController : "debtOccList.do",
+				inds : [],
+				outds : ["ds_occur=ds_occur"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_occur : " + this.ds_occur.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object	      
+	       trace(" ds_occur : " + pThis.ds_occur.saveXML());
+	});
+}
+
+//환입관리 리스트 가져오기(select)
+this.debtRe_list = function()
+{
+	var oDatas = {
+				svcid : "debtRe",
+				sController : "debtReList.do",
+				inds : [],
+				outds : ["ds_return=ds_return"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_return : " + this.ds_return.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object	      
+	       trace(" ds_return : " + pThis.ds_return.saveXML());
+	});
+}
+	
+//정지품의 리스트 가져오기(select)
+this.debtStop_list = function()
+{
+	var oDatas = {
+				svcid : "debtStop",
+				sController : "debtStopList.do",
+				inds : [],
+				outds : ["ds_stop=ds_stop"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_stop : " + this.ds_stop.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object	      
+	       trace(" ds_stop : " + pThis.ds_stop.saveXML());
+	});
+}	
+				
+//포기품의 리스트 가져오기(select)
+this.debtGiveUp_list = function()
+{
+	var oDatas = {
+				svcid : "debtGiveUp",
+				sController : "debtGiveUpList.do",
+				inds : [],
+				outds : ["ds_giveUp=ds_giveUp"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_giveUp : " + this.ds_giveUp.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object	      
+	       trace(" ds_giveUp : " + pThis.ds_giveUp.saveXML());
+	});
+}	
+
+
+// 채무자 관리 페이지
+this.btn_DebtList_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.divWrapper.set_url("Pattern::Debt_Read.xfdl");
+}
+]]></Script>
+  </Form>
+</FDL>

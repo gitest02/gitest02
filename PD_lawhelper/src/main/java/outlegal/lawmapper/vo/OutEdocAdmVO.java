@@ -1,0 +1,90 @@
+package outlegal.lawmapper.vo;
+
+import com.nexacro.spring.data.DataSetRowTypeAccessor;
+
+public class OutEdocAdmVO implements DataSetRowTypeAccessor {
+
+	private String lawsuitAdmNo;
+	private int edocAdmSeq;
+	private String edocAdmHozSepCode;
+	private String edocAdmHozNo;
+	private String edocAdmHozkindSepCode;
+	private String edocAdmName;
+	private String edocAdmWritDate;
+
+	private int rowNum;
+	private int rowType;
+
+	public int getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
+	public String getLawsuitAdmNo() {
+		return lawsuitAdmNo;
+	}
+
+	public void setLawsuitAdmNo(String lawsuitAdmNo) {
+		this.lawsuitAdmNo = lawsuitAdmNo;
+	}
+
+	public int getEdocAdmSeq() {
+		return edocAdmSeq;
+	}
+
+	public void setEdocAdmSeq(int edocAdmSeq) {
+		this.edocAdmSeq = edocAdmSeq;
+	}
+
+	public String getEdocAdmHozSepCode() {
+		return edocAdmHozSepCode;
+	}
+
+	public void setEdocAdmHozSepCode(String edocAdmHozSepCode) {
+		this.edocAdmHozSepCode = edocAdmHozSepCode;
+	}
+
+	public String getEdocAdmHozNo() {
+		return edocAdmHozNo;
+	}
+
+	public void setEdocAdmHozNo(String edocAdmHozNo) {
+		this.edocAdmHozNo = edocAdmHozNo;
+	}
+
+	public String getEdocAdmHozkindSepCode() {
+		return edocAdmHozkindSepCode;
+	}
+
+	public void setEdocAdmHozkindSepCode(String edocAdmHozkindSepCode) {
+		this.edocAdmHozkindSepCode = edocAdmHozkindSepCode;
+	}
+
+	public String getEdocAdmName() {
+		return edocAdmName;
+	}
+
+	public void setEdocAdmName(String edocAdmName) {
+		this.edocAdmName = edocAdmName;
+	}
+
+	public String getEdocAdmWritDate() {
+		return edocAdmWritDate;
+	}
+
+	public void setEdocAdmWritDate(String edocAdmWritDate) {
+		this.edocAdmWritDate = edocAdmWritDate;
+	}
+
+	public int getRowType() {
+		return rowType;
+	}
+
+	public void setRowType(int rowType) {
+		this.rowType = rowType;
+	}
+
+}

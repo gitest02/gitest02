@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="approval">
+
+<resultMap type="approval.lawmapper.vo.ApprovalTotalVO" id="approvalTotalVO">
+	<result property="aprvlineAdmSeq" column="APRVLINE_ADM_SEQ" />
+	<result property="aprvlineAdmUpSeq" column="APRVLINE_ADM_UP_SEQ" />
+	<result property="aprvlineAdmProcCode" column="APRVLINE_ADM_PROC_CODE" />
+	<result property="aprvlineAdmAprvId" column="APRVLINE_ADM_APRV_ID" />
+	<result property="aprvlineAdmAprvDeptId" column="APRVLINE_ADM_APRV_DEPT_ID" />
+	<result property="aprvlineAdmUpAprvcode" column="APRVLINE_ADM_UP_APRVCODE" />    <!-- 체크요망 -->
+	<result property="aprvlineAdmAdWtr" column="APRVLINE_ADM_AD_WTR" />
+	<result property="aprvlineAdmUpId" column="APRVLINE_ADM_UP_ID" />
+	<result property="classCode" column="CLASS_CODE" />
+	<result property="insaName" column="INSA_NAME" />
+	<result property="codeName" column="CODE_NAME" />
+	<result property="codeNo" column="CODE_NO" />
+	<result property="aprvprgrInfoStepCode" column="APRVPRGR_INFO_STEP_CODE" />
+	<result property="aprvprgrInfoBookNo" column="APRVPRGR_INFO_BOOK_NO" />
+	<result property="aprvprgrInfoSeq" column="APRVPRGR_INFO_SEQ" />
+	<result property="aprvprgrInfoUpSeq" column="APRVPRGR_INFOUPSEQ" />
+	<result property="aprvprgrInfoWritSabun" column="APRVPRGR_INFO_WRIT_SABUN" />
+	<result property="aprvprgrInfoWrit" column="APRVPRGR_INFO_WRIT" />
+	<result property="aprvprgrInfoWritDeptCode" column="APRVPRGR_INFO_WRIT_DEPT_CODE" />
+	<result property="aprvprgrInfoWritDeptName" column="APRVPRGR_INFOWRITDEPTNAME" />
+	<result property="aprvprgrInfoWritDate" column="APRVPRGR_INFO_WRIT_DATE" />
+	<result property="aprvprgrInfoWritCont" column="APRVPRGR_INFO_WRIT_CONT" />
+	<result property="aprvprgrInfoWritTit" column="APRVPRGR_INFO_WRIT_TIT" />
+	<result property="aprvInfoSeq" column="APRV_INFO_SEQ" />
+	<result property="aprvInfoSabun" column="APRV_INFO_SABUN" />
+	<result property="aprvInfoName" column="APRV_INFO_NAME" />
+	<result property="aprvInfoName1" column="APRV_INFO_NAME1" />
+	<result property="aprvInfoName2" column="APRV_INFO_NAME2" />
+	<result property="aprvInfoDeptCode" column="APRV_INFO_DEPT_CODE" />
+	<result property="aprvInfoDeptName" column="APRV_INFO_DEPT_NAME" />
+	<result property="aprvInfoDeptName1" column="APRV_INFO_DEPT_NAME1" />
+	<result property="aprvInfoDeptName2" column="APRV_INFO_DEPT_NAME2" />
+	<result property="aprvInfoCondCode" column="APRV_INFO_COND_CODE" />
+	<result property="aprvInfoCondCode1" column="APRV_INFO_COND_CODE1" />
+	<result property="aprvInfoCondCode2" column="APRV_INFO_COND_CODE2" />
+	<result property="aprvInfoProcDate" column="APRV_INFO_PROC_DATE" />
+	<result property="aprvInfoReqDate" column="APRV_INFO_REQ_DATE" />
+	<result property="aprvInfoFinWtr" column="APRV_INFO_FIN_WTR" />
+	<result property="aprvInfoCont" column="APRV_INFO_CONT" />
+	<result property="aprvInfoCont1" column="APRV_INFO_CONT1" />
+	<result property="aprvInfoCont2" column="APRV_INFO_CONT2" />
+	<result property="aprvSucc" column="APRV_SUCC" />
+	<result property="aprvUnde" column="APRV_UNDE" />
+	<result property="aprvReturn" column="APRV_RETURN" />
+	<result property="aprvSum" column="APRV_SUM" />
+</resultMap>
+
+
+ 	<!-- 결제라인 리스트 가져오기 approvalProg --> 
+	<select id="getApprovalPigList" resultMap="approvalTotalVO" parameterType="approval.lawmapper.vo.ApprovalTotalVO">	
+       	SELECT  
+	           T1.APRVLINE_ADM_PROC_CODE    
+	           ,T1.APRVLINE_ADM_SEQ    
+	           ,T1.APRVLINE_ADM_APRV_ID    
+	           ,T1.APRVLINE_ADM_APRV_DEPT_ID    
+	           ,T1.APRVLINE_ADM_UP_APRVCODE    
+	           ,T1.APRVLINE_ADM_UP_SEQ    
+	           ,T1.APRVLINE_ADM_AD_WTR
+	           ,T1.APRVLINE_ADM_UP_ID
+	           ,T2.INSA_NAME
+	           ,T2.INSA_POS_GBN_CODE
+	           ,T3.CODE_NAME
+	           ,T3.CODE_NO CODE_NO
+	           
+        FROM 
+         		PD_LAW.TAB_APRVLINE_ADM T1, PD_LAW.TAB_INSA T2, PD_LAW.CMM_CODE_DETAIL T3	
+        WHERE 	T1.APRVLINE_ADM_APRV_ID=T2.INSA_SABUN					<!-- 결재자ID = 사번 -->
+        AND 	T2.INSA_POS_GBN_CODE=T3.CODE_NO							<!-- T2.직원구분코드 =  T3.상세코드 -->
+        AND		T1.APRVLINE_ADM_PROC_CODE=#{aprvlineAdmProcCode}			<!-- T1.결재진행단계코드 -->
+        AND 	T3.CLASS_CODE=#{classCode}
+        
+		<if test="aprvlineAdmSeq != null">
+      		AND T1.APRVLINE_ADM_SEQ=#{aprvlineAdmSeq}
+      	</if>
+         
+		ORDER BY T1.APRVLINE_ADM_SEQ ASC
+	</select>
+	
+</mapper>

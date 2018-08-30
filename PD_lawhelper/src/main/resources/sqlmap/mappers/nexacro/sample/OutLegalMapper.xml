@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="outLegal">
+
+	<resultMap type="outlegal.lawmapper.vo.OutLegalVO" id="outLegalVO">
+		<result property="legaladvLawAdvReqNo" column="LEGALADV_LAW_ADV_REQ_NO" />
+		<result property="legaladvOpenWtr" column="LEGALADV_OPEN_WTR" />
+		<result property="legaladvReqDeptCode" column="LEGALADV_REQ_DEPT_CODE" />
+		<result property="legaladvReqMgrCode" column="LEGALADV_REQ_MGR_CODE" />
+		<result property="legaladvReqDate" column="LEGALADV_REQ_DATE" />
+		<result property="legaladvAdvTit" column="LEGALADV_ADV_TIT" />
+		<result property="legaladvFactRela" column="LEGALADV_FACT_RELA" />
+		<result property="legaladvQuesIssu" column="LEGALADV_QUES_ISSU" />
+		<result property="legaladvEtc" column="LEGALADV_ETC" />
+		<result property="legaladvLawAdvCode" column="LEGALADV_LAW_ADV_CODE" />
+		<result property="legaladvOutReqWtr" column="LEGALADV_OUT_REQ_WTR" />
+		<result property="legaladvReviDay" column="LEGALADV_REVI_DAY" />
+		<result property="legaladvRepDeptCode" column="LEGALADV_REP_DEPT_CODE" />
+		<result property="legaladvRepMgrCode" column="LEGALADV_REP_MGR_CODE" />
+		<result property="legaladvRepDate" column="LEGALADV_REP_DATE" />
+		<result property="legaladvRepCont" column="LEGALADV_REP_CONT" />
+		<result property="legaladvRepTit" column="LEGALADV_REP_TIT" />
+		<result property="legaladvRepWtr" column="LEGALADV_REP_WTR" />
+		<result property="legaladvRepWtrName" column="LEGALADV_REP_WTR_NAME" />
+		<result property="legaladvEtcRepPoin" column="LEGALADV_ETC_REP_POIN" />
+		<result property="legaladvOutReqTit" column="LEGALADV_OUT_REQ_TIT" />
+		<result property="legaladvOutReqLyrid" column="LEGALADV_OUT_REQ_LYRID" />
+		<result property="legaladvOutReqRepdate" column="LEGALADV_OUT_REQ_REPDATE" />
+		<result property="legaladvOutReqDate" column="LEGALADV_OUT_REQ_DATE" />
+		<result property="legaladvOutReqFact" column="LEGALADV_OUT_REQ_FACT" />
+		<result property="legaladvOutReqQues" column="LEGALADV_OUT_REQ_QUES" />
+		<result property="legaladvOutReqReq" column="LEGALADV_OUT_REQ_REQ" />
+		<result property="legaladvLawAdvName" column="LEGALADV_LAW_ADV_NAME" />
+		<result property="reqMgrName" column="REQ_MGR_NAME" />
+		<result property="repMgrName" column="REP_MGR_NAME" />
+		<result property="codeNo" column="CODE_NO" />
+		<result property="codeName" column="CODE_NAME" /> 
+
+		<result property="legaladvCostLawadvReqno" column="LEGALADV_COST_LAWADV_REQNO" />
+		<result property="legaladvCostLawadvSeq" column="LEGALADV_COST_LAWADV_SEQ" />
+		<result property="legaladvCostReqCost" column="LEGALADV_COST_REQ_COST" />
+		<result property="legaladvCostStax" column="LEGALADV_COST_STAX" />
+		<result property="legaladvCostClamsumChg" column="LEGALADV_COST_CLAMSUM_CHG" />
+		<result property="legaladvCostRepCont" column="LEGALADV_COST_REP_CONT" />
+	
+	</resultMap>
+	
+	<select id="outList" parameterType="outlegal.lawmapper.vo.OutLegalVO" resultMap="outLegalVO">
+		SELECT 
+			LEGALADV_LAW_ADV_REQ_NO
+			,LEGALADV_OPEN_WTR
+			,LEGALADV_REQ_DEPT_CODE
+			,LEGALADV_REQ_MGR_CODE
+			,LEGALADV_REQ_DATE
+			,LEGALADV_ADV_TIT
+			,LEGALADV_FACT_RELA
+			,LEGALADV_QUES_ISSU
+			,LEGALADV_ETC
+			,LEGALADV_LAW_ADV_CODE
+			,C1.CODE_NAME AS LEGALADV_LAW_ADV_NAME
+			,LEGALADV_OUT_REQ_WTR
+			,LEGALADV_REVI_DAY
+			,LEGALADV_REP_DEPT_CODE
+			,LEGALADV_REP_MGR_CODE
+			,LEGALADV_REP_DATE
+			,LEGALADV_REP_CONT
+			,LEGALADV_REP_TIT
+			,LEGALADV_REP_WTR
+			,DECODE(LEGALADV_REP_WTR, 'Y', '회신', '미회신') AS LEGALADV_REP_WTR_NAME
+			,LEGALADV_ETC_REP_POIN
+			,LEGALADV_OUT_REQ_TIT
+			,LEGALADV_OUT_REQ_LYRID
+			,LEGALADV_OUT_REQ_REPDATE
+			,LEGALADV_OUT_REQ_DATE
+			,LEGALADV_OUT_REQ_FACT
+			,LEGALADV_OUT_REQ_QUES
+			,LEGALADV_OUT_REQ_REQ
+			,(
+				SELECT INSA_NAME
+				FROM PD_LAW.TAB_INSA
+				WHERE INSA_SABUN = T1.LEGALADV_REQ_MGR_CODE
+			) REQ_MGR_NAME
+			,(
+				SELECT INSA_NAME
+				FROM PD_LAW.TAB_INSA
+				WHERE INSA_SABUN = T1.LEGALADV_REP_MGR_CODE
+			) REP_MGR_NAME
+		FROM PD_LAW.TAB_LEGALADV T1, PD_LAW.CMM_CODE_DETAIL C1
+		WHERE 
+			T1.LEGALADV_LAW_ADV_CODE = C1.CODE_NO
+			AND LEGALADV_OUT_REQ_LYRID = #{legaladvOutReqLyrid}
+		<if test="legaladvLawAdvReqNo != null">
+			AND T1.LEGALADV_LAW_ADV_REQ_NO like '%' ||
+			#{legaladvLawAdvReqNo} || '%'
+		</if>
+		<if test="legaladvReqDate1 != null">
+			AND T1.LEGALADV_REQ_DATE <![CDATA[>=]]>
+			#{legaladvReqDate1}
+		</if>
+		<if test="legaladvReqDate2 != null">
+			AND T1.LEGALADV_REQ_DATE <![CDATA[<=]]>
+			#{legaladvReqDate2}
+		</if>
+		<if test="legaladvLawAdvCode != 'O00' and legaladvLawAdvCode != null">
+			AND T1.LEGALADV_LAW_ADV_CODE = #{legaladvLawAdvCode}
+		</if>
+		<if test="legaladvRepWtr != 'ALL' and legaladvRepWtr != null">
+			AND T1.LEGALADV_REP_WTR = #{legaladvRepWtr}
+		</if>
+		ORDER BY LEGALADV_LAW_ADV_REQ_NO DESC
+	</select>
+	
+	<select id="comboList" parameterType="outlegal.lawmapper.vo.OutLegalVO" resultMap="outLegalVO">
+		SELECT CODE_NO, CODE_NAME 
+		FROM PD_LAW.CMM_CODE_DETAIL 
+		WHERE CLASS_CODE = 'O01'
+	</select>
+	
+	<select id="costList" parameterType="outlegal.lawmapper.vo.OutLegalVO" resultMap="outLegalVO">
+		SELECT 
+			LEGALADV_COST_LAWADV_REQNO,
+			LEGALADV_COST_LAWADV_SEQ,
+			LEGALADV_COST_REQ_COST,
+			LEGALADV_COST_STAX,
+			LEGALADV_COST_CLAMSUM_CHG,
+			LEGALADV_COST_REP_CONT
+		FROM 
+			PD_LAW.TAB_LEGALADV_COST
+		<if test="legaladvCostLawadvReqno != null">			
+		WHERE
+			LEGALADV_COST_LAWADV_REQNO = #{legaladvCostLawadvReqno}
+		</if>
+		ORDER BY
+			LEGALADV_COST_LAWADV_REQNO, LEGALADV_COST_LAWADV_SEQ ASC	
+	</select>
+	
+	<insert id="costInsert" parameterType="outlegal.lawmapper.vo.OutLegalVO">
+		<selectKey resultType="int" keyProperty="legaladvCostLawadvSeq" order="BEFORE">
+			SELECT	DECODE(COUNT(*), 0,'1',MAX(LEGALADV_COST_LAWADV_SEQ)+1) 
+			FROM PD_LAW.TAB_LEGALADV_COST
+		</selectKey>
+		INSERT	INTO  PD_LAW.TAB_LEGALADV_COST (
+			 	LEGALADV_COST_LAWADV_REQNO  
+			 	,LEGALADV_COST_LAWADV_SEQ
+				,LEGALADV_COST_REQ_COST
+				,LEGALADV_COST_STAX
+				,LEGALADV_COST_CLAMSUM_CHG
+				,LEGALADV_COST_REP_CONT
+		) VALUES (
+			 	#{legaladvCostLawadvReqno}
+			  	,#{legaladvCostLawadvSeq}
+				,#{legaladvCostReqCost}
+				,#{legaladvCostStax}
+				,#{legaladvCostClamsumChg}
+				,#{legaladvCostRepCont}
+		)  
+	</insert>
+
+
+	<update id="outUpdate" parameterType="outlegal.lawmapper.vo.OutLegalVO">
+		UPDATE 
+			PD_LAW.TAB_LEGALADV
+		SET 
+			LEGALADV_REP_DEPT_CODE = #{legaladvRepDeptCode}
+			,LEGALADV_REP_MGR_CODE = #{legaladvRepMgrCode}
+			<if test='legaladvRepWtr != "N"'>
+				,LEGALADV_REP_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')
+			</if>
+			,LEGALADV_REP_CONT = #{legaladvRepCont}
+			,LEGALADV_REP_TIT = #{legaladvRepTit}
+			,LEGALADV_REP_WTR = #{legaladvRepWtr}
+			,LEGALADV_REVI_DAY = TO_CHAR(SYSDATE, 'YYYYMMDD')
+			,LEGALADV_ETC_REP_POIN = #{legaladvEtcRepPoin}
+		WHERE 
+			LEGALADV_LAW_ADV_REQ_NO = #{legaladvLawAdvReqNo}
+	</update>
+
+	<update id="costUpdate" parameterType="outlegal.lawmapper.vo.OutLegalVO">
+		UPDATE
+			PD_LAW.TAB_LEGALADV_COST
+		SET
+			LEGALADV_COST_REQ_COST = #{legaladvCostReqCost}
+			,LEGALADV_COST_STAX = #{legaladvCostStax}
+			,LEGALADV_COST_CLAMSUM_CHG = #{legaladvCostClamsumChg}
+			,LEGALADV_COST_REP_CONT = #{legaladvCostRepCont}
+		WHERE 
+			LEGALADV_COST_LAWADV_REQNO = #{legaladvCostLawadvReqno}
+			AND LEGALADV_COST_LAWADV_SEQ = #{legaladvCostLawadvSeq}
+	</update>
+	
+	<delete id="costDelete" parameterType="outlegal.lawmapper.vo.OutLegalVO">
+		DELETE FROM
+			PD_LAW.TAB_LEGALADV_COST
+		WHERE
+			LEGALADV_COST_LAWADV_REQNO = #{legaladvCostLawadvReqno}		
+			AND LEGALADV_COST_LAWADV_SEQ = #{legaladvCostLawadvSeq}		
+	</delete>
+    
+</mapper>

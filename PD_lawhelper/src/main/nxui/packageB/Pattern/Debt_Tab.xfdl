@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Debt_Tab" classname="Debt_Tab" left="0" top="0" width="1000" height="600" titletext="New Form" style="color:black;font:9 arial;" onload="Debt_Tab_onload">
+    <Layouts>
+      <Layout>
+        <Div id="divWrapper" taborder="0%" left="0%" top="0%" right="0%" bottom="0%">
+          <Layouts>
+            <Layout>
+              <Tab id="Tab0" taborder="0" left="1%" top="3%" right="1%" tabindex="0" scrollbars="autoboth" bottom="3%">
+                <Tabpages>
+                  <Tabpage id="tabpage1" text="상세정보">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static00" taborder="0" text="채무자번호" left="1.84%" top="3.15%" right="89.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static01" taborder="1" text="영문이름" left="1.84%" top="7.78%" right="89.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static02" taborder="2" text="*우편번호" left="1.84%" top="12.22%" right="89.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static03" taborder="3" text="총채무금액" left="1.84%" top="16.67%" right="89.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static04" taborder="4" text="채무자구분" left="1.84%" top="21.11%" right="89.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static05" taborder="5" text="비고" left="1.84%" top="25.56%" right="89.78%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" bottom="58.66%"/>
+                        <Static id="Static06" taborder="6" text="*이름" left="28.83%" top="3.15%" right="62.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static07" taborder="7" text="전화번호" left="28.83%" top="7.78%" right="62.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static08" taborder="8" text="*주소" left="28.83%" top="12.22%" right="62.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static09" taborder="9" text="총상환금액" left="28.83%" top="16.67%" right="62.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static10" taborder="10" text="주민번호" left="28.83%" top="21.11%" right="62.78%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static12" taborder="12" text="담당자" left="55.83%" top="3.15%" right="35.69%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static13" taborder="13" text="*폰번호" left="55.83%" top="7.78%" right="35.69%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static15" taborder="15" text="상태" left="55.83%" top="16.67%" right="35.69%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static16" taborder="16" text="시작일" left="55.83%" top="21.11%" right="35.69%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static18" taborder="18" left="10.12%" top="3.15%" right="71.17%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static19" taborder="19" left="10.12%" top="7.78%" right="71.17%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static20" taborder="20" left="10.12%" top="12.22%" right="71.17%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static21" taborder="21" left="10.12%" top="16.67%" right="71.17%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:black;padding:0 10 0 0;align:right middle;" text="원"/>
+                        <Static id="Static22" taborder="22" left="10.12%" top="21.11%" right="71.17%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static23" taborder="23" left="36.91%" top="3.15%" right="43.87%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static24" taborder="24" left="36.91%" top="7.78%" right="43.87%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static26" taborder="26" left="36.91%" top="16.67%" right="43.87%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:black;padding:0 10 0 0;align:right middle;" text="원"/>
+                        <Static id="Static27" taborder="27" left="64.31%" top="3.15%" right="14.21%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <ImageViewer id="Image0" taborder="28" text="ImageViewer00" left="85.79%" top="3.15%" right="1.84%" height="30%"/>
+                        <Static id="Static11" taborder="29" left="10.12%" top="25.56%" right="14.21%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;" bottom="58.66%"/>
+                        <Static id="Static14" taborder="30" left="85.79%" top="32.59%" right="1.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;" bottom="58.66%"/>
+                        <Static id="Static17" taborder="31" text="첨부파일" left="87.73%" top="34.44%" right="3.89%" height="4.81%" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;"/>
+                        <Static id="Static28" taborder="32" left="64.31%" top="7.78%" right="14.21%" height="4.63%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static29" taborder="33" left="64.31%" top="16.67%" right="14.21%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Static id="Static30" taborder="34" left="64.31%" top="21.11%" right="14.21%" height="4.63%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <TextArea id="TextArea00" taborder="35" left="10.43%" top="26.3%" right="14.62%" height="14.07%" scrollbars="fixedvert"/>
+                        <Static id="Static31" taborder="36" left="36.91%" top="21.11%" right="43.87%" height="4.63%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Button id="btn_Reset" taborder="37" text="초기화" left="82%" top="42.78%" right="13.6%" height="3.89%" onclick="btn_Reset_onclick"/>
+                        <Button id="Button01" taborder="38" text="수정" left="87.73%" top="42.78%" right="7.87%" height="3.89%"/>
+                        <Button id="btn_DebtList" taborder="39" text="목록" left="93.46%" top="42.78%" right="2.15%" height="3.89%" onclick="btn_DebtList_onclick"/>
+                        <Button id="btn_excel" taborder="40" text="엑셀" left="93.46%" top="48.7%" right="2.15%" height="3.89%" onclick="btn_excel_onclick"/>
+                        <Static id="Static32" taborder="41" text="채무자 개인정보 변경이력" left="1.74%" top="49.26%" right="78.22%" height="3.89%" style="font:bold 9 굴림;"/>
+                        <Static id="Static25" taborder="42" left="36.91%" top="12.22%" right="14.21%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;"/>
+                        <Edit id="Edit00" taborder="43" left="37.22%" top="3.7%" right="44.27%" height="3.33%"/>
+                        <Edit id="edt_enName" taborder="44" left="10.43%" top="8.33%" right="71.68%" height="3.33%"/>
+                        <Button id="btn_Tab1Zip" taborder="45" text="검색" left="24.74%" top="13.15%" right="71.68%" height="2.96%" onclick="btn_Tab1Zip_onclick"/>
+                        <Edit id="edt_zipCode" taborder="46" left="10.43%" top="12.78%" right="75.77%" height="3.33%"/>
+                        <Edit id="edt_Tab1MgrNo" taborder="47" left="65.13%" top="3.7%" right="14.83%" height="3.33%" oneditclick="edt_Tab1MgrNo_oneditclick"/>
+                        <Edit id="Edit04" taborder="48" left="37.32%" top="12.96%" right="29.04%" height="3.33%"/>
+                        <Edit id="Edit05" taborder="49" left="70.86%" top="12.96%" right="14.83%" height="3.33%"/>
+                        <Combo id="Combo00" taborder="50" left="65.13%" top="17.41%" right="14.83%" height="3.15%" innerdataset="@ds_status" codecolumn="codeNo" datacolumn="codeName"/>
+                        <MaskEdit id="mEdt_debTot" taborder="51" left="10.43%" top="17.22%" right="74.34%" height="3.33%"/>
+                        <MaskEdit id="MaskEdit01" taborder="52" left="37.32%" top="8.52%" right="44.27%" height="3.33%"/>
+                        <MaskEdit id="MaskEdit02" taborder="53" left="65.13%" top="8.33%" right="14.93%" height="3.33%"/>
+                        <MaskEdit id="MaskEdit03" taborder="54" left="37.32%" top="17.41%" right="47.44%" height="3.33%"/>
+                        <MaskEdit id="MaskEdit04" taborder="55" left="37.22%" top="21.85%" right="44.27%" height="3.33%"/>
+                        <Grid id="Grid00" taborder="2" useinputpanel="false" left="1.84%" top="54.83%" right="1.84%" scrollbars="autoboth" bottom="5%" binddataset="ds_detail" autofittype="col">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell text="No."/>
+                                <Cell col="1" text="일련번호"/>
+                                <Cell col="2" text="이름"/>
+                                <Cell col="3" text="전화번호"/>
+                                <Cell col="4" text="휴대폰번호"/>
+                                <Cell col="5" text="우편번호"/>
+                                <Cell col="6" text="입력자"/>
+                                <Cell col="7" text="담당자"/>
+                                <Cell col="8" text="일시"/>
+                                <Cell col="9" text="구분(주민,법인..)번호"/>
+                                <Cell col="10" text="영문이름"/>
+                                <Cell col="11" text="주소"/>
+                                <Cell col="12" text="비고"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell expr="currow+1"/>
+                                <Cell col="1" text="bind:debtorHistorySeq"/>
+                                <Cell col="2" text="bind:debtorHistoryName"/>
+                                <Cell col="3" text="bind:debtorHistoryTel"/>
+                                <Cell col="4" text="bind:debtorHistoryPhone"/>
+                                <Cell col="5" text="bind:debtorHistoryZipcode"/>
+                                <Cell col="6" text="bind:debtorHistoryInput"/>
+                                <Cell col="7" text="bind:debtoryHistoryMgrNum"/>
+                                <Cell col="8" text="bind:debtorHistoryRegistDate"/>
+                                <Cell col="9" text="bind:debtorHistoryGooboon"/>
+                                <Cell col="10" text="bind:debtorHistoryEnName"/>
+                                <Cell col="11" expr="debtorHistoryAddress1.text+debtorHistoryAddress2.text"/>
+                                <Cell col="12" text="bind:debtorHistoryEtc"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                        <Edit id="edt_inputno" taborder="56" left="2.04%" top="37.24%" right="83.64%" height="3.35%" visible="false"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="tabpage2" text="재산관리">
+                    <Layouts>
+                      <Layout>
+                        <Grid id="grd_regularList" taborder="0" useinputpanel="false" left="1%" top="9%" right="1%" height="38.15%" scrollbars="fixedhorz" binddataset="ds_property" oncellclick="grd_regularList_oncellclick" oncelldblclick="grd_regularList_oncelldblclick" autofittype="col">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell text="No."/>
+                                <Cell col="1" text="조사번호"/>
+                                <Cell col="2" text="조사일자"/>
+                                <Cell col="3" text="재산구분"/>
+                                <Cell col="4" text="공시가(원)"/>
+                                <Cell col="5" text="예상가(원)"/>
+                                <Cell col="6" text="입력일시"/>
+                                <Cell col="7" text="재산상황"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell expr="currow+1"/>
+                                <Cell col="1" text="bind:propertyNo"/>
+                                <Cell col="2" text="bind:propertyCheckDate"/>
+                                <Cell col="3" text="bind:propertyCode"/>
+                                <Cell col="4" text="bind:propertyDisclosuer"/>
+                                <Cell col="5" text="bind:propertyExpectation"/>
+                                <Cell col="6" text="bind:propertyRegistDate"/>
+                                <Cell col="7" text="bind:propertyStatus"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                        <Static id="Static00" taborder="1" text="재산조사이력" left="1.43%" top="4.26%" right="85.38%" height="4.26%" style="font:bold 9 굴림;"/>
+                        <Button id="Button00" taborder="2" text="엑셀" left="87.63%" top="3.15%" right="7.46%" height="4.44%"/>
+                        <Button id="btn_DebtList" taborder="3" text="목록" left="93.76%" top="3.15%" right="1.33%" height="4.44%" onclick="btn_DebtList_onclick"/>
+                        <Static id="Static02" taborder="16" text="채무자번호" left="1.5%" top="56.67%" right="88.04%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static03" taborder="17" left="11.96%" top="56.67%" right="66.77%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static04" taborder="18" text="이름" left="33.23%" top="56.67%" right="56.65%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static05" taborder="19" left="43.05%" top="56.67%" right="33.44%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static07" taborder="20" text="담당자" left="66.46%" top="56.67%" right="23.42%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static09" taborder="21" left="76.48%" top="56.67%" right="1.5%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static13" taborder="28" text="*재산구분" left="1.5%" top="61.11%" right="88.04%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static14" taborder="29" left="11.96%" top="61.11%" right="66.77%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static15" taborder="30" text="*공시시가" left="33.23%" top="61.11%" right="56.65%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static16" taborder="31" left="43.05%" top="61.11%" right="33.44%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:black;padding:0 10 0 0;align:right middle;font:bold 9 굴림;" text="원"/>
+                        <Static id="Static17" taborder="32" text="*예상시가" left="66.46%" top="61.11%" right="23.42%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static18" taborder="33" left="76.48%" top="61.11%" right="1.5%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:black;padding:0 10 0 0;align:right middle;font:bold 9 굴림;" text="원"/>
+                        <Static id="Static19" taborder="34" text="*조사일자" left="1.5%" top="65.56%" right="88.04%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static20" taborder="35" left="11.96%" top="65.56%" right="1.53%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" bottom="9.7%"/>
+                        <Static id="Static25" taborder="40" text="재산상황" left="1.5%" top="70%" right="88.04%" height="4.81%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static31" taborder="46" text="2000 byte" left="1.53%" top="74.44%" right="88.04%" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:black;align:center middle;font:9 굴림;" onclick="Tab00_tabpage2_Static31_onclick" bottom="9.7%"/>
+                        <Button id="Button02" taborder="47" text="삭제" left="93.87%" top="93.15%" right="1.94%" height="4.26%"/>
+                        <Combo id="com_Div" taborder="48" left="12.17%" top="61.48%" right="67.08%" height="3.52%" innerdataset="@ds_codeProperty" codecolumn="codeName" datacolumn="codeName" onitemchanged="com_Div_onitemchanged"/>
+                        <TextArea id="TextArea00" taborder="50" left="12.17%" top="70.37%" right="2.04%" height="19.26%"/>
+                        <MaskEdit id="MaskEdit00" taborder="51" left="43.35%" top="61.45%" right="36.91%" height="3.54%"/>
+                        <MaskEdit id="MaskEdit01" taborder="52" left="76.79%" top="61.48%" right="4.6%" height="3.52%"/>
+                        <Calendar id="Calendar00" taborder="53" left="12.17%" top="66.11%" right="67.08%" height="3.72%"/>
+                        <Button id="btn_Reset" taborder="53" text="신규" left="79.45%" top="48.6%" right="16.46%" height="3.72%" onclick="tabpage2_btn_Reset_onclick"/>
+                        <Button id="btn_Cancel" taborder="54" text="취소" left="84.36%" top="48.6%" right="11.55%" height="3.72%" onclick="tabpage2_btn_Cancel_onclick"/>
+                        <Button id="Button05" taborder="55" text="초기화" left="89.26%" top="48.6%" right="6.65%" height="3.72%"/>
+                        <Button id="Button06" taborder="56" text="저장" left="94.17%" top="48.6%" right="1.74%" height="3.72%"/>
+                        <Edit id="edt_inputno" taborder="57" left="1.43%" top="91.62%" right="85.28%" height="3.54%" visible="false"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="tabpage3" text="가족관리">
+                    <Layouts>
+                      <Layout>
+                        <Grid id="Grid00" taborder="0" useinputpanel="false" left="1%" top="9%" right="1%" height="38.15%" scrollbars="fixedhorz" binddataset="ds_family" autofittype="col">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell text="No."/>
+                                <Cell col="1" text="이름"/>
+                                <Cell col="2" text="관계"/>
+                                <Cell col="3" text="일련번호"/>
+                                <Cell col="4" text="주민번호"/>
+                                <Cell col="5" text="전화번호"/>
+                                <Cell col="6" text="휴대폰번호"/>
+                                <Cell col="7" text="우편번호"/>
+                                <Cell col="8" text="주소"/>
+                                <Cell col="9" text="비고"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell expr="currow+1"/>
+                                <Cell col="1" text="bind:familyName"/>
+                                <Cell col="2" text="bind:familyRelCode"/>
+                                <Cell col="3" text="bind:familySeq"/>
+                                <Cell col="4" text="bind:familyJuminNum"/>
+                                <Cell col="5" text="bind:familyTel"/>
+                                <Cell col="6" text="bind:familyPhone"/>
+                                <Cell col="7" text="bind:familyZipcode"/>
+                                <Cell col="8" expr="familyAddress1.text+familyAddress2.text"/>
+                                <Cell col="9" text="bind:familyEtc"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                        <Static id="Static00" taborder="1" text="가족사항" left="1.43%" top="4.26%" right="85.38%" height="4.26%" style="font:bold 9 굴림;"/>
+                        <Button id="Button00" taborder="2" text="엑셀" left="87.63%" top="3.15%" right="7.46%" height="4.44%"/>
+                        <Button id="btn_DebtList" taborder="3" text="목록" left="93.76%" top="3.15%" right="1.33%" height="4.44%" onclick="btn_DebtList_onclick"/>
+                        <Static id="Static02" taborder="16" text="채무자번호" left="1.53%" top="62.57%" right="88.04%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static03" taborder="17" left="11.96%" top="62.57%" right="66.77%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static04" taborder="18" text="채무자이름" left="33.23%" top="62.57%" right="56.65%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static05" taborder="19" left="43.05%" top="62.57%" right="33.44%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static07" taborder="20" text="담당자" left="66.46%" top="62.57%" right="23.42%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static09" taborder="21" left="76.48%" top="62.57%" right="1.53%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static13" taborder="28" text="*가족관계" left="1.53%" top="67.04%" right="88.04%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static14" taborder="29" left="11.96%" top="67.04%" right="66.77%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static15" taborder="30" text="*이름" left="33.23%" top="67.04%" right="56.65%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static16" taborder="31" left="43.05%" top="67.04%" right="1.53%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:black;padding:0 10 0 0;align:right middle;font:bold 9 굴림;"/>
+                        <Static id="Static19" taborder="34" text="우편번호" left="1.53%" top="71.51%" right="88.04%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static20" taborder="35" left="11.96%" top="71.51%" right="66.77%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static25" taborder="40" text="주민번호" left="1.53%" top="75.98%" right="88.04%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static31" taborder="46" text="비고" left="1.53%" top="80.45%" right="88.04%" height="15.83%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" onclick="Tab00_tabpage2_Static31_onclick"/>
+                        <Button id="Button02" taborder="47" text="삭제" left="94.07%" top="57.36%" right="1.74%" height="4.28%"/>
+                        <Combo id="Combo00" taborder="48" left="12.17%" top="67.41%" right="67.08%" height="3.54%" innerdataset="@ds_codeFamily" codecolumn="codeName" datacolumn="codeName"/>
+                        <MaskEdit id="MaskEdit00" taborder="51" left="43.25%" top="67.41%" right="37.01%" height="3.54%"/>
+                        <Button id="Button03" taborder="53" text="신규" left="79.45%" top="48.6%" right="16.46%" height="3.72%" onclick="Tab00_tabpage3_Button03_onclick"/>
+                        <Button id="btn_Cancel" taborder="54" text="취소" left="84.36%" top="48.6%" right="11.55%" height="3.72%" onclick="tabpage3_btn_Cancel_onclick"/>
+                        <Button id="Button05" taborder="55" text="초기화" left="89.26%" top="48.6%" right="6.65%" height="3.72%"/>
+                        <Button id="Button06" taborder="56" text="저장" left="94.17%" top="48.6%" right="1.74%" height="3.72%"/>
+                        <Static id="Static01" taborder="57" text="주소" left="33.23%" top="71.51%" right="56.65%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static06" taborder="58" left="43.05%" top="71.51%" right="1.53%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;" onclick="Tab00_tabpage3_Static06_onclick"/>
+                        <Static id="Static08" taborder="59" left="11.96%" top="75.98%" right="66.77%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static10" taborder="60" text="전화번호" left="33.23%" top="75.98%" right="56.65%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static11" taborder="61" left="43.05%" top="75.98%" right="33.44%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static12" taborder="62" left="76.48%" top="75.98%" right="1.53%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static17" taborder="63" text="폰번호" left="66.46%" top="75.98%" right="23.42%" height="4.84%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <Static id="Static18" taborder="64" onclick="Tab00_tabpage2_Static31_onclick" left="11.96%" top="80.45%" right="1.53%" height="15.83%" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center middle;font:bold 9 굴림;"/>
+                        <MaskEdit id="MaskEdit01" taborder="65" left="43.25%" top="72.07%" right="20.86%" height="3.54%"/>
+                        <MaskEdit id="MaskEdit02" taborder="66" left="79.04%" top="72.07%" right="2.04%" height="3.54%"/>
+                        <MaskEdit id="MaskEdit03" taborder="67" left="12.17%" top="72.07%" right="72.9%" height="3.54%"/>
+                        <MaskEdit id="MaskEdit04" taborder="68" left="12.17%" top="76.35%" right="67.08%" height="3.72%"/>
+                        <MaskEdit id="MaskEdit05" taborder="69" left="43.25%" top="76.35%" right="33.95%" height="3.72%"/>
+                        <MaskEdit id="MaskEdit06" taborder="70" left="76.79%" top="76.35%" right="2.04%" height="3.72%"/>
+                        <Button id="Button07" taborder="71" text="검색" left="27.3%" top="72.25%" right="67.18%" height="3.17%"/>
+                        <TextArea id="TextArea00" taborder="72" left="12.17%" top="81.19%" right="2.15%" height="14.34%"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+              <Static id="Static00" taborder="1" text="* 는 필수 입력 항목입니다." left="76.4%" top="7" right="3.2%" height="29" style="font:bold 12 arial;"/>
+              <FileUpload id="FIle0" taborder="2" retry="0" index="0" left="65.6%" top="10" right="24.3%" height="23" visible="false" style="buttontext:파일;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_detail">
+        <ColumnInfo>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="debtorHistorySeq" type="STRING" size="256"/>
+          <Column id="debtorHistoryTel" type="STRING" size="256"/>
+          <Column id="debtorHistoryPhone" type="STRING" size="256"/>
+          <Column id="debtorHistoryZipcode" type="STRING" size="256"/>
+          <Column id="debtorHistoryAddress1" type="STRING" size="256"/>
+          <Column id="debtorHistoryAddress2" type="STRING" size="256"/>
+          <Column id="debtorHistoryRegistDate" type="STRING" size="256"/>
+          <Column id="debtorHistoryInput" type="STRING" size="256"/>
+          <Column id="debtoryHistoryMgrNum" type="STRING" size="256"/>
+          <Column id="inputName" type="STRING" size="256"/>
+          <Column id="mgrName" type="STRING" size="256"/>
+          <Column id="debtorHistoryName" type="STRING" size="256"/>
+          <Column id="debtorHistoryEnName" type="STRING" size="256"/>
+          <Column id="debtorHistoryGooboon" type="STRING" size="256"/>
+          <Column id="debtorHistoryEtc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_debtor">
+        <ColumnInfo>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="debtorListCode" type="STRING" size="256"/>
+          <Column id="debtorListName" type="STRING" size="256"/>
+          <Column id="debtorListGooboon" type="STRING" size="256"/>
+          <Column id="debtorListEngname" type="STRING" size="256"/>
+          <Column id="debtorListTel" type="STRING" size="256"/>
+          <Column id="debtorListPhone" type="STRING" size="256"/>
+          <Column id="debtorListPostal" type="STRING" size="256"/>
+          <Column id="debtorListAddress1" type="STRING" size="256"/>
+          <Column id="debtorListAddress2" type="STRING" size="256"/>
+          <Column id="debtorListOwance" type="STRING" size="256"/>
+          <Column id="debtorListRepay" type="STRING" size="256"/>
+          <Column id="debtorListStatus" type="STRING" size="256"/>
+          <Column id="debtorListEnddate" type="STRING" size="256"/>
+          <Column id="debtorListMgrNum" type="STRING" size="256"/>
+          <Column id="debtorListRegistDate" type="STRING" size="256"/>
+          <Column id="debtorListInput" type="STRING" size="256"/>
+          <Column id="debtorListEtc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_property">
+        <ColumnInfo>
+          <Column id="propertyNo" type="STRING" size="256"/>
+          <Column id="debtorlistNo" type="STRING" size="256"/>
+          <Column id="propertyCheckDate" type="STRING" size="256"/>
+          <Column id="propertyCode" type="STRING" size="256"/>
+          <Column id="propertyDisclosuer" type="STRING" size="256"/>
+          <Column id="propertyExpectation" type="STRING" size="256"/>
+          <Column id="propertyStatus" type="STRING" size="256"/>
+          <Column id="propertyRegistDate" type="STRING" size="256"/>
+          <Column id="propertyInput" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeProperty">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_family">
+        <ColumnInfo>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="familySeq" type="STRING" size="256"/>
+          <Column id="familyJuminNum" type="STRING" size="256"/>
+          <Column id="familyRelCode" type="STRING" size="256"/>
+          <Column id="familyTel" type="STRING" size="256"/>
+          <Column id="familyPhone" type="STRING" size="256"/>
+          <Column id="familyZipcode" type="STRING" size="256"/>
+          <Column id="familyAddress1" type="STRING" size="256"/>
+          <Column id="familyAddress2" type="STRING" size="256"/>
+          <Column id="familyEtc" type="STRING" size="256"/>
+          <Column id="familyName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeFamily">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_file">
+        <ColumnInfo>
+          <Column id="addfilecode" type="STRING" size="256"/>
+          <Column id="addFileRelNum" type="STRING" size="256"/>
+          <Column id="addFileSerFileName" type="STRING" size="256"/>
+          <Column id="addFileSize" type="STRING" size="256"/>
+          <Column id="addFileDel" type="STRING" size="256"/>
+          <Column id="addFileSerPath" type="STRING" size="256"/>
+          <Column id="addFileChanDate" type="STRING" size="256"/>
+          <Column id="addFileRegDate" type="STRING" size="256"/>
+          <Column id="addFilePcFile" type="STRING" size="256"/>
+          <Column id="addFilePcFileExt" type="STRING" size="256"/>
+          <Column id="addFileDownCount" type="STRING" size="256"/>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="addFileCheck" type="STRING" size="256"/>
+          <Column id="imgFile" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_status">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_name">
+        <ColumnInfo>
+          <Column id="inputName" type="STRING" size="256"/>
+          <Column id="mgrName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dummy"/>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="aprvprgrInfoStepCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoBookNo" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoUpSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritSabun" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWrit" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptName" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDate" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritCont" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritTit" type="STRING" size="256"/>
+          <Column id="aprvInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvInfoSabun" type="STRING" size="256"/>
+          <Column id="aprvInfoName" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptCode" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptName" type="STRING" size="256"/>
+          <Column id="aprvInfoCondCode" type="STRING" size="256"/>
+          <Column id="aprvInfoProcDate" type="STRING" size="256"/>
+          <Column id="aprvInfoReqDate" type="STRING" size="256"/>
+          <Column id="aprvInfoFinWtr" type="STRING" size="256"/>
+          <Column id="aprvInfoCont" type="STRING" size="256"/>
+          <Column id="aprvInfoCont2" type="STRING" size="256"/>
+          <Column id="aprvInfoCont3" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="divWrapper.Tab0.tabpage1.Static18" propid="text" datasetid="ds_debtor" columnid="debtorListNo"/>
+      <BindItem id="item1" compid="divWrapper.Tab0.tabpage1.Edit00" propid="value" datasetid="ds_debtor" columnid="debtorListName"/>
+      <BindItem id="item2" compid="divWrapper.Tab0.tabpage1.edt_enName" propid="value" datasetid="ds_debtor" columnid="debtorListEngname"/>
+      <BindItem id="item3" compid="divWrapper.Tab0.tabpage1.MaskEdit01" propid="value" datasetid="ds_debtor" columnid="debtorListTel"/>
+      <BindItem id="item4" compid="divWrapper.Tab0.tabpage1.MaskEdit02" propid="value" datasetid="ds_debtor" columnid="debtorListPhone"/>
+      <BindItem id="item5" compid="divWrapper.Tab0.tabpage1.edt_zipCode" propid="value" datasetid="ds_debtor" columnid="debtorListPostal"/>
+      <BindItem id="item6" compid="divWrapper.Tab0.tabpage1.Edit04" propid="value" datasetid="ds_debtor" columnid="debtorListAddress1"/>
+      <BindItem id="item7" compid="divWrapper.Tab0.tabpage1.Edit05" propid="value" datasetid="ds_debtor" columnid="debtorListAddress2"/>
+      <BindItem id="item8" compid="divWrapper.Tab0.tabpage1.mEdt_debTot" propid="value" datasetid="ds_debtor" columnid="debtorListOwance"/>
+      <BindItem id="item9" compid="divWrapper.Tab0.tabpage1.MaskEdit03" propid="value" datasetid="ds_debtor" columnid="debtorListRepay"/>
+      <BindItem id="item10" compid="divWrapper.Tab0.tabpage1.Combo00" propid="value" datasetid="ds_debtor" columnid="debtorListStatus"/>
+      <BindItem id="item11" compid="divWrapper.Tab0.tabpage1.Static22" propid="text" datasetid="ds_debtor" columnid="debtorListCode"/>
+      <BindItem id="item12" compid="divWrapper.Tab0.tabpage1.MaskEdit04" propid="value" datasetid="ds_debtor" columnid="debtorListGooboon"/>
+      <BindItem id="item13" compid="divWrapper.Tab0.tabpage1.Static30" propid="text" datasetid="ds_debtor" columnid="debtorListRegistDate"/>
+      <BindItem id="item15" compid="divWrapper.Tab0.tabpage1.TextArea00" propid="value" datasetid="ds_debtor" columnid="debtorListEtc"/>
+      <BindItem id="item14" compid="divWrapper.Tab0.tabpage2.Static03" propid="text" datasetid="ds_debtor" columnid="debtorListNo"/>
+      <BindItem id="item16" compid="divWrapper.Tab0.tabpage2.Static05" propid="text" datasetid="ds_debtor" columnid="debtorListName"/>
+      <BindItem id="item17" compid="divWrapper.Tab0.tabpage2.Combo00" propid="value" datasetid="ds_property" columnid="propertyCode"/>
+      <BindItem id="item18" compid="divWrapper.Tab0.tabpage2.MaskEdit00" propid="value" datasetid="ds_property" columnid="propertyDisclosuer"/>
+      <BindItem id="item19" compid="divWrapper.Tab0.tabpage2.MaskEdit01" propid="value" datasetid="ds_property" columnid="propertyExpectation"/>
+      <BindItem id="item20" compid="divWrapper.Tab0.tabpage2.Calendar00" propid="value" datasetid="ds_property" columnid="propertyCheckDate"/>
+      <BindItem id="item21" compid="divWrapper.Tab0.tabpage2.TextArea00" propid="value" datasetid="ds_property" columnid="propertyStatus"/>
+      <BindItem id="item24" compid="divWrapper.Tab0.tabpage3.Combo00" propid="value" datasetid="ds_family" columnid="familyRelCode"/>
+      <BindItem id="item25" compid="divWrapper.Tab0.tabpage3.MaskEdit00" propid="value" datasetid="ds_family" columnid="familyName"/>
+      <BindItem id="item26" compid="divWrapper.Tab0.tabpage3.MaskEdit03" propid="value" datasetid="ds_family" columnid="familyZipcode"/>
+      <BindItem id="item27" compid="divWrapper.Tab0.tabpage3.MaskEdit01" propid="value" datasetid="ds_family" columnid="familyAddress1"/>
+      <BindItem id="item28" compid="divWrapper.Tab0.tabpage3.MaskEdit02" propid="value" datasetid="ds_family" columnid="familyAddress2"/>
+      <BindItem id="item29" compid="divWrapper.Tab0.tabpage3.MaskEdit04" propid="value" datasetid="ds_family" columnid="familyJuminNum"/>
+      <BindItem id="item30" compid="divWrapper.Tab0.tabpage3.MaskEdit05" propid="value" datasetid="ds_family" columnid="familyTel"/>
+      <BindItem id="item31" compid="divWrapper.Tab0.tabpage3.MaskEdit06" propid="value" datasetid="ds_family" columnid="familyPhone"/>
+      <BindItem id="item32" compid="divWrapper.Tab0.tabpage3.TextArea00" propid="value" datasetid="ds_family" columnid="familyEtc"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[// 폼 로드
+this.Debt_Tab_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Iject.formOnload(obj);
+	this.historyDetail();
+	this.historyProperty();
+	this.historyFamily();
+	this.debtTabList();
+}
+
+this.debtTabList = function()
+{
+		var oDatas = {
+				svcid : "historyDetail",
+				sController : "debtorDetail.do",
+				inds : [],
+				outds : ["ds_debtor=ds_debtor"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_debtor : " + this.ds_debtor.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object	      
+	       trace(" ds_debtor : " + pThis.ds_debtor.saveXML());
+	});
+}
+
+this.historyDetail = function()
+{
+	var oDatas = {
+				svcid : "historyDetail",
+				sController : "historyDetail.do",
+				inds : [],
+				outds : ["ds_detail=ds_detail"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_detail : " + this.ds_detail.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object	      
+	       trace(" ds_detail : " + pThis.ds_detail.saveXML());
+	});
+}
+
+this.historyProperty = function()
+{
+	var oDatas = {
+				svcid : "historyProperty",
+				sController : "historyProperty.do",
+				inds : [],
+				outds : ["ds_property=ds_property"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_property : " + this.ds_property.saveXML());
+		
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object
+	       trace(" ds_property : " + pThis.ds_property.saveXML());
+	});
+}
+
+this.historyFamily = function()
+{
+	var oDatas = {
+				svcid : "historyFamily",
+				sController : "historyFamily.do",
+				inds : [],
+				outds : ["ds_family=ds_family"],
+				args : [],
+				bAsync : false,
+				nDataType : 0,
+				bCompress : false,
+		};
+		trace(" this.ds_family : " + this.ds_family.saveXML());
+	
+		Iject.transaction(this,oDatas,function(){   
+		
+	       var pThis = this.fobj;   //form object
+	       trace(" ds_family : " + pThis.ds_family.saveXML());
+	});
+}
+
+
+
+// 채무자 관리 페이지 이동
+this.btn_DebtList_onclick = function(obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.divWrapper.set_url("Pattern::Debt_Read.xfdl");
+}
+
+// 우편번호 검색
+this.btn_Tab1Zip_onclick = function(obj:Button, e:nexacro.ClickEventInfo)
+{
+	var nLeft = (application.mainframe.width / 2); - Math.round((this.getOffsetWidth()) / 4);
+  	var nTop = (application.mainframe.height / 2); - Math.round((this.getOffsetHeight()) / 2);
+	application.open("search","Pattern::Dept_ZipCode.xfdl",this.getOwnerFrame(), 
+   {mode:'modeless',ds:this.Dataset01}, "showtitlebar=true", nLeft, nTop);
+}
+
+// 담당자 검색
+this.edt_Tab1MgrNo_oneditclick = function(obj:Edit, e:nexacro.EditClickEventInfo)
+{
+	var nLeft = (application.mainframe.width / 2); - Math.round((this.getOffsetWidth()) / 4);
+  	var nTop = (application.mainframe.height / 2); - Math.round((this.getOffsetHeight()) / 2);
+	application.open("search","Pattern::Dept_Emp_Num.xfdl",this.getOwnerFrame(), 
+   {mode:'modeless',ds:this.Dataset01}, "showtitlebar=true", nLeft, nTop);
+}
+
+// 초기화 버튼
+this.btn_Reset_onclick = function(obj:Button, e:nexacro.ClickEvnetInfo)
+{
+	this.Debt_Tab_onload();
+}
+
+// 엑셀기능
+this.btn_excel_onclick = function(obj:Button, e:nexacro.ClickEventInfo)
+{
+	if(ds_detail.count>0){
+		var expObj;
+		var sXML;
+		
+		
+	}
+}
+
+// 탭2 신규
+this.tabpage2_btn_Reset_onclick = function(obj:Button, e:nexacro.ClickEventInfo)
+{
+	var currDate = new Date();
+    var year = currDate.getFullYear().toString().padLeft(4, "0");
+    var month = (currDate.getMonth()+1).toString().padLeft(2, "0");
+    var day = currDate.getDate().toString().padLeft(2, "0");
+	var today = year+month+day;
+	trace(today);
+	
+	if(length(trim(this.ds_property.getColumn(0, "propertyNo")))>0 || this.ds_property.rowcount==0){
+		this.ds_property.insertRow(0);
+		this.ds_property.setColumn(0, "debtorListNo", this.ds_debtor.getColumn(this.s_debtor.rowposition, "debtorListNo"));
+		this.ds_property.setColumn(0, "propertyInput", this.divWrapper.Tab0.tabpage2.edt_inputno.text);
+		this.ds_property.setColumn(0, "propertyCode", this.ds_codeProperty.getColumn(this.ds_codeProperty.findRow, "codeName"));
+		this.ds_property.setColumn(0, "propertyCheckDate", today);
+	}
+}
+
+// 탭2 콤보 공시시가, 공시지가 text 자동변경
+this.com_Div_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	if(this.divWrapper.Tab0.tabpage2.com_Div.text == "부동산"){
+		this.divWrapper.Tab0.tabpage2.Static15.text="공시지가";
+		this.divWrapper.Tab0.tabpage2.Static17.text="예상지가";
+	} else {
+		this.divWrapper.Tab0.tabpage2.Static15.text="공시시가";
+		this.divWrapper.Tab0.tabpage2.Static17.text="예상시가";
+	}
+}
+
+// 탭2 그리드 공시시가, 공시지가 text 자동변경
+this.grd_regularList_oncellclick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{
+	if(this.ds_property.getColumn(nRow, "propertCode")=="부동산"){
+		this.divWrapper.Tab0.tabpage2.Static15.text="공시지가";
+		this.divWrapper.Tab0.tabpage2.Static17.text="예상지가";
+	} else {
+		this.divWrapper.Tab0.tabpage2.Static15.text="공시시가";
+		this.divWrapper.Tab0.tabpage2.Static17.text="예상시가";
+	}
+}
+
+// 탭2 신규 row 삭제
+this.tabpage2_btn_Cancel_onclick = function(obj:Button, e:nexacro.ClickEventInfo)
+{
+	if(this.ds_property.getColumn(0,"propertyNo")==null)
+	this.ds_property.deleteRow(0);
+}
+
+// 탭3 신규 row 삭제
+this.tabpage3_btn_Cancel_onclick = function(obj:Button, e:nexacro.ClickEventInfo)
+{
+	if(this.ds_family.getColumn(0,"familySeq")==null)
+	this.ds_family.deleteRow(0);
+}
+]]></Script>
+  </Form>
+</FDL>

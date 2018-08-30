@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="APPRLINE" classname="APPRLINE" left="0" top="0" width="1000" height="600" titletext="New Form" scrollbars="alwaysvert">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="전체결제라인" left="1%" top="0%" right="1%" height="42" style="background:transparent URL('img::bg_Cal_click.png') stretch;color:aliceblue;padding:0 0 0 10;font:bold 12 굴림;" position="absolute"/>
+        <Grid id="Grid_appr" taborder="2" useinputpanel="false" left="1%" top="18.33%" right="1%" height="37.67%" binddataset="ds_appr" scrollbars="alwaysvert" position="fixed" style="padding:0 0 0 0;background:antiquewhite;border:10solid solid lavenderblush ;" autofittype="col" oncellclick="Grid_appr_OnCellClick" oncelldblclick="Grid_appr_OnCellDbClick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="결제라인"/>
+                <Cell col="1" disptype="normal" text="결제순번"/>
+                <Cell col="2" disptype="normal" text="이름"/>
+                <Cell col="3" disptype="normal" text="결제자ID"/>
+                <Cell col="4" disptype="normal" text="결제자부서"/>
+                <Cell col="5" disptype="normal" text="상위결재라인코드"/>
+                <Cell col="6" disptype="normal" text="상위결재순번"/>
+                <Cell col="7" disptype="normal" text="전결여부"/>
+                <Cell col="8" disptype="normal" text="상위결재자ID"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:결제라인"/>
+                <Cell col="1" disptype="normal" text="bind:결제순번"/>
+                <Cell col="2" disptype="normal" text="bind:이름"/>
+                <Cell col="3" disptype="normal" text="bind:결제자ID"/>
+                <Cell col="4" disptype="normal" text="bind:결제자부서"/>
+                <Cell col="5" disptype="normal" text="bind:상위결재라인코드"/>
+                <Cell col="6" disptype="normal" text="bind:상위결재순번"/>
+                <Cell col="7" disptype="normal" text="bind:전결여부"/>
+                <Cell col="8" disptype="normal" text="bind:상위결재자ID"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="92" text="상위결재순번" left="1%" top="471" right="88.2%" height="33" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center;"/>
+        <Combo id="lineUpSeq_com" taborder="93" innerdataset="@ds_seq" codecolumn="code" datacolumn="value" left="11.8%" top="471" right="75.9%" height="33"/>
+        <Static id="Static04" taborder="94" text="결재자부서" left="23.9%" top="470" right="65.8%" height="33" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#46463dff;align:center;"/>
+        <Edit id="insaDept" taborder="95" left="34.2%" top="469" right="51.1%" height="33"/>
+        <Static id="Static05" taborder="96" text="결제자" left="48.8%" top="470" right="41.8%" height="33" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#46463dff;align:center;"/>
+        <Edit id="insaSabun" taborder="97" left="58.2%" top="470" right="22.4%" height="33"/>
+        <Static id="Static0" taborder="98" text="상위결제자" left="48.8%" top="440" right="41.8%" height="33" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center;"/>
+        <Combo id="yn_com" taborder="99" innerdataset="@ds_yn" codecolumn="code" datacolumn="value" left="87%" top="440" right="1%" height="33"/>
+        <Static id="Static06" taborder="100" text="전결여부" left="77.6%" top="440" right="13%" height="33" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center;"/>
+        <Edit id="insaUpld" taborder="101" left="58.2%" top="440" right="22.4%" height="33"/>
+        <Combo id="lineSeq_com" taborder="102" innerdataset="@ds_seq1" codecolumn="code" datacolumn="value" canitemchange="lineSeq_com_OnChanged" left="34.2%" top="440" right="51.1%" height="33"/>
+        <Static id="Static11" taborder="103" text="결재순번" left="23.9%" top="440" right="65.8%" height="33" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center;"/>
+        <Combo id="line_com" taborder="104" innerdataset="@ds_aprvLine1" codecolumn="code" datacolumn="value" left="11.8%" top="439" right="75.9%" height="33"/>
+        <Static id="Static01" taborder="105" text="결재진행코드" onclick="Static01_onclick" left="1%" top="439" right="88.2%" height="33" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;color:#133678ff;align:center;"/>
+        <Button id="btn_appr_save" taborder="106" text="저장" left="84.8%" top="84%" width="70" height="20" onclick="btn_appr_save_OnClick"/>
+        <Button id="Button04" taborder="107" text="추가" onclick="Button00_onclick" left="77.6%" top="84%" width="70" height="20"/>
+        <Button id="btn_search00" taborder="108" text="검색" onclick="btn_search_onclick" left="70.1%" top="84%" width="70" height="20"/>
+        <Button id="btn_delete" taborder="109" text="삭제" onclick="btn_delete_OnClick" left="92%" top="84%" height="20" right="1%"/>
+        <Combo id="list_com00" taborder="110" text="전체" innerdataset="@ds_list" codecolumn="code" datacolumn="value" index="0" onchar="list_com_onitemchanged" onitemchanged="list_com_onitemchanged" left="1%" top="52" right="83.2%" height="26"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_appr">
+        <ColumnInfo>
+          <Column id="aprvlineAdmProcCode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvId" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvDeptId" type="STRING" size="256"/>
+          <Column id="AprvlineAdmUpAprvcode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAdWtr" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpId" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">001</Col>
+            <Col id="value">채무자등록</Col>
+          </Row>
+          <Row>
+            <Col id="code">002</Col>
+            <Col id="value">채무발생</Col>
+          </Row>
+          <Row>
+            <Col id="code">003</Col>
+            <Col id="value">채무정지</Col>
+          </Row>
+          <Row>
+            <Col id="code">004</Col>
+            <Col id="value">채무포기</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_apprln">
+        <ColumnInfo>
+          <Column id="aprvlineAdmProcCode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvId" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvDeptId" type="STRING" size="256"/>
+          <Column id="AprvlineAdmUpAprvcode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAdWtr" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpId" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_appr1">
+        <ColumnInfo>
+          <Column id="aprvlineAdmProcCode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvId" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvDeptId" type="STRING" size="256"/>
+          <Column id="AprvlineAdmUpAprvcode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAdWtr" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpId" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_aprvLine">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">***</Col>
+            <Col id="value">***</Col>
+          </Row>
+          <Row>
+            <Col id="code">001</Col>
+            <Col id="value">채무자등록</Col>
+          </Row>
+          <Row>
+            <Col id="code">002</Col>
+            <Col id="value">채무발생</Col>
+          </Row>
+          <Row>
+            <Col id="code">003</Col>
+            <Col id="value">채무정지</Col>
+          </Row>
+          <Row>
+            <Col id="code">004</Col>
+            <Col id="value">채무포기</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_aprvLine1">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">001</Col>
+            <Col id="value">채무자등록</Col>
+          </Row>
+          <Row>
+            <Col id="code">002</Col>
+            <Col id="value">채무발생</Col>
+          </Row>
+          <Row>
+            <Col id="code">003</Col>
+            <Col id="value">채무정지</Col>
+          </Row>
+          <Row>
+            <Col id="code">004</Col>
+            <Col id="value">채무포기</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_code">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">***</Col>
+            <Col id="value">***</Col>
+          </Row>
+          <Row>
+            <Col id="code">001</Col>
+            <Col id="value">001</Col>
+          </Row>
+          <Row>
+            <Col id="code">002</Col>
+            <Col id="value">002</Col>
+          </Row>
+          <Row>
+            <Col id="code">003</Col>
+            <Col id="value">003</Col>
+          </Row>
+          <Row>
+            <Col id="code">004</Col>
+            <Col id="value">004</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">001</Col>
+            <Col id="value">총무부(001)</Col>
+          </Row>
+          <Row>
+            <Col id="code">002</Col>
+            <Col id="value">SI사업부(002)</Col>
+          </Row>
+          <Row>
+            <Col id="code">003</Col>
+            <Col id="value">관리부(003)</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_insa">
+        <ColumnInfo>
+          <Column id="insaDeptCode" type="STRING" size="256"/>
+          <Column id="insaPosGbnCode" type="STRING" size="256"/>
+          <Column id="insaSabun" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_new">
+        <ColumnInfo>
+          <Column id="aprvlineAdmProcCode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvId" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvDeptId" type="STRING" size="256"/>
+          <Column id="AprvlineAdmUpAprvcode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAdWtr" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpId" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_seq">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="value">*</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">1</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">2</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="value">3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_seq1">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">1</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">2</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="value">3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_seqseq">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value"> 1</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">   2</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="value">     3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_yn">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Y</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="code">N</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="line_com" propid="value" datasetid="ds_apprln" columnid=""/>
+      <BindItem id="item2" compid="lineSeq_com" propid="value" datasetid="ds_apprln" columnid=""/>
+      <BindItem id="item3" compid="yn_com" propid="value" datasetid="ds_apprln" columnid=""/>
+      <BindItem id="item1" compid="lineUpSeq_com" propid="value" datasetid="ds_apprln" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";
+
+var insertYn="n";
+//로딩시
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+insertYn="n";
+var url="Pattern::APPRLINE";
+fcs(url);
+ds_appr.ClearData();
+ds.appr.AddRow();
+search_form();
+}
+//추가 버튼 클릭시
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+if(insertYn=="y"){
+	alert("등록을 완료한 후에 새로 추가하세요");
+	return;
+}
+insertYn="y";
+	ds_apprIn.ClearData();
+	ds_apprIn.AddRow();
+	Grid_appr.Enable=false;
+	gb_row=Grid_appr.GetClickedRow()+1;
+	ds_appr.InsertRow(gb_row);
+	insaSabun.text="";
+	insaDept.text="";
+	line_com.Enable="true";
+	lineSeq_com.Enable="true";
+	yn_com.Enable="true";
+
+	ds_apprIn.SetColumn(0,"aprvlineAdmProcCode",ds_new.Getcolumn(0,"aprvlineAdmProcCode"));
+	
+	var seq=ToInteger(ds_new.GetColumn(0,"aprvlineAdmSeq"))+1;
+	if(ds_new.GetColumn(0,"aprvlineAdmSeq")=="3"){
+		alert("3차에서는 추가할수 없습니다");
+		ds_apprIn.ClearData();
+		ds_apprIn.AddRow();
+	}else{
+		if(seq=="4"){
+			lineSeq_com.text="3";
+			lineUpSeq_com.text="2";
+		}else if(seq=="3"){
+			lineSeq_com.text=seq;
+			lineUpSeq_com.text="2";
+			yn_com.text="Y";
+		}else{
+			lineSeq_com.text=seq;
+			lineUpSeq_com.text="1";
+			yn_com.text="N";
+		}	
+		if(lineSeq_com.text=="1"){
+			lineUpSeq_com.text="*";
+			insaUpId.text="***";
+		}	
+	}
+	
+	if(lineSeq_com.text=="1"){
+		lineUpSeq_com.text="*";
+		insaUpId.text="***";	
+	}else{
+		
+		insaUpId.text=ds_new.GetColumn(0,"insaName")+"("+ds_new.GetColumn(0,"aprvlineAdmAprvId")+")";
+		
+	}	
+}
+	//결재라인조회
+function search_form(code,seq,id){
+	var strSvcid = "approvalLineList";
+	var sController = "apprLine/ApprovalLineList.do";
+	var strInputDs = ""; 
+	var strOutputDs = "ds_appr = ds_output";
+	var strParam = "code_no=" + Quote(code)+" seq=" + Quote(seq) + " id=" + Quote(id);
+	var strFnCallback="fncallback";
+	
+	transaction(strSvcid
+				, strUrl
+				, strInputDs
+				, strOutputDs
+				, strParam	
+				, strFnCallback);
+} 
+//결재라인조회 코드별
+function search_code(code,seq,id){
+ 
+	var strSvcid = "approvalLineList";
+	var sController = "apprLine/ApprovalLineListCode.do";
+	var strInputDs = ""; 
+	var strOutputDs = "ds_appr = ds_output";
+	var strParam = "code_no=" + Quote(code);
+	var strFnCallback="fncallback";
+	
+	transaction(strSvcid
+				, strUrl
+				, strInputDs
+				, strOutputDs
+				, strParam	
+				, strFnCallback);
+}
+//결재라인삭제
+this.btn_delete_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Grid_appr.Enable=true;
+	
+	if(Confirm("삭제하시겠습니까?")==true){
+		if(insertYn=="y"){
+			ds_appr.DeleteRow(gb_row);
+			insertYn="n";
+		}else{
+			var code_no=ds_appr.GetColumn(Grid_appr.GetClickedRow(), 'aprvlineAdmProcCode');
+			var seq_no=ds_appr.GetColumn(Grid_appr.GetClickedRow(), 'aprvlineAdmSeq');
+			var id_no=ds_appr.GetColumn(Grid_appr.GetClickedRow(), 'aprvlineAdmAprvId');
+			var yn="n";
+			for(var i=0;i<ds_appr.rowcount;i++){
+				if(ds_appr.GetColumn(gb_row,"aprvlineAdmProcCode")==ds_appr.GetColumn(i,"aprvlineAdmProcCode")&&ds_appr.GetColumn(gb_row,"aprvlineAdmSeq")==ds_appr.GetColumn(i,"aprvlineAdmUpSeq")&&ds_appr.GetColumn(gb_row,"aprvlineAdmAprvId")==ds_appr.GetColumn(i,"aprvlineAdmUpId")){
+					alert("상위 결재자를 먼저 삭제하세요");
+					yn="n";
+					break;
+				}else{
+					yn="y";
+				}
+			}
+			if(yn=="y"){
+			var strSvcid = "apprDelete";
+				var sController = "apprLine/deleteappr.do";
+				var strInputDs = "";
+				var strOutputDs = "";
+				
+				var strParam = "code_no=" + Quote(code_no) + " seq_no=" + Quote(seq_no) + " id_no=" + Quote(id_no);	 
+				var strFnCallback = "fnCallback";
+				
+				
+				transaction(strSvcid
+							, strUrl
+							, strInputDs
+							, strOutputDs
+							, strParam
+							, strFnCallback);	
+			}
+		}
+	}else{
+		return;					
+	}	
+						
+}
+		
+//결재라인등록, 수정
+function apprSave(obj){
+    var strSvcID = "apprLineInsert";	
+	var sController= "apprLine/insertappr.do";
+	var strInDatasets="ds_input=ds_apprIn:u";
+	var strOutDatasets="";
+	var strArgument="voClass='pdsystem.apprLine.model.ApprLineVo'";
+	var strCallbackFunc	="fnCallback";	
+		
+		Transaction(strSvcID,
+					strURL,
+					strInDatasets,
+					strOutDatasets,
+					strArgument,
+					strCallbackFunc);							
+}
+
+		//결재단계코드값이 바뀔때
+function line_com_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(lineSeq_com.text=="1"){
+		lineUpSeq_com.text="*";	
+		yn_com.text="N";
+		insaUpId.text="***";
+	}else if(lineSeq_com.text=="2"){
+		lineUpSeq_com.text="1";	
+		yn_com.text="N";
+	}else{
+		lineUpSeq_com.text="2";
+		yn_com.text="Y";
+	}
+		
+}
+
+//결재라인순번값이 바뀔때
+function lineSeq_com_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+		if(lineSeq_com.text=="1"){
+			lineUpSeq_com.text="*";	
+			yn_com.text="N";
+			insaUpId.text="***";
+		}else if(lineSeq_com.text=="2"){
+			lineUpSeq_com.text="1";	
+			yn_com.text="N";
+		}else{
+			lineUpSeq_com.text="2";
+			yn_com.text="Y";
+		}
+		
+}
+
+//저장버튼 클릭시
+this.btn_appr_save_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	insertYn="n";
+	if(insaSabun.text==""){
+		alert("결재자를 등록해주세요");
+	}else{	
+		ds_apprIn.SetColumn(0,"aprvlineAdmAprvId",SubStr(insaSabun.text,4,10));
+		if(SubStr(insaDept.text,0,1)=="S"){
+			ds_apprIn.SetColumn(0,"aprvlineAdmAprvDeptId",SubStr(insaDept.text,6,3));
+		}else{
+			ds_apprIn.SetColumn(0,"aprvlineAdmAprvDeptId",SubStr(insaDept.text,4,3));
+		}
+		if(SubStr(insaUpId.text,0,1)=="*"){
+			ds_apprIn.SetColumn(0,"aprvlineAdmUpId","***");
+		}else{
+			ds_apprIn.SetColumn(0,"aprvlineAdmUpId",SubStr(insaUpId.text,4,10));
+		}
+		if(line_com.text=="채무자등록"){
+			if(lineSeq_com.text=="1"){
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","***");
+			}else{
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","001");
+			}	
+		}else if(line_com.text=="채무발생"){
+			if(lineSeq_com.text=="1"){
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","***");
+			}else{
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","002");
+			}
+		}else if(line_com.text=="채무정지"){
+			if(lineSeq_com.text=="1"){
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","***");
+			}else{
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","003");
+			}	
+		}else{
+			if(lineSeq_com.text=="1"){
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","***");
+			}else{
+				ds_apprIn.SetColumn(0,"AprvlineAdmUpAprvcode","004");
+			}
+		}
+		
+		apprSave();
+	}
+}		
+//검색버튼 클릭시 사원조회
+this.btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+    objChildFrame.init("chf_popup1", "absolute", 30, 30, 30, 30, null, null, "Pattern::POP_APPRLINE.xfdl");
+    var objParam = {};
+    objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+    //자식프레임을 이용해 팝업창을 띄운다.
+    //쓰는 이유 : this.close(data) - 팝업이 종료되고 data의 데이터를 가져오게 된다.
+}
+
+this.fn_popupCallback = function(strID, Text)
+{
+	
+	if(Text!=undefined)
+	{
+		trace("결과 : "+Text);
+		this.insaSabun.set_value(Text);
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+
+//그리드 셀 클릭시
+function Grid_appr_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	ds_new.AddRow();
+	gb_row=Grid_appr.GetClickedRow();
+	lineSeq_com.Enable=false;
+	ds_new.SetColumn(0,"aprvlineAdmProcCode",ds_appr.Getcolumn(nRow,"aprvlineAdmProcCode"));
+	ds_new.SetColumn(0,"aprvlineAdmSeq",ds_appr.Getcolumn(nRow,"aprvlineAdmSeq"));
+	ds_new.SetColumn(0,"aprvlineAdmAprvId",ds_appr.Getcolumn(nRow,"aprvlineAdmAprvId"));
+	ds_new.SetColumn(0,"aprvlineAdmAprvDeptId",ds_appr.Getcolumn(nRow,"aprvlineAdmAprvDeptId"));
+	
+	ds_new.SetColumn(0,"AprvlineAdmUpAprvcode",ds_appr.Getcolumn(nRow,"AprvlineAdmUpAprvcode"));
+	ds_new.SetColumn(0,"aprvlineAdmUpSeq",ds_appr.Getcolumn(nRow,"aprvlineAdmUpSeq"));
+	ds_new.SetColumn(0,"aprvlineAdmAdWtr",ds_appr.Getcolumn(nRow,"aprvlineAdmAdWtr"));
+	ds_new.SetColumn(0,"aprvlineAdmUpId",ds_appr.Getcolumn(nRow,"aprvlineAdmUpId"));	
+	ds_new.SetColumn(0,"insaName",ds_appr.Getcolumn(nRow,"insaName"));
+	
+	insaSabun.text=ds_appr.GetColumn(nRow,"insaName")+"("+ds_appr.GetColumn(nRow,"aprvlineAdmAprvId")+")";
+	insaDept.text=ds_appr.GetColumn(nRow,"aprvlineAdmAprvDeptId");
+	
+	var code=ds_appr.Getcolumn(nRow,"aprvlineAdmProcCode");
+	var seq=ds_appr.GetColumn(nRow,"aprvlineAdmSeq");
+	var id=ds_appr.GetColumn(nRow,"aprvlineAdmAprvId");
+	var idd=ds_appr.GetColumn(nRow,"aprvlineAdmUpId");
+	var strSvcid = "apprLineDetailList";
+	var sController = "apprLine/ApprLineDetailList.do";
+	var strInputDs = ""; 
+	var strOutputDs = "ds_apprIn = ds_output";
+	var strParam = "code=" + Quote(code)+" seq=" + Quote(seq) + " id=" + Quote(id);
+	var strFnCallback="fncallback";
+	
+	transaction(strSvcid
+				, strUrl
+				, strInputDs
+				, strOutputDs
+				, strParam	
+				, strFnCallback);  
+	
+	
+	
+	line_com.Enable="false";		
+	yn_com.Enable="true";	
+	
+	var strSvcid = "apprNameList";		
+	var sController = "apprLine/ApprovalList.do";
+	var strInputDs ="";
+	var strOutputDs = "ds_insa = ds_output";
+	var strParam="sabun=" + Quote(idd);
+	var strFnCallback="fncallback";
+	
+	transaction(strSvcid
+				, strUrl
+				, strInputDs
+				, strOutputDs
+				, strParam	
+				, strFnCallback);	
+}
+
+
+
+
+	//LIST_COM 콤보박스 값이 바뀔때	
+function list_com_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	var code=list_com.text;
+	if(code=="전체"){
+		search_form();
+	}else{
+		if(code=="채무자등록"){
+			code="001";	
+		}else if(code=="채무발생"){
+			code="002";	
+		}else if(code=="채무정지"){
+			code="003";	
+		}else{
+			code="004";	
+		}
+		search_code(code);
+	}
+}
+//저장,수정,삭제  callback함수
+function fnCallback(svcid, errcd, errmsg){
+	if(svcid == "approvalLineList"){	
+		
+		ds_appr.row=gb_row;	
+		
+		
+	}
+	if(svcid == "apprLineInsert"){
+		if(errcd == 0){
+			Grid_appr.Enable=true;
+			if(yn_com.text=="N"&&lineSeq_com.text!="3"){
+					
+				alert("저장되었습니다.");
+				var line=line_com.text;
+				if(SubStr(line,2,2)=="자발"){
+					var lineUp="***";
+				}else if(SubStr(line,2,2)=="발생"){
+					var lineUp="001";
+				}else if(SubStr(line,2,2)=="정지"){
+					var lineUp="002";
+				}else{
+					var lineUp="003";
+				}
+				
+				var lineSeq=ToInteger(lineSeq_com.text)+1;
+				var lineUpSeq=ToInteger(lineSeq_com.text);
+				var insa=insaSabun.text;
+				
+				ds_apprIn.ClearData();
+				ds_apprIn.AddRow();
+				
+				search_form();
+				
+				line_com.text=line;
+				lineSeq_com.text=lineSeq;
+				lineUpSeq_com.text=lineUpSeq;
+				if(lineSeq_com.Text=="1"){
+					insaUpId.text="***";
+				}else{
+					insaUpId.text=insa;
+				}
+				if(lineSeq_com.Text=="3"){
+					yn_com.text="Y";
+				}else{
+					yn_com.Text="N";
+				}
+			}else{
+				alert("결재라인이 저장되었습니다");	
+				search_form();
+			}	
+		}else{
+			alert("저장에 실패했습니다");
+		}
+	}
+	if(svcid == "apprDelete"){
+		if(errcd == 0){
+			alert("삭제 되었습니다");
+			
+			search_form();					
+		}else{
+		alert("삭제에 실패했습니다");
+		}
+	}
+	if(svcid == "apprLineupdate"){
+		if(errcd == 0){
+			alert("수정 되었습니다");
+			search_form();
+		}else{
+		alert("수정에 실패했습니다");
+		}
+	}
+	if(svcid=="apprLineDetailList"){
+	
+		if(ds_apprIn.GetColumn(0,"aprvlineAdmAprvDeptId")=="001"){
+			insaDept.text="총무부(001)";
+		}else if(ds_apprIn.GetColumn(0,"aprvlineAdmAprvDeptId")=="002"){
+			insaDept.text="SI사업부(002)";
+		}else{
+			insaDept.text="관리부(003)";
+		}
+		insaSabun.text=ds_apprIn.GetColumn(0,"insaName")+"("+ds_apprIn.GetColumn(0,"aprvlineAdmAprvId")+")";
+	}
+	if(svcid=="apprNameList"){
+		
+		if(ds_insa.GetColumn(0,"insaSabun")==null){
+			insaUpId.text="***";
+			
+		}else{
+			insaUpId.text=ds_insa.GetColumn(0,"insaName")+"("+ds_insa.GetColumn(0,"insaSabun")+")";
+			
+		}
+	}
+}	
+
+
+	
+
+
+
+	
+
+]]></Script>
+  </Form>
+</FDL>

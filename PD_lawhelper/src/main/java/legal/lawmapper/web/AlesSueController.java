@@ -48,7 +48,7 @@ public class AlesSueController {
 		return result;
 
 	}
-
+//응소(제소)보고 관리 삽입,수정,삭제
 	@RequestMapping("/getAlesSueChange.do")
 	public NexacroResult preiwrChange(
 			@ParamDataSet(name = "ds_ales_sue", required = false) List<AlesSueVO> listVO) {

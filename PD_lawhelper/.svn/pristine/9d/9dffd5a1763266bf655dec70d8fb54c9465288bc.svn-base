@@ -1,0 +1,327 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("MainFrame");
+                this.set_classname("MainFrame");
+                this.set_titletext("Main");
+                this.set_dragscrolltype("both");
+                this._setFormPosition(0,0,1000,666);
+            }
+            this.style.set_background("#edefeeff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_main", this);
+            obj._setContents("<ColumnInfo><Column id=\"CLASS_NAME\" type=\"STRING\" size=\"256\"/><Column id=\"CLASS_CODE\" type=\"STRING\" size=\"256\"/><Column id=\"CODE_NO\" type=\"STRING\" size=\"256\"/><Column id=\"CODE_NAME\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "20", "0", "980", "17", null, null, this);
+            obj.set_taborder("1");
+            obj.set_visible("false");
+            obj.style.set_background("#74cfdcff");
+            obj.style.set_color("red");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "0", "0", "20", "614", null, null, this);
+            obj.set_taborder("2");
+            obj.set_visible("false");
+            obj.style.set_background("#74cfdcff");
+            obj.style.set_color("red");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div04", "fixed", "448", "415", "53.9%", "30.03%", null, null, this);
+            obj.set_taborder("6");
+            obj.set_cssclass("div_MF_Article");
+            obj.set_applystyletype("cascade,keep");
+            obj.set_url("Pattern::V_MAIN_001_under.xfdl");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "57", "988", "54", "56", null, null, this);
+            obj.set_taborder("35");
+            obj.set_text("1");
+            obj.style.set_background("#f1f1f1ff");
+            obj.style.set_border("1 solid #d8d8d8ff");
+            obj.style.set_color("#c8c8c8ff");
+            obj.style.set_padding("25 0 0 0");
+            obj.style.set_align("center top");
+            obj.style.set_font("bold 9 Tahoma");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static10", "absolute", "112", "990", "30", "9", null, null, this);
+            obj.set_taborder("36");
+            obj.set_visible("false");
+            obj.style.set_border("1 solid red,0 none #808080,0 none #808080,0 none #808080");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static22", "absolute", "150", "979", "155", "42", null, null, this);
+            obj.set_taborder("37");
+            obj.set_text("background: #f1f1f1\r\nborder : 1 solid #d8d8d8");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "130", "1042", "140", "42", null, null, this);
+            obj.set_taborder("38");
+            obj.set_text("font : bold 9 Tahoma\r\ncolor : #c8c8c8");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static19", "absolute", "83", "1030", "30", "24", null, null, this);
+            obj.set_taborder("40");
+            obj.set_visible("false");
+            obj.style.set_border("0 none #808080,0 none #808080,1 solid red,1 solid red");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static08", "absolute", "380", "993", "30", "9", null, null, this);
+            obj.set_taborder("41");
+            obj.set_visible("false");
+            obj.style.set_border("1 solid red,0 none #808080,0 none #808080,0 none #808080");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static14", "absolute", "325", "987", "54", "56", null, null, this);
+            obj.set_taborder("45");
+            obj.set_text("1");
+            obj.style.set_background("#3586ccff");
+            obj.style.set_border("1 solid #d8d8d8ff");
+            obj.style.set_color("#ffffffff");
+            obj.style.set_padding("25 0 0 0");
+            obj.style.set_align("center top");
+            obj.style.set_font("bold 9 Tahoma");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static13", "absolute", "351", "1030", "30", "24", null, null, this);
+            obj.set_taborder("44");
+            obj.set_visible("false");
+            obj.style.set_border("0 none #808080,0 none #808080,1 solid red,1 solid red");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static09", "absolute", "418", "979", "155", "42", null, null, this);
+            obj.set_taborder("42");
+            obj.set_text("background: #3586cc\r\nborder : 1 solid #d8d8d8");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static11", "absolute", "398", "1042", "140", "42", null, null, this);
+            obj.set_taborder("43");
+            obj.set_text("font : bold 9 Tahoma\r\ncolor : #ffffff");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static15", "absolute", "60", "947", "183", "28", null, null, this);
+            obj.set_taborder("46");
+            obj.set_text("Calendar_Disabled\r\n클래스 : Cellgrd_MF_disabled");
+            obj.set_visible("false");
+            obj.style.set_linespace("4");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static16", "absolute", "328", "955", "110", "19", null, null, this);
+            obj.set_taborder("47");
+            obj.set_text("Calendar_Selected");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "20", "20", "32%", "92.79%", null, null, this);
+            obj.set_taborder("54");
+            obj.set_cssclass("div_MF_Article");
+            obj.set_positionstep("0");
+            obj.set_applystyletype("cascade,keep");
+            obj.set_url("Pattern::V_MAIN_001_left.xfdl");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div02", "fixed", "448", "215", "53.9%", "30.03%", null, null, this);
+            obj.set_taborder("55");
+            obj.set_cssclass("div_MF_Article");
+            obj.set_applystyletype("cascade,keep");
+            obj.set_url("Pattern::V_MAIN_001_right.xfdl");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "fixed", "448", "20", "53.9%", "30.03%", null, null, this);
+            obj.set_taborder("56");
+            obj.set_cssclass("div_MF_Article");
+            obj.set_applystyletype("cascade,keep");
+            obj.set_url("Pattern::V_MAIN_001_over.xfdl");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static07", "absolute", "986", "14", "14", "601", null, null, this);
+            obj.set_taborder("57");
+            obj.set_visible("false");
+            obj.style.set_background("#74cfdcff");
+            obj.style.set_color("red");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 666, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("MainFrame");
+            		p.style.set_background("#edefeeff");
+            		p.set_titletext("Main");
+            		p.set_dragscrolltype("both");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+        this.loadPreloadList = function()
+        {
+            this._addPreloadList("fdl", "Pattern::V_MAIN_001_under.xfdl");
+            this._addPreloadList("fdl", "Pattern::V_MAIN_001_left.xfdl");
+            this._addPreloadList("fdl", "Pattern::V_MAIN_001_right.xfdl");
+            this._addPreloadList("fdl", "Pattern::V_MAIN_001_over.xfdl");
+        };
+        
+        // User Script
+        this.addIncludeScript("MainFrame.xfdl", "Lib::Comm.xjs");
+        this.registerScript("MainFrame.xfdl", function() {
+        /***********************************************************************************
+        * SYSTEM      : 넥사크로플랫폼 PackageB
+        * BUSINESS    : 넥사크로플랫폼 PackageB
+        * FILE NAME   : MainFrame.xfdl
+        * PROGRAMMER  : 
+        * DATE        : 
+        * DESCRIPTION : MainFrame
+        *------------------------------------------------------------------
+        * MODIFY DATE   PROGRAMMER			DESCRIPTION
+        *------------------------------------------------------------------
+        * 
+        *------------------------------------------------------------------
+        ***********************************************************************************/
+
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        
+        /***********************************************************************************
+        * Global/Local Variable
+        ***********************************************************************************/
+
+        
+        /***********************************************************************************
+        * Form Event
+        ***********************************************************************************/
+        /**
+         * form onload 함수
+         * @return 
+         * @example
+         *
+         * @memberOf this
+         */
+        this.MainFrame_onload = function(obj,e)
+        {
+        	this.on_size();
+        	this.fn_setting();
+        	//this.fn_chk_f();
+        }
+
+        //시작 직후 셋팅
+        this.fn_setting = function (){	
+        	var oDatas = {
+        				svcid : "setting",
+        				sController : "mainSettingVO.do",
+        				inds : [],
+        				outds : ["ds_main=ds_main"],
+        				args  : [],
+        				bAsync : false, 
+        				nDataType : 0, 
+        				bCompress :false,
+        	};
+        	
+        	trace(" this.ds_main : " + this.ds_main.saveXML());
+        	Iject.transaction(this,oDatas,function(){
+        	});
+        		
+        }
+
+        //갱신
+        this.fn_chk_f = function(){
+        	this.Div01.user_load();
+        	this.Div00.data_load();
+        	this.Div04.fn_DB_search();
+        	this.Div02.board_load();
+        }
+
+        
+
+        this.fn_set = function()
+        {	
+        	//this.Div01.st_name.set_text(Iject.$["usernm"]);
+        }
+
+        this.MainFrame_onsize = function(obj,e)
+        {
+        	this.on_size();
+        }
+
+        //mainframe onsize
+        this.on_size = function()
+        {
+           if(application.mainframe.width < 1000)
+        	{
+        	   this.Div00.set_width("31%");
+        	   this.Div01.set_width("58%");
+        	   this.Div02.set_width("58%");
+        	   //this.Div03.set_left(866 + "px");	       
+        	   //this.Div03.set_width(417 + "px");
+        	   this.Div04.set_width("58%");
+        	   
+        	}
+        	else
+        	{	
+        	   //this.Div01.set_right(15);
+        	   //this.Div02.set_right(15);
+        	   //this.Div03.set_left(67.66 + "%");
+        	   //this.Div03.set_right(15);
+        	   //this.Div04.set_right(15);
+        	}
+        }
+
+        
+
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.MainFrame_onload, this);
+            this.addEventHandler("onsize", this.MainFrame_onsize, this);
+            this.Static00.addEventHandler("onclick", this.Static00_onclick, this);
+
+        };
+
+        this.loadIncludeScript("MainFrame.xfdl");
+        this.loadPreloadList();
+       
+    };
+}
+)();

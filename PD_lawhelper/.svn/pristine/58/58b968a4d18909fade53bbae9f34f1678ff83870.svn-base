@@ -1,0 +1,112 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("hghghf");
+                this.set_classname("hghghf");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+
+            
+            // UI Components Initialize
+            obj = new PopupMenu("PopupMenu00", "absolute", "5.2%", "11.33%", null, null, "75%", "67.83%", this);
+            this.addChild(obj.name, obj);
+            var PopupMenu00_innerdataset = new Dataset("PopupMenu00_innerdataset", this.PopupMenu00);
+            PopupMenu00_innerdataset._setContents("<ColumnInfo><Column id=\"idcolumn\" size=\"256\"/><Column id=\"captioncolumn\" size=\"256\"/><Column id=\"levelcolumn\" size=\"256\"/><Column id=\"enablecolumn\" size=\"256\"/><Column id=\"iconcolumn\" size=\"256\"/><Column id=\"checkboxcolumn\" size=\"256\"/><Column id=\"hotkeycolumn\" size=\"256\"/><Column id=\"userdatacolumn\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"idcolumn\"/><Col id=\"captioncolumn\">A</Col><Col id=\"levelcolumn\">0</Col><Col id=\"enablecolumn\"/><Col id=\"iconcolumn\"/><Col id=\"checkboxcolumn\"/><Col id=\"hotkeycolumn\"/><Col id=\"userdatacolumn\"/></Row><Row><Col id=\"idcolumn\"/><Col id=\"captioncolumn\">A-1</Col><Col id=\"levelcolumn\">1</Col><Col id=\"enablecolumn\"/><Col id=\"iconcolumn\"/><Col id=\"checkboxcolumn\"/><Col id=\"hotkeycolumn\"/><Col id=\"userdatacolumn\"/></Row><Row><Col id=\"idcolumn\"/><Col id=\"captioncolumn\">A-2</Col><Col id=\"levelcolumn\">1</Col><Col id=\"enablecolumn\"/><Col id=\"iconcolumn\"/><Col id=\"checkboxcolumn\"/><Col id=\"hotkeycolumn\"/><Col id=\"userdatacolumn\"/></Row><Row><Col id=\"idcolumn\"/><Col id=\"captioncolumn\">B</Col><Col id=\"levelcolumn\">0</Col><Col id=\"enablecolumn\"/><Col id=\"iconcolumn\"/><Col id=\"checkboxcolumn\"/><Col id=\"hotkeycolumn\"/><Col id=\"userdatacolumn\"/></Row><Row><Col id=\"idcolumn\"/><Col id=\"captioncolumn\">C</Col><Col id=\"levelcolumn\">0</Col><Col id=\"enablecolumn\"/><Col id=\"iconcolumn\"/><Col id=\"checkboxcolumn\"/><Col id=\"hotkeycolumn\"/><Col id=\"userdatacolumn\"/></Row></Rows>");
+            obj.set_innerdataset(PopupMenu00_innerdataset);
+            obj.set_idcolumn("idcolumn");
+            obj.set_captioncolumn("captioncolumn");
+            obj.set_levelcolumn("levelcolumn");
+            obj.set_enablecolumn("enablecolumn");
+            obj.set_iconcolumn("iconcolumn");
+            obj.set_checkboxcolumn("checkboxcolumn");
+            obj.set_hotkeycolumn("hotkeycolumn");
+            obj.set_userdatacolumn("userdatacolumn");
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("hghghf");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("hghghf.xfdl", function() {
+
+        	var objChildFrame = new ChildFrame();  
+        	objChildFrame.init("childframe00",0,0,300,300,null,null);
+        	objChildFrame.set_border("1px solid #999999");
+        	objChildFrame.set_showstatusbar(true);
+        	objChildFrame.set_openalign('center middle');
+        	objChildFrame.set_resizable(true);
+        	objChildFrame.set_overlaycolor("rgba(255,0,0,0.3)");
+        	objChildFrame.set_background("#ffffff");
+        	objChildFrame.showModal(this.getOwnerFrame());
+
+        this.Form_onrbuttondown = function(obj,e)
+        {
+            this.PopupMenu00.trackPopupByComponent(this, e.clientx, e.clienty);
+        };
+
+        
+
+        
+        this.PopupMenu00_onmenuclick = function(obj,e)
+        {
+        	
+        }
+
+        this.PopupMenu00 = function(obj,e)
+        {
+        	
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onrbuttondown", this.PopupMenu00, this);
+            this.PopupMenu00.addEventHandler("onmenuclick", this.PopupMenu00_onmenuclick, this);
+
+        };
+
+        this.loadIncludeScript("hghghf.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="lawRec">
+
+	<resultMap type="lawsuit_rec.lawmapper.vo.LawsuitRecVO" id="lawsuitRecVO">
+		<result property="lawsuitAdmNo" column="LAWSUIT_ADM_NO" />
+		<result property="lawsuitCpPladefSepcode" column="LAWSUIT_CP_PLADEF_SEPCODE" />
+		<result property="instAdmCode" column="INST_ADM_CODE" />
+		<result property="instAdmPrgrCode" column="INST_ADM_PRGR_CODE" />
+		<result property="instAdmCortCode" column="INST_ADM_CORT_CODE" />
+		<result property="instAdmCaseNo" column="INST_ADM_CASE_NO" />
+		<result property="instAdmName" column="INST_ADM_NAME" />
+		<result property="instAdmIssuChg" column="INST_ADM_ISSU_CHG" />
+	    <result property="instAdmCtpmgrName" column="INST_ADM_CTPMGR_NAME" />
+	    <result property="instAdmJudId" column="INST_ADM_JUDID" />
+	    <result property="instAdmJudName" column="INST_ADM_JUD_NAME" />
+	    <result property="instAdmIssuPoin" column="INST_ADM_ISSU_POIN" />
+	    <result property="pladefSeq" column="PLADEF_SEQ" />
+	    <result property="pladefSepCode" column="PLADEF_SEP_CODE" />
+		<result property="pladefName" column="PLADEF_NAME" />
+	    <result property="pladefRegNo" column="PLADEF_REG_NO" />
+	    <result property="pladefMainTel" column="PLADEF_MAIN_TEL" />
+	    <result property="pladefAddTel" column="PLADEF_ADD_TEL" />
+	    <result property="pladefPos" column="PLADEF_POS" />
+	    <result property="pladefAddr1" column="PLADEF_ADDR1" />
+	    <result property="pladefAddr2" column="PLADEF_ADDR2" />
+	    <result property="pladefClamVol" column="PLADEF_CLAM_VOL" />
+	    <result property="pladefLawConcSepcode" column="PLADEF_LAW_CONC_SEPCODE" />
+	    <result property="pladefConcDate" column="PLADEF_CONC_DATE" />
+	    <result property="pladefLawconcInstcode" column="PLADEF_LAWCONC_INSTCODE" />
+	    <result property="pladefRegInst" column="PLADEF_REG_INST" />
+	    <result property="pladefEndInst" column="PLADEF_END_INST" />
+	    <result property="tabReconcilSeq" column="TAB_RECONCIL_SEQ" />
+	    <result property="reconcilReqChg" column="RECONCIL_REQ_CHG" />
+	    <result property="reconcilAppvChg" column="RECONCIL_APPV_CHG" />
+	    <result property="reconcilMgrOpin" column="RECONCIL_MGR_OPIN" />
+	    <result property="reconcilAppvDate" column="RECONCIL_APPV_DATE" />
+	    <result property="reconcilExptjudgChg" column="RECONCIL_EXPTJUDG_CHG" />
+	    <result property="reconcilAppvId" column="RECONCIL_APPV_ID" />
+	    <result property="reconcilAppvName" column="RECONCIL_APPV_NAME" />
+	    <result property="reconcilTempSaveWtr" column="RECONCIL_TEMP_SAVE_WTR" />
+	    <result property="aprvCheck" column="APRV_CHECK" />
+	</resultMap>
+	
+	
+	<!-- 기본 사항 조회 ( 심급 ) -->
+	<select id="getLawsuitRecSelect" resultMap="lawsuitRecVO" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO">
+
+		SELECT   DECODE(T1.LAWSUIT_CP_PLADEF_SEPCODE, '001', '원고', '002', '피고') AS LAWSUIT_CP_PLADEF_SEPCODE   
+	            ,T2.LAWSUIT_ADM_NO
+	            ,T2.INST_ADM_CODE
+			    ,DECODE(T2.INST_ADM_PRGR_CODE, '001', '발생', '002', '확정', '003', '종결') AS INST_ADM_PRGR_CODE
+			    ,DECODE(T2.INST_ADM_CORT_CODE, '001', '서울동부지방법원', '002', '서울남부지방법원', '003', '대전동부지방법원', '004', '대전서부지방법원', '005', '부산중앙지방법원', '006', '광주남부지방법원', '007', '제주주앙지방법원') AS INST_ADM_CORT_CODE
+		         ,T1.LAWSUIT_ADM_NO
+				 ,T2.INST_ADM_CASE_NO
+				 ,T2.INST_ADM_NAME
+				 ,T2.INST_ADM_JUD_ID
+				 ,T2.INST_ADM_JUD_NAME
+				 ,T2.INST_ADM_ISSU_POIN
+				 ,T2.INST_ADM_CTPMGR_NAME
+		 FROM   PD_LAW.TAB_LAWSUIT T1, PD_LAW.TAB_INST_ADM T2 
+		WHERE   T1.LAWSUIT_ADM_NO = T2.LAWSUIT_ADM_NO
+          AND   T2.INST_ADM_CODE = #{instAdmCode}
+          AND   T2.LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+
+	</select>
+
+	<!-- 기본 사항 조회 ( 원피고 ) -->
+	<select id="getLawsuitRecPladefSelect" resultMap="lawsuitRecVO" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO">
+
+		SELECT   LAWSUIT_ADM_NO
+		        ,PLADEF_SEP_CODE
+				,PLADEF_SEQ
+				,PLADEF_NAME
+				,PLADEF_REG_NO
+				,PLADEF_MAIN_TEL
+				,PLADEF_ADD_TEL
+				,PLADEF_POS
+			    ,PLADEF_ADDR1
+			    ,PLADEF_ADDR2
+				,TRIM(TO_CHAR(PLADEF_CLAM_VOL, '999,999,999,999,999')) AS PLADEF_CLAM_VOL
+				,PLADEF_LAW_CONC_SEPCODE
+				,PLADEF_CONC_DATE
+				,PLADEF_LAWCONC_INSTCODE
+				,PLADEF_REG_INST
+				,PLADEF_END_INST
+		FROM    PD_LAW.TAB_PLADEF 
+		WHERE   PLADEF_REG_INST <![CDATA[ <= ]]>  #{instAdmCode}  
+	      AND   LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+     ORDER BY   PLADEF_SEQ
+
+	</select>
+
+	<!-- 재판외화해 상세 조회 -->
+	<select id="getLawsuitRecDetailSelect" resultMap="lawsuitRecVO" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO">
+
+      SELECT	 LAWSUIT_ADM_NO
+				,PLADEF_SEP_CODE
+				,PLADEF_SEQ
+				,INST_ADM_CODE
+				,TAB_RECONCIL_SEQ 	
+				,RECONCIL_REQ_CHG
+				,RECONCIL_APPV_CHG
+				,RECONCIL_MGR_OPIN
+				,RECONCIL_APPV_DATE
+				,RECONCIL_EXPTJUDG_CHG
+				,RECONCIL_APPV_ID
+				,RECONCIL_APPV_NAME
+		 FROM  PD_LAW.TAB_RECONCIL
+		WHERE  INST_ADM_CODE = #{instAdmCode}	
+          AND  LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+     ORDER BY  TAB_RECONCIL_SEQ DESC   
+     
+	</select>
+
+
+	<!-- 재판외화해 등록(insert) -->
+	<insert id="reconcil_insert" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO">
+		
+		<selectKey resultType="int" keyProperty="tabReconcilSeq" order="BEFORE">
+			SELECT DECODE(COUNT(*), 0,'1',MAX(TAB_RECONCIL_SEQ)+1) 
+    		  FROM PD_LAW.TAB_RECONCIL
+    		 WHERE PLADEF_SEP_CODE = #{pladefSepCode}
+			     AND PLADEF_SEQ = #{pladefSeq}
+			     AND INST_ADM_CODE = #{instAdmCode}
+			     AND LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+		</selectKey>
+		INSERT INTO 
+			PD_LAW.TAB_RECONCIL
+		       (
+		       LAWSUIT_ADM_NO
+		     , PLADEF_SEP_CODE
+		     , PLADEF_SEQ
+		     , INST_ADM_CODE
+		     , TAB_RECONCIL_SEQ
+		     , RECONCIL_REQ_CHG
+		     , RECONCIL_APPV_CHG
+		     , RECONCIL_MGR_OPIN
+		     , RECONCIL_APPV_DATE
+		     , RECONCIL_EXPTJUDG_CHG
+		     , RECONCIL_APPV_NAME
+		       )
+		VALUES (
+			#{lawsuitAdmNo}
+			, #{pladefSepCode}
+			, #{pladefSeq}
+			, #{instAdmCode}
+			, #{tabReconcilSeq}
+			, #{reconcilReqChg}
+			, #{reconcilAppvChg}
+			, #{reconcilMgrOpin}
+			, (SELECT NVL( #{reconcilAppvDate, jdbcType=VARCHAR}, TO_CHAR(SYSDATE,'yyyyMMdd') ) FROM DUAL)
+			, #{reconcilExptjudgChg}
+			, #{reconcilAppvName}
+		    )
+	</insert>
+
+
+	<!-- 재판외화해 수정 (update) -->
+	<update id="reconcil_update" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO">
+
+		UPDATE  PD_LAW.TAB_RECONCIL
+		   SET  RECONCIL_REQ_CHG = #{reconcilReqChg}
+		       ,RECONCIL_APPV_CHG = #{reconcilAppvChg}
+		       ,RECONCIL_MGR_OPIN = #{reconcilMgrOpin}
+		       ,RECONCIL_APPV_DATE = (SELECT NVL( #{reconcilAppvDate, jdbcType=VARCHAR}, TO_CHAR(SYSDATE,'yyyyMMdd') ) FROM DUAL)
+		       ,RECONCIL_EXPTJUDG_CHG = #{reconcilExptjudgChg}
+		       ,RECONCIL_APPV_NAME = #{reconcilAppvName}
+		WHERE  TAB_RECONCIL_SEQ = #{tabReconcilSeq}
+		  AND  PLADEF_SEQ = #{pladefSeq}
+		  AND  PLADEF_SEP_CODE = #{pladefSepCode}
+		  AND  LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+		  AND  INST_ADM_CODE = #{instAdmCode}
+		
+	</update>
+
+	<!-- 재판외화해 삭제 -->
+	<delete id="reconcil_delete" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO">
+	
+		DELETE PD_LAW.TAB_RECONCIL
+		 WHERE TAB_RECONCIL_SEQ = #{tabReconcilSeq}
+		   AND PLADEF_SEQ = #{pladefSeq}
+		   AND PLADEF_SEP_CODE = #{pladefSepCode}
+		   AND LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+		   AND INST_ADM_CODE = #{instAdmCode}
+
+	</delete>
+
+	<!-- 재판외화해 종결 -->
+	<update id="reconcilReg" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO">
+
+	   UPDATE  TAB_PLADEF
+        
+          SET  PLADEF_LAW_CONC_SEPCODE = #pladefLawConcSepcode,jdbcType=VARCHAR#
+              ,PLADEF_LAWCONC_INSTCODE = #pladefLawconcInstcode,jdbcType=VARCHAR#
+              ,PLADEF_END_INST = #pladefEndInst,jdbcType=VARCHAR#
+              ,PLADEF_CONC_DATE = #pladefConcDate,jdbcType=VARCHAR#
+        
+        WHERE PLADEF_SEP_CODE = #pladefSepCode#
+	      AND PLADEF_SEQ = #pladefSeq#  
+          AND LAWSUIT_ADM_NO = #lawsuitAdmNo#
+
+	</update>
+
+  <!-- count  -->
+	<select id="getCount" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO" resultType="String" >
+
+		WITH T1 AS(
+	
+					SELECT MAX(APRVPRGR_INFO_SEQ) APRVPRGR_INFO_SEQ ,
+					       APRVPRGR_INFO_BOOK_NO
+					  FROM TAB_APRV_INFO
+					 WHERE APRVPRGR_INFO_BOOK_NO =
+					       #lawsuitAdmNo# || '005' || #instAdmCode# || LPAD ( #pladefSeq# , 4, '0') 
+					      || LPAD (#tabReconcilSeq#,4, '0')
+					
+					GROUP BY APRVPRGR_INFO_BOOK_NO
+				
+				  )
+	
+		SELECT SUM( CASE APRV_INFO_COND_CODE WHEN 'N' THEN 1 ELSE 0 END ) nCount
+		  FROM  TAB_APRV_INFO T2, T1
+		 WHERE  T2.APRVPRGR_INFO_SEQ = T1.APRVPRGR_INFO_SEQ
+		   AND  T2.APRVPRGR_INFO_BOOK_NO = T1.APRVPRGR_INFO_BOOK_NO
+		
+	</select>
+	
+	<!-- 최종 조정안 확인  -->
+	<select id="getLastCount" parameterType="lawsuit_rec.lawmapper.vo.LawsuitRecVO" resultType="String" >
+
+		WITH T1 AS(
+	
+					SELECT MAX(APRVPRGR_INFO_SEQ) APRVPRGR_INFO_SEQ ,
+					       APRVPRGR_INFO_BOOK_NO
+					  FROM TAB_APRV_INFO
+					 WHERE APRVPRGR_INFO_BOOK_NO =
+					       #lawsuitAdmNo# || '005' || #instAdmCode# || LPAD ( #pladefSeq# , 4, '0') 
+					      || LPAD (#tabReconcilSeq#,4, '0')
+					
+					GROUP BY APRVPRGR_INFO_BOOK_NO
+				
+				  )
+	
+		SELECT SUM( CASE APRV_INFO_COND_CODE WHEN 'Z' THEN 1 ELSE 0 END ) zCount
+		  FROM  TAB_APRV_INFO T2, T1
+		 WHERE  T2.APRVPRGR_INFO_SEQ = T1.APRVPRGR_INFO_SEQ
+		   AND  T2.APRVPRGR_INFO_BOOK_NO = T1.APRVPRGR_INFO_BOOK_NO
+		
+	</select>
+	
+</mapper> 

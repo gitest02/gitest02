@@ -1,0 +1,96 @@
+package nexacro.sample.vo;
+
+import com.nexacro.spring.data.DataSetRowTypeAccessor;
+
+
+
+public class InterestVo {
+//implements DataSetRowTypeAccessor
+	private static final long serialVersionUID = 1L;
+	
+	private String interestId;
+	private String interestCode;
+	private String interestStday;
+	private String interestEnday;
+	private String interestRate;
+	private String interestRegistDate;
+	private String interestInput;
+	
+	//private int rowType;  //rowType설정
+
+	
+	
+	//public int getRowType() {
+		//return rowType;
+	//}
+
+	//public void setRowType(int rowType) {
+		//this.rowType = rowType;
+	//}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public InterestVo() {
+	}
+
+	public String getInterestId() {
+		return interestId;
+	}
+
+	public void setInterestId(String interestId) {
+		this.interestId = interestId;
+	}
+
+	public String getInterestCode() {
+		return interestCode;
+	}
+
+	public void setInterestCode(String interestCode) {
+		this.interestCode = interestCode;
+	}
+
+	public String getInterestStday() {
+		return interestStday;
+	}
+
+	public void setInterestStday(String interestStday) {
+		this.interestStday = interestStday;
+	}
+
+	public String getInterestEnday() {
+		return interestEnday;
+	}
+
+	public void setInterestEnday(String interestEnday) {
+		this.interestEnday = interestEnday;
+	}
+
+	public String getInterestRate() {
+		return interestRate;
+	}
+
+	public void setInterestRate(String interestRate) {
+		this.interestRate = interestRate;
+	}
+
+	public String getInterestRegistDate() {
+		return interestRegistDate;
+	}
+
+	public void setInterestRegistDate(String interestRegistDate) {
+		this.interestRegistDate = interestRegistDate;
+	}
+
+	public String getInterestInput() {
+		return interestInput;
+	}
+
+	public void setInterestInput(String interestInput) {
+		this.interestInput = interestInput;
+	}
+	
+	
+	
+}

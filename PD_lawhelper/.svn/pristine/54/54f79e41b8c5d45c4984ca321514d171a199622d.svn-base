@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_010" classname="V_PDL_010" left="0" top="0" width="600" height="150" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="Div00" left="0%" top="0" right="0.33%" height="147">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="반소여부" left="2.68%" top="33" right="81.94%" height="20" style="align:center;"/>
+              <Static id="Static01" taborder="1" text="반소사건번호" left="2.68%" top="65" right="81.94%" height="20" style="align:center;"/>
+              <Static id="Static02" taborder="2" text="반소송번호" left="47.99%" top="33" right="36.62%" height="20" style="align:center;"/>
+              <Static id="Static03" taborder="3" text="반소금액" left="48.33%" top="65" right="36.29%" height="20" style="align:center;"/>
+              <Radio id="Radio00" taborder="4" left="18.9%" top="30" right="54.18%" height="21" onitemclick="Div00_Radio00_onitemclick"/>
+              <Edit id="Edit00" taborder="5" left="18.9%" top="65" right="54.18%" height="21"/>
+              <Edit id="Edit01" taborder="6" left="63.04%" top="33" right="10.03%" height="21"/>
+              <Edit id="Edit02" taborder="7" left="63.04%" top="65" right="10.03%" height="21"/>
+              <Button id="Button00" taborder="8" text="저장" left="72.07%" top="109" right="17.22%" height="21"/>
+              <Button id="Button01" taborder="9" text="취소" left="85.45%" top="109" right="3.85%" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,782 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_PDL_025");
+                this.set_classname("V_PDL_025");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_lawsuit", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitAplCortCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitAplCaseCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCaseTyCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCpPladefSepcode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitAsitParcWtr\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaWtr\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaCaseNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaChg\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitTempReqiDate\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitRaisRea\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCostCfnApldate\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitConcDate\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitFulfDetmWtr\" type=\"STRING\" size=\"256\"/><Column id=\"pladefName\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCaseNo\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmPrgrCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmClamVop\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCortCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmRaisreqDate\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmJudId\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmJudName\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmEntLyrName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_edoc", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmSeq\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozNo\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozkindSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"rowNum\" type=\"INT\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_edoc_eul", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmSeq\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozNo\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozkindSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"rowNum\" type=\"INT\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_edoc_gap", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmSeq\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozNo\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmHozkindSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"rowNum\" type=\"INT\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_hozkind_sepcode", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codeName\">사건종류1</Col><Col id=\"codeNo\">001</Col></Row><Row><Col id=\"codeName\">사건종류2</Col><Col id=\"codeNo\">002</Col></Row><Row><Col id=\"codeName\">사건종류3</Col><Col id=\"codeNo\">003</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_hoz_sepcode", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codeName\">갑호증</Col><Col id=\"codeNo\">001</Col></Row><Row><Col id=\"codeName\">을호증</Col><Col id=\"codeNo\">002</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("Div00", "absolute", "0.9%", "8", "98.2%", "35", null, null, this);
+            obj.set_taborder("0");
+            obj.set_text("서증관리");
+            obj.style.set_align("left top");
+            obj.style.set_padding("10 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "0.9%", "44", "98.2%", "44", null, null, this);
+            obj.set_taborder("1");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.addChild(obj.name, obj);
+            obj = new Div("Div00", "absolute", "8.47%", "4", "91.02%", "35", null, null, this.Div01);
+            obj.set_taborder("17");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "4.61%", "4", "15.73%", "25", null, null, this.Div01.Div00);
+            obj.set_taborder("6");
+            obj.style.set_selectbackground("blue");
+            obj.set_enable("false");
+            this.Div01.Div00.addChild(obj.name, obj);
+            obj = new Div("Div01", "absolute", "0.51%", "4", "11.73%", "35", null, null, this.Div01);
+            obj.set_taborder("18");
+            obj.set_text("소송관리번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("9 Dotum");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "28.06%", "9", "8.47%", "26", null, null, this.Div01);
+            obj.set_taborder("19");
+            obj.set_text("검색");
+            obj.style.set_image("URL('theme://images/searchBtn.png')");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("resetBtn", "absolute", "90.41%", "9", "8.47%", "26", null, null, this.Div01);
+            obj.set_taborder("20");
+            obj.set_text("초기화");
+            obj.style.set_image("URL('theme://images/resetBtn.png')");
+            obj.set_visible("false");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Div("Div05", "absolute", "0.9%", "111", "98.2%", "114", null, null, this);
+            obj.set_taborder("2");
+            obj.style.set_align("left top");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+            obj = new Div("Div09", "absolute", "8.47%", "4", "91.02%", "35", null, null, this.Div05);
+            obj.set_taborder("45");
+            obj.set_text("Div09");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "4.61%", "4", "15.73%", "25", null, null, this.Div05.Div09);
+            obj.set_taborder("42");
+            obj.set_enable("false");
+            this.Div05.Div09.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "39.78%", "4", "15.73%", "26", null, null, this.Div05.Div09);
+            obj.set_taborder("43");
+            obj.set_enable("false");
+            this.Div05.Div09.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "72.92%", "4", "15.73%", "25", null, null, this.Div05.Div09);
+            obj.set_taborder("44");
+            obj.set_enable("false");
+            this.Div05.Div09.addChild(obj.name, obj);
+            obj = new Div("Div11", "absolute", "8.47%", "72", "91.02%", "35", null, null, this.Div05);
+            obj.set_taborder("46");
+            obj.set_text("Div11");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "4.61%", "4", "15.73%", "25", null, null, this.Div05.Div11);
+            obj.set_taborder("0");
+            obj.set_enable("false");
+            this.Div05.Div11.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "39.78%", "4", "15.73%", "25", null, null, this.Div05.Div11);
+            obj.set_taborder("1");
+            obj.set_enable("false");
+            this.Div05.Div11.addChild(obj.name, obj);
+            obj = new Div("Div10", "absolute", "8.47%", "38", "91.02%", "35", null, null, this.Div05);
+            obj.set_taborder("47");
+            obj.set_text("Div10");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "4.61%", "4", "15.73%", "25", null, null, this.Div05.Div10);
+            obj.set_taborder("42");
+            obj.set_enable("false");
+            this.Div05.Div10.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "39.78%", "4", "48.88%", "25", null, null, this.Div05.Div10);
+            obj.set_taborder("43");
+            obj.set_enable("false");
+            this.Div05.Div10.addChild(obj.name, obj);
+            obj = new Div("Div04", "absolute", "0.51%", "4", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("48");
+            obj.set_text("신청사건번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div05", "absolute", "0.51%", "38", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("49");
+            obj.set_text("당사원피고구분");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div06", "absolute", "0.51%", "72", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("50");
+            obj.set_text("피고");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div00", "absolute", "32.45%", "4", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("51");
+            obj.set_text("사건유형");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div01", "absolute", "32.45%", "38", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("52");
+            obj.set_text("소송제기사유");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div02", "absolute", "62.65%", "4", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("53");
+            obj.set_text("소제기의뢰번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div03", "absolute", "32.45%", "72", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("54");
+            obj.set_text("피고");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+
+            obj = new Div("Div04", "absolute", "0.9%", "92", "982", "15", null, null, this);
+            obj.set_taborder("3");
+            obj.set_text("소송기본사항");
+            obj.style.set_align("left middle");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div02", "absolute", "0.9%", "237", "982", "15", null, null, this);
+            obj.set_taborder("4");
+            obj.set_text("사건호증목록");
+            obj.style.set_align("left middle");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("eulDeleteBtn", "absolute", "90.4%", "229", "8.5%", "26", null, null, this);
+            obj.set_taborder("6");
+            obj.set_text("삭제");
+            obj.style.set_image("URL('theme://images/deleteBtn.png')");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00", "absolute", "0.9%", "259", "48.6%", "158", null, null, this);
+            obj.set_taborder("7");
+            obj.set_binddataset("ds_edoc_gap");
+            obj.set_autosizingtype("none");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"45\"/><Column size=\"60\"/><Column size=\"291\"/><Column size=\"90\"/><Column size=\"40\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell colspan=\"4\" text=\"갑호증\"/><Cell col=\"4\"/><Cell row=\"1\" text=\"No\"/><Cell row=\"1\" col=\"1\" text=\"종류\"/><Cell row=\"1\" col=\"2\" text=\"명칭\"/><Cell row=\"1\" col=\"3\" text=\"작성일\"/><Cell row=\"1\" col=\"4\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:edocAdmHozkindSepCode\"/><Cell col=\"2\" text=\"bind:edocAdmName\"/><Cell col=\"3\" text=\"bind:edocAdmWritDate\"/><Cell col=\"4\" text=\"bind:rowNum\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div03", "absolute", "0.9%", "450", "98.2%", "114", null, null, this);
+            obj.set_taborder("8");
+            obj.style.set_align("left top");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+            obj = new Div("Div09", "absolute", "8.47%", "4", "91.02%", "35", null, null, this.Div03);
+            obj.set_taborder("55");
+            obj.set_text("Div09");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Combo("Combo00", "absolute", "4.61%", "4", "15.73%", "25", null, null, this.Div03.Div09);
+            this.Div03.Div09.addChild(obj.name, obj);
+            obj.set_taborder("0");
+            obj.set_innerdataset("@ds_hoz_sepcode");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_value("001");
+            obj.set_text("갑호증");
+            obj.set_index("0");
+            obj = new Edit("Edit01", "absolute", "33.93%", "4", "15.73%", "25", null, null, this.Div03.Div09);
+            obj.set_taborder("1");
+            this.Div03.Div09.addChild(obj.name, obj);
+            obj = new Combo("Combo01", "absolute", "63.26%", "4", "15.73%", "25", null, null, this.Div03.Div09);
+            this.Div03.Div09.addChild(obj.name, obj);
+            obj.set_taborder("2");
+            obj.set_innerdataset("@ds_hozkind_sepcode");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_value("001");
+            obj.set_text("사건종류1");
+            obj.set_index("0");
+            obj = new Div("Div10", "absolute", "8.47%", "38", "91.02%", "35", null, null, this.Div03);
+            obj.set_taborder("56");
+            obj.set_text("Div10");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "4.61%", "4", "45.06%", "25", null, null, this.Div03.Div10);
+            obj.set_taborder("0");
+            this.Div03.Div10.addChild(obj.name, obj);
+            obj = new Calendar("Calendar00", "absolute", "63.26%", "4", "15.73%", "25", null, null, this.Div03.Div10);
+            this.Div03.Div10.addChild(obj.name, obj);
+            obj.set_taborder("1");
+            obj = new Div("Div11", "absolute", "8.47%", "72", "91.02%", "35", null, null, this.Div03);
+            obj.set_taborder("57");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Div("Div04", "absolute", "0.51%", "4", "11.73%", "35", null, null, this.Div03);
+            obj.set_taborder("58");
+            obj.set_text("호증구분");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Div("Div05", "absolute", "0.51%", "38", "11.73%", "35", null, null, this.Div03);
+            obj.set_taborder("59");
+            obj.set_text("명칭");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Div("Div06", "absolute", "0.51%", "72", "11.73%", "35", null, null, this.Div03);
+            obj.set_taborder("60");
+            obj.set_text("첨부파일");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Div("Div00", "absolute", "27.35%", "4", "11.73%", "35", null, null, this.Div03);
+            obj.set_taborder("65");
+            obj.set_text("호증번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Div("Div01", "absolute", "53.98%", "4", "11.73%", "35", null, null, this.Div03);
+            obj.set_taborder("67");
+            obj.set_text("호증종류");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+            obj = new Div("Div07", "absolute", "53.98%", "38", "11.73%", "35", null, null, this.Div03);
+            obj.set_taborder("69");
+            obj.set_text("작성일");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div03.addChild(obj.name, obj);
+
+            obj = new Button("saveBtn", "absolute", "90.5%", "567", "8.5%", "26", null, null, this);
+            obj.set_taborder("9");
+            obj.set_text("저장");
+            obj.style.set_image("URL('theme://images/saveBtn.png')");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div06", "absolute", "0.9%", "426", "982", "15", null, null, this);
+            obj.set_taborder("11");
+            obj.set_text("사건호증추가");
+            obj.style.set_align("left middle");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid02", "absolute", "50.5%", "259", "48.6%", "158", null, null, this);
+            obj.set_taborder("12");
+            obj.set_binddataset("ds_edoc_eul");
+            obj.set_autosizingtype("none");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"45\"/><Column size=\"60\"/><Column size=\"291\"/><Column size=\"90\"/><Column size=\"40\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell colspan=\"4\" text=\"을호증\"/><Cell col=\"4\"/><Cell row=\"1\" text=\"No.\"/><Cell row=\"1\" col=\"1\" text=\"종류\"/><Cell row=\"1\" col=\"2\" text=\"명칭\"/><Cell row=\"1\" col=\"3\" text=\"작성일\"/><Cell row=\"1\" col=\"4\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:edocAdmHozkindSepCode\"/><Cell col=\"2\" text=\"bind:edocAdmName\"/><Cell col=\"3\" text=\"bind:edocAdmWritDate\"/><Cell col=\"4\" text=\"bind:rowNum\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("gapDeleteBtn", "absolute", "40.9%", "229", "8.5%", "26", null, null, this);
+            obj.set_taborder("13");
+            obj.set_text("삭제");
+            obj.style.set_image("URL('theme://images/deleteBtn.png')");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("insertBtn", "absolute", "90.4%", "421", "8.5%", "26", null, null, this);
+            obj.set_taborder("14");
+            obj.set_text("신규");
+            obj.style.set_image("URL('theme://images/insertBtn.png')");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div01.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("17");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div01.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 44, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 892, 35, this.Div05.Div09,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("45");
+            		p.set_text("Div09");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div05.Div09.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div05.Div11,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("46");
+            		p.set_text("Div11");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div05.Div11.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div05.Div10,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("47");
+            		p.set_text("Div10");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div05.Div10.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 255, this.Div05,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.style.set_align("left top");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #c8c8c8ff");
+            		p.style.set_padding("0 0 0 10");
+
+            	}
+            );
+            this.Div05.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 15, this.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("4");
+            		p.set_text("사건호증목록");
+            		p.style.set_align("left middle");
+            		p.style.set_padding("0 0 0 10");
+
+            	}
+            );
+            this.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 892, 35, this.Div03.Div09,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("55");
+            		p.set_text("Div09");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div03.Div09.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 892, 35, this.Div03.Div10,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("56");
+            		p.set_text("Div10");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div03.Div10.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 892, 35, this.Div03.Div11,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("57");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div03.Div11.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 255, this.Div03,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("8");
+            		p.style.set_align("left top");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #c8c8c8ff");
+            		p.style.set_padding("0 0 0 10");
+
+            	}
+            );
+            this.Div03.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 15, this.Div06,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("11");
+            		p.set_text("사건호증추가");
+            		p.style.set_align("left middle");
+            		p.style.set_padding("0 0 0 10");
+
+            	}
+            );
+            this.Div06.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_PDL_025");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","Div01.Div00.Edit00","value","ds_lawsuit","lawsuitAdmNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div05.Div09.Edit00","value","ds_lawsuit","lawsuitAplCaseCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div05.Div09.Edit01","value","ds_lawsuit","lawsuitCaseTyCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div05.Div09.Edit02","value","ds_lawsuit","lawRaisreqNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div05.Div10.Edit00","value","ds_lawsuit","lawsuitCpPladefSepcode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div05.Div10.Edit01","value","ds_lawsuit","lawsuitRaisRea");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Div05.Div11.Edit00","value","ds_lawsuit","pladefName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","Div05.Div11.Edit01","value","ds_lawsuit","lawsuitAplCortCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","Div03.Div09.Combo00","value","ds_edoc","edocAdmHozSepCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","Div03.Div09.Edit01","value","ds_edoc","edocAdmHozNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item11","Div03.Div09.Combo01","value","ds_edoc","edocAdmHozkindSepCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item12","Div03.Div10.Edit00","value","ds_edoc","edocAdmName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item13","Div03.Div10.Calendar00","value","ds_edoc","edocAdmWritDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_PDL_025.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_PDL_025.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.Div01_Button00_onclick = function(obj,e)
+        {
+        	var objChildFrame = new ChildFrame();
+            objChildFrame.init("chf_popup2", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_026.xfdl");
+            var objParam = {};
+            objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+
+        }
+
+        this.fn_popupCallback = function(strID,strTemp)
+        {
+        	this.gapDeleteBtn.set_visible(true);
+        	this.eulDeleteBtn.set_visible(true);
+        	this.insertBtn.set_visible(true);
+        	this.saveBtn.set_visible(true);
+        	this.Div01.resetBtn.set_visible(true);
+        	
+        	var strTempSplit = strTemp.split("/");
+        	if(strTemp != undefined){
+        		this.ds_search.setColumn(0, "lawsuitAdmNo", strTempSplit[0]);
+        		this.ds_search.setColumn(0, "instAdmCode", strTempSplit[1]);
+        		this.getLawsuitInfo();
+        		this.getEdocList();
+        		this.ds_edoc.filter("edocAdmHozSepCode == '001'");
+        		this.ds_edoc_gap.copyData(this.ds_edoc, true);
+        		this.ds_edoc.filter("edocAdmHozSepCode == '002'");
+        		this.ds_edoc_eul.copyData(this.ds_edoc, true);
+        		this.ds_edoc.filter("");
+        		
+        	}
+        }
+
+        this.getLawsuitInfo = function() {
+        	var oDatas =  {
+        		  svcid : "lawSuitInfo",
+        		  sController : "getLawsuitInfo.do",
+        		  inds :["ds_search=ds_search"],
+        		  outds :["ds_lawsuit=ds_lawsuit"],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+
+        }
+
+        this.getEdocList = function() {
+        	var oDatas =  {
+        		  svcid : "edocAdmList",
+        		  sController : "getEdocAdmList.do",
+        		  inds :["ds_search=ds_search"],
+        		  outds :["ds_edoc=ds_edoc1"],
+        		  args  : [],
+        		  bAsync : false,
+        		  nDataType : 0,
+        		  bCompress :true,
+        	};
+        	
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+
+        }
+
+        this.Button01_onclick = function(obj,e)
+        {
+        	var oDatas =  {
+        		  svcid : "edocChange",
+        		  sController : "edocChange.do",
+        		  inds :["ds_edoc=ds_edoc:U"],
+        		  outds :[],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+
+         		var pThis = this.fobj;
+        	});		
+        }
+
+        this.Button03_onclick = function(obj,e)
+        {
+        	var oDatas =  {
+        		  svcid : "edocAdmInsert",
+        		  sController : "getEdocAdmList.do",
+        		  inds :["ds_search=ds_search"],
+        		  outds :["ds_edoc=ds_edoc1"],
+        		  args  : [],
+        		  bAsync : false,
+        		  nDataType : 0,
+        		  bCompress :true,
+        	};
+        	
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+        }
+
+        this.Div01_Button01_onclick = function(obj,e)
+        {
+        	this.ds_edoc.deleteAll();
+        	this.ds_edoc_gap.deleteAll();
+        	this.ds_edoc_eul.deleteAll();	
+        	this.ds_lawsuit.deleteAll();
+        	this.Button00.set_visible(false);
+        	this.Button01.set_visible(false);
+        	this.Button02.set_visible(false);
+        	this.Button03.set_visible(false);
+        	this.Div01.Button01.set_visible(false);
+        }
+
+        this.gapDeleteBtn_onclick = function(obj,e)
+        {
+        	var rowPos = this.ds_edoc_gap.rowposition;
+        	var oriNo = this.ds_edoc_gap.getColumn(rowPos, "rowNum");
+        	var oriIndex = this.ds_edoc.findRowExpr("rowNum == " + oriNo);
+        	this.ds_edoc.deleteRow(oriIndex);
+        	this.ds_edoc_gap.deleteRow(rowPos);
+        }
+
+        this.eulDeleteBtn_onclick = function(obj,e)
+        {
+        	var rowPos = this.ds_edoc_eul.rowposition;
+        	var oriNo = this.ds_edoc_eul.getColumn(rowPos, "rowNum");
+        	var oriIndex = this.ds_edoc.findRowExpr("rowNum == " + oriNo);
+        	this.ds_edoc.deleteRow(oriIndex);
+        	this.ds_edoc_eul.deleteRow(rowPos);
+        }
+
+        this.gapCellClick = function(obj,e)
+        {
+        	var rowPos = this.ds_edoc_gap.rowposition;
+        	var rowNum = this.ds_edoc_gap.getColumn(rowPos, "rowNum");
+        	this.ds_edoc.filter("rowNum == " + rowNum);
+        	this.ds_edoc.filter("");
+        	var objIndex = this.ds_edoc.findRowExpr("rowNum == " + rowNum);
+        	this.ds_edoc.set_rowposition(objIndex);
+
+        	
+        }
+
+        this.eulCellClick = function(obj,e)
+        {
+        	var rowPos = this.ds_edoc_eul.rowposition;
+        	var rowNum = this.ds_edoc_eul.getColumn(rowPos, "rowNum");
+        	this.ds_edoc.filter("rowNum == " + rowNum);
+        	this.ds_edoc.filter("");
+        	var objIndex = this.ds_edoc.findRowExpr("rowNum == " + rowNum);
+        	this.ds_edoc.set_rowposition(objIndex);
+        }
+
+        this.dataChange = function(obj,e)
+        {		
+         		var objRowPos = obj.rowposition;
+         		var objRowNum = obj.getColumn(objRowPos, "rowNum");
+        		var objSepCode = obj.getColumn(objRowPos, "edocAdmHozSepCode");
+        		var gapSepCode = this.ds_edoc_gap.getColumn(this.ds_edoc_gap.rowposition, "edocAdmHozSepCode");
+        		var eulSepCode = this.ds_edoc_eul.getColumn(this.ds_edoc_eul.rowposition, "edocAdmHozSepCode");		
+        		
+        		this.ds_edoc.filter("edocAdmHozSepCode == '001'");
+        		this.ds_edoc_gap.copyData(this.ds_edoc, true);
+        		this.ds_edoc.filter("edocAdmHozSepCode == '002'");
+        		this.ds_edoc_eul.copyData(this.ds_edoc, true);
+        		this.ds_edoc.filter("");
+        		
+        		var objIndex = this.ds_edoc.findRowExpr("rowNum == " + objRowNum);
+        		this.ds_edoc.set_rowposition(objIndex);
+
+        		if(objSepCode == gapSepCode) {
+        			var gapIndex = this.ds_edoc_gap.findRowExpr("rowNum == " + objRowNum);
+        			this.ds_edoc_gap.set_rowposition(gapIndex);
+        		} else {
+        			var eulIndex = this.ds_edoc_eul.findRowExpr("rowNum == " + objRowNum);
+        			this.ds_edoc_eul.set_rowposition(eulIndex);
+        		}
+
+        }
+        this.insertBtn_onclick = function(obj,e)
+        {
+        	this.ds_edoc.insertRow(0);
+        	this.ds_edoc.setColumn(0, "lawsuitAdmNo", this.ds_lawsuit.getColumn(0, "lawsuitAdmNo"));
+        	
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_edoc.addEventHandler("oncolumnchanged", this.dataChange, this);
+            this.Div01.Button00.addEventHandler("onclick", this.Div01_Button00_onclick, this);
+            this.Div01.resetBtn.addEventHandler("onclick", this.Div01_Button01_onclick, this);
+            this.eulDeleteBtn.addEventHandler("onclick", this.eulDeleteBtn_onclick, this);
+            this.Grid00.addEventHandler("oncellclick", this.gapCellClick, this);
+            this.saveBtn.addEventHandler("onclick", this.Button01_onclick, this);
+            this.Grid02.addEventHandler("oncellclick", this.eulCellClick, this);
+            this.gapDeleteBtn.addEventHandler("onclick", this.gapDeleteBtn_onclick, this);
+            this.insertBtn.addEventHandler("onclick", this.insertBtn_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_PDL_025.xfdl");
+
+       
+    };
+}
+)();

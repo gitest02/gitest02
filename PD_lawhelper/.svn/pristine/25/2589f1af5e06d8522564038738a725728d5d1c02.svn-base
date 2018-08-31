@@ -1,0 +1,185 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_014");
+                this.set_classname("V_LAW_013");
+                this.set_titletext("법령 insert");
+                this._setFormPosition(0,0,900,700);
+            }
+            this.style.set_border("1 solid #808080ff");
+            this.style.set_color("ivory");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_chooseLaw", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawId\" type=\"STRING\" size=\"50\"/><Column id=\"articleKey\" type=\"STRING\" size=\"50\"/><Column id=\"articleNo\" type=\"STRING\" size=\"50\"/><Column id=\"name\" type=\"STRING\" size=\"200\"/><Column id=\"actDate\" type=\"STRING\" size=\"50\"/><Column id=\"beforeMove\" type=\"STRING\" size=\"50\"/><Column id=\"afterMove\" type=\"STRING\" size=\"50\"/><Column id=\"isModify\" type=\"STRING\" size=\"50\"/><Column id=\"mainText\" type=\"STRING\" size=\"4000\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_lawItem", this);
+            obj._setContents("<ColumnInfo><Column id=\"cate\" type=\"STRING\" size=\"5\"/><Column id=\"itemNo\" type=\"STRING\" size=\"50\"/><Column id=\"itemText\" type=\"STRING\" size=\"4000\"/><Column id=\"higherItemNo\" type=\"STRING\" size=\"50\"/><Column id=\"lawId\" type=\"STRING\" size=\"50\"/><Column id=\"articleKey\" type=\"STRING\" size=\"50\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"searchCondition\" type=\"STRING\" size=\"50\"/><Column id=\"searchKeyword\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"searchCondition\"/><Col id=\"searchKeyword\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_mainText", "absolute", "0%", "32", "100%", "95.43%", null, null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_close", "absolute", "93.11%", "664", null, "25", "1.33%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("닫기");
+            obj.style.set_color("#46463dff");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("stc_title", "absolute", "0.44%", "7", null, "25", "80%", null, this);
+            obj.set_taborder("3");
+            obj.set_text("법령 등록");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 16 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_insert", "absolute", "16.89%", "174", null, "25", "77.56%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("등록");
+            obj.style.set_color("#46463dff");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edt_searchKeyword", "absolute", "27.56%", "168", null, "23", "38.78%", null, this);
+            obj.set_taborder("5");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 816, 30, this.div_mainText,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div_mainText.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 900, 700, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_013");
+            		p.set_titletext("법령 insert");
+            		p.style.set_border("1 solid #808080ff");
+            		p.style.set_color("ivory");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("articleSearchKeyword","edt_searchKeyword","value","ds_search","searchKeyword");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_014.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_014.xfdl", function() {
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        
+        this.btn_close_onclick = function(obj,e)
+        {
+        	this.close("OK");
+        }
+
+        
+        this.form_onload = function(obj,e)
+        {
+        	
+        }
+        this.btn_insert_onclick = function(obj,e)
+        {
+        	var searchKeyword = this.edt_searchKeyword.value;
+
+        	var oDatas =  {
+        		  svcid : "lawArticleInsert",
+        		  sController : "lawArticleInsert.do", 
+        		  inds :["ds_search = ds_search"],
+        		  outds :[],			     
+        		  args  : [				
+        		  ],
+        		  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        		  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        		  bCompress :false,	 //			  
+        		}; 
+        		
+        	//공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        			/*  
+        			*   callback argument
+        			*   @param : {string}    this.svcid      : 서비스 ID
+        			*   @param : {object}    this.fobj       : 현재 form object
+        			*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        			*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        			*/   
+        				
+        		if(this.errorcode < 0)
+        		{		
+        			Iject.alert(this.errorMsg);			
+        			return;
+        		} 
+        		
+        // 		var pThis = this.fobj;   //form object	      
+        // 		   
+        // 		trace(" ds_lawItem : " + pThis.ds_lawItem.saveXML()); // 화면 출력
+        			
+        	});
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_onload, this);
+            this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
+            this.btn_insert.addEventHandler("onclick", this.btn_insert_onclick, this);
+            this.edt_searchKeyword.addEventHandler("oneditclick", this.edt_searchKeyword_oneditclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_014.xfdl");
+
+       
+    };
+}
+)();

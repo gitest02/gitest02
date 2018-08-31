@@ -1,0 +1,14 @@
+package outlegal.lawmapper.service;
+
+import java.util.List;
+
+import outlegal.lawmapper.vo.OutEdocAdmVO;
+
+
+public interface OutEdocAdmService {
+	
+	public List<OutEdocAdmVO> getEdocAdmList(OutEdocAdmVO outEdocAdmVO);
+	
+	public void edocAdmChange(List<OutEdocAdmVO> listVO);
+
+}

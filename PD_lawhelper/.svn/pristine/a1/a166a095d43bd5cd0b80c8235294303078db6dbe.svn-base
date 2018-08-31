@@ -1,0 +1,342 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("DETAIL");
+                this.set_classname("DETAIL");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1024,768);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("Dataset00", this);
+            obj._setContents("<ColumnInfo><Column id=\"No\" type=\"INT\" size=\"256\"/><Column id=\"분류코드\" type=\"STRING\" size=\"256\"/><Column id=\"분류명칭\" type=\"STRING\" size=\"256\"/><Column id=\"상세코드\" type=\"INT\" size=\"256\"/><Column id=\"상세코드명\" type=\"STRING\" size=\"256\"/><Column id=\"사용여부\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"No\">1</Col><Col id=\"분류코드\">A01</Col><Col id=\"분류명칭\">채무자구분</Col><Col id=\"상세코드\">01</Col><Col id=\"상세코드명\">개인</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"No\">2</Col><Col id=\"분류코드\">A01</Col><Col id=\"분류명칭\">채무자구분</Col><Col id=\"상세코드\">02</Col><Col id=\"상세코드명\">법인</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"No\">3</Col><Col id=\"분류코드\">A01</Col><Col id=\"분류명칭\">채무자구분</Col><Col id=\"상세코드\">03</Col><Col id=\"상세코드명\">외국인</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"No\">4</Col><Col id=\"분류코드\">A01</Col><Col id=\"분류명칭\">채무자구분</Col><Col id=\"상세코드\">99</Col><Col id=\"상세코드명\">기타</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"No\">5</Col><Col id=\"분류코드\">A02</Col><Col id=\"분류명칭\">상태코드</Col><Col id=\"상세코드\">04</Col><Col id=\"상세코드명\">완납</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"No\">6</Col><Col id=\"분류코드\">A02</Col><Col id=\"분류명칭\">상태코드</Col><Col id=\"상세코드\">03</Col><Col id=\"상세코드명\">포기</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"No\">7</Col><Col id=\"분류코드\">A02</Col><Col id=\"분류명칭\">상태코드</Col><Col id=\"상세코드\">02</Col><Col id=\"상세코드명\">정지</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"No\">8</Col><Col id=\"분류코드\">A02</Col><Col id=\"분류명칭\">상태코드</Col><Col id=\"상세코드\">99</Col><Col id=\"상세코드명\">기타</Col><Col id=\"사용여부\">Y</Col></Row><Row><Col id=\"상세코드\">01</Col><Col id=\"상세코드명\">정상</Col><Col id=\"사용여부\">Y</Col><Col id=\"분류명칭\">상태코드</Col><Col id=\"분류코드\">A02</Col><Col id=\"No\">9</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "0.78%", "24", null, "49", "26.66%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("공동코드상세관리");
+            obj.style.set_background("transparent URL('img::bg_Cal_click.png') stretch");
+            obj.style.set_color("black");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "0.78%", "73", null, "63", "26.66%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "0.13%", "76", null, "37", "88.02%", null, this.Div00);
+            obj.set_taborder("0");
+            obj.set_text("분류코드");
+            obj.style.set_background("gray");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "29.59%", "1", null, "35", "57.26%", null, this.Div00);
+            obj.set_taborder("1");
+            obj.set_text("상세코드");
+            obj.style.set_background("gray");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "74.52%", "0", null, "37", "7.81%", null, this.Div00);
+            obj.set_taborder("2");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "60.68%", "1", null, "35", "26.16%", null, this.Div00);
+            obj.set_taborder("3");
+            obj.set_text("코드명");
+            obj.style.set_background("gray");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "43.29%", "1", null, "37", "40.41%", null, this.Div00);
+            obj.set_taborder("4");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "93.15%", "2", null, "34", "0.27%", null, this.Div00);
+            obj.set_taborder("5");
+            obj.set_text("검색");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "0.78%", "73", null, "35", "89.94%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("분류코드");
+            obj.style.set_background("gray");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("Combo00", "absolute", "10.35%", "73", null, "38", "78.91%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("3");
+            obj.set_text("전체");
+
+            obj = new Div("Div01", "absolute", "0.88%", "111", null, "67", "28.22%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("Div01");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "0.78%", "119", null, "39", "80.57%", null, this);
+            obj.set_taborder("5");
+            obj.set_text("공통코드상세리스트");
+            obj.style.set_font("bold 14 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00", "absolute", "0.78%", "201", null, "172", "27.73%", null, this);
+            obj.set_taborder("6");
+            obj.set_binddataset("Dataset00");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row band=\"head\" size=\"24\"/><Row band=\"body\" size=\"24\"/></Rows><Band id=\"head\"><Cell col=\"0\" disptype=\"normal\" text=\"No\"/><Cell col=\"1\" disptype=\"normal\" text=\"분류코드\"/><Cell col=\"2\" disptype=\"normal\" text=\"분류명칭\"/><Cell col=\"3\" disptype=\"normal\" text=\"상세코드\"/><Cell col=\"4\" disptype=\"normal\" text=\"상세코드명\"/><Cell col=\"5\" disptype=\"normal\" text=\"사용여부\"/></Band><Band id=\"body\"><Cell col=\"0\" disptype=\"normal\" text=\"bind:No\"/><Cell col=\"1\" disptype=\"normal\" text=\"bind:분류코드\"/><Cell col=\"2\" disptype=\"normal\" text=\"bind:분류명칭\"/><Cell col=\"3\" disptype=\"normal\" text=\"bind:상세코드\"/><Cell col=\"4\" disptype=\"normal\" text=\"bind:상세코드명\"/><Cell col=\"5\" disptype=\"normal\" text=\"bind:사용여부\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div02", "absolute", "0.98%", "407", null, "37", "27.83%", null, this);
+            obj.set_taborder("7");
+            obj.set_text("Div02");
+            this.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "79.33%", "11", null, "29", "12.01%", null, this.Div02);
+            obj.set_taborder("0");
+            obj.set_text("저장");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "89.11%", "11", null, "29", "2.23%", null, this.Div02);
+            obj.set_taborder("1");
+            obj.set_text("취소");
+            this.Div02.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "0.98%", "404", null, "42", "79.39%", null, this);
+            obj.set_taborder("8");
+            obj.set_text("공통코드상세");
+            obj.style.set_font("bold 12 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button00", "absolute", "49.61%", "419", null, "29", "44.34%", null, this);
+            obj.set_taborder("9");
+            obj.set_text("신규");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid01", "absolute", "0.88%", "479", null, "289", "29%", null, this);
+            obj.set_taborder("10");
+            obj._setContents("<Formats></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "0.98%", "488", null, "29", "89.94%", null, this);
+            obj.set_taborder("11");
+            obj.set_text("*분류코드");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static05", "absolute", "0.98%", "538", null, "29", "89.94%", null, this);
+            obj.set_taborder("12");
+            obj.set_text("상세코드명2");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static06", "absolute", "1.07%", "595", null, "29", "89.84%", null, this);
+            obj.set_taborder("13");
+            obj.set_text("기타코드2");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static07", "absolute", "0.88%", "647", null, "29", "90.04%", null, this);
+            obj.set_taborder("14");
+            obj.set_text("*사용여부");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static08", "absolute", "0.98%", "711", null, "29", "89.94%", null, this);
+            obj.set_taborder("15");
+            obj.set_text("수정일시");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("Combo01", "absolute", "11.72%", "490", null, "30", "76.46%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("17");
+            obj.set_text("Combo01");
+
+            obj = new Combo("Combo02", "absolute", "11.52%", "539", null, "30", "76.66%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("18");
+            obj.set_text("Combo02");
+
+            obj = new Combo("Combo03", "absolute", "11.43%", "592", null, "30", "76.76%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("19");
+            obj.set_text("Combo03");
+
+            obj = new Combo("Combo04", "absolute", "11.43%", "648", null, "30", "76.76%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("20");
+            obj.set_text("Combo04");
+
+            obj = new Static("Static09", "absolute", "25.29%", "492", null, "31", "66.41%", null, this);
+            obj.set_taborder("22");
+            obj.set_text("*상세코드");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit00", "absolute", "34.38%", "493", null, "30", "53.52%", null, this);
+            obj.set_taborder("23");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static10", "absolute", "24.9%", "543", null, "31", "66.8%", null, this);
+            obj.set_taborder("24");
+            obj.set_text("코드영문명");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static11", "absolute", "24.51%", "591", null, "31", "67.19%", null, this);
+            obj.set_taborder("25");
+            obj.set_text("상세코드설명");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static12", "absolute", "24.32%", "649", null, "31", "67.38%", null, this);
+            obj.set_taborder("26");
+            obj.set_text("소팅순서");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static13", "absolute", "48.54%", "490", null, "41", "42.97%", null, this);
+            obj.set_taborder("27");
+            obj.set_text("상세코드명");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit01", "absolute", "58.01%", "490", null, "41", "30.27%", null, this);
+            obj.set_taborder("28");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit02", "absolute", "33.98%", "546", null, "29", "53.91%", null, this);
+            obj.set_taborder("29");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit03", "absolute", "33.59%", "650", null, "30", "54.3%", null, this);
+            obj.set_taborder("30");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit04", "absolute", "33.98%", "592", null, "30", "53.91%", null, this);
+            obj.set_taborder("31");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static14", "absolute", "48.24%", "541", null, "31", "43.07%", null, this);
+            obj.set_taborder("32");
+            obj.set_text("기타코드1");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit05", "absolute", "57.71%", "543", null, "34", "30.37%", null, this);
+            obj.set_taborder("33");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static15", "absolute", "48.24%", "644", null, "38", "43.65%", null, this);
+            obj.set_taborder("34");
+            obj.set_text("등록일시");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit06", "absolute", "57.81%", "647", null, "31", "30.27%", null, this);
+            obj.set_taborder("35");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit07", "absolute", "10.94%", "711", null, "31", "77.15%", null, this);
+            obj.set_taborder("36");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static16", "absolute", "23.93%", "710", null, "31", "67.77%", null, this);
+            obj.set_taborder("37");
+            obj.set_text("최종수정일시");
+            obj.style.set_background("gray");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit08", "absolute", "33.59%", "711", null, "31", "54.49%", null, this);
+            obj.set_taborder("38");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 63, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 37, this.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("7");
+            		p.set_text("Div02");
+
+            	}
+            );
+            this.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1024, 768, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("DETAIL");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("DETAIL.xfdl", function() {
+
+        this.Div02_Button00_onclick = function(obj,e)
+        {
+        	
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.Div02.Button00.addEventHandler("onclick", this.Div02_Button00_onclick, this);
+
+        };
+
+        this.loadIncludeScript("DETAIL.xfdl");
+
+       
+    };
+}
+)();

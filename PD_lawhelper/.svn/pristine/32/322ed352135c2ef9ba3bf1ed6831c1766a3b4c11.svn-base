@@ -1,0 +1,61 @@
+package approval.lawmapper.web;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import nexacro.sample.web.AdvancedFileController;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.nexacro.spring.data.NexacroResult;
+
+import approval.lawmapper.service.ApprovalService;
+import approval.lawmapper.vo.ApprovalTotalVO;
+
+
+@Controller
+public class ApprovalController {
+
+	@Resource(name = "approvalService")
+	public ApprovalService approvalService;
+
+	private static final Logger log = LoggerFactory.getLogger(AdvancedFileController.class);
+	
+	@Resource
+	private Validator validator;
+
+    @InitBinder
+	public void initBinder(WebDataBinder dataBinder){
+		dataBinder.setValidator(this.validator);
+	}
+	
+    
+	//결제라인 리스트 가져오기
+	@RequestMapping(value = "/approvalPigList.do")
+	public NexacroResult approvalPigList(ApprovalTotalVO approvalTotalVO) throws Exception{
+		
+		System.out.println("왔니?");
+		
+		NexacroResult result = new NexacroResult();
+		
+			approvalTotalVO.setAprvlineAdmProcCode("003");
+			approvalTotalVO.setClassCode("E01");
+			approvalTotalVO.setAprvlineAdmSeq("1");
+			
+			List<ApprovalTotalVO> outList = approvalService.getApprovalPigList(approvalTotalVO);
+			
+			result.addDataSet("ds_output", outList);
+		
+		return result;
+	}
+		
+}

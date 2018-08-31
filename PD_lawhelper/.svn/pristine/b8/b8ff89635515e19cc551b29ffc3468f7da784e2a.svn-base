@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="debtor.lawmapper.service.dao.DebtorMapper">
+
+	<resultMap type="debtor.lawmapper.vo.DebtorVO" id="DebtorVO">
+		<result property="debtorListNo" column="DEBTOR_LIST_NO"/>
+		<result property="debtorListCode" column="DEBTOR_LIST_CODE"/>
+		<result property="debtorListName" column="DEBTOR_LIST_NAME"/>
+		<result property="debtorListGooboon" column="DEBTOR_LIST_GOOBOON"/>
+		<result property="debtorListEnName" column="DEBTOR_LIST_ENGNAME"/>
+		<result property="debtorListTel" column="DEBTOR_LIST_TEL"/>
+		<result property="debtorListPhone" column="DEBTOR_LIST_PHONE"/>
+		<result property="debtorListPostal" column="DEBTOR_LIST_POSTAL"/>
+		<result property="debtorListAddress1" column="DEBTOR_LIST_ADDRESS_1"/>
+		<result property="debtorListAddress2" column="DEBTOR_LIST_ADDRESS_2"/>
+		<result property="debtorListOwance" column="DEBTOR_LIST_OWANCE"/>
+		<result property="debtorListRepay" column="DEBTOR_LIST_REPAY"/>
+		<result property="debtorListStatus" column="DEBTOR_LIST_STATUS"/>
+		<result property="debtorListEnddate" column="DEBTOR_LIST_ENDDATE"/>
+		<result property="debtorListMgrNum" column="DEBTOR_LIST_MGR_NUM"/>
+		<result property="debtorListRegistDate" column="DEBTOR_LIST_REGIST_DATE"/>
+		<result property="debtorListInput" column="DEBTOR_LIST_INPUT"/>
+		<result property="debtorListEtc" column="DEBTOR_LIST_ETC"/>
+		<result property="debtorHistorySeq" column="DEBTOR_HISTORY_SEQ"/>
+		<result property="debtorHistoryTel" column="DEBTOR_HISTORY_TEL"/>
+		<result property="debtorHistoryPhone" column="DEBTOR_HISTORY_PHONE"/>
+		<result property="debtorHistoryZipcode" column="DEBTOR_HISTORY_ZIPCODE"/>
+		<result property="debtorHistoryAddress1" column="DEBTOR_HISTORY_ADDRESS_1"/>
+		<result property="debtorHistoryAddress2" column="DEBTOR_HISTORY_ADDRESS_2"/>
+		<result property="debtorHistoryRegistDate" column="DEBTOR_HISTORY_REGIST_DATE"/>
+		<result property="debtorHistoryInput" column="DEBTOR_HISTORY_INPUT"/>
+		<result property="debtorHistoryMgrNum" column="DEBTOR_HISTORY_MGR_NUM"/>
+		<result property="debtorHistoryEnName" column="DEBTOR_HISTORY_ENGNAME"/>
+		<result property="debtorHistoryGooboon" column="DEBTOR_HISTORY_GOOBOON"/>
+		<result property="debtorHistoryEtc" column="DEBTOR_HISTORY_ETC"/>
+		<result property="propertyNo" column="PROPERTY_NO"/>
+		<result property="PropertyCheckDate" column="PROPERTY_CHECK_DATE"/>
+		<result property="PropertyCode" column="PROPERTY_CODE"/>
+		<result property="PropertyDisclosuer" column="PROPERTY_DISCLOSUER"/>
+		<result property="PropertyExpectation" column="PROPERTY_EXPECTATION"/>
+		<result property="PropertyStatus" column="PROPERTY_STATUS"/>
+		<result property="PropertyRegistDate" column="PROPERTY_REGIST_DATE"/>
+		<result property="PropertyInput" column="PROPERTY_INPUT"/>
+		<result property="familySeq" column="FAMILY_SEQ"/>
+		<result property="familyJuminNum" column="FAMILY_JUMIN_NUM"/>
+		<result property="familyRelCode" column="FAMILY_REL_CODE"/>
+		<result property="familyTel" column="FAMILY_TEL"/>
+		<result property="familyPhone" column="FAMILY_PHONE"/>
+		<result property="familyZipcode" column="FAMILY_ZIPCODE"/>
+		<result property="familyAddress1" column="FAMILY_ADDRESS_1"/>
+		<result property="familyAddress2" column="FAMILY_ADDRESS_2"/>
+		<result property="familyEtc" column="FAMILY_ETC"/>
+		<result property="familyName" column="FAMILY_NAME"/>
+		<result property="codeNo" column="CODE_NO" />
+		<result property="codeName" column="CODE_NAME" />
+	</resultMap>
+
+	<select id="debtorList" parameterType="debtor.lawmapper.vo.DebtorVO" resultMap="DebtorVO">
+		SELECT 
+			DEBTOR_LIST_NO,
+			DEBTOR_LIST_CODE,
+			DEBTOR_LIST_NAME,
+			DEBTOR_LIST_GOOBOON,
+			DEBTOR_LIST_ENGNAME,
+			DEBTOR_LIST_TEL,
+			DEBTOR_LIST_PHONE,	
+			DEBTOR_LIST_POSTAL,
+			DEBTOR_LIST_ADDRESS_1,
+			DEBTOR_LIST_ADDRESS_2,
+			DEBTOR_LIST_OWANCE,
+			DEBTOR_LIST_REPAY,
+			DEBTOR_LIST_STATUS,
+			DEBTOR_LIST_ENDDATE,
+			DEBTOR_LIST_MGR_NUM,
+			DEBTOR_LIST_REGIST_DATE,
+			DEBTOR_LIST_INPUT,
+			(SELECT 
+				INSA_NAME
+			FROM PD_LAW.TAB_INSA
+			WHERE INSA_SABUN = DEBTOR_LIST_MGR_NUM) as debtorMgrName
+		FROM BOND.TAB_DEBTOR_LIST 
+		<if test="debtorListNo != null">
+			WHERE DEBTOR_LIST_NO LIKE '%'||#{debtorListNo, jdbcType=VARCHAR}||'%'
+		</if> 
+		<if test="debtorListName != null">
+			AND DEBTOR_LIST_NAME LIKE '%'||#{debtorListName}||'%'
+		</if> 
+		<if test="debtorListMgrNum != null">
+			AND DEBTOR_LIST_MGR_NUM LIKE '%'||#{debtorListMgrNum}||'%'
+		</if> 
+		<if test="debtorListTel != null">
+			AND DEBTOR_LIST_TEL LIKE '%'||#{debtorListTel}||'%'
+		</if> 
+		<if test="debtorListPhone != null">
+			AND DEBTIR_LIST_PHONE LIKE '%'||#{debtorListPhone}||'%'
+		</if> 
+		<if test="debtorListStatus != 00">
+			AND DEBTOR_LIST_STATUS = #{debtorListStatus}
+		</if> 
+		<if test="debtorListRegistDate != null">
+			AND DEBTOR_LIST_REGIST_DATE <![CDATA[>=]]> TO_DATE#{debtorListRegistDate}
+		</if> 
+		<if test="debtorListEnddate != null">
+			AND DEBTOR_LIST_ENDDATE <![CDATA[<=]]> TO_DATE#{debtorListEnddate}
+		</if> 
+	</select>
+	
+	<select id="comboStatus" parameterType="debtor.lawmapper.vo.DebtorVO" resultMap="DebtorVO">
+		SELECT 
+			CODE_NO, 
+			CODE_NAME 
+		FROM BOND.CMM_CODE_DETAIL 
+		WHERE CLASS_CODE = 'A02'
+	</select>
+	
+	<select id="debtorDetail" resultMap="DebtorVO">
+		SELECT
+			DEBTOR_LIST_NO,
+			DEBTOR_LIST_CODE,	
+			DEBTOR_LIST_NAME,	
+			DEBTOR_LIST_GOOBOON,	
+			DEBTOR_LIST_ENGNAME,	
+			DEBTOR_LIST_TEL,	
+			DEBTOR_LIST_PHONE,	
+			DEBTOR_LIST_POSTAL,	
+			DEBTOR_LIST_ADDRESS_1,	
+			DEBTOR_LIST_ADDRESS_2,	
+			DEBTOR_LIST_OWANCE,	
+			DEBTOR_LIST_REPAY,	
+			DEBTOR_LIST_STATUS,		
+			DEBTOR_LIST_MGR_NUM,	
+			DEBTOR_LIST_REGIST_DATE
+		FROM BOND.TAB_DEBTOR_LIST
+<!-- 		WHERE DEBTOR_LIST_NO = #{debtorListNo} -->
+		WHERE DEBTOR_LIST_NO = '2018080863'
+	</select>
+
+	<select id="historyDetail" resultMap="DebtorVO">
+		SELECT
+			DEBTOR_LIST_NO,
+			DEBTOR_HISTORY_SEQ,	
+			DEBTOR_HISTORY_TEL,	
+			DEBTOR_HISTORY_PHONE,	
+			DEBTOR_HISTORY_ZIPCODE,	
+			DEBTOR_HISTORY_ADDRESS_1,	
+			DEBTOR_HISTORY_ADDRESS_2,	
+			DEBTOR_HISTORY_REGIST_DATE,	
+			DEBTOR_HISTORY_INPUT,	
+			DEBTOR_HISTORY_MGR_NUM,
+			DEBTOR_HISTORY_NAME,
+			DEBTOR_HISTORY_ENGNAME,
+			DEBTOR_HISTORY_GOOBOON,
+			DEBTOR_HISTORY_ETC 
+<!-- 			(SELECT  -->
+<!-- 				INSA_NAME  -->
+<!-- 			FROM PD_LAW.TAB_ -->
+<!-- 			WHERE INSA_SABUN = #{debtorListMgrNum}) AS MGRNAME, -->
+<!-- 			(SELECT  -->
+<!-- 				INSA_NAME  -->
+<!-- 			FROM PD_LAW.TAB_ -->
+<!-- 			WHERE INSA_SABUN = #{debtorListInput}) AS INPUTNAME -->
+		FROM BOND.TAB_DEBTOR_HISTORY 
+<!-- 		WHERE DEBTOR_LIST_NO = #{debtorListNo} -->
+		WHERE DEBTOR_LIST_NO = '2014021162'
+	</select>
+	
+	<select id="historyProperty" resultMap="DebtorVO">
+		SELECT 
+			PROPERTY_NO,
+			DEBTOR_LIST_NO,	
+			PROPERTY_CHECK_DATE,	
+			PROPERTY_CODE,	
+			PROPERTY_DISCLOSUER,	
+			PROPERTY_EXPECTATION,	
+			PROPERTY_STATUS,	
+			PROPERTY_REGIST_DATE,	
+			PROPERTY_INPUT	SABUN 
+		FROM BOND.TAB_PROPERTY 
+<!-- 		WHERE DEBTOR_LIST_NO = #{debtorListNo}  -->
+		WHERE DEBTOR_LIST_NO = '2014021162'
+	</select>
+	
+	<select id="historyFamily" resultMap="DebtorVO">
+		SELECT 
+			DEBTOR_LIST_NO,
+			FAMILY_SEQ,	
+			FAMILY_JUMIN_NUM,	
+			FAMILY_REL_CODE,	
+			FAMILY_TEL,	
+			FAMILY_PHONE,	
+			FAMILY_ZIPCODE,	
+			FAMILY_ADDRESS_1,	
+			FAMILY_ADDRESS_2,	
+			FAMILY_ETC,	
+			FAMILY_NAME 
+		FROM BOND.TAB_FAMILY 
+<!-- 		WHERE DEBTOR_LIST_NO = #{debtorListNo} -->
+		WHERE DEBTOR_LIST_NO = '2014021162'
+	</select>
+	
+</mapper>

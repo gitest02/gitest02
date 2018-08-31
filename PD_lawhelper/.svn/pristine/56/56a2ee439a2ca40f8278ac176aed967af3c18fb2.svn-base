@@ -1,0 +1,108 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("_popupForm1");
+                this.set_classname("_popupForm1");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1024,768);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+
+            
+            // UI Components Initialize
+            obj = new Button("Button00", "absolute", "14.94%", "52", null, "170", "47.46%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("Button00");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1024, 768, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("_popupForm1");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("_popupForm1.xfdl", function() {
+
+        this.Button00_onclick = function(obj,e)
+        {
+        	 //팝업화면에 표시될 form url.
+          var formUrl = "Test::_popupForm1.xfdl";
+          var ownerFrame = this.getOwnerFrame();
+          var childFrame = new ChildFrame();
+          childFrame.init("_popup1", "absolute", 10, 10, 100, 100, null, null, formUrl);
+          childFrame.set_openalign("center middle");
+            
+          //테마에 border설정이 없을 경우를 위한 처리.
+          childFrame.set_resizable(true);
+          childFrame.style.set_border("1px solid red");
+          
+          //팝업 최소 사이즈 설정.
+          var minWidth  = 200;
+          var minHeight = 200;
+          var fn = function(obj, e) {
+            if(e.cx <= minWidth) {
+              obj.set_width(minWidth);
+            }
+            
+            if(e.cy <= minHeight) {
+              obj.set_height(minHeight);
+            }    
+          }
+          
+          
+          //Event 추가.
+          childFrame.addEventHandler("onsize", fn);
+          
+          childFrame.showModal(ownerFrame, {"minWidth": minWidth, "minHeight": minHeight}, this);
+        }
+
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+
+        };
+
+        this.loadIncludeScript("_popupForm1.xfdl");
+
+       
+    };
+}
+)();

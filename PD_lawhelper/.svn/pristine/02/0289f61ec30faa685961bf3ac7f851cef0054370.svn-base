@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="outFixinfo">
+	<resultMap type="outlegal.lawmapper.vo.OutFixinfoVO" id="outFixinfoVO">
+		<result property="lawsuitAdmNo" column="LAWSUIT_ADM_NO" />
+		<result property="instAdmCode" column="INST_ADM_CODE" />
+		<result property="lawFixinfoNum" column="LAW_FIXINFO_NUM" />
+		<result property="lawFixinfoSepCode" column="LAW_FIXINFO_SEPCODE" /> 
+		<result property="lawFixinfoSepName" column="CODE_NAME" />
+		<result property="lawFixinfoDate" column="LAW_FIXINFO_DATE" />
+		<result property="lawFixinfoPlc" column="LAW_FIXINFO_PLC" />
+		<result property="lawFixinfoMainIssu" column="LAW_FIXINFO_MAIN_ISSU" />
+		<result property="lawFixinfoCpInsi" column="LAW_FIXINFO_CP_INSI" />
+		<result property="lawFixinfoOthInsi" column="LAW_FIXINFO_OTH_INSI" />
+		<result property="lawFixinfoCortOpin" column="LAW_FIXINFO_CORT_OPIN" />
+		<result property="lawFixinfoLyrOpin" column="LAW_FIXINFO_LYR_OPIN" />
+		<result property="lawFixinfoDlinDate" column="LAW_FIXINFO_DLIN_DATE" />
+
+		<result property="codeNo" column="CODE_NO" />
+		<result property="codeName" column="CODE_NAME" />
+	</resultMap>
+	
+	<select id="getSepComboList" resultMap="outFixinfoVO">
+		SELECT CODE_NO, CODE_NAME 
+		FROM PD_LAW.CMM_CODE_DETAIL 
+		WHERE CLASS_CODE = 'K01'
+	</select>
+
+	<!-- 기일정보 가져오기 -->
+	<select id="getLawFixinfoList" parameterType="outlegal.lawmapper.vo.OutFixinfoVO" resultMap="outFixinfoVO">
+		SELECT	
+			LAWSUIT_ADM_NO,
+			INST_ADM_CODE,
+			LAW_FIXINFO_NUM,
+			LAW_FIXINFO_SEPCODE,
+			C1.CODE_NAME,
+			TO_CHAR(LAW_FIXINFO_DATE,'YYYYMMDDHH24MI') AS LAW_FIXINFO_DATE,	
+			LAW_FIXINFO_PLC,
+			LAW_FIXINFO_MAIN_ISSU,
+			LAW_FIXINFO_CP_INSI,
+			LAW_FIXINFO_OTH_INSI,	
+			LAW_FIXINFO_CORT_OPIN,	
+			LAW_FIXINFO_LYR_OPIN,
+			TO_CHAR(LAW_FIXINFO_DLIN_DATE,'YYYYMMDDHH24MI') AS LAW_FIXINFO_DLIN_DATE
+		FROM 
+			PD_LAW.TAB_LAW_FIXINFO T1, PD_LAW.CMM_CODE_DETAIL C1
+		WHERE 
+			T1.LAW_FIXINFO_SEPCODE = C1.CODE_NO(+)
+            AND C1.CLASS_CODE(+) = 'K01'
+			AND	LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+			AND INST_ADM_CODE = #{instAdmCode}
+		ORDER BY 
+			LAW_FIXINFO_NUM DESC
+	</select>
+	
+	<!-- 기일 삽입 -->
+	<insert id="lawFixinfoInsert" parameterType="outlegal.lawmapper.vo.OutFixinfoVO">
+	<selectKey resultType="int" keyProperty="lawFixinfoNum" order="BEFORE">
+		SELECT 
+			DECODE(COUNT(*), 0, '1', MAX(ABS(LAW_FIXINFO_NUM))+1)
+		FROM 
+			PD_LAW.TAB_LAW_FIXINFO
+		WHERE 
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+			AND INST_ADM_CODE = #{instAdmCode}
+	</selectKey>
+		INSERT INTO
+		PD_LAW.TAB_LAW_FIXINFO (
+			LAWSUIT_ADM_NO
+			,INST_ADM_CODE
+			,LAW_FIXINFO_NUM
+			,LAW_FIXINFO_SEPCODE
+			,LAW_FIXINFO_DATE
+			,LAW_FIXINFO_PLC
+			,LAW_FIXINFO_MAIN_ISSU
+			,LAW_FIXINFO_CP_INSI
+			,LAW_FIXINFO_OTH_INSI
+			,LAW_FIXINFO_CORT_OPIN
+			,LAW_FIXINFO_LYR_OPIN
+			,LAW_FIXINFO_DLIN_DATE ) 
+		VALUES (
+			#{lawsuitAdmNo}
+			,#{instAdmCode}
+			,#{lawFixinfoNum}
+			,#{lawFixinfoSepCode}
+			,TO_DATE(#{lawFixinfoDate},'YYYYMMDDHH24MI')
+			,#{lawFixinfoPlc}
+			,#{lawFixinfoMainIssu}
+			,#{lawFixinfoCpInsi}
+			,#{lawFixinfoOthInsi}
+			,#{lawFixinfoCortOpin}
+			,#{lawFixinfoLyrOpin}
+			,TO_DATE(#{lawFixinfoDlinDate}, 'YYYYMMDDHH24MI') )
+	</insert>
+	
+	<!-- 기일 수정 -->
+	<update id="lawFixinfoUpdate" parameterType="outlegal.lawmapper.vo.OutFixinfoVO">
+		UPDATE 
+			PD_LAW.TAB_LAW_FIXINFO
+		SET 
+			LAW_FIXINFO_DATE = TO_DATE(#{lawFixinfoDate}, 'YYYYMMDDHH24MI')
+		,	LAW_FIXINFO_SEPCODE = #{lawFixinfoSepCode}
+		,	LAW_FIXINFO_PLC = #{lawFixinfoPlc}
+		,	LAW_FIXINFO_DLIN_DATE = TO_DATE(#{lawFixinfoDlinDate}, 'YYYYMMDDHH24MI')
+		,	LAW_FIXINFO_OTH_INSI = #{lawFixinfoOthInsi}
+		,	LAW_FIXINFO_CORT_OPIN = #{lawFixinfoCortOpin}
+		,	LAW_FIXINFO_MAIN_ISSU = #{lawFixinfoMainIssu}
+		,	LAW_FIXINFO_CP_INSI = #{lawFixinfoCpInsi}
+		,	LAW_FIXINFO_LYR_OPIN = #{lawFixinfoLyrOpin}
+		WHERE 
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+			AND INST_ADM_CODE = #{instAdmCode}
+			AND LAW_FIXINFO_NUM = #{lawFixinfoNum}
+	</update>
+
+
+	<!-- 기일 삭제 -->
+	<delete id="lawFixinfoDelete" parameterType="outlegal.lawmapper.vo.OutFixinfoVO">
+		DELETE FROM 
+			PD_LAW.TAB_LAW_FIXINFO
+		WHERE 
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+			AND INST_ADM_CODE = #{instAdmCode}
+			AND LAW_FIXINFO_NUM = #{lawFixinfoNum}
+	</delete>
+	
+	
+	<!-- 삭제 후 일련번호 처리 -->
+	<update id="lawFixinfoDelUpdate" parameterType="outlegal.lawmapper.vo.OutFixinfoVO">
+	UPDATE
+		TAB_LAW_FIXINFO
+	SET
+		LAW_FIXINFO_NUM = LAW_FIXINFO_NUM-1
+	WHERE 
+		LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+		AND INST_ADM_CODE = #{instAdmCode}
+		AND LAW_FIXINFO_NUM > #{lawFixinfoNum}		
+	</update>
+	
+	
+</mapper>

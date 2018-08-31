@@ -1,0 +1,137 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("LEGAL_OFFICIAL_CHECK");
+                this.set_classname("V_DSP_003");
+                this.set_titletext("LEGAL_OFFICIAL_CHECK");
+                this._setFormPosition(0,0,500,380);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_officialType", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_official", this);
+            obj._setContents("<ColumnInfo><Column id=\"legalOfficialinfoRelaNo\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoLyrPsw\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoRelaSep\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoTeamname\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoLyrName\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoMail\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoPhone\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoHdpn\" type=\"STRING\" size=\"256\"/><Column id=\"legalOfficialinfoCityCode\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("dsp_offi", "absolute", "0.98%", "50", null, "37", "0.98%", null, this);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Edit("legal_input", "absolute", "34.84%", "5", null, "25", "25.61%", null, this.dsp_offi);
+            obj.set_taborder("7");
+            this.dsp_offi.addChild(obj.name, obj);
+            obj = new Button("btn_search", "absolute", "75%", "7", "56", "20", null, null, this.dsp_offi);
+            obj.set_taborder("8");
+            obj.set_text("검색  ");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            obj.style.set_align("right middle");
+            this.dsp_offi.addChild(obj.name, obj);
+            obj = new Combo("Search1", "absolute", "12.5%", "5", "21.93%", "24", null, null, this.dsp_offi);
+            this.dsp_offi.addChild(obj.name, obj);
+            obj.set_taborder("9");
+            obj.set_innerdataset("@ds_officialType");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+            obj.set_value("null");
+
+            obj = new Grid("grd_search", "absolute", "1%", "125", null, "250", "1%", null, this);
+            obj.set_taborder("1");
+            obj.set_scrollbars("alwaysvert");
+            obj.set_binddataset("ds_official");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"120\"/><Column size=\"120\"/><Column size=\"60\"/><Column size=\"100\"/><Column size=\"80\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"법률관계자번호\"/><Cell col=\"1\" text=\"소속명\"/><Cell col=\"2\" text=\"이름\"/><Cell col=\"3\" text=\"이메일\"/><Cell col=\"4\" text=\"연락처\"/></Band><Band id=\"body\"><Cell text=\"bind:legalOfficialinfoRelaNo\"/><Cell col=\"1\" text=\"bind:legalOfficialinfoLyrPsw\"/><Cell col=\"2\" text=\"bind:legalOfficialinfoRelaSep\"/><Cell col=\"3\" text=\"bind:legalOfficialinfoTeamname\"/><Cell col=\"4\" text=\"bind:legalOfficialinfoLyrName\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "0.98%", "0", null, "42", "0.98%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("법률관계자 정보 조회");
+            obj.style.set_background("transparent URL('theme://images/bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 12 굴림");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "1.8%", "101", null, "24", "76.8%", null, this);
+            obj.set_taborder("3");
+            obj.set_text("법률관계자 목록");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_legal", "absolute", "84.8%", "101", null, "20", "2%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("신규");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 37, this.dsp_offi,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.dsp_offi.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 500, 380, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_DSP_003");
+            		p.set_titletext("LEGAL_OFFICIAL_CHECK");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.dsp_offi.legal_input.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.dsp_offi.btn_search.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.dsp_offi.Search1.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+
+        };
+
+        this.loadIncludeScript("V_DSP_003.xfdl");
+
+       
+    };
+}
+)();

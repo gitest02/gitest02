@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_REC_001" classname="V_REC_001" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="0" text="재판외 화해관리" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;" onclick="Static04_onclick"/>
+        <Div id="dps_top" taborder="1" text="dps_top" left="1%" top="50" right="1%" height="35" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout width="973" height="46">
+              <Static id="Static00" taborder="6" text="소송관리번호" left="0.51%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="edt_law_adm_no" taborder="7" left="11.15%" top="5" right="73.11%" height="24"/>
+              <Button id="btn_pre_iwr" taborder="8" text="검색  " onclick="Div00_Button00_onclick" left="27.3%" top="7" width="55" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;align:right middle;"/>
+              <Button id="btn_new" taborder="9" text="초기화 " onclick="Div00_Button00_onclick" left="92.84%" top="7" width="63" height="20" style="background:@gradation URL('theme://images\btn_MF_Refresh_O.png') 5px 50px;align:right middle;"/>
+              <Static id="Static01" taborder="10" text="심급" left="34.05%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Combo id="comb_inst_code" taborder="11" innerdataset="@ds_instanceType" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="44.58%" top="5" width="15.75%" height="24"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="2" text="심급기본사항" left="1.4%" top="89" right="90%" height="15"/>
+        <Div id="dps_insert" taborder="3" text="dps_insert" left="1%" top="108" right="1%" height="121" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout width="972" height="116">
+              <Static id="dps_court" taborder="20" text="소송진행상태" left="0.51%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static00" taborder="21" text="신청사건번호" left="0.51%" top="33" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static01" taborder="23" text="수행법원" left="67.69%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="Edit6" taborder="24" left="44.58%" top="33" right="39.67%" height="24"/>
+              <Static id="dps_court00" taborder="25" text="당사원피고구분" left="34.05%" top="5" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="Edit7" taborder="26" left="11.15%" top="33" right="73.11%" height="24"/>
+              <Static id="Static02" taborder="27" text="판사" left="34.05%" top="33" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static03" taborder="29" text="상대담당자" left="67.69%" top="33" width="100" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Edit id="Edit10" taborder="30" left="78.22%" top="33" right="6.03%" height="24"/>
+              <Static id="dps_court01" taborder="31" text="쟁점사항" left="0.51%" top="61" width="100" height="54" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Combo id="Combo3" taborder="34" innerdataset="@ds_progcode" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="11.15%" top="5" width="15.75%" height="24"/>
+              <Combo id="Combo5" taborder="35" innerdataset="@ds_def" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="44.58%" top="5" width="15.75%" height="24"/>
+              <Combo id="Combo0" taborder="36" innerdataset="@ds_cortcode" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="78.22%" top="5" width="15.75%" height="24"/>
+              <TextArea id="text_comment" taborder="37" left="11.15%" top="61" right="0.61%" height="54" scrollbars="alwaysvert"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="4" text="원피고 목록" left="1.4%" top="238" right="90%" height="15"/>
+        <Grid id="Grid0" taborder="5" useinputpanel="false" left="1%" top="256" right="1%" height="111" scrollbars="fixedvert" binddataset="ds_lawsuitrecpladef">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="80"/>
+                <Column size="130"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="116"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="일련번호"/>
+                <Cell col="2" text="성명"/>
+                <Cell col="3" text="등록번호"/>
+                <Cell col="4" text="주요연락처전화번호"/>
+                <Cell col="5" text="추가연락처전화번호"/>
+                <Cell col="6" text="청구소가"/>
+                <Cell col="7" text="종결여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:lawsuitAdmNo"/>
+                <Cell col="1" text="bind:pladefSeq"/>
+                <Cell col="2" text="bind:pladefName"/>
+                <Cell col="3" text="bind:pladefRegNo"/>
+                <Cell col="4" text="bind:pladefMainTel"/>
+                <Cell col="5" text="bind:pladefAddTel"/>
+                <Cell col="6" text="bind:pladefPos"/>
+                <Cell col="7" text="bind:pladefAddr1"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="6" text="종결" left="92.8%" top="233" right="1%" height="20"/>
+        <Static id="Static02" taborder="7" text="재판외화해 상세내역" left="1.4%" top="374" right="86.4%" height="15"/>
+        <Div id="dps_insert00" taborder="8" text="dps_insert" left="1%" top="392" right="1%" height="118" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout width="972" height="116">
+              <Static id="dps_court" taborder="38" text="예상판결액" left="19.43%" top="4" width="103" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static00" taborder="39" text="* 승인일자" left="19.43%" top="88" width="103" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static01" taborder="40" text="요구금액" left="73.93%" top="4" width="103" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <MaskEdit id="oth_depo" taborder="41" left="57.46%" top="88" right="26.38%" height="24"/>
+              <Static id="dps_court00" taborder="42" text="승인금액" left="46.63%" top="4" width="103" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="Static02" taborder="44" text="최종승인일자" left="46.63%" top="88" width="103" height="24" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;"/>
+              <Static id="dps_court01" taborder="47" text="* 담당자의견" left="19.43%" top="31" width="103" height="54" style="background:#f4edfaff;border:1 solid #808080ff ;align:center middle;" onclick="dps_insert00_dps_court01_onclick"/>
+              <TextArea id="TextArea00" taborder="51" scrollbars="alwaysvert" left="30.27%" top="31" right="0.61%" height="54"/>
+              <Combo id="dept_code" taborder="53" innerdataset="ds_dept" codecolumn="codeNo" datacolumn="codeName" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="30.27%" top="88" width="16.05%" height="24" displaynulltext="____-__-__" text="____-__-__"/>
+              <Grid id="Grid1" taborder="55" useinputpanel="false" left="0.51%" top="4" right="81.08%" height="108" binddataset="ds_reconcil" scrollbars="fixedvert">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="50"/>
+                      <Column size="120"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="No"/>
+                      <Cell col="1" text="승인일자"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:lawsuitAdmNo"/>
+                      <Cell col="1" text="bind:pladefSepCode"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btn_list_no" taborder="56" text="검색  " onclick="Div00_Button00_onclick" left="73.93%" top="89" width="55" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;align:right middle;"/>
+              <MaskEdit id="edt_expt_chg" taborder="57" left="30.27%" top="4" right="53.68%" height="24" clipmode="excludespace"/>
+              <MaskEdit id="apprv_chg" taborder="58" left="57.46%" top="4" right="26.48%" height="24" clipmode="excludespace"/>
+              <MaskEdit id="req_chg" taborder="59" left="84.76%" top="4" right="0.51%" height="24" clipmode="excludespace"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="9" text="결재 진행 상태" left="1.4%" top="518" right="89.6%" height="15"/>
+        <Static id="Static05" taborder="10" left="1.4%" top="534" right="89.6%" height="26" style="background:#f4edfaff;border:1 solid #808080ff ;"/>
+        <Static id="Static06" taborder="11" left="10.2%" top="534" right="80.8%" height="26" style="background:#f4edfaff;border:1 solid #808080ff ;"/>
+        <Static id="Static07" taborder="12" left="19%" top="534" right="72%" height="26" style="background:#f4edfaff;border:1 solid #808080ff ;"/>
+        <Static id="Static08" taborder="13" left="1.4%" top="558" right="89.6%" height="26" style="background:white;border:1 solid #808080ff ;"/>
+        <Static id="Static09" taborder="14" left="10.2%" top="558" right="80.8%" height="26" style="background:white;border:1 solid #808080ff ;"/>
+        <Static id="Static10" taborder="15" left="19%" top="558" right="72%" height="26" style="background:white;border:1 solid #808080ff ;"/>
+        <Button id="Button01" taborder="16" text="신규" left="85.4%" top="369" right="8.4%" height="20"/>
+        <Button id="Button02" taborder="17" text="삭제" left="92%" top="369" right="1.8%" height="20"/>
+        <Button id="Button03" taborder="18" text="결재" left="78.8%" top="561" right="15%" height="20"/>
+        <Button id="Button04" taborder="19" text="저장" left="85.4%" top="561" right="8.4%" height="20"/>
+        <Button id="Button05" taborder="20" text="닫기" left="92%" top="561" right="1.8%" height="20"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="dps_top.edt_law_adm_no" propid="value" datasetid="ds_instance" columnid="lawsuitAdmNo"/>
+      <BindItem id="item1" compid="dps_top.comb_inst_code" propid="value" datasetid="ds_instance" columnid="instAdmCode"/>
+      <BindItem id="item2" compid="dps_insert.Combo3" propid="value" datasetid="ds_instance" columnid="instAdmPrgrCode"/>
+      <BindItem id="item3" compid="dps_insert.Combo5" propid="value" datasetid="ds_instance" columnid="lawsuitCpPladefSepcode"/>
+      <BindItem id="item4" compid="dps_insert.Combo0" propid="value" datasetid="ds_instance" columnid="instAdmCortCode"/>
+      <BindItem id="item5" compid="dps_insert.Edit7" propid="value" datasetid="ds_instance" columnid="instAdmCaseNo"/>
+      <BindItem id="item6" compid="dps_insert.Edit6" propid="value" datasetid="ds_instance" columnid="instAdmJudName"/>
+      <BindItem id="item7" compid="dps_insert.Edit10" propid="value" datasetid="ds_instance" columnid="instAdmCtpmgrName"/>
+      <BindItem id="item8" compid="dps_insert.text_comment" propid="value" datasetid="ds_instance" columnid="instAdmIssuPoin"/>
+      <BindItem id="item12" compid="dps_insert00.TextArea00" propid="value" datasetid="ds_reconcil" columnid="reconcilMgrOpin"/>
+      <BindItem id="item13" compid="dps_insert00.dept_code" propid="value" datasetid="ds_reconcil" columnid="reconcilAppvDate"/>
+      <BindItem id="item14" compid="dps_insert00.oth_depo" propid="value" datasetid="ds_reconcil" columnid="reconcilAppvName"/>
+      <BindItem id="item9" compid="dps_insert00.edt_expt_chg" propid="value" datasetid="ds_reconcil" columnid="reconcilExptjudgChg"/>
+      <BindItem id="item10" compid="dps_insert00.apprv_chg" propid="value" datasetid="ds_reconcil" columnid="reconcilAppvChg"/>
+      <BindItem id="item11" compid="dps_insert00.req_chg" propid="value" datasetid="ds_reconcil" columnid="reconcilReqChg"/>
+      <BindItem id="item15" compid="Static05" propid="text" datasetid="ds_position" columnid=""/>
+      <BindItem id="item16" compid="Static06" propid="text" datasetid="ds_position" columnid=""/>
+      <BindItem id="item17" compid="Static07" propid="text" datasetid="ds_position" columnid=""/>
+      <BindItem id="item18" compid="Static08" propid="text" datasetid="ds_position_code" columnid=""/>
+      <BindItem id="item19" compid="Static09" propid="text" datasetid="ds_position_code" columnid=""/>
+      <BindItem id="item20" compid="Static10" propid="text" datasetid="ds_position_code" columnid=""/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_cortcode">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_def">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_progcode">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_instanceType">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_instcnt">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_instance">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmPrgrCode" type="STRING" size="256"/>
+          <Column id="instAdmCaseNo" type="STRING" size="256"/>
+          <Column id="instAdmCortCode" type="STRING" size="256"/>
+          <Column id="instAdmCtpmgrName" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepcode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="instAdmJudId" type="STRING" size="256"/>
+          <Column id="instAdmIssuPoin" type="STRING" size="256"/>
+          <Column id="instAdmJudName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_lawsuitrecpladef">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="pladefSeq" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="pladefRegNo" type="STRING" size="256"/>
+          <Column id="pladefMainTel" type="STRING" size="256"/>
+          <Column id="pladefAddTel" type="STRING" size="256"/>
+          <Column id="pladefPos" type="STRING" size="256"/>
+          <Column id="pladefAddr1" type="STRING" size="256"/>
+          <Column id="pladefAddr2" type="STRING" size="256"/>
+          <Column id="pladefClamVol" type="STRING" size="256"/>
+          <Column id="pladefLawConcSepcode" type="STRING" size="256"/>
+          <Column id="pladefConcDate" type="STRING" size="256"/>
+          <Column id="pladefLawconcInstcode" type="STRING" size="256"/>
+          <Column id="pladefRegInst" type="STRING" size="256"/>
+          <Column id="pladefEndInst" type="STRING" size="256"/>
+          <Column id="pladefSepCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_reconcil">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="pladefSepCode" type="STRING" size="256"/>
+          <Column id="pladefSeq" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="tabReconcilSeq" type="STRING" size="256"/>
+          <Column id="reconcilReqChg" type="STRING" size="256"/>
+          <Column id="reconcilAppvChg" type="STRING" size="256"/>
+          <Column id="reconcilMgrOpin" type="STRING" size="256"/>
+          <Column id="reconcilAppvDate" type="STRING" size="256"/>
+          <Column id="reconcilExptjudgChg" type="STRING" size="256"/>
+          <Column id="reconcilAppvId" type="STRING" size="256"/>
+          <Column id="reconcilTempSaveWtr" type="STRING" size="256"/>
+          <Column id="aprvCheck" type="STRING" size="256"/>
+          <Column id="reconcilAppvName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="aprvprgrInfoStepCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoBookNo" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoUpSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritSabun" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWrit" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptName" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDate" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritCont" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritTit" type="STRING" size="256"/>
+          <Column id="aprvInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvInfoSabun" type="STRING" size="256"/>
+          <Column id="aprvInfoName" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptCode" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptName" type="STRING" size="256"/>
+          <Column id="aprvInfoCondCode" type="STRING" size="256"/>
+          <Column id="aprvInfoProcDate" type="STRING" size="256"/>
+          <Column id="aprvInfoReqDate" type="STRING" size="256"/>
+          <Column id="aprvInfoFinWtr" type="STRING" size="256"/>
+          <Column id="aprvInfoCont" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_position_code">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_count">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="pladefSepCode" type="STRING" size="256"/>
+          <Column id="pladefSeq" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="tabReconcilSeq" type="STRING" size="256"/>
+          <Column id="reconcilReqChg" type="STRING" size="256"/>
+          <Column id="reconcilAppvChg" type="STRING" size="256"/>
+          <Column id="reconcilMgrOpin" type="STRING" size="256"/>
+          <Column id="reconcilAppvDate" type="STRING" size="256"/>
+          <Column id="reconcilExptjudgChg" type="STRING" size="256"/>
+          <Column id="reconcilAppvId" type="STRING" size="256"/>
+          <Column id="reconcilTempSaveWtr" type="STRING" size="256"/>
+          <Column id="aprvCheck" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_lawsuitstatus">
+        <ColumnInfo>
+          <Column id="tabEdocAdm" type="STRING" size="256"/>
+          <Column id="tabJudg" type="STRING" size="256"/>
+          <Column id="tabLawFixinfo" type="STRING" size="256"/>
+          <Column id="tabLawsuit" type="STRING" size="256"/>
+          <Column id="tabMediation" type="STRING" size="256"/>
+          <Column id="tabPladef" type="STRING" size="256"/>
+          <Column id="tabPreIwr" type="STRING" size="256"/>
+          <Column id="tabReconcil" type="STRING" size="256"/>
+          <Column id="tabAlseSue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

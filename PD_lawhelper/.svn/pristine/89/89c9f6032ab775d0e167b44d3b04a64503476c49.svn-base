@@ -1,0 +1,312 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_098");
+                this.set_classname("V_LAW_042");
+                this.set_titletext("기관 등록");
+                this._setFormPosition(0,0,450,600);
+            }
+            this.style.set_background("floralwhite");
+            this.style.set_border("1 solid #808080ff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_laworg_inpo", this);
+            obj._setContents("<ColumnInfo><Column id=\"orgcode\" type=\"STRING\" size=\"256\"/><Column id=\"areacode\" type=\"STRING\" size=\"256\"/><Column id=\"laworgcode\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"zipcode\" type=\"STRING\" size=\"256\"/><Column id=\"etc\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_laworg_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"orgcode\" type=\"STRING\" size=\"256\"/><Column id=\"areacode\" type=\"STRING\" size=\"256\"/><Column id=\"laworgcode\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"zipcode\" type=\"STRING\" size=\"256\"/><Column id=\"etc\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_orgcode", this);
+            obj._setContents("<ColumnInfo><Column id=\"label\" type=\"STRING\" size=\"256\"/><Column id=\"level\" type=\"STRING\" size=\"256\"/><Column id=\"orgcode\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"label\">법원</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">1</Col></Row><Row><Col id=\"label\">헌법재판소</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">2</Col></Row><Row><Col id=\"label\">법무부</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">3</Col></Row><Row><Col id=\"label\">법률구조공단</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">4</Col></Row><Row><Col id=\"label\">등기소</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">5</Col></Row><Row><Col id=\"label\">변호사회</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">6</Col></Row><Row><Col id=\"label\">검찰청</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">7</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_areacode", this);
+            obj._setContents("<ColumnInfo><Column id=\"areacode\" type=\"STRING\" size=\"256\"/><Column id=\"area\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"areacode\">SU</Col><Col id=\"area\">서울</Col></Row><Row><Col id=\"areacode\">BS</Col><Col id=\"area\">부산</Col></Row><Row><Col id=\"areacode\">US</Col><Col id=\"area\">울산</Col></Row><Row><Col id=\"areacode\">KJ</Col><Col id=\"area\">광주</Col></Row><Row><Col id=\"areacode\">DG</Col><Col id=\"area\">대구</Col></Row><Row><Col id=\"areacode\">DJ</Col><Col id=\"area\">대전</Col></Row><Row><Col id=\"areacode\">IC</Col><Col id=\"area\">인천</Col></Row><Row><Col id=\"areacode\">GG</Col><Col id=\"area\">경기</Col></Row><Row><Col id=\"areacode\">GW</Col><Col id=\"area\">강원</Col></Row><Row><Col id=\"areacode\">JL</Col><Col id=\"area\">전라</Col></Row><Row><Col id=\"areacode\">KS</Col><Col id=\"area\">경상</Col></Row><Row><Col id=\"areacode\">CC</Col><Col id=\"area\">충청</Col></Row><Row><Col id=\"areacode\">JJ</Col><Col id=\"area\">제주</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Button("Button00", "absolute", "62.89%", "516", "70", "24", null, null, this);
+            obj.set_taborder("10");
+            obj.set_text("목록");
+            obj.style.set_color("black");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button01", "absolute", "80%", "516", "70", "24", null, null, this);
+            obj.set_taborder("11");
+            obj.set_text("저장");
+            obj.style.set_color("black");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "1.5%", "8", null, "85%", "2%", null, this);
+            obj.set_taborder("40");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "6.99%", "202", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("0");
+            obj.set_text("기관명");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "6.99%", "258", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("9");
+            obj.set_text("전화번호");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "6.99%", "314", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("10");
+            obj.set_text("주소");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "6.99%", "370", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("11");
+            obj.set_text("우편번호");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "6.99%", "426", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("12");
+            obj.set_text("홈페이지");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit06", "absolute", "27.72%", "199", null, "25", "9.33%", null, this.Div00);
+            obj.set_taborder("4");
+            obj.style.set_background("floralwhite");
+            obj.style.set_border("0 solid #a6a6a9ff,0 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit07", "absolute", "27.72%", "255", null, "25", "9.33%", null, this.Div00);
+            obj.set_taborder("5");
+            obj.style.set_background("floralwhite");
+            obj.style.set_border("0 solid #a6a6a9ff,0 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit08", "absolute", "27.72%", "311", null, "25", "9.33%", null, this.Div00);
+            obj.set_taborder("6");
+            obj.style.set_background("floralwhite");
+            obj.style.set_border("0 solid #a6a6a9ff,0 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit09", "absolute", "27.72%", "367", null, "25", "9.33%", null, this.Div00);
+            obj.set_taborder("7");
+            obj.style.set_background("floralwhite");
+            obj.style.set_border("0 solid #a6a6a9ff,0 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit10", "absolute", "27.72%", "423", null, "25", "9.33%", null, this.Div00);
+            obj.set_taborder("8");
+            obj.style.set_background("floralwhite");
+            obj.style.set_border("0 solid #a6a6a9ff,0 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static13", "absolute", "6.99%", "146", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("13");
+            obj.set_text("기관코드");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static14", "absolute", "6.99%", "90", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("14");
+            obj.set_text("지역");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static15", "absolute", "6.99%", "34", null, "23", "74.87%", null, this.Div00);
+            obj.set_taborder("15");
+            obj.set_text("기관종류");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("Combo02", "absolute", "27.2%", "81", null, "28", "9.59%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("2");
+            obj.set_innerdataset("@ds_areacode");
+            obj.set_codecolumn("areacode");
+            obj.set_datacolumn("area");
+            obj.set_autoselect("true");
+            obj.set_readonly("false");
+            obj = new Combo("Combo03", "absolute", "27.2%", "30", null, "5.88%", "9.59%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("1");
+            obj.set_innerdataset("@ds_orgcode");
+            obj.set_codecolumn("orgcode");
+            obj.set_datacolumn("label");
+            obj.set_autoselect("true");
+            obj.set_index("-1");
+            obj = new Edit("Edit11", "absolute", "27.72%", "143", null, "25", "9.33%", null, this.Div00);
+            obj.set_taborder("3");
+            obj.style.set_background("floralwhite");
+            obj.style.set_border("0 solid #a6a6a9ff,0 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            this.Div00.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("40");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 450, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_042");
+            		p.set_titletext("기관 등록");
+            		p.style.set_background("floralwhite");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","Div00.Edit06","value","ds_laworg_inpo","name");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div00.Edit07","value","ds_laworg_inpo","phone");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div00.Edit08","value","ds_laworg_inpo","address");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div00.Edit09","value","ds_laworg_inpo","zipcode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div00.Edit10","value","ds_laworg_inpo","etc");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div00.Combo02","value","ds_laworg_inpo","areacode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Div00.Combo03","value","ds_laworg_inpo","orgcode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","Div00.Edit11","value","ds_laworg_inpo","laworgcode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_098.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_098.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.V_LAW_043_onload = function(obj,e)
+        {
+        	var nRow = this.ds_laworg_inpo.addRow();
+        }
+
+         
+        this.Button00_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+
+        
+
+        // //추가
+        // this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+        // {
+        // 	var nRow = this.ds_laworg_inpo.addRow();
+        // 	this.div_search.edt_searchKeyword.set_value("");
+        // }
+
+        
+
+        //저장버튼 클릭시 
+
+        this.fn_save = function(strid)
+        {
+        	var oDatas =  {
+        			  svcid : strid,
+        			  sController : "laworgInsert.do",			 
+        			  inds :["input1=ds_laworg_inpo"],
+        			  outds :[
+        				 "ds_laworg_inpo=output"
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        			trace(" this.ds_laworg_inpo : " + this.ds_laworg_inpo.saveXML());
+            //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid       서비스 ID
+        		*   @param : {object}    this.fobj        : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/    
+        		if(this.errorcode < 0)
+        		{
+        		   Iject.alert("저장되었습니다.");			
+        		   return;
+        		}			
+        	      
+        	       var pThis = this.fobj;   //form object
+        	       
+        	      switch(this.svcid)
+        	      {
+        	         case "save" : 
+        				Iject.alert("저장완료");
+        				break;
+        				
+        // 	         case "dlete" : 
+        // 	            Iject.alert("삭제완료");
+        // 				break; 
+        	      }
+        	       var pThis = this.fobj;   //form object
+        	      this.close
+        	});
+        	
+        }
+
+        this.Button01_onclick = function(obj,e)
+        {
+        	this.fn_save("save");
+        	
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_LAW_043_onload, this);
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+            this.Button01.addEventHandler("onclick", this.Button01_onclick, this);
+            this.Div00.Combo02.addEventHandler("onitemchanged", this.Div00_Combo02_onitemchanged, this);
+            this.Div00.Combo03.addEventHandler("onitemchanged", this.Div00_Combo03_onitemchanged, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_098.xfdl");
+
+       
+    };
+}
+)();

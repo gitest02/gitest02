@@ -1,0 +1,674 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_PDM_001");
+                this.set_classname("V_PDM_001");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_wtr", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codeName\">완료</Col><Col id=\"codeNo\">Y</Col><Col id=\"useYn\"/></Row><Row><Col id=\"codeName\">미완료</Col><Col id=\"codeNo\">N</Col><Col id=\"useYn\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_issu_code", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codeName\">쟁점사항1</Col><Col id=\"codeNo\">001</Col><Col id=\"useYn\">Y</Col></Row><Row><Col id=\"codeName\">쟁점사항2</Col><Col id=\"codeNo\">002</Col><Col id=\"useYn\">Y</Col></Row><Row><Col id=\"codeName\">쟁점사항3</Col><Col id=\"codeNo\">003</Col><Col id=\"useYn\">Y</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_file_or", this);
+            obj._setContents("<ColumnInfo><Column id=\"addFileRelSeq\" type=\"STRING\" size=\"256\"/><Column id=\"addFileCode\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFile\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFileExt\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSize\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerPath\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerFileName\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDownCount\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDel\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRegDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileChanDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileCheck\" type=\"STRING\" size=\"256\"/><Column id=\"addFileAdmName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_file", this);
+            obj._setContents("<ColumnInfo><Column id=\"addFileRelSeq\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFile\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFileExt\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSize\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerPath\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerFileName\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDel\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRegDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileChanDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/><Column id=\"preAddFileSeq\" type=\"STRING\" size=\"256\"/><Column id=\"preIwNo\" type=\"STRING\" size=\"256\"/><Column id=\"edocAddFileSeq\" type=\"STRING\" size=\"256\"/><Column id=\"edocAdmSeq\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_lawsuit", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitAplCortCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitAplCaseCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCaseTyCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCpPladefSepcode\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitAsitParcWtr\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaWtr\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaCaseNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCtaChg\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitTempReqiDate\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitRaisRea\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCostCfnApldate\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitConcDate\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitFulfDetmWtr\" type=\"STRING\" size=\"256\"/><Column id=\"pladefName\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCaseNo\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmPrgrCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmClamVop\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCortCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmRaisreqDate\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmJudId\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmJudName\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmEntLyrName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_preiwr", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrNo\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrDfsDeg\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrName\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrIssuSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrCompWtr\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrCont\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrOutLyrId\" type=\"STRING\" size=\"256\"/><Column id=\"preIwrOutLyrName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "1%", "0", null, "42", "1%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("준비서면관리");
+            obj.style.set_background("transparent URL('theme://images/bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 12 굴림");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "0%", "51", null, "149", "0%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1%", "0", null, "37", "1%", null, this.Div00);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#080808ff");
+            obj.style.set_font("bold 9 굴림");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "30.6%", "8", "70", "20", null, null, this.Div00);
+            obj.set_taborder("3");
+            obj.set_text("검색");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "1.1%", "44", null, "23", "85.8%", null, this.Div00);
+            obj.set_taborder("5");
+            obj.set_text("소송기본사항");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "1%", "70", null, "72", "1%", null, this.Div00);
+            obj.set_taborder("6");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#080808ff");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_usedecorate("true");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "1.9%", "6", null, "24", "84%", null, this.Div00);
+            obj.set_taborder("13");
+            obj.set_text("소송관리번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "16.3%", "6", null, "25", "70.3%", null, this.Div00);
+            obj.set_taborder("14");
+            obj.set_enable("false");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "1.9%", "80", null, "24", "84%", null, this.Div00);
+            obj.set_taborder("15");
+            obj.set_text("신청사건번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "16.4%", "79", null, "25", "70.2%", null, this.Div00);
+            obj.set_taborder("16");
+            obj.set_enable("false");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "30.4%", "80", null, "24", "51.8%", null, this.Div00);
+            obj.set_taborder("18");
+            obj.set_text("소송진행상태");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "64%", "80", null, "25", "20.3%", null, this.Div00);
+            obj.set_taborder("19");
+            obj.set_text("소제기일자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "1.9%", "109", null, "24", "84%", null, this.Div00);
+            obj.set_taborder("21");
+            obj.set_text("수행법원");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "30.5%", "109", null, "24", "51.8%", null, this.Div00);
+            obj.set_taborder("23");
+            obj.set_text("판사");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "64%", "109", null, "25", "20.3%", null, this.Div00);
+            obj.set_taborder("24");
+            obj.set_text("심급명");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit04", "absolute", "48.8%", "109", null, "25", "36.5%", null, this.Div00);
+            obj.set_taborder("47");
+            obj.set_enable("false");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "38.6%", "6", null, "24", "47.3%", null, this.Div00);
+            obj.set_taborder("48");
+            obj.set_text("심급");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "80.5%", "109", null, "25", "2.4%", null, this.Div00);
+            obj.set_taborder("51");
+            obj.set_enable("false");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Calendar("Calendar00", "absolute", "80.5%", "81", null, "24", "2.4%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("53");
+            obj.set_enable("false");
+            obj = new Edit("Edit03", "absolute", "48.7%", "80", null, "24", "36.6%", null, this.Div00);
+            obj.set_taborder("54");
+            obj.set_enable("false");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit05", "absolute", "16.4%", "109", null, "25", "70.3%", null, this.Div00);
+            obj.set_taborder("55");
+            obj.set_enable("false");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("cb_searchLawClassName01", "absolute", "54.1%", "7", "15%", "24", null, null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("56");
+            obj.set_type("filter");
+            obj.set_enable("false");
+            obj = new Button("Button01", "absolute", "90.1%", "8", "70", "20", null, null, this.Div00);
+            obj.set_taborder("57");
+            obj.set_text("초기화");
+            obj.style.set_background("@gradation URL('../../webapp/packageB/img/btn_MF_Refresh_O.png')");
+            obj.set_visible("false");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "1.1%", "194", null, "30", "87.5%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("준비서면목록");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "0%", "350", null, "251", "0%", null, this);
+            obj.set_taborder("11");
+            obj.set_text("Div01");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1%", "6", null, "180", "1%", null, this.Div01);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#080808ff");
+            obj.style.set_font("bold 9 굴림");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "1.8%", "12", null, "29", "84%", null, this.Div01);
+            obj.set_taborder("1");
+            obj.set_text("준비서면제목");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "16.3%", "12", null, "30", "1.7%", null, this.Div01);
+            obj.set_taborder("22");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "1.8%", "45", null, "69", "84%", null, this.Div01);
+            obj.set_taborder("23");
+            obj.set_text("준비서면내용");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "16.3%", "45", null, "69", "1.7%", null, this.Div01);
+            obj.set_taborder("24");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "1.8%", "117", null, "29", "84%", null, this.Div01);
+            obj.set_taborder("25");
+            obj.set_text("변론차수");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "16.2%", "119", null, "25", "70.4%", null, this.Div01);
+            obj.set_taborder("26");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "30.6%", "117", null, "26", "66.7%", null, this.Div01);
+            obj.set_taborder("27");
+            obj.set_text("차");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "32.9%", "118", null, "29", "52.9%", null, this.Div01);
+            obj.set_taborder("28");
+            obj.set_text("쟁점사항구분");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "63.9%", "118", null, "29", "21.9%", null, this.Div01);
+            obj.set_taborder("29");
+            obj.set_text("완료여부");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Combo("cb_searchLawClassName00", "absolute", "47.6%", "119", "14.8%", "25", null, null, this.Div01);
+            this.Div01.addChild(obj.name, obj);
+            obj.set_taborder("30");
+            obj.set_value("== 전체 ==");
+            obj.set_innerdataset("@ds_issu_code");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("dropdown");
+            obj = new Combo("cb_searchLawClassName01", "absolute", "79.1%", "120", "14.8%", "25", null, null, this.Div01);
+            this.Div01.addChild(obj.name, obj);
+            obj.set_taborder("31");
+            obj.set_value("완료");
+            obj.set_innerdataset("@ds_wtr");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("dropdown");
+            obj = new Static("Static07", "absolute", "1.8%", "150", null, "29", "84%", null, this.Div01);
+            obj.set_taborder("32");
+            obj.set_text("외부작성변호사");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "16.2%", "152", null, "25", "67.7%", null, this.Div01);
+            obj.set_taborder("33");
+            obj.set_enable("false");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "33%", "152", null, "29", "52.9%", null, this.Div01);
+            obj.set_taborder("34");
+            obj.set_text("첨부파일");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 0");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "48.2%", "152", null, "28", "47.1%", null, this.Div01);
+            obj.set_taborder("35");
+            obj.set_text("현 파일");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "52.7%", "152", null, "30", "45.3%", null, this.Div01);
+            obj.set_taborder("38");
+            obj.set_text("0");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "54.5%", "150", null, "35", "44.2%", null, this.Div01);
+            obj.set_taborder("39");
+            obj.set_text("개");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "3.8%", "16", null, "24", "94%", null, this.Div01);
+            obj.set_taborder("40");
+            obj.set_text("*");
+            obj.style.set_color("red");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static13", "absolute", "3.7%", "119", null, "24", "94.1%", null, this.Div01);
+            obj.set_taborder("41");
+            obj.set_text("*");
+            obj.style.set_color("red");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static14", "absolute", "34.4%", "121", null, "24", "63.4%", null, this.Div01);
+            obj.set_taborder("42");
+            obj.set_text("*");
+            obj.style.set_color("red");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static15", "absolute", "66.4%", "120", null, "24", "31.4%", null, this.Div01);
+            obj.set_taborder("43");
+            obj.set_text("*");
+            obj.style.set_color("red");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "83.7%", "199", "70", "20", null, null, this.Div01);
+            obj.set_taborder("44");
+            obj.set_text("저장");
+            obj.set_visible("false");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "58%", "155", "70", "20", null, null, this.Div01);
+            obj.set_taborder("45");
+            obj.set_text("파일첨부");
+            obj.set_visible("false");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00", "absolute", "1.1%", "224", null, "99", "1.2%", null, this);
+            obj.set_taborder("12");
+            obj.set_binddataset("ds_preiwr");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"131\"/><Column size=\"410\"/><Column size=\"171\"/><Column size=\"105\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell style=\"font:9 돋움;\" text=\"No.\"/><Cell col=\"1\" style=\"font:9 돋움;\" text=\"변론차수\"/><Cell col=\"2\" style=\"font:9 돋움;\" text=\"쟁점사항구분\"/><Cell col=\"3\" style=\"font:9 돋움;\" text=\"준비서면제목\"/><Cell col=\"4\" style=\"font:9 돋움;\" text=\"작성일자\"/><Cell col=\"5\" style=\"font:9 돋움;\" text=\"완료여부\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:preIwrDfsDeg\"/><Cell col=\"2\" text=\"bind:preIwrIssuSepCode\"/><Cell col=\"3\" text=\"bind:preIwrName\"/><Cell col=\"4\" text=\"bind:preIwrWritDate\"/><Cell col=\"5\" text=\"bind:preIwrCompWtr\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "1.1%", "324", null, "30", "87.5%", null, this);
+            obj.set_taborder("13");
+            obj.set_text("준비서면 상세보기");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div02", "absolute", "80.6%", "323", null, "35", "0%", null, this);
+            obj.set_taborder("14");
+            obj.set_text("Div02");
+            this.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "13.4%", "9", "70", "20", null, null, this.Div02);
+            obj.set_taborder("0");
+            obj.set_text("신규");
+            obj.set_visible("false");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "56.19%", "9", "70", "20", null, null, this.Div02);
+            obj.set_taborder("1");
+            obj.set_text("삭제");
+            obj.set_visible("false");
+            this.Div02.addChild(obj.name, obj);
+
+            obj = new Button("Button00", "absolute", "91.8%", "548", "70", "20", null, null, this);
+            obj.set_taborder("15");
+            obj.set_text("닫기");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 149, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 251, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("11");
+            		p.set_text("Div01");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("14");
+            		p.set_text("Div02");
+
+            	}
+            );
+            this.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_PDM_001");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item1","Div00.cb_searchLawClassName01","value","ds_lawsuit","instAdmCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item0","Div00.Edit00","value","ds_lawsuit","lawsuitAdmNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div00.Edit01","value","ds_lawsuit","instAdmCaseNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Div00.Edit04","value","ds_lawsuit","instAdmJudName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","Div00.Edit02","value","ds_lawsuit","instAdmName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","Div01.Edit00","value","ds_preiwr","preIwrName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","Div01.TextArea00","value","ds_preiwr","preIwrCont");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","Div01.Edit01","value","ds_preiwr","preIwrDfsDeg");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item11","Div01.cb_searchLawClassName00","value","ds_preiwr","preIwrIssuSepCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item12","Div01.cb_searchLawClassName01","value","ds_preiwr","preIwrCompWtr");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item13","Div01.Edit02","value","ds_preiwr","preIwrOutLyrName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div00.Calendar00","value","ds_lawsuit","instAdmRaisreqDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div00.Edit03","value","ds_lawsuit","instAdmPrgrCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div00.Edit05","value","ds_lawsuit","instAdmCortCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("V_PDM_001.xfdl", function() {
+
+        this.Div00_Button00_onclick = function(obj,e)
+        {
+        	var objChildFrame = new ChildFrame();
+            objChildFrame.init("chf_popup2", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_026.xfdl");
+            var objParam = {};
+            objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+
+        }
+
+        this.fn_popupCallback = function(strID,strTemp)
+        {
+        	this.Div00.Button01.set_visible(true);
+        	this.Div02.Button00.set_visible(true);
+        	this.Div02.Button01.set_visible(true);
+        	this.Div01.Button01.set_visible(true);
+        	this.Button00.set_visible(true);
+        	this.Div01.Button00.set_visible(true);
+        	
+        	var strTempSplit = strTemp.split("/");
+        	if(strTemp != undefined){
+        		this.ds_search.setColumn(0, "lawsuitAdmNo", strTempSplit[0]);
+        		this.ds_search.setColumn(0, "instAdmCode", strTempSplit[1]);
+        		this.getLawsuitInfo();
+        		this.getPreList();
+        	}
+        }
+
+        this.getLawsuitInfo = function() {
+        	var oDatas =  {
+        		  svcid : "lawSuitInfo",
+        		  sController : "getPrgrLawsuitInfo.do",
+        		  inds :["ds_search=ds_search"],
+        		  outds :["ds_lawsuit=ds_lawsuit"],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+
+        }
+
+        this.getPreList = function(){
+        	var oDatas =  {
+        		  svcid : "preiwrList",
+        		  sController : "getPreiwrList.do",
+        		  inds :["ds_search=ds_search"],
+        		  outds :["ds_preiwr=ds_preiwr"],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});		
+        }	
+        this.Div02_Button00_onclick = function(obj,e)
+        {
+        	var lyrid = "2013082601";
+        	var lyrName = "박지윤";
+        	var lawsuitAdmNo = this.ds_lawsuit.getColumn(0, "lawsuitAdmNo");
+        	var instAdmCode = this.ds_lawsuit.getColumn(0, "instAdmCode");
+        	this.ds_preiwr.insertRow(0);
+        	this.ds_preiwr.setColumn(0, "preIwrOutLyrId", lyrid);	
+        	this.ds_preiwr.setColumn(0, "preIwrOutLyrName", lyrName);	
+        	this.ds_preiwr.setColumn(0, "lawsuitAdmNo", lawsuitAdmNo);	
+        	this.ds_preiwr.setColumn(0, "instAdmCode", instAdmCode);
+        		
+        // 	alert(lawsuitAdmNo);
+        // 	alert(instAdmCode);
+        }
+
+        this.nullChk = function(val,text) 
+        {
+        	if(val == "" || val == null) {
+        		alert(text);
+        		return true;
+        	} else {
+        		return false;
+        	}
+        }
+
+        
+        this.Div02_Button01_onclick = function(obj,e)
+        {
+        	var row = this.ds_preiwr.rowposition;
+        	if(this.ds_preiwr.rowcount == 0){
+        		alert("삭제할 데이터가 없습니다.");
+        		return;
+            }
+        	this.ds_preiwr.deleteRow(row);	
+        }
+
+        this.Div00_Button01_onclick = function(obj,e)
+        {
+        	this.ds_preiwr.deleteAll();
+        	this.ds_lawsuit.deleteAll();
+        	this.Div00.Button01.set_visible(false);
+        	this.Div02.Button00.set_visible(false);
+        	this.Div02.Button01.set_visible(false);
+        	this.Div01.Button01.set_visible(false);
+        	this.Button00.set_visible(false);
+        }
+        this.Div01_Button01_onclick = function(obj,e)
+        {
+        	rowCnt = this.ds_preiwr.rowcount;
+        	for(i = 0; i<rowCnt; i++) {
+        		var preIwrName = this.ds_preiwr.getColumn(i, "preIwrName");
+        		var preIwrCont = this.ds_preiwr.getColumn(i, "preIwrCont");	
+        		var preIwrDfsDeg = this.ds_preiwr.getColumn(i, "preIwrDfsDeg");
+        		var preIwrIssuSepCode = this.ds_preiwr.getColumn(i, "preIwrIssuSepCode");	
+        		var preIwrCompWtr = this.ds_preiwr.getColumn(i, "preIwrCompWtr");
+        	
+        		if(this.nullChk(preIwrName, "준비서면제목을 입력하세요")) {
+        			return;
+        		}
+        		if(this.nullChk(preIwrCont, "준비서면내용을 입력하세요")) {
+        			return;
+        		}
+        		if(this.nullChk(preIwrDfsDeg, "변론차수를 선택하세요")) {
+        			return;
+        		}
+        		if(this.nullChk(preIwrIssuSepCode, "쟁정사항을 선택하세요")) {
+        			return;
+        		}
+        		if(this.nullChk(preIwrCompWtr, "완료여부를 선택하세요")) {
+        			return;
+        		}
+        	}
+        	var oDatas =  {
+        		  svcid : "preiwrChange",
+        		  sController : "preiwrChange.do",
+        		  inds :["ds_preiwr=ds_preiwr:U"],
+        		  outds :[],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+        		
+        	alert("저장 되었습니다.");
+        }
+
+        this.Button00_onclick = function(obj,e)
+        {
+        	//화면종료
+        	this.close( "OK" );
+        }
+
+        this.Div01_Button00_onclick = function(obj,e)
+        {
+        	//첨부파일
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.Div00.Static00.addEventHandler("onclick", this.Div00_Static00_onclick, this);
+            this.Div00.Button00.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.Div00.Static03.addEventHandler("onclick", this.Div00_Static00_onclick, this);
+            this.Div00.Edit00.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.Div00.Edit01.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.Div00.Edit04.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.Div00.Edit02.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.Div00.cb_searchLawClassName01.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Div00.Button01.addEventHandler("onclick", this.Div00_Button01_onclick, this);
+            this.Div01.Static00.addEventHandler("onclick", this.Div00_Static00_onclick, this);
+            this.Div01.Edit01.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.Div01.cb_searchLawClassName00.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Div01.cb_searchLawClassName01.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Div01.Edit02.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.Div01.Button01.addEventHandler("onclick", this.Div01_Button01_onclick, this);
+            this.Div01.Button00.addEventHandler("onclick", this.Div01_Button00_onclick, this);
+            this.Div02.Button00.addEventHandler("onclick", this.Div02_Button00_onclick, this);
+            this.Div02.Button01.addEventHandler("onclick", this.Div02_Button01_onclick, this);
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_PDM_001.xfdl");
+
+       
+    };
+}
+)();

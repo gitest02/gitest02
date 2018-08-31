@@ -1,0 +1,318 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_004");
+                this.set_classname("V_LAW_004");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_detc_context", this);
+            obj._setContents("<ColumnInfo><Column id=\"detcno\" type=\"STRING\" size=\"256\"/><Column id=\"caseclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"caseclassname\" type=\"STRING\" size=\"256\"/><Column id=\"judgeclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"casetext\" type=\"STRING\" size=\"256\"/><Column id=\"judgetext\" type=\"STRING\" size=\"256\"/><Column id=\"referlaw\" type=\"STRING\" size=\"256\"/><Column id=\"referjudge\" type=\"STRING\" size=\"256\"/><Column id=\"maintext\" type=\"STRING\" size=\"256\"/><Column id=\"targetlaw\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_detc_detail", this);
+            obj._setContents("<ColumnInfo><Column id=\"detcno\" type=\"STRING\" size=\"256\"/><Column id=\"detcdate\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"caseno\" type=\"STRING\" size=\"256\"/><Column id=\"judgeclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"precdetaillink\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("Div00", "absolute", "0%", "43", null, "541", "76.3%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Tab("Tab00", "absolute", "3.38%", "5", null, "165", "2.53%", null, this.Div00);
+            obj.set_taborder("0");
+            obj.set_tabindex("0");
+            obj.set_scrollbars("autoboth");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage1", this.Div00.Tab00);
+            obj.set_text("참조판례");
+            this.Div00.Tab00.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "0.9%", "4", null, "128", "2.26%", null, this.Div00.Tab00.tabpage1);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage2", this.Div00.Tab00);
+            obj.set_text("참조조문");
+            this.Div00.Tab00.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "0.9%", "3", null, "130", "2.26%", null, this.Div00.Tab00.tabpage2);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_usecontextmenu("false");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Tab("Tab01", "absolute", "3.38%", "181", null, "355", "3.38%", null, this.Div00);
+            obj.set_taborder("1");
+            obj.set_tabindex("0");
+            obj.set_scrollbars("autoboth");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage1", this.Div00.Tab01);
+            obj.set_text("결정요지");
+            this.Div00.Tab01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "0.97%", "2", null, "321", "0.49%", null, this.Div00.Tab01.tabpage1);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab01.tabpage1.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage2", this.Div00.Tab01);
+            obj.set_text("판시사항");
+            this.Div00.Tab01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "0.91%", "4", null, "458", "0.46%", null, this.Div00.Tab01.tabpage2);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_usecontextmenu("false");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab01.tabpage2.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "23.3%", "48", null, "531", "0.2%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("Div01");
+            this.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "1.33%", "23", null, "507", "1.33%", null, this.Div01);
+            obj.set_taborder("0");
+            obj.set_readonly("true");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Div("Div02", "absolute", "0%", "0", null, "47", "0.2%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("Div02");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1.1%", "17", null, "23", "92.79%", null, this.Div02);
+            obj.set_taborder("0");
+            obj.set_text("종국일자");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "6.41%", "13", null, "29", "71.54%", null, this.Div02);
+            obj.set_taborder("1");
+            obj.set_readonly("false");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "30.76%", "17", null, "23", "63.13%", null, this.Div02);
+            obj.set_taborder("3");
+            obj.set_text("사건번호");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "37.27%", "13", null, "29", "40.68%", null, this.Div02);
+            obj.set_taborder("4");
+            this.Div02.addChild(obj.name, obj);
+
+            obj = new Button("Button04", "absolute", "91.1%", "13", "70", "24", null, null, this);
+            obj.set_taborder("3");
+            obj.set_text("닫기");
+            obj.style.set_image("URL('img::small_close.png')");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 221, 643, this.Div00.Tab00.tabpage1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("참조판례");
+
+            	}
+            );
+            this.Div00.Tab00.tabpage1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.Div00.Tab00.tabpage2,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("참조조문");
+
+            	}
+            );
+            this.Div00.Tab00.tabpage2.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 221, 643, this.Div00.Tab01.tabpage1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("결정요지");
+
+            	}
+            );
+            this.Div00.Tab01.tabpage1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.Div00.Tab01.tabpage2,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("판시사항");
+
+            	}
+            );
+            this.Div00.Tab01.tabpage2.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 541, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 531, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_text("Div01");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 47, this.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.set_text("Div02");
+
+            	}
+            );
+            this.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_004");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","Div01.TextArea00","value","ds_detc_context","maintext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div02.Edit00","value","ds_detc_detail","detcdate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div02.Edit01","value","ds_detc_detail","caseno");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div00.Tab00.tabpage1.TextArea00","value","ds_detc_context","referjudge");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div00.Tab00.tabpage2.TextArea00","value","ds_detc_context","referlaw");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div00.Tab01.tabpage2.TextArea00","value","ds_detc_context","casetext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Div00.Tab01.tabpage1.TextArea00","value","ds_detc_context","judgetext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_004.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_004.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.V_LAW_004_onload = function (obj,e){	
+        	this.ds_detc_detail.copyData(this.parent.ds_detc_detail);
+        	this.ds_detc_context.copyData(this.parent.ds_detc_context);
+        	if(this.ds_detc_context.getColumn(0,"detcno") == null || this.ds_detc_context.getColumn(0,"detcno") == undefined){
+        		this.close();
+        	}else{
+        		this.fn_context_fix("maintext");
+        		this.fn_context_fix("referlaw");
+        		this.fn_context_fix("referjudge");
+        		this.fn_context_fix("casetext");
+        		this.fn_context_fix("judgetext");
+        	}
+        }
+
+        this.fn_context_fix = function(text){
+        	var context	=	this.ds_detc_context.getColumn(0,text);
+        	if(context != null){
+        		context		=	context.replace(/<br\/>/gi,"\r\n");
+        		context		=	context.replace(/     /gi,"\r\n");
+        		context		=	context.replace(/【/gi,"\r\n【");
+        		context		=	context.replace(/】/gi,"】\r\n");
+        		context		=	context.replace(/\]/gi,"]\r\n");
+        		context		=	context.replace(/\[/gi,"\r\n[");
+        		context		=	context.replace("【주\r\n문】","【주     문】");
+        		context		=	context.replace("【이\r\n유】","【이     유】");
+        		context		=	context.replace("\r\n○\r\n","○");
+        		context		=	context.replace("\n○\n","○");
+        		
+        		var loop	=	true;
+        		while(loop){
+        			var start	=	context.indexOf("<");
+        			var end		=	context.indexOf(">")+1;
+        			var slice	=	context.slice(start,end);
+        			context		=	context.replace(slice, "");
+        			if(start < 0){
+        				loop	=	false;
+        			}
+        		}
+        		this.ds_detc_context.setColumn(0,text,context);
+        	}
+        }
+
+        this.Button04_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+
+        this.Button05_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_LAW_004_onload, this);
+            this.Button04.addEventHandler("onclick", this.Button04_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_004.xfdl");
+
+       
+    };
+}
+)();

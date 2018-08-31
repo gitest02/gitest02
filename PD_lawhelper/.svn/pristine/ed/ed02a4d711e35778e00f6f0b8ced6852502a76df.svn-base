@@ -1,0 +1,24 @@
+package debtinfo.lawmapper.service;
+
+import java.util.List;
+
+import debtinfo.lawmapper.vo.DebtGiveUpVO;
+import debtinfo.lawmapper.vo.DebtOccVO;
+import debtinfo.lawmapper.vo.DebtReVO;
+import debtinfo.lawmapper.vo.DebtStopVO;
+
+public interface DebtinfoService {
+
+	//채무등록 리스트 가져오기(select)
+	List<DebtOccVO> debtorOccList();
+
+	//환입관리 리스트 가져오기(select)
+	List<DebtReVO> debtorReList();
+
+	//정지품의 리스트 가져오기(select)
+	List<DebtStopVO> debtorStopList();
+	
+	//포기품의 리스트 가져오기(select)
+	List<DebtGiveUpVO> debtorGiveUpList();
+
+}

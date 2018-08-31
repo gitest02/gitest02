@@ -1,0 +1,1702 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("Debt_Info");
+                this.set_classname("Debt_Info");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_occur", this);
+            obj._setContents("<ColumnInfo><Column id=\"debtorOccNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccStartdate\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccEnddate\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccReason\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccCheck\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccPrice\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccInput\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccEtc\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_codeOccur", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_return", this);
+            obj._setContents("<ColumnInfo><Column id=\"moneyInNo\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInSum\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInReason\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInInterest\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInDayin\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInInput\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInEtc\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInCode\" type=\"STRING\" size=\"256\"/><Column id=\"inputName\" type=\"STRING\" size=\"256\"/><Column id=\"sabunName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_codeReturn", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_stop", this);
+            obj._setContents("<ColumnInfo><Column id=\"adminStopNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignCheck\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopReasonCode\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopReason\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopMoney\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopInterest\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopDebtReturnMoney\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopRequestDate\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignEiNo\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignDate\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignerComment\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopProgressSummary\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopInput\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopEtc\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopCd\" type=\"STRING\" size=\"256\"/><Column id=\"inputName\" type=\"STRING\" size=\"256\"/><Column id=\"sabunName\" type=\"STRING\" size=\"256\"/><Column id=\"signerSabunName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_codeStop", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_giveUp", this);
+            obj._setContents("<ColumnInfo><Column id=\"giveUpNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpSign\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReasonCode\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReason\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpObtainMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReturnExpectMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpInterest\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReturnMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpRemainDebtorMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpRequestDate\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpDecideManNum\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpObtainDate\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpTotalOpinion\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpDecideManOpinion\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpProgressSummary\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpInput\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpEtc\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpCd\" type=\"STRING\" size=\"256\"/><Column id=\"inputName\" type=\"STRING\" size=\"256\"/><Column id=\"sabunName\" type=\"STRING\" size=\"256\"/><Column id=\"signerSabunName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_codeGiveUp", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"code\">01</Col><Col id=\"value\">행방불명</Col></Row><Row><Col id=\"code\">02</Col><Col id=\"value\">사망</Col></Row><Row><Col id=\"code\">03</Col><Col id=\"value\">파산</Col></Row><Row><Col id=\"code\">99</Col><Col id=\"value\">기타</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_comboOcc", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_comboRe", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_comboStop", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_comboGi", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_radioOcc", this);
+            obj._setContents("<ColumnInfo><Column id=\"id\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"id\">0</Col><Col id=\"value\">Y</Col></Row><Row><Col id=\"id\">1</Col><Col id=\"value\">N</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_radioStop", this);
+            obj._setContents("<ColumnInfo><Column id=\"id\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"id\">0</Col><Col id=\"value\">Y</Col></Row><Row><Col id=\"id\">1</Col><Col id=\"value\">N</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_radioGi", this);
+            obj._setContents("<ColumnInfo><Column id=\"id\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"id\">0</Col><Col id=\"value\">Y</Col></Row><Row><Col id=\"id\">1</Col><Col id=\"value\">N</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_debtor", this);
+            obj._setContents("<ColumnInfo><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListCode\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListName\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListGooboon\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListTel\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListPhone\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListPostal\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListAddress1\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListAddress2\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListOwance\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListRepay\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListStatus\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListMgrNum\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListRegistDate\" type=\"STRING\" size=\"256\"/><Column id=\"remainDebt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_file", this);
+            obj._setContents("<ColumnInfo><Column id=\"addfilecode\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRelNum\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerFileName\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSize\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDel\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerPath\" type=\"STRING\" size=\"256\"/><Column id=\"addFileChanDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRegDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFile\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFileExt\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDownCount\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"addFileCheck\" type=\"STRING\" size=\"256\"/><Column id=\"imgFile\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_status", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"code\">00</Col><Col id=\"value\">전체</Col></Row><Row><Col id=\"code\">01</Col><Col id=\"value\">정상</Col></Row><Row><Col id=\"code\">02</Col><Col id=\"value\">정지</Col></Row><Row><Col id=\"code\">03</Col><Col id=\"value\">포기</Col></Row><Row><Col id=\"code\">04</Col><Col id=\"value\">완납</Col></Row><Row><Col id=\"code\">99</Col><Col id=\"value\">기타</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_position", this);
+            obj._setContents("<ColumnInfo><Column id=\"aprvprgrInfoStepCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoBookNo\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoUpSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWrit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritTit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCondCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoProcDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoFinWtr\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont2\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont3\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_check", this);
+            obj._setContents("<ColumnInfo><Column id=\"seq\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_tabGrid", this);
+            obj._setContents("<ColumnInfo><Column id=\"aprvprgrInfoStepCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoBookNo\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoUpSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWrit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritTit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCondCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoProcDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoFinWtr\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont2\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont3\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_sign", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"code\">01</Col><Col id=\"value\">결재진행중</Col></Row><Row><Col id=\"code\">02</Col><Col id=\"value\">결재진행취소</Col></Row><Row><Col id=\"code\">03</Col><Col id=\"value\">결재완료</Col></Row><Row><Col id=\"code\">04</Col><Col id=\"value\">결재취소</Col></Row><Row><Col id=\"code\">05</Col><Col id=\"value\">반려</Col></Row><Row><Col id=\"code\">06</Col><Col id=\"value\">결재진행중</Col></Row><Row><Col id=\"code\">07</Col><Col id=\"value\">결재진행취소</Col></Row><Row><Col id=\"code\">08</Col><Col id=\"value\">결재완료</Col></Row><Row><Col id=\"code\">09</Col><Col id=\"value\">결재취소</Col></Row><Row><Col id=\"code\">10</Col><Col id=\"value\">반려</Col></Row><Row><Col id=\"code\">11</Col><Col id=\"value\">결재진행중</Col></Row><Row><Col id=\"code\">12</Col><Col id=\"value\">결재진행취소</Col></Row><Row><Col id=\"code\">13</Col><Col id=\"value\">결재완료</Col></Row><Row><Col id=\"code\">14</Col><Col id=\"value\">결재취소</Col></Row><Row><Col id=\"code\">15</Col><Col id=\"value\">반려</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_positionCode", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count1", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count2", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count3", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count4", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("divWrapper", "absolute", "0%", "0%", null, null, "0%", "0%", this);
+            obj.set_taborder("0%");
+            this.addChild(obj.name, obj);
+            obj = new Div("div_Top", "absolute", "0%", "0%", null, null, "0%", "80%", this.divWrapper);
+            obj.set_taborder("0");
+            obj.set_text("div_Top");
+            obj.style.set_background("transparent");
+            this.divWrapper.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "1%", "80%", null, "20%", "89.3%", null, this.divWrapper.div_Top);
+            obj.set_taborder("4");
+            obj.set_text("채무자구분");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1%", "60%", null, "20%", "89.3%", null, this.divWrapper.div_Top);
+            obj.set_taborder("5");
+            obj.set_text("총채무금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "1%", "20%", null, "20%", "89.3%", null, this.divWrapper.div_Top);
+            obj.set_taborder("6");
+            obj.set_text("상태");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "1%", "0%", null, "20%", "89.3%", null, this.divWrapper.div_Top);
+            obj.set_taborder("7");
+            obj.set_text("채무자번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "1%", "40%", null, "20%", "89.3%", null, this.divWrapper.div_Top);
+            obj.set_taborder("8");
+            obj.set_text("우편번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "85.7%", "0%", null, "100%", "1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("9");
+            obj.set_text("Static05");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new ImageViewer("ImageViewer00", "absolute", "85.9%", "1.67%", null, "95%", "1.2%", null, this.divWrapper.div_Top);
+            obj.set_taborder("10");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "29.8%", "0%", null, "20%", "60.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("11");
+            obj.set_text("이름");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "29.8%", "20%", null, "20%", "60.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("12");
+            obj.set_text("전화번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "29.8%", "60%", null, "20%", "60.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("13");
+            obj.set_text("총상환금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "29.8%", "80%", null, "20%", "60.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("14");
+            obj.set_text("주민번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "29.8%", "40%", null, "20%", "60.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("15");
+            obj.set_text("주소");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "57.3%", "0%", null, "20%", "33%", null, this.divWrapper.div_Top);
+            obj.set_taborder("16");
+            obj.set_text("담당자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "57.3%", "60%", null, "20%", "33%", null, this.divWrapper.div_Top);
+            obj.set_taborder("17");
+            obj.set_text("잔여채무금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static13", "absolute", "57.3%", "80%", null, "20%", "33%", null, this.divWrapper.div_Top);
+            obj.set_taborder("18");
+            obj.set_text("시작일");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static14", "absolute", "57.3%", "20%", null, "20%", "33%", null, this.divWrapper.div_Top);
+            obj.set_taborder("19");
+            obj.set_text("휴대폰번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static16", "absolute", "10.6%", "0%", null, "20%", "70.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("21");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static17", "absolute", "10.6%", "20%", null, "20%", "70.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("22");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static18", "absolute", "10.6%", "40%", null, "20%", "70.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("23");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static20", "absolute", "10.6%", "80%", null, "20%", "70.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("25");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static21", "absolute", "39.5%", "0%", null, "20%", "42.6%", null, this.divWrapper.div_Top);
+            obj.set_taborder("26");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static26", "absolute", "66.9%", "0%", null, "20%", "14.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("31");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static29", "absolute", "66.9%", "80%", null, "20%", "14.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("34");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit00", "absolute", "10.6%", "60%", null, "20%", "70.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("41");
+            obj.style.set_background("lemonchiffon");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit01", "absolute", "39.5%", "60%", null, "20%", "42.6%", null, this.divWrapper.div_Top);
+            obj.set_taborder("42");
+            obj.style.set_background("lemonchiffon");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit02", "absolute", "66.9%", "60%", null, "20%", "14.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("43");
+            obj.style.set_background("lemonchiffon");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static15", "absolute", "26.7%", "60.83%", null, "18.33%", "70.3%", null, this.divWrapper.div_Top);
+            obj.set_taborder("44");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_text("원");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static19", "absolute", "82.7%", "60.83%", null, "18.33%", "14.3%", null, this.divWrapper.div_Top);
+            obj.set_taborder("45");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit03", "absolute", "39.5%", "20%", null, "20%", "42.6%", null, this.divWrapper.div_Top);
+            obj.set_taborder("46");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit04", "absolute", "66.9%", "20%", null, "20%", "14.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("47");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit05", "absolute", "39.5%", "80%", null, "20%", "42.6%", null, this.divWrapper.div_Top);
+            obj.set_taborder("48");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "39.5%", "40%", null, "20%", "26.9%", null, this.divWrapper.div_Top);
+            obj.set_taborder("49");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "73.1%", "40%", null, "20%", "14.1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("50");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Div("div_Middle", "absolute", "0%", "20%", null, null, "0%", "70%", this.divWrapper);
+            obj.set_taborder("1");
+            obj.set_text("div_Middle");
+            this.divWrapper.addChild(obj.name, obj);
+            obj = new Button("btn_DebtList", "absolute", "93.82%", "16.67%", null, "43.33%", "1.62%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("0");
+            obj.set_text("목록");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Static("Static19", "absolute", "84.9%", "20%", null, "40%", "6.89%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("1");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Static("Static20", "absolute", "84.9%", "58.33%", null, "40%", "6.89%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("2");
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "76.7%", "20%", null, "40%", "15.1%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("3");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "76.7%", "58.33%", null, "40%", "15.1%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("4");
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "68.49%", "58.33%", null, "40%", "23.3%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("5");
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "68.49%", "20%", null, "40%", "23.3%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("6");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "60.28%", "20%", null, "78.33%", "31.51%", null, this.divWrapper.div_Middle);
+            obj.set_taborder("7");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_text("결재진행상태");
+            this.divWrapper.div_Middle.addChild(obj.name, obj);
+            obj = new Div("div_Bottom", "absolute", "0%", "30%", null, null, "0%", "0%", this.divWrapper);
+            obj.set_taborder("2");
+            obj.set_text("div_Bottom");
+            obj.set_async("false");
+            this.divWrapper.addChild(obj.name, obj);
+            obj = new Tab("Tab00", "absolute", "1%", "59", null, "81.43%", "1.1%", null, this.divWrapper.div_Bottom);
+            obj.set_taborder("0");
+            obj.set_tabindex("0");
+            obj.set_scrollbars("autoboth");
+            this.divWrapper.div_Bottom.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage1", this.divWrapper.div_Bottom.Tab00);
+            obj.set_text("채무발생");
+            this.divWrapper.div_Bottom.Tab00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "1.02%", "45.91%", null, "52.2%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2%", "48.43%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("1");
+            obj.set_text("채무발생번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "2%", "56.29%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("2");
+            obj.set_text("*채무명의 획득여부");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "2%", "63.84%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("3");
+            obj.set_text("입력자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.05%", "71.7%", null, "24.84%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("4");
+            obj.set_text("비고");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "1.02%", "10.69%", null, "33.65%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("7");
+            obj.set_binddataset("ds_occur");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No.\"/><Cell col=\"1\" text=\"채무발생번호\"/><Cell col=\"2\" text=\"발생일자\"/><Cell col=\"3\" text=\"종결일자\"/><Cell col=\"4\" text=\"채무명의 획득여부\"/><Cell col=\"5\" text=\"발생사유\"/><Cell col=\"6\" text=\"채무금액(원)\"/><Cell col=\"7\" text=\"입력자 성명\"/><Cell col=\"8\" text=\"비고\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:debtorOccNo\"/><Cell col=\"2\" text=\"bind:debtorOccStartdate\"/><Cell col=\"3\" text=\"bind:debtorOccEnddate\"/><Cell col=\"4\" text=\"bind:debtorOccCheck\"/><Cell col=\"5\" edittype=\"combo\" text=\"bind:debtorOccReason\" combodataset=\"ds_comboOcc\" combocodecol=\"codeName\" combodatacol=\"codeName\"/><Cell col=\"6\" text=\"bind:debtorOccPrice\"/><Cell col=\"7\" text=\"bind:inputName\"/><Cell col=\"8\"/></Band></Format></Formats>");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "76.56%", "0.94%", null, "8.18%", "18.83%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("8");
+            obj.set_text("결재");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "82.29%", "0.94%", null, "8.18%", "13.1%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("9");
+            obj.set_text("신규");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Button("Button02", "absolute", "88.02%", "0.94%", null, "8.18%", "7.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("10");
+            obj.set_text("저장");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Button("Button03", "absolute", "93.76%", "0.94%", null, "8.18%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("11");
+            obj.set_text("삭제");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "15.25%", "71.7%", null, "24.84%", "2.05%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("12");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "34.19%", "56.29%", null, "7.23%", "53.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("13");
+            obj.set_text("*발생사유");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "34.19%", "48.43%", null, "7.23%", "53.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("14");
+            obj.set_text("*발생일자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "67.04%", "56.29%", null, "7.23%", "20.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("15");
+            obj.set_text("*채무금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "67.04%", "48.43%", null, "7.23%", "20.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("16");
+            obj.set_text("종결일자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "15.25%", "48.43%", null, "7.23%", "66.22%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("17");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "15.25%", "63.84%", null, "7.23%", "66.22%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("18");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Radio("Radio00", "absolute", "16.17%", "56.29%", null, "7.23%", "66.33%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj.set_taborder("19");
+            obj.set_innerdataset("@ds_radioOcc");
+            obj.set_codecolumn("value");
+            obj.set_datacolumn("value");
+            obj.set_direction("vertical");
+            obj.style.set_font("bold 9 굴림");
+            obj = new Calendar("Calendar00", "absolute", "47.39%", "48.43%", null, "7.23%", "33.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj.set_taborder("20");
+            obj.style.set_background("aliceblue");
+            obj = new Calendar("Calendar01", "absolute", "80.35%", "48.43%", null, "7.23%", "2%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj.set_taborder("21");
+            obj.style.set_background("aliceblue");
+            obj = new Combo("Combo00", "absolute", "47.39%", "56.29%", null, "7.23%", "33.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj.set_taborder("22");
+            obj.style.set_background("aliceblue");
+            obj.set_innerdataset("@ds_comboOcc");
+            obj.set_codecolumn("codeName");
+            obj.set_datacolumn("codeName");
+            obj = new MaskEdit("MaskEdit00", "absolute", "80.35%", "56.29%", null, "7.23%", "4.4%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("23");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "95.8%", "56.29%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage1);
+            obj.set_taborder("24");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage2", this.divWrapper.div_Bottom.Tab00);
+            obj.set_text("환입관리");
+            this.divWrapper.div_Bottom.Tab00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "1.02%", "45.91%", null, "52.2%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2%", "48.43%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("1");
+            obj.set_text("채무환입번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "2%", "56.29%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("2");
+            obj.set_text("입력자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.05%", "64.15%", null, "32.39%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("4");
+            obj.set_text("비고");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "1.02%", "10.69%", null, "33.65%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("7");
+            obj.set_binddataset("ds_return");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No.\"/><Cell col=\"1\" text=\"채무환입번호\"/><Cell col=\"2\" text=\"환입일자\"/><Cell col=\"3\" text=\"환입사유\"/><Cell col=\"4\" text=\"지연이자(원)\"/><Cell col=\"5\" text=\"환입금액(원)\"/><Cell col=\"6\" text=\"실입금금액(원)\"/><Cell col=\"7\" text=\"입력자성명\"/><Cell col=\"8\" text=\"비고\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:moneyInNo\"/><Cell col=\"2\" text=\"bind:moneyInDayin\"/><Cell col=\"3\" text=\"bind:moneyInReason\"/><Cell col=\"4\" text=\"bind:moneyInInterest\"/><Cell col=\"5\" text=\"bind:moneyInSum\"/><Cell col=\"6\" expr=\"parseInt(moneyInInterest)+parseInt(moneyInSum)\"/><Cell col=\"7\" text=\"bind:inputName\"/><Cell col=\"8\" text=\"bind:moneyInEtc\"/></Band></Format></Formats>");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "82.29%", "0.94%", null, "8.18%", "13.1%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("9");
+            obj.set_text("신규");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Button("Button02", "absolute", "88.02%", "0.94%", null, "8.18%", "7.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("10");
+            obj.set_text("저장");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Button("Button03", "absolute", "93.76%", "0.94%", null, "8.18%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("11");
+            obj.set_text("취소");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "15.25%", "64.15%", null, "32.39%", "33.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("12");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "34.9%", "56.29%", null, "7.23%", "52.3%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("13");
+            obj.set_text("*환입사유");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "34.9%", "48.43%", null, "7.23%", "52.3%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("14");
+            obj.set_text("*환입일자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "66.94%", "56.29%", null, "7.23%", "20.06%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("15");
+            obj.set_text("*환입금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "66.94%", "48.43%", null, "7.23%", "20.06%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("16");
+            obj.set_text("지연이자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "15.25%", "48.43%", null, "7.23%", "65.51%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("17");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Calendar("Calendar00", "absolute", "48.11%", "48.43%", null, "7.23%", "33.47%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj.set_taborder("20");
+            obj.style.set_background("aliceblue");
+            obj.set_innerdataset("@ds_return");
+            obj.set_datecolumn("moneyInDayin");
+            obj = new Combo("Combo00", "absolute", "48.11%", "56.29%", null, "7.23%", "33.47%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj.set_taborder("22");
+            obj.style.set_background("aliceblue");
+            obj.set_innerdataset("@ds_comboRe");
+            obj.set_codecolumn("codeName");
+            obj.set_datacolumn("codeName");
+            obj = new MaskEdit("MaskEdit00", "absolute", "80.35%", "56.29%", null, "7.23%", "4.09%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("23");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "95.8%", "56.29%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("24");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "15.25%", "56.29%", null, "7.23%", "65.51%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("25");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit01", "absolute", "80.35%", "48.43%", null, "7.23%", "4.09%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("26");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "95.8%", "48.43%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("27");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "66.94%", "64.15%", null, "7.23%", "20.06%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("28");
+            obj.set_text("실입금금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit02", "absolute", "80.35%", "64.15%", null, "7.23%", "4.09%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("29");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "95.8%", "64.15%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage2);
+            obj.set_taborder("30");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage3", this.divWrapper.div_Bottom.Tab00);
+            obj.set_text("정지품의");
+            this.divWrapper.div_Bottom.Tab00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "1.02%", "45.91%", null, "52.2%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2%", "48.43%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("1");
+            obj.set_text("정지품의번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "2%", "56.29%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("2");
+            obj.set_text("입력자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "2.05%", "64.15%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("3");
+            obj.set_text("진행사항 요약");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.05%", "72.01%", null, "24.84%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("4");
+            obj.set_text("비고");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "1.02%", "10.69%", null, "33.65%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("7");
+            obj.set_binddataset("ds_stop");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No.\"/><Cell col=\"1\" text=\"정지품의번호\"/><Cell col=\"2\" text=\"요청일자\"/><Cell col=\"3\" text=\"결재일자\"/><Cell col=\"4\" text=\"정지사유\"/><Cell col=\"5\" text=\"관리정지 결재여부\"/><Cell col=\"6\" text=\"전결권자 의견\"/><Cell col=\"7\" text=\"진행사항 요약\"/><Cell col=\"8\" text=\"정지금액(원)\"/><Cell col=\"9\" text=\"지연이자(원)\"/><Cell col=\"10\" text=\"채무환입금액(원)\"/><Cell col=\"11\" text=\"전결권자사번\"/><Cell col=\"12\" text=\"입력자성명\"/><Cell col=\"13\" text=\"비고\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:adminStopNo\"/><Cell col=\"2\" text=\"bind:adminStopRequestDate\"/><Cell col=\"3\" text=\"bind:adminStopSignDate\"/><Cell col=\"4\" text=\"bind:adminStopReason\"/><Cell col=\"5\" text=\"bind:adminStopSignCheck\"/><Cell col=\"6\" text=\"bind:adminStopSignerComment\"/><Cell col=\"7\" text=\"bind:adminStopProgressSummary\"/><Cell col=\"8\" text=\"bind:adminStopMoney\"/><Cell col=\"9\" text=\"bind:adminStopInterest\"/><Cell col=\"10\" text=\"bind:adminStopDebtReturnMoney\"/><Cell col=\"11\" text=\"bind:adminStopSignEiNo\"/><Cell col=\"12\" text=\"bind:inputName\"/><Cell col=\"13\" text=\"bind:adminStopEtc\"/></Band></Format></Formats>");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "76.56%", "0.94%", null, "8.18%", "18.83%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("8");
+            obj.set_text("결재");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "82.29%", "0.94%", null, "8.18%", "13.1%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("9");
+            obj.set_text("신규");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Button("Button02", "absolute", "88.02%", "0.94%", null, "8.18%", "7.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("10");
+            obj.set_text("저장");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Button("Button03", "absolute", "93.76%", "0.94%", null, "8.18%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("11");
+            obj.set_text("삭제");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "15.25%", "72.01%", null, "24.84%", "2.05%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("12");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "34.19%", "56.29%", null, "7.23%", "53.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("13");
+            obj.set_text("*정지사유");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "34.19%", "48.43%", null, "7.23%", "53.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("14");
+            obj.set_text("*요청일자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "67.04%", "56.29%", null, "7.23%", "20.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("15");
+            obj.set_text("*정지금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "67.04%", "48.43%", null, "7.23%", "20.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("16");
+            obj.set_text("지연이자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "15.25%", "48.43%", null, "7.23%", "66.22%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("17");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "15.25%", "64.15%", null, "7.23%", "33.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("18");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Calendar("Calendar00", "absolute", "47.39%", "48.43%", null, "7.23%", "33.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj.set_taborder("20");
+            obj.style.set_background("aliceblue");
+            obj.set_innerdataset("@ds_stop");
+            obj.set_datecolumn("adminStopRequestDate");
+            obj = new Combo("Combo00", "absolute", "47.39%", "56.29%", null, "7.23%", "33.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj.set_taborder("22");
+            obj.style.set_background("aliceblue");
+            obj.set_innerdataset("@ds_comboStop");
+            obj.set_codecolumn("codeName");
+            obj.set_datacolumn("codeName");
+            obj = new MaskEdit("MaskEdit00", "absolute", "80.35%", "56.29%", null, "7.23%", "3.99%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("23");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "95.8%", "56.29%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("24");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit01", "absolute", "80.35%", "64.15%", null, "7.23%", "3.99%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("25");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "67.04%", "64.15%", null, "7.23%", "20.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("26");
+            obj.set_text("채무 환입금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "95.8%", "64.15%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("27");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "15.25%", "56.29%", null, "7.23%", "66.22%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("28");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "95.8%", "48.43%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("29");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit02", "absolute", "80.35%", "48.43%", null, "7.23%", "3.99%", null, this.divWrapper.div_Bottom.Tab00.tabpage3);
+            obj.set_taborder("30");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage4", this.divWrapper.div_Bottom.Tab00);
+            obj.set_text("포기품의");
+            this.divWrapper.div_Bottom.Tab00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "1.02%", "45.91%", null, "52.2%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2%", "46.86%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("1");
+            obj.set_text("포기품의번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "2%", "54.4%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("2");
+            obj.set_text("입력자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.05%", "84.59%", null, "12.89%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("4");
+            obj.set_text("비고");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "1.02%", "10.69%", null, "33.65%", "1.02%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("7");
+            obj.set_binddataset("ds_giveUp");
+            obj.set_autofittype("col");
+            obj.set_scrollbars("autoboth");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No.\"/><Cell col=\"1\" text=\"포기품의번호\"/><Cell col=\"2\" text=\"요청일자\"/><Cell col=\"3\" text=\"포기사유\"/><Cell col=\"4\" text=\"종합의견\"/><Cell col=\"5\" text=\"진행사항요약\"/><Cell col=\"6\" text=\"포기금액(원)\"/><Cell col=\"7\" text=\"승인포기금액(원)\"/><Cell col=\"8\" text=\"환입예상금액(원)\"/><Cell col=\"9\" text=\"지연이자\"/><Cell col=\"10\" text=\"환입금액(원)\"/><Cell col=\"11\" text=\"잔여채무금액(원)\"/><Cell col=\"12\" text=\"입력자성명\"/><Cell col=\"13\" text=\"비고\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:giveUpNo\"/><Cell col=\"2\" text=\"bind:giveUpRequestDate\"/><Cell col=\"3\" text=\"bind:giveUpReason\"/><Cell col=\"4\" text=\"bind:giveUpTotalOpinion\"/><Cell col=\"5\" text=\"bind:giveUpProgressSummary\"/><Cell col=\"6\" text=\"bind:giveUpMoney\"/><Cell col=\"7\" text=\"bind:giveUpObtainMoney\"/><Cell col=\"8\" text=\"bind:giveUpReturnExpectMoney\"/><Cell col=\"9\" text=\"bind:giveUpInterest\"/><Cell col=\"10\" text=\"bind:giveUpReturnMoney\"/><Cell col=\"11\" text=\"bind:giveUpRemainDebtorMoney\"/><Cell col=\"12\" text=\"bind:inputName\"/><Cell col=\"13\" text=\"bind:giveUpEtc\"/></Band></Format></Formats>");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "76.56%", "0.94%", null, "8.18%", "18.83%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("8");
+            obj.set_text("결재");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "82.29%", "0.94%", null, "8.18%", "13.1%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("9");
+            obj.set_text("신규");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Button("Button02", "absolute", "88.02%", "0.94%", null, "8.18%", "7.37%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("10");
+            obj.set_text("저장");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Button("Button03", "absolute", "93.76%", "0.94%", null, "8.18%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("11");
+            obj.set_text("삭제");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "33.98%", "54.4%", null, "7.23%", "52.41%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("13");
+            obj.set_text("*포기사유");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "33.98%", "46.86%", null, "7.23%", "52.41%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("14");
+            obj.set_text("*요청일자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "67.55%", "54.4%", null, "7.23%", "19.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("15");
+            obj.set_text("승인 포기금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "67.55%", "46.86%", null, "7.23%", "19.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("16");
+            obj.set_text("지연이자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "15.15%", "46.86%", null, "7.23%", "66.33%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("17");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Calendar("Calendar00", "absolute", "47.9%", "46.86%", null, "7.23%", "32.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj.set_taborder("20");
+            obj.style.set_background("aliceblue");
+            obj.set_innerdataset("@ds_giveUp");
+            obj.set_datecolumn("giveUpRequestDate");
+            obj = new Combo("Combo00", "absolute", "47.9%", "54.4%", null, "7.23%", "32.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj.set_taborder("22");
+            obj.style.set_background("aliceblue");
+            obj.set_innerdataset("@ds_comboGi");
+            obj.set_datacolumn("codeName");
+            obj.set_codecolumn("codeName");
+            obj = new MaskEdit("MaskEdit00", "absolute", "80.55%", "54.4%", null, "7.23%", "4.2%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("23");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "95.8%", "54.4%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("24");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit01", "absolute", "80.55%", "46.86%", null, "7.23%", "4.2%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("25");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "95.8%", "46.86%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("26");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit02", "absolute", "80.55%", "61.95%", null, "7.23%", "4.2%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("27");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "95.8%", "61.95%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("28");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "67.55%", "61.95%", null, "7.23%", "19.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("29");
+            obj.set_text("환입 예상금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static13", "absolute", "95.8%", "69.5%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("30");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static14", "absolute", "67.55%", "69.5%", null, "7.23%", "19.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("31");
+            obj.set_text("잔여 채무금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit03", "absolute", "80.55%", "69.5%", null, "7.23%", "4.2%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("32");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static15", "absolute", "95.8%", "77.04%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("33");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static16", "absolute", "67.55%", "77.04%", null, "7.23%", "19.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("34");
+            obj.set_text("*포기금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit04", "absolute", "80.55%", "77.04%", null, "7.23%", "4.2%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("35");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static17", "absolute", "95.8%", "84.59%", null, "6.92%", "1.64%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("36");
+            obj.set_text("원");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static18", "absolute", "67.55%", "84.59%", null, "7.23%", "19.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("37");
+            obj.set_text("환입금액");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new MaskEdit("MaskEdit05", "absolute", "80.55%", "84.59%", null, "7.23%", "4.2%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("38");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "15.15%", "54.4%", null, "7.23%", "66.33%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("39");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "2.05%", "61.95%", null, "14.78%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("40");
+            obj.set_text("종합의견");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static19", "absolute", "2%", "77.04%", null, "7.23%", "85.16%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("41");
+            obj.set_text("진행사항 요약");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "15.15%", "77.04%", null, "7.23%", "32.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("42");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Edit("Edit03", "absolute", "15.15%", "84.59%", null, "12.89%", "32.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("43");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "15.15%", "61.95%", null, "14.47%", "32.75%", null, this.divWrapper.div_Bottom.Tab00.tabpage4);
+            obj.set_taborder("44");
+            obj.set_scrollbars("fixedvert");
+            obj.style.set_background("aliceblue");
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "2%", "40", null, "20", "92%", null, this.divWrapper.div_Bottom);
+            obj.set_taborder("1");
+            obj.set_text("채무정보");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Bottom.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "6.8%", "651", null, "26", "82.1%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("채무발생(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "17.8%", "651", null, "26", "71.1%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("채무환입(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "28.8%", "651", null, "26", "60.1%", null, this);
+            obj.set_taborder("3");
+            obj.set_text("채무정지(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "39.8%", "651", null, "26", "49.1%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("채무포기(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new FileUpload("FileUpload00", "absolute", "1088", "116", "157", "29", null, null, this);
+            obj.set_taborder("5");
+            obj.getSetter("retry").set("0");
+            obj.set_visible("false");
+            obj.set_index("0");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Top,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.set_text("div_Top");
+            		p.style.set_background("transparent");
+
+            	}
+            );
+            this.divWrapper.div_Top.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Middle,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_text("div_Middle");
+
+            	}
+            );
+            this.divWrapper.div_Middle.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Bottom.Tab00.tabpage1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("채무발생");
+
+            	}
+            );
+            this.divWrapper.div_Bottom.Tab00.tabpage1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Bottom.Tab00.tabpage2,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("환입관리");
+
+            	}
+            );
+            this.divWrapper.div_Bottom.Tab00.tabpage2.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Bottom.Tab00.tabpage3,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("정지품의");
+
+            	}
+            );
+            this.divWrapper.div_Bottom.Tab00.tabpage3.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Bottom.Tab00.tabpage4,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("포기품의");
+
+            	}
+            );
+            this.divWrapper.div_Bottom.Tab00.tabpage4.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Bottom,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.set_text("div_Bottom");
+            		p.set_async("false");
+
+            	}
+            );
+            this.divWrapper.div_Bottom.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0%");
+
+            	}
+            );
+            this.divWrapper.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Debt_Info");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","divWrapper.div_Top.Static16","text","ds_debtor","debtorListNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","divWrapper.div_Top.Static21","text","ds_debtor","debtorListName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","divWrapper.div_Top.Static26","text","ds_debtor","debtorListMgrNum");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","divWrapper.div_Top.Static17","text","ds_debtor","debtorListStatus");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","divWrapper.div_Top.MaskEdit03","value","ds_debtor","debtorListTel");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","divWrapper.div_Top.MaskEdit04","value","ds_debtor","debtorListPhone");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","divWrapper.div_Top.Static18","text","ds_debtor","debtorListPostal");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","divWrapper.div_Top.Edit00","value","ds_debtor","debtorListAddress1");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","divWrapper.div_Top.Edit01","value","ds_debtor","debtorListAddress2");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","divWrapper.div_Top.MaskEdit00","value","ds_debtor","debtorListOwance");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","divWrapper.div_Top.MaskEdit01","value","ds_debtor","debtorListRepay");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item11","divWrapper.div_Top.MaskEdit02","value","ds_debtor","remainDebt");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item12","divWrapper.div_Top.Static20","text","ds_debtor","debtorListCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item13","divWrapper.div_Top.MaskEdit05","value","ds_debtor","debtorListGooboon");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item14","divWrapper.div_Top.Static29","text","ds_debtor","debtorListRegistDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item16","divWrapper.div_Middle.Static00","expr","ds_tabGrid","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item17","divWrapper.div_Middle.Static19","expr","ds_tabGrid","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item18","divWrapper.div_Middle.Static03","expr","ds_tabGrid","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item15","divWrapper.div_Middle.Static02","expr","ds_positionCode","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item19","divWrapper.div_Middle.Static01","expr","ds_positionCode","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item20","divWrapper.div_Middle.Static20","expr","ds_positionCode","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item21","divWrapper.div_Bottom.Tab00.tabpage1.Edit00","value","ds_occur","debtorOccNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item22","divWrapper.div_Bottom.Tab00.tabpage1.Calendar00","value","ds_occur","debtorOccStartdate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item23","divWrapper.div_Bottom.Tab00.tabpage1.Calendar01","value","ds_occur","debtorOccEnddate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item24","divWrapper.div_Bottom.Tab00.tabpage1.Radio00","value","ds_occur","debtorOccCheck");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item25","divWrapper.div_Bottom.Tab00.tabpage1.Combo00","value","ds_occur","debtorOccReason");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item26","divWrapper.div_Bottom.Tab00.tabpage1.MaskEdit00","value","ds_occur","debtorOccPrice");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item27","divWrapper.div_Bottom.Tab00.tabpage1.Edit01","value","ds_occur","sabunName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item28","divWrapper.div_Bottom.Tab00.tabpage1.TextArea00","value","ds_occur","debtorOccEtc");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item29","divWrapper.div_Bottom.Tab00.tabpage2.Edit00","value","ds_return","moneyInNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item30","divWrapper.div_Bottom.Tab00.tabpage2.Calendar00","value","ds_return","moneyInDayin");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item31","divWrapper.div_Bottom.Tab00.tabpage2.MaskEdit01","value","ds_return","moneyInInterest");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item32","divWrapper.div_Bottom.Tab00.tabpage2.Edit01","value","ds_return","sabunName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item33","divWrapper.div_Bottom.Tab00.tabpage2.Combo00","value","ds_return","moneyInReason");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item34","divWrapper.div_Bottom.Tab00.tabpage2.MaskEdit00","value","ds_return","moneyInSum");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item35","divWrapper.div_Bottom.Tab00.tabpage2.TextArea00","value","ds_return","moneyInEtc");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item36","divWrapper.div_Bottom.Tab00.tabpage2.MaskEdit02","value","ds_return","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item37","divWrapper.div_Bottom.Tab00.tabpage3.Edit00","value","ds_stop","adminStopNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item38","divWrapper.div_Bottom.Tab00.tabpage3.Calendar00","value","ds_stop","adminStopRequestDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item39","divWrapper.div_Bottom.Tab00.tabpage3.MaskEdit02","value","ds_stop","adminStopInterest");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item40","divWrapper.div_Bottom.Tab00.tabpage3.Edit02","value","ds_stop","sabunName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item41","divWrapper.div_Bottom.Tab00.tabpage3.Combo00","value","ds_stop","adminStopReason");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item42","divWrapper.div_Bottom.Tab00.tabpage3.MaskEdit00","value","ds_stop","adminStopMoney");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item43","divWrapper.div_Bottom.Tab00.tabpage3.Edit01","value","ds_stop","adminStopProgressSummary");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item44","divWrapper.div_Bottom.Tab00.tabpage3.MaskEdit01","value","ds_stop","adminStopDebtReturnMoney");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item45","divWrapper.div_Bottom.Tab00.tabpage3.TextArea00","value","ds_stop","adminStopEtc");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item46","divWrapper.div_Bottom.Tab00.tabpage4.Edit00","value","ds_giveUp","giveUpNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item47","divWrapper.div_Bottom.Tab00.tabpage4.Calendar00","value","ds_giveUp","giveUpRequestDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item48","divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit01","value","ds_giveUp","giveUpInterest");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item49","divWrapper.div_Bottom.Tab00.tabpage4.Edit02","value","ds_giveUp","sabunName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item50","divWrapper.div_Bottom.Tab00.tabpage4.Combo00","value","ds_giveUp","giveUpReason");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item51","divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit00","value","ds_giveUp","giveUpObtainMoney");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item52","divWrapper.div_Bottom.Tab00.tabpage4.TextArea00","value","ds_giveUp","giveUpTotalOpinion");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item53","divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit02","value","ds_giveUp","giveUpReturnExpectMoney");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item54","divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit03","value","ds_giveUp","giveUpRemainDebtorMoney");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item55","divWrapper.div_Bottom.Tab00.tabpage4.Edit01","value","ds_giveUp","giveUpProgressSummary");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item56","divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit04","value","ds_giveUp","giveUpMoney");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item57","divWrapper.div_Bottom.Tab00.tabpage4.Edit03","value","ds_giveUp","giveUpEtc");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item58","divWrapper.div_Bottom.Tab00.tabpage4.MaskEdit05","value","ds_giveUp","giveUpReturnMoney");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item59","Static00","expr","ds_count1","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item60","Static01","expr","ds_count2","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item61","Static02","expr","ds_count3","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item62","Static03","expr","ds_count4","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("Debt_Info.xfdl", "Lib::Comm.xjs");
+        this.registerScript("Debt_Info.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.debt_info_onload = function(obj,e)
+        {
+        	Iject.formOnload(obj);
+        	this.debt_info_detail();
+        	this.debtOcc_list();
+        	this.debtRe_list();
+        	this.debtStop_list();
+        	this.debtGiveUp_list();
+        }
+
+        this.debt_info_detail = function()
+        {
+        	var oDatas = {
+        				svcid : "debtorDetail",
+        				sController : "debtorDetail.do",
+        				inds : [],
+        				outds : ["ds_debtor=ds_debtor"],
+        				args : [],
+        				bAsync : false,
+        				nDataType : 0,
+        				bCompress : false,
+        		};
+        		trace(" this.ds_debtor : " + this.ds_debtor.saveXML());
+        	
+        		Iject.transaction(this,oDatas,function(){   
+        		
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" ds_debtor : " + pThis.ds_debtor.saveXML());
+        	});
+        }
+
+        
+        //채무등록 리스트 가져오기(select)
+        this.debtOcc_list = function()
+        {
+        	var oDatas = {
+        				svcid : "debtOcc",
+        				sController : "debtOccList.do",
+        				inds : [],
+        				outds : ["ds_occur=ds_occur"],
+        				args : [],
+        				bAsync : false,
+        				nDataType : 0,
+        				bCompress : false,
+        		};
+        		trace(" this.ds_occur : " + this.ds_occur.saveXML());
+        	
+        		Iject.transaction(this,oDatas,function(){   
+        		
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" ds_occur : " + pThis.ds_occur.saveXML());
+        	});
+        }
+
+        //환입관리 리스트 가져오기(select)
+        this.debtRe_list = function()
+        {
+        	var oDatas = {
+        				svcid : "debtRe",
+        				sController : "debtReList.do",
+        				inds : [],
+        				outds : ["ds_return=ds_return"],
+        				args : [],
+        				bAsync : false,
+        				nDataType : 0,
+        				bCompress : false,
+        		};
+        		trace(" this.ds_return : " + this.ds_return.saveXML());
+        	
+        		Iject.transaction(this,oDatas,function(){   
+        		
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" ds_return : " + pThis.ds_return.saveXML());
+        	});
+        }
+        	
+        //정지품의 리스트 가져오기(select)
+        this.debtStop_list = function()
+        {
+        	var oDatas = {
+        				svcid : "debtStop",
+        				sController : "debtStopList.do",
+        				inds : [],
+        				outds : ["ds_stop=ds_stop"],
+        				args : [],
+        				bAsync : false,
+        				nDataType : 0,
+        				bCompress : false,
+        		};
+        		trace(" this.ds_stop : " + this.ds_stop.saveXML());
+        	
+        		Iject.transaction(this,oDatas,function(){   
+        		
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" ds_stop : " + pThis.ds_stop.saveXML());
+        	});
+        }	
+        				
+        //포기품의 리스트 가져오기(select)
+        this.debtGiveUp_list = function()
+        {
+        	var oDatas = {
+        				svcid : "debtGiveUp",
+        				sController : "debtGiveUpList.do",
+        				inds : [],
+        				outds : ["ds_giveUp=ds_giveUp"],
+        				args : [],
+        				bAsync : false,
+        				nDataType : 0,
+        				bCompress : false,
+        		};
+        		trace(" this.ds_giveUp : " + this.ds_giveUp.saveXML());
+        	
+        		Iject.transaction(this,oDatas,function(){   
+        		
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" ds_giveUp : " + pThis.ds_giveUp.saveXML());
+        	});
+        }	
+
+        
+        // 채무자 관리 페이지
+        this.btn_DebtList_onclick = function(obj,e)
+        {
+        	this.divWrapper.set_url("Pattern::Debt_Read.xfdl");
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.debt_info_onload, this);
+            this.divWrapper.div_Top.Static18.addEventHandler("onclick", this.div_Top_Static18_onclick, this);
+            this.divWrapper.div_Top.Static21.addEventHandler("onclick", this.divWrapper_div_Top_Static21_onclick, this);
+            this.divWrapper.div_Middle.btn_DebtList.addEventHandler("onclick", this.btn_DebtList_onclick, this);
+            this.divWrapper.div_Middle.Static19.addEventHandler("onclick", this.div_Top_Static19_onclick, this);
+            this.divWrapper.div_Middle.Static00.addEventHandler("onclick", this.div_Top_Static19_onclick, this);
+            this.divWrapper.div_Middle.Static03.addEventHandler("onclick", this.div_Top_Static19_onclick, this);
+            this.divWrapper.div_Middle.Static04.addEventHandler("onclick", this.div_Top_Static19_onclick, this);
+
+        };
+
+        this.loadIncludeScript("Debt_Info.xfdl");
+
+       
+    };
+}
+)();

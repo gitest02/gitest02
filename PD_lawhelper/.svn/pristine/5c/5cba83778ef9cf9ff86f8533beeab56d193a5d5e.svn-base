@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_026" classname="V_PDL_026" left="0" top="0" width="800" height="400" titletext="New Form" onload="v_pdl_026_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="소송관리번호 조회" left="1%" top="8" width="98.33%" height="35" style="align:center top;padding:10 0 0 10;"/>
+        <Div id="Div01" taborder="1" left="0.83%" top="44" width="98.17%" height="44" style="background:lavenderblush;border:1 solid #c8c8c8ff ;">
+          <Layouts>
+            <Layout>
+              <Div id="Div00" taborder="7" left="0.51%" top="4" width="98.98%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="37.31%" top="4" width="38%" height="25" style="selectbackground:blue;" onkeydown="search_onkeydown"/>
+                    <Combo id="Combo00" taborder="1" text="전체" left="13.82%" top="4" height="25" width="22.45%" innerdataset="@ds_combo" codecolumn="value" datacolumn="id" index="0" value="0" enable="true"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="searchBtn" taborder="9" text="검색" left="75.64%" top="9" width="8.52%" height="26" style="image:URL('theme://images\searchBtn.png');" onclick="Div01_searchBtn_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="2" useinputpanel="false" left="0.83%" top="95" height="296" width="98.13%" binddataset="ds_lawsuit" oncelldblclick="cellClick" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="60"/>
+                <Column size="355"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="소송관리번호"/>
+                <Cell col="1" text="심급"/>
+                <Cell col="2" text="심급명"/>
+                <Cell col="3" text="원피고구분"/>
+                <Cell col="4" text="원피고명"/>
+                <Cell col="5" text="소송담당자명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:lawsuitAdmNo"/>
+                <Cell col="1" text="bind:instAdmCode"/>
+                <Cell col="2" text="bind:instAdmName"/>
+                <Cell col="3" text="bind:lawsuitCpPladefSepCode"/>
+                <Cell col="4" text="bind:pladefName"/>
+                <Cell col="5" text="bind:insaName"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_combo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">소송관리번호</Col>
+            <Col id="value">0</Col>
+          </Row>
+          <Row>
+            <Col id="id">소제기의뢰번호</Col>
+            <Col id="value">1</Col>
+          </Row>
+          <Row>
+            <Col id="id">심급명</Col>
+            <Col id="value">2</Col>
+          </Row>
+          <Row>
+            <Col id="id">원피고명</Col>
+            <Col id="value">3</Col>
+          </Row>
+          <Row>
+            <Col id="id">소송담당자</Col>
+            <Col id="value">4</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lawsuit">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepCode" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="instAdmEntLyrId" type="STRING" size="256"/>
+          <Column id="search1" type="STRING" size="256"/>
+          <Column id="search2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="search2"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div01.Div00.Combo00" propid="value" datasetid="ds_search" columnid="search1"/>
+      <BindItem id="item1" compid="Div01.Div00.Edit00" propid="value" datasetid="ds_search" columnid="search2"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";
+
+//초기 설정
+this.v_pdl_026_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	lyrid = "2013082601";
+	this.lawsuitSearch(lyrid);
+}
+
+//초기 설정 함수 실행
+this.lawsuitSearch = function(lyrid)
+{
+
+	this.ds_search.setColumn(0, "instAdmEntLyrId", lyrid);
+	
+	var search1 = this.Div01.Div00.Combo00.value;
+	var search2 = this.Div01.Div00.Edit00.value;
+	this.ds_search.setColumn(0, "search1", search1);
+	this.ds_search.setColumn(0, "search2", search2);
+	
+	var oDatas =  {
+			  svcid : "select",
+			  sController : "InstAdmList.do",
+			  inds :["ds_search=ds_search"],
+			  outds :["ds_lawsuit=ds_lawsuit"],
+			  args  : [],
+			  bAsync : false,
+			  nDataType : 0,
+			  bCompress :false,
+			};
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+}
+
+//검색 버튼 클릭 시
+this.Div01_searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	lyrid = "2013082601";
+	this.lawsuitSearch(lyrid);
+}
+
+//데이터 클릭 시
+this.cellClick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{	
+	var lawsuitAdmNo = this.ds_lawsuit.getColumn(e.row, "lawsuitAdmNo");
+	var instAdmCode = this.ds_lawsuit.getColumn(e.row, "instAdmCode");
+	var strTemp = lawsuitAdmNo + "/" + instAdmCode;
+	
+	trace("strTemp ======> " + strTemp);
+	this.close(strTemp);
+}
+
+//검색바에 적은 텍스트
+this.search_onkeydown = function(obj:Edit,e:nexacro.KeyEventInfo)
+{
+		
+	if(e.keycode == 13) {
+		lyrid = "2013082601";
+		this.lawsuitSearch(lyrid);		
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

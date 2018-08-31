@@ -1,0 +1,117 @@
+package register.lawmapper.vo;
+
+import java.sql.Timestamp;
+
+public class RegisterVo {
+	private String debtorListNo; //채무자번호
+	private String debtorListCode; //채무자구분
+	private String debtorListName; //채무자이름
+	private String debtorListEngName; //영문이름
+	private String debtorListTel; //전화번호
+	private String debtorListPhone; //휴대폰번호
+	private String debtorListPostal; //우편번호
+	private String debtorListAddress1; //주소1
+	private String debtorListAddress2; //주소2
+	private String debtorListMgrNum; //채무담당자사번
+	private String debtorListInput; //입력자사번
+	private String debtorListETC;//비고
+	private String debtorListStatus;//상태코드
+	private String debtorListGooBoon;//채무자 구분번호
+	private Timestamp debtorListRegistDate;//종결일자
+	
+	public String getDebtorListGooBoon() {
+		return debtorListGooBoon;
+	}
+	public void setDebtorListGooBoon(String debtorListGooBoon) {
+		this.debtorListGooBoon = debtorListGooBoon;
+	}
+	public String getDebtorListStatus() {
+		return debtorListStatus;
+	}
+	public void setDebtorListStatus(String debtorListStatus) {
+		this.debtorListStatus = debtorListStatus;
+	}
+	public String getDebtorListNo() {
+		return debtorListNo;
+	}
+	public void setDebtorListNo(String debtorListNo) {
+		this.debtorListNo = debtorListNo;
+	}
+	public String getDebtorListCode() {
+		return debtorListCode;
+	}
+	public void setDebtorListCode(String debtorListCode) {
+		this.debtorListCode = debtorListCode;
+	}
+	public String getDebtorListName() {
+		return debtorListName;
+	}
+	public void setDebtorListName(String debtorListName) {
+		this.debtorListName = debtorListName;
+	}
+
+	public String getDebtorListEngName() {
+		return debtorListEngName;
+	}
+	public void setDebtorListEngName(String debtorListEngName) {
+		this.debtorListEngName = debtorListEngName;
+	}
+	public String getDebtorListTel() {
+		return debtorListTel;
+	}
+	public void setDebtorListTel(String debtorListTel) {
+		this.debtorListTel = debtorListTel;
+	}
+	
+	public String getDebtorListPhone() {
+		return debtorListPhone;
+	}
+	public void setDebtorListPhone(String debtorListPhone) {
+		this.debtorListPhone = debtorListPhone;
+	}
+	
+	public String getDebtorListPostal() {
+		return debtorListPostal;
+	}
+	public void setDebtorListPostal(String debtorListPostal) {
+		this.debtorListPostal = debtorListPostal;
+	}
+	
+	public String getDebtorListAddress1() {
+		return debtorListAddress1;
+	}
+	public void setDebtorListAddress1(String debtorListAddress1) {
+		this.debtorListAddress1 = debtorListAddress1;
+	}
+	public String getDebtorListAddress2() {
+		return debtorListAddress2;
+	}
+	public void setDebtorListAddress2(String debtorListAddress2) {
+		this.debtorListAddress2 = debtorListAddress2;
+	}
+	public String getDebtorListMgrNum() {
+		return debtorListMgrNum;
+	}
+	public void setDebtorListMgrNum(String debtorListMgrNum) {
+		this.debtorListMgrNum = debtorListMgrNum;
+	}
+	public String getDebtorListInput() {
+		return debtorListInput;
+	}
+	public void setDebtorListInput(String debtorListInput) {
+		this.debtorListInput = debtorListInput;
+	}
+	public String getDebtorListETC() {
+		return debtorListETC;
+	}
+	public void setDebtorListETC(String debtorListETC) {
+		this.debtorListETC = debtorListETC;
+	}
+	public Timestamp getDebtorListRegistDate() {
+		return debtorListRegistDate;
+	}
+	public void setDebtorListRegistDate(Timestamp debtorListRegistDate) {
+		this.debtorListRegistDate = debtorListRegistDate;
+	}
+	
+}

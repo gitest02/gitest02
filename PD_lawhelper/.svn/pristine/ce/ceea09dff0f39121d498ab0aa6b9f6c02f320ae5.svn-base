@@ -1,0 +1,137 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("FileList");
+                this.set_classname("FileList");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("File", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"code\">add_File_Ser_File_Name</Col><Col id=\"value\">파일이름</Col></Row><Row><Col id=\"value\">파일확장자</Col><Col id=\"code\">add_File_Pc_File_Ext</Col></Row><Row><Col id=\"value\">삭제여부</Col><Col id=\"code\">add_File_Del</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("FileName", this);
+            obj._setContents("<ColumnInfo><Column id=\"FILE_NAME\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("FileUp", this);
+            obj._setContents("<ColumnInfo><Column id=\"addFileCheck\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRelNum\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerFileName\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSize\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDel\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerPath\" type=\"STRING\" size=\"256\"/><Column id=\"addFileChanDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRegDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFileExt\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFile\" type=\"STRING\" size=\"256\"/><Column id=\"imgFile\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDownCount\" type=\"STRING\" size=\"256\"/><Column id=\"addFileCode\" type=\"STRING\" size=\"256\"/><Column id=\"count\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "2.3%", "11", null, "26", "89.6%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("공통파일관리");
+            obj.style.set_border("3 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("Combo00", "absolute", "10.3%", "11", null, "26", "75.1%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("1");
+
+            obj = new Edit("Edit00", "absolute", "24.7%", "11", null, "26", "54.6%", null, this);
+            obj.set_taborder("2");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button00", "absolute", "45.3%", "11", "70", "25", null, null, this);
+            obj.set_taborder("3");
+            obj.set_text("검색");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button01", "absolute", "52.2%", "11", "70", "25", null, null, this);
+            obj.set_taborder("4");
+            obj.set_text("저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button02", "absolute", "59.2%", "11", "132", "25", null, null, this);
+            obj.set_taborder("5");
+            obj.set_text("다른이름으로 저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button03", "absolute", "72.3%", "11", "70", "25", null, null, this);
+            obj.set_taborder("6");
+            obj.set_text("삭제");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button04", "absolute", "79.4%", "11", "132", "25", null, null, this);
+            obj.set_taborder("7");
+            obj.set_text("파일이름변경");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button05", "absolute", "92.5%", "11", "70", "25", null, null, this);
+            obj.set_taborder("8");
+            obj.set_text("닫기");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00", "absolute", "2.4%", "51", null, "545", "0.7%", null, this);
+            obj.set_taborder("9");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"Default\"><Columns><Column size=\"58\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"43\"/></Rows><Band id=\"head\"><Cell/><Cell/><Cell col=\"1\" text=\"일련번호\"/><Cell col=\"2\" text=\"채무자번호\"/><Cell col=\"3\" text=\"파일이름\"/><Cell col=\"4\" text=\"파일확장자\"/><Cell col=\"5\" text=\"파일종류\"/><Cell col=\"6\" text=\"파일크기\"/><Cell col=\"7\" text=\"삭제여부\"/><Cell col=\"8\" text=\"수정일시\"/><Cell col=\"9\" text=\"등록일시\"/><Cell col=\"10\" text=\"파일경로\"/><Cell col=\"11\" text=\"원본파일이름\"/><Cell col=\"12\" text=\"증명사진/파일\"/><Cell col=\"13\" text=\"다운로드회수\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("FileList");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        
+        
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.Combo00.addEventHandler("onitemchanged", this.Combo00_onitemchanged, this);
+            this.Edit00.addEventHandler("onkeydown", this.Edit00_OnkeyDown, this);
+            this.Button00.addEventHandler("onclick", this.Button00_OnClick, this);
+            this.Button01.addEventHandler("onclick", this.Button01_OnClick, this);
+            this.Button02.addEventHandler("onclick", this.Button02_OnClick, this);
+            this.Button03.addEventHandler("onclick", this.Button03_OnClick, this);
+            this.Button04.addEventHandler("onclick", this.Button04_OnClick, this);
+            this.Button05.addEventHandler("onclick", this.Button05_OnClick, this);
+
+        };
+
+        this.loadIncludeScript("FileList.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,337 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_OPR_22");
+                this.set_classname("V_OPR_22");
+                this.set_titletext("행정심판례 본문");
+                this._setFormPosition(0,0,1000,600);
+            }
+            this.style.set_border("1 solid #808080ff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_out", this);
+            obj._setContents("<ColumnInfo><Column id=\"deccno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"reclassname\" type=\"STRING\" size=\"256\"/><Column id=\"decidedate\" type=\"STRING\" size=\"256\"/><Column id=\"caseno\" type=\"STRING\" size=\"256\"/><Column id=\"maintext\" type=\"STRING\" size=\"256\"/><Column id=\"opiniontext\" type=\"STRING\" size=\"256\"/><Column id=\"reasontext\" type=\"STRING\" size=\"256\"/><Column id=\"repltext\" type=\"STRING\" size=\"256\"/><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"userid\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_copy", this);
+            obj._setContents("<ColumnInfo><Column id=\"deccno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"reclassname\" type=\"STRING\" size=\"256\"/><Column id=\"decidedate\" type=\"STRING\" size=\"256\"/><Column id=\"caseno\" type=\"STRING\" size=\"256\"/><Column id=\"maintext\" type=\"STRING\" size=\"256\"/><Column id=\"opiniontext\" type=\"STRING\" size=\"256\"/><Column id=\"reasontext\" type=\"STRING\" size=\"256\"/><Column id=\"repltext\" type=\"STRING\" size=\"256\"/><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"userid\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("list", this);
+            obj._setContents("<ColumnInfo><Column id=\"deccno\" type=\"STRING\" size=\"256\"/><Column id=\"userid\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"deccno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"reclassname\" type=\"STRING\" size=\"256\"/><Column id=\"decidedate\" type=\"STRING\" size=\"256\"/><Column id=\"caseno\" type=\"STRING\" size=\"256\"/><Column id=\"maintext\" type=\"STRING\" size=\"256\"/><Column id=\"opiniontext\" type=\"STRING\" size=\"256\"/><Column id=\"reasontext\" type=\"STRING\" size=\"256\"/><Column id=\"repltext\" type=\"STRING\" size=\"256\"/><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"userid\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_contents_22", "absolute", "1.4%", "13", "97.8%", "579", null, null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "89.67%", "1.21%", "7.16%", "4.15%", null, null, this.div_contents_22);
+            obj.set_taborder("0");
+            obj.set_text("저장");
+            this.div_contents_22.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "21.1%", "340", null, "161", "14.6%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.33%", "4", null, "21", "6.38%", null, this.Div00);
+            obj.set_taborder("10");
+            obj.set_text("* A1 ~ H1 번까지 컬럼에 맞게 A2부터 입력해주세요");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2.33%", "30", null, "20", "75.12%", null, this.Div00);
+            obj.set_taborder("11");
+            obj.set_text("일련번호 : DECCNO");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "2.33%", "62", null, "20", "75.12%", null, this.Div00);
+            obj.set_taborder("12");
+            obj.set_text("재결구분명 : RECLASSNAME");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "2.33%", "93", null, "20", "75.12%", null, this.Div00);
+            obj.set_taborder("13");
+            obj.set_text("주문 : MAINTEXT");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "36.86%", "27", null, "20", "35.3%", null, this.Div00);
+            obj.set_taborder("14");
+            obj.set_text("사건명 : CASENAME");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "37.01%", "61", null, "21", "21.93%", null, this.Div00);
+            obj.set_taborder("15");
+            obj.set_text("의결일자 : DECIDEDATE");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "36.86%", "93", null, "20", "35.3%", null, this.Div00);
+            obj.set_taborder("16");
+            obj.set_text("청구취지 : OPINIONTEXT");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "2.33%", "125", null, "20", "75.12%", null, this.Div00);
+            obj.set_taborder("17");
+            obj.set_text("이유 : REASONTEXT");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "37.33%", "125", null, "20", "40.28%", null, this.Div00);
+            obj.set_taborder("18");
+            obj.set_text("재결요지 : REPLTEXT");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new FileUpload("FileUpload00", "absolute", "63.7%", "21", null, "24", "12.4%", null, this);
+            obj.set_taborder("3");
+            obj.getSetter("retry").set("0");
+            obj.style.set_itemheight("24");
+            obj.style.set_buttontext("파일추가");
+            obj.set_index("0");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_close", "absolute", "92.4%", "529", null, "25", "2.1%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("닫기");
+            obj.style.set_bordertype("normal 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00", "absolute", "2.4%", "54", null, "266", "2%", null, this);
+            obj.set_taborder("7");
+            obj.set_binddataset("ds_out");
+            obj.set_fillareatype("linerow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\"/><Column size=\"100\"/><Column size=\"100\"/><Column size=\"100\"/><Column size=\"100\"/><Column size=\"125\"/><Column size=\"130\"/><Column size=\"130\"/><Column size=\"130\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"선택\"/><Cell col=\"1\" text=\"일련번호\"/><Cell col=\"2\" text=\"사건명\"/><Cell col=\"3\" text=\"재결구분명\"/><Cell col=\"4\" text=\"의결일자\"/><Cell col=\"5\" text=\"주문\"/><Cell col=\"6\" text=\"청구취지\"/><Cell col=\"7\" text=\"이유\"/><Cell col=\"8\" text=\"재결요지\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" style=\"background:transparent;\" text=\"bind:deccno\"/><Cell col=\"2\" style=\"background:transparent;\" text=\"bind:casename\"/><Cell col=\"3\" style=\"background:transparent;\" text=\"bind:reclassname\"/><Cell col=\"4\" style=\"background:transparent;\" text=\"bind:decidedate\"/><Cell col=\"5\" style=\"background:transparent;\" text=\"bind:maintext\"/><Cell col=\"6\" style=\"background:transparent;\" text=\"bind:opiniontext\"/><Cell col=\"7\" style=\"background:transparent;\" text=\"bind:reasontext\"/><Cell col=\"8\" style=\"background:transparent;\" text=\"bind:repltext\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 579, this.div_contents_22,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div_contents_22.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 161, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_OPR_22");
+            		p.set_titletext("행정심판례 본문");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_OPR_022.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_OPR_022.xfdl", function() {
+        //include "Lib::Comm.xjs";
+        var userid = application.gds_userInfo.getColumn(0,"userid");
+
+        this.form_onload = function(obj,e)
+        {
+        	Iject.formOnload(obj);  //form onload
+
+        		
+        }
+
+        this.addFile = function(obj,e)
+        {
+        	
+        	var value = obj.value;
+        	var fileEx = value.slice(value.lastIndexOf(".")+1).toLowerCase();
+        	trace(fileEx);
+        	if(fileEx!="xls" && fileEx!="xlsx"){
+        		alert("xls 또는 xlsx 파일양식만 가능합니다.");
+        		obj.deleteItem(0);
+        		obj.appendItem();
+        		return false;
+        	}
+        		var itemCount=this.FileUpload00.getItemCount(true);
+        	if(itemCount==0){
+        		alert("파일을 첨부해주세요.");
+        		return false;
+        	}
+        	var url= "http://localhost:8080/nexacro-egov/excelupload.do";
+        	this.FileUpload00.upload(url);
+        	trace(this.FileUpload00.getValue(0,"deccno"));
+
+        
+        }
+
+        this.upload_onsuccess = function(obj,e)
+        {	
+        	if(e.errorcode<0){
+        		alert("오류 : "+e.errormsg);
+        	}
+        	trace("onsuccess errorcode=" + e.errorcode + ", errormsg=" + e.errormsg   + ", datasets=" + e.datasets + ", url=" + e.url);
+        	
+        	//Only Runtime
+        		if(nexacro.Browser == "Runtime" && e.datasets)
+        		{
+        			var outputDatasets = e.datasets;
+        			
+        			var outDs = outputDatasets[0];
+        			var ds = this.ds_out;
+        			ds.assign(outDs); 
+        			trace(outDs.saveXML());
+        			
+        			//this.ds_out.copyData(outputDatasets[0]);
+
+        		} 
+        }
+        this.fn_import = function(){
+        	var ds = this.ds_copy;
+        	var outds = this.ds_out;
+        	var cnt=0;
+        	ds.clearData();
+        	for(var i=0; i<outds.rowcount;i++){
+        		var chkCol = outds.getColumn(i,"chk");
+        		if(chkCol != undefined && chkCol != 0){
+        			ds.addRow();
+        			ds.copyRow(ds.getRowCount()-1,outds,i);
+        			cnt++;	
+        		}
+        		
+        	}
+        	if(cnt==0){
+        		alert("1개 이상의 행을 선택해주세요.");
+        		return false;
+        	}
+        	return true;
+        }
+
+        this.fn_valueCheck = function(){
+          this.list.clearData();
+          var save=confirm("데이터를 입력하시겠습니까?");
+          if(save){
+          var oDatas = {
+        				svcid : "execl",
+        				sController : "excleselect.do",
+        				inds : ["ds_copy = ds_copy"],
+        				outds : [ "list =list"],
+        				args  : [],
+        				bAsync : false,    
+        				nDataType : 0,   
+        				bCompress :false, 
+        	};  
+        	  Iject.transaction(this,oDatas,function(){
+        	   var pThis = this.fobj;	
+        	  
+        	   var deccno = pThis.list.getColumn(0,"deccno");
+        	   
+        		  if(deccno != null)
+        			{
+        				var save=confirm("중복 데이터가 있습니다. 입력하시겠습니까?");
+        				if(save){
+        					pThis.execlinser();
+        				
+        				}
+        			}
+        			else
+        			{
+        				pThis.execlinser();
+        				alert("저장완료");
+        				
+        			}	
+        			
+        		
+        		
+        		});	
+        		}
+        	}
+        	
+
+        
+        this.div_contents_Button01_onclick = function(obj,e)
+        {	
+        	if(this.fn_import()){
+        	this.fn_valueCheck();
+        	}
+        }
+
+        this.execlinser = function (){
+        	this.ds_copy.setColumn(0,"userid",userid)
+        		var oDatas = {
+        				svcid : "reorgname",
+        				sController : "execlmody.do",
+        				inds : ["ds_copy = ds_copy"],
+        				outds : [ ],
+        				args  : [],
+        				bAsync : false,    
+        				nDataType : 0,   
+        				bCompress :false, 
+        	};
+        	
+        	Iject.transaction(this,oDatas,function(){
+         		if(this.errorcode < 0){
+         		   Iject.alert(this.errorMsg);			
+         		   return;
+        		}	      
+         	       var pThis = this.fobj;   //form object
+         	       
+        	});
+        	
+        }
+        this.btn_close_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.div_contents_22.Button01.addEventHandler("onclick", this.div_contents_Button01_onclick, this);
+            this.Div00.Static02.addEventHandler("onclick", this.Div00_Static02_onclick, this);
+            this.FileUpload00.addEventHandler("onsuccess", this.upload_onsuccess, this);
+            this.FileUpload00.addEventHandler("onitemchanged", this.addFile, this);
+            this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_OPR_022.xfdl");
+
+       
+    };
+}
+)();

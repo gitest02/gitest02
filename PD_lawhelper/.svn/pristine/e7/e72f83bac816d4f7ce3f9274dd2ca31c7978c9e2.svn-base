@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript5.0"><![CDATA[/**
+ * @fileoverview 넥사크로  공통 Library
+ * @author  copyright 2015 TOBESOFT {J}
+ */
+ 
+/*****************************************************************************************
+Name			:	Comm.xjs
+작성자			:	공태호
+작성일			:	2018.08.01
+업데이트일		:	2018.08.03
+변경사항		:	2018.08.02 생성자 isCmmNull추가
+
+*****************************************************************************************/
+ 
+/**
+ * 공통 Callback 처리 Result 호출
+ * @param {Object} jsonObject
+ * @return {string}
+ * @example
+ *
+ * @memberOf Comm
+ */
+this.Comm_transactionCallback= function(oSvc,errorcode,errormsg)
+{
+    new Iject.Controll.callback().transaction(oSvc,errorcode,errormsg);
+};
+
+/*
+
+*/
+this.isCmmNull = function(param)
+{//this로 현재생성자로 구분& 변수param을 넣으면 동작하게 한다.
+	var isCmmNull;
+	
+	isCmmNull = false;
+	//trace("행동 : "+isCmmNull);
+	
+	if(param == "null" || param == null || param == "undefined" || param == false || param == "")
+	{
+		isCmmNull = true;
+	}
+	
+	return isCmmNull;
+}//end isCmmNull(param)
+
+///코드 셀렉트
+this.code_select = function()
+{
+	var oDatas = {
+		svcid : "reasonList",
+		sController : "ReasonList.do",			 
+		inds :[],
+		outds :["ds_cmmCd=output1"],			     
+		args  : [],
+		bAsync : true,    // 비동기여부 (true : async  false: sync)
+		nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+		bCompress :false,	 //
+	}
+	
+	//공통 transaction 함수 호츨   //function callback 
+	Iject.transaction(this,oDatas,function()
+	{
+		if(this.errorcode < 0)
+		{
+		   //Iject.alert(this.errorMsg,"알림");	
+		   alert("실패하였습니다");
+		   return;
+		}			
+		
+	    var pThis = this.fobj;   //form object
+	    trace("코드 로딩");
+	});
+}//end codeselect
+
+]]></Script>

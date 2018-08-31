@@ -1,0 +1,500 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("Deposit_management");
+                this.set_classname("Deposit_management");
+                this.set_titletext("Deposit_Management");
+                this._setFormPosition(0,0,1000,600);
+            }
+            this.style.set_color("#46463dff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_depo", this);
+            obj._setContents("<ColumnInfo><Column id=\"depositDepoAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"depositOthDepoName\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepoName\" type=\"STRING\" size=\"256\"/><Column id=\"depositForcExecSeq\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepoChg\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepoDate\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepuName\" type=\"STRING\" size=\"256\"/><Column id=\"depositJuriCortCode\" type=\"STRING\" size=\"256\"/><Column id=\"depositKeepDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepoReleDate\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepchgCollDate\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepoCollChg\" type=\"STRING\" size=\"256\"/><Column id=\"depositDepoCollRea\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrDepoAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrSeq\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrId\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrAsigDate\" type=\"STRING\" size=\"256\"/><Column id=\"insaName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_court", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_dept", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_mgr", this);
+            obj._setContents("<ColumnInfo><Column id=\"depositmgrDepoAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrSeq\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrId\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"depositmgrAsigDate\" type=\"STRING\" size=\"256\"/><Column id=\"insaName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("dps_top", "absolute", "1%", "55", null, "35", "1%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("dps_top");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "0.51%", "5", "100", "24", null, null, this.dps_top);
+            obj.set_taborder("0");
+            obj.set_text("공탁관리번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_top.addChild(obj.name, obj);
+            obj = new Edit("depo_no_tx", "absolute", "11.15%", "5", null, "24", "71.17%", null, this.dps_top);
+            obj.set_taborder("1");
+            this.dps_top.addChild(obj.name, obj);
+            obj = new Button("btn_list_no", "absolute", "29.24%", "7", "55", "20", null, null, this.dps_top);
+            obj.set_taborder("3");
+            obj.set_text("검색  ");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            obj.style.set_align("right middle");
+            this.dps_top.addChild(obj.name, obj);
+            obj = new Button("btn_new", "absolute", "92.84%", "7", "63", "20", null, null, this.dps_top);
+            obj.set_taborder("4");
+            obj.set_text("초기화 ");
+            obj.style.set_background("@gradation URL('theme://images/btn_MF_Refresh_O.png') 5px 50px");
+            obj.style.set_align("right middle");
+            this.dps_top.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "37.42%", "5", null, "24", "30.78%", null, this.dps_top);
+            obj.set_taborder("5");
+            obj.set_text("* 신규등록이 아닌 경우 공탁관리번호를 검색해주세요.");
+            this.dps_top.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "1.4%", "102", null, "15", "90%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("공탁사항등록");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("dps_insert", "absolute", "1%", "121", null, "97", "1%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("dps_insert");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("dps_court", "absolute", "0.51%", "5", "100", "24", null, null, this.dps_insert);
+            obj.set_taborder("0");
+            obj.set_text("* 관할법원");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "34.05%", "5", "123", "24", null, null, this.dps_insert);
+            obj.set_taborder("2");
+            obj.set_text("* 강제집행일련번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Edit("exec_seq", "absolute", "47.03%", "5", null, "24", "37.93%", null, this.dps_insert);
+            obj.set_taborder("3");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "69.63%", "5", "100", "24", null, null, this.dps_insert);
+            obj.set_taborder("4");
+            obj.set_text("* 피공탁자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Edit("oth_depo", "absolute", "80.27%", "5", null, "24", "4.7%", null, this.dps_insert);
+            obj.set_taborder("5");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Static("dps_court00", "absolute", "0.51%", "35", "100", "24", null, null, this.dps_insert);
+            obj.set_taborder("6");
+            obj.set_text("* 공탁자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Edit("depo", "absolute", "11.15%", "35", null, "24", "73.82%", null, this.dps_insert);
+            obj.set_taborder("7");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "34.05%", "35", "123", "24", null, null, this.dps_insert);
+            obj.set_taborder("8");
+            obj.set_text("* 대리인명");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Edit("official", "absolute", "47.03%", "35", null, "24", "37.93%", null, this.dps_insert);
+            obj.set_taborder("9");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "69.63%", "35", "100", "24", null, null, this.dps_insert);
+            obj.set_taborder("10");
+            obj.set_text("* 공탁금액");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Edit("depo_chg", "absolute", "80.27%", "35", null, "24", "4.7%", null, this.dps_insert);
+            obj.set_taborder("11");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Static("dps_court01", "absolute", "0.51%", "64", "100", "24", null, null, this.dps_insert);
+            obj.set_taborder("12");
+            obj.set_text("* 보관부서");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "34.05%", "64", "123", "24", null, null, this.dps_insert);
+            obj.set_taborder("14");
+            obj.set_text("* 공탁일자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Button("btn_agent", "absolute", "62.37%", "37", "55", "20", null, null, this.dps_insert);
+            obj.set_taborder("16");
+            obj.set_text("검색  ");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            obj.style.set_align("right middle");
+            this.dps_insert.addChild(obj.name, obj);
+            obj = new Combo("juri_court", "absolute", "11.15%", "5", "15.03%", "24", null, null, this.dps_insert);
+            this.dps_insert.addChild(obj.name, obj);
+            obj.set_taborder("17");
+            obj.set_innerdataset("ds_court");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+            obj = new Combo("dept_code", "absolute", "11.15%", "64", "15.03%", "24", null, null, this.dps_insert);
+            this.dps_insert.addChild(obj.name, obj);
+            obj.set_taborder("18");
+            obj.set_innerdataset("@ds_dept");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+            obj = new Combo("depo_date", "absolute", "47.03%", "64", "15.03%", "24", null, null, this.dps_insert);
+            this.dps_insert.addChild(obj.name, obj);
+            obj.set_taborder("19");
+            obj.set_innerdataset("ds_court");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+
+            obj = new Static("Static01", "absolute", "1.4%", "231", null, "15", "90%", null, this);
+            obj.set_taborder("5");
+            obj.set_text("공탁담당자");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("dps_mng", "absolute", "1%", "250", null, "35", "1%", null, this);
+            obj.set_taborder("6");
+            obj.set_text("Div00");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "0.51%", "5", "100", "24", null, null, this.dps_mng);
+            obj.set_taborder("0");
+            obj.set_text("공탁담당자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_mng.addChild(obj.name, obj);
+            obj = new Edit("mgrName", "absolute", "11.15%", "5", null, "24", "73.93%", null, this.dps_mng);
+            obj.set_taborder("1");
+            this.dps_mng.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "34.05%", "5", "123", "24", null, null, this.dps_mng);
+            obj.set_taborder("3");
+            obj.set_text("배정일자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_mng.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "69.63%", "5", "100", "24", null, null, this.dps_mng);
+            obj.set_taborder("5");
+            obj.set_text("담당자부서");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_mng.addChild(obj.name, obj);
+            obj = new Button("btn_mgr", "absolute", "26.38%", "7", "55", "20", null, null, this.dps_mng);
+            obj.set_taborder("7");
+            obj.set_text("검색  ");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            obj.style.set_align("right middle");
+            this.dps_mng.addChild(obj.name, obj);
+            obj = new Combo("mgr_date", "absolute", "47.03%", "5", "15.03%", "24", null, null, this.dps_mng);
+            this.dps_mng.addChild(obj.name, obj);
+            obj.set_taborder("8");
+            obj.set_innerdataset("ds_court");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+            obj = new Combo("Combo0", "absolute", "80.27%", "5", "15.03%", "24", null, null, this.dps_mng);
+            this.dps_mng.addChild(obj.name, obj);
+            obj.set_taborder("9");
+            obj.set_innerdataset("@ds_dept");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+
+            obj = new Static("Static02", "absolute", "1.4%", "299", null, "15", "90%", null, this);
+            obj.set_taborder("7");
+            obj.set_text("공탁서불출");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("dps_nshow", "absolute", "1%", "317", null, "35", "1%", null, this);
+            obj.set_taborder("8");
+            obj.set_text("Div01");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "0.51%", "5", "100", "24", null, null, this.dps_nshow);
+            obj.set_taborder("0");
+            obj.set_text("공탁불출일자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_nshow.addChild(obj.name, obj);
+            obj = new Combo("rele_date", "absolute", "11.15%", "5", "15.03%", "24", null, null, this.dps_nshow);
+            this.dps_nshow.addChild(obj.name, obj);
+            obj.set_taborder("1");
+            obj.set_innerdataset("ds_court");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+
+            obj = new Static("Static03", "absolute", "1.4%", "364", null, "15", "90%", null, this);
+            obj.set_taborder("9");
+            obj.set_text("공탁금회수");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("dps_coll", "absolute", "1%", "382", null, "178", "1%", null, this);
+            obj.set_taborder("10");
+            obj.set_text("Div02");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "0.51%", "5", "100", "24", null, null, this.dps_coll);
+            obj.set_taborder("0");
+            obj.set_text("공탁금회수일자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_coll.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "34.05%", "5", "123", "24", null, null, this.dps_coll);
+            obj.set_taborder("2");
+            obj.set_text("공탁회수금액");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_coll.addChild(obj.name, obj);
+            obj = new Edit("coll_chg", "absolute", "47.03%", "5", null, "24", "37.93%", null, this.dps_coll);
+            obj.set_taborder("3");
+            this.dps_coll.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "0.51%", "34", "100", "137", null, null, this.dps_coll);
+            obj.set_taborder("4");
+            obj.set_text("공탁회수사유");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_align("center middle");
+            this.dps_coll.addChild(obj.name, obj);
+            obj = new Edit("coll_rea", "absolute", "11.15%", "33", null, "138", "0.72%", null, this.dps_coll);
+            obj.set_taborder("5");
+            this.dps_coll.addChild(obj.name, obj);
+            obj = new Combo("coll_date", "absolute", "11.15%", "5", "15.03%", "24", null, null, this.dps_coll);
+            this.dps_coll.addChild(obj.name, obj);
+            obj.set_taborder("6");
+            obj.set_innerdataset("ds_court");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_type("filter");
+
+            obj = new Button("btn_depo_save", "absolute", "86.5%", "566", null, "26", "8%", null, this);
+            obj.set_taborder("11");
+            obj.set_text("저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_close", "absolute", "92.9%", "566", null, "26", "1.6%", null, this);
+            obj.set_taborder("12");
+            obj.set_text("닫기");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "1%", "0", null, "42", "1%", null, this);
+            obj.set_taborder("13");
+            obj.set_text("공탁관리");
+            obj.style.set_background("transparent URL('theme://images/bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 12 굴림");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 973, 46, this.dps_top,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.set_text("dps_top");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.dps_top.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 972, 116, this.dps_insert,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_text("dps_insert");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.dps_insert.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 952, 88, this.dps_mng,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("6");
+            		p.set_text("Div00");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.dps_mng.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.dps_nshow,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("8");
+            		p.set_text("Div01");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.dps_nshow.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 178, this.dps_coll,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("10");
+            		p.set_text("Div02");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.dps_coll.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Deposit_management");
+            		p.set_titletext("Deposit_Management");
+            		p.style.set_color("#46463dff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","dps_top.depo_no_tx","value","ds_depo","depositDepoAdmNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","dps_insert.juri_court","value","ds_depo","depositJuriCortCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","dps_insert.exec_seq","value","ds_depo","depositForcExecSeq");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","dps_insert.oth_depo","value","ds_depo","depositOthDepoName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","dps_insert.depo","value","ds_depo","depositDepoName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","dps_insert.official","value","ds_depo","depositDepuName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","dps_insert.depo_chg","value","ds_depo","depositDepoChg");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","dps_insert.dept_code","value","ds_depo","depositKeepDeptCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","dps_insert.depo_date","value","ds_depo","depositDepoDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","dps_mng.mgrName","value","ds_mgr","insaName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","dps_mng.mgr_date","value","ds_mgr","depositmgrAsigDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item11","dps_mng.Combo0","value","ds_mgr","depositmgrDeptCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item12","dps_nshow.rele_date","value","ds_depo","depositDepoReleDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item13","dps_coll.coll_date","value","ds_depo","depositDepchgCollDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item14","dps_coll.coll_chg","value","ds_depo","depositDepoCollChg");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item15","dps_coll.coll_rea","value","ds_depo","depositDepoCollRea");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        
+        
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.dps_top.btn_list_no.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.dps_top.btn_new.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.dps_insert.btn_agent.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.dps_insert.juri_court.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.dps_insert.dept_code.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.dps_insert.depo_date.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Static01.addEventHandler("onclick", this.dps_insert_Static00_onclick, this);
+            this.dps_mng.btn_mgr.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.dps_mng.mgr_date.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.dps_mng.Combo0.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Static02.addEventHandler("onclick", this.dps_insert_Static00_onclick, this);
+            this.dps_nshow.rele_date.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Static03.addEventHandler("onclick", this.dps_insert_Static00_onclick, this);
+            this.dps_coll.coll_date.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+
+        };
+
+        this.loadIncludeScript("V_DSP_001.xfdl");
+
+       
+    };
+}
+)();

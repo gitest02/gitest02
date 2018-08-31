@@ -1,0 +1,186 @@
+package debtinfo.lawmapper.vo;
+
+import com.nexacro.spring.data.DataSetRowTypeAccessor;
+
+public class DebtGiveUpVO implements DataSetRowTypeAccessor{
+
+	private int rowType;
+	
+	private String giveUpNo;	
+	private String debtorListNo;	
+	private String giveUpSign;	
+	private String giveUpReasonCode;	
+	private String giveUpReason;	
+	private String giveUpMoney;	
+	private String giveUpObtainMoney;	
+	private String giveUpReturnExpectMoney;	
+	private String giveUpInterest;	
+	private String giveUpReturnMoney;	
+	private String giveUpRemainDebtorMoney;	
+	private String giveUpRequestDate;	
+	private String giveUpDecideManNum;
+	private String giveUpObtainDate;	
+	private String giveUpTotalOpinion;	
+	private String giveUpDecideManOpinion;	
+	private String giveUpProgressSummary;	
+	private String giveUpRegistDate;	
+	private String giveUpInput;	
+	private String giveUpEtc;	
+	private String giveUpCd;
+	private String inputName;
+	private String sabunName;
+	private String signerSabunName;
+	
+	public String getGiveUpNo() {
+		return giveUpNo;
+	}
+	public void setGiveUpNo(String giveUpNo) {
+		this.giveUpNo = giveUpNo;
+	}
+	public String getDebtorListNo() {
+		return debtorListNo;
+	}
+	public void setDebtorListNo(String debtorListNo) {
+		this.debtorListNo = debtorListNo;
+	}
+	public String getGiveUpSign() {
+		return giveUpSign;
+	}
+	public void setGiveUpSign(String giveUpSign) {
+		this.giveUpSign = giveUpSign;
+	}
+	public String getGiveUpReasonCode() {
+		return giveUpReasonCode;
+	}
+	public void setGiveUpReasonCode(String giveUpReasonCode) {
+		this.giveUpReasonCode = giveUpReasonCode;
+	}
+	public String getGiveUpReason() {
+		return giveUpReason;
+	}
+	public void setGiveUpReason(String giveUpReason) {
+		this.giveUpReason = giveUpReason;
+	}
+	public String getGiveUpMoney() {
+		return giveUpMoney;
+	}
+	public void setGiveUpMoney(String giveUpMoney) {
+		this.giveUpMoney = giveUpMoney;
+	}
+	public String getGiveUpObtainMoney() {
+		return giveUpObtainMoney;
+	}
+	public void setGiveUpObtainMoney(String giveUpObtainMoney) {
+		this.giveUpObtainMoney = giveUpObtainMoney;
+	}
+	public String getGiveUpReturnExpectMoney() {
+		return giveUpReturnExpectMoney;
+	}
+	public void setGiveUpReturnExpectMoney(String giveUpReturnExpectMoney) {
+		this.giveUpReturnExpectMoney = giveUpReturnExpectMoney;
+	}
+	public String getGiveUpInterest() {
+		return giveUpInterest;
+	}
+	public void setGiveUpInterest(String giveUpInterest) {
+		this.giveUpInterest = giveUpInterest;
+	}
+	public String getGiveUpReturnMoney() {
+		return giveUpReturnMoney;
+	}
+	public void setGiveUpReturnMoney(String giveUpReturnMoney) {
+		this.giveUpReturnMoney = giveUpReturnMoney;
+	}
+	public String getGiveUpRemainDebtorMoney() {
+		return giveUpRemainDebtorMoney;
+	}
+	public void setGiveUpRemainDebtorMoney(String giveUpRemainDebtorMoney) {
+		this.giveUpRemainDebtorMoney = giveUpRemainDebtorMoney;
+	}
+	public String getGiveUpRequestDate() {
+		return giveUpRequestDate;
+	}
+	public void setGiveUpRequestDate(String giveUpRequestDate) {
+		this.giveUpRequestDate = giveUpRequestDate;
+	}
+	public String getGiveUpDecideManNum() {
+		return giveUpDecideManNum;
+	}
+	public void setGiveUpDecideManNum(String giveUpDecideManNum) {
+		this.giveUpDecideManNum = giveUpDecideManNum;
+	}
+	public String getGiveUpObtainDate() {
+		return giveUpObtainDate;
+	}
+	public void setGiveUpObtainDate(String giveUpObtainDate) {
+		this.giveUpObtainDate = giveUpObtainDate;
+	}
+	public String getGiveUpTotalOpinion() {
+		return giveUpTotalOpinion;
+	}
+	public void setGiveUpTotalOpinion(String giveUpTotalOpinion) {
+		this.giveUpTotalOpinion = giveUpTotalOpinion;
+	}
+	public String getGiveUpDecideManOpinion() {
+		return giveUpDecideManOpinion;
+	}
+	public void setGiveUpDecideManOpinion(String giveUpDecideManOpinion) {
+		this.giveUpDecideManOpinion = giveUpDecideManOpinion;
+	}
+	public String getGiveUpProgressSummary() {
+		return giveUpProgressSummary;
+	}
+	public void setGiveUpProgressSummary(String giveUpProgressSummary) {
+		this.giveUpProgressSummary = giveUpProgressSummary;
+	}
+	public String getGiveUpRegistDate() {
+		return giveUpRegistDate;
+	}
+	public void setGiveUpRegistDate(String giveUpRegistDate) {
+		this.giveUpRegistDate = giveUpRegistDate;
+	}
+	public String getGiveUpInput() {
+		return giveUpInput;
+	}
+	public void setGiveUpInput(String giveUpInput) {
+		this.giveUpInput = giveUpInput;
+	}
+	public String getGiveUpEtc() {
+		return giveUpEtc;
+	}
+	public void setGiveUpEtc(String giveUpEtc) {
+		this.giveUpEtc = giveUpEtc;
+	}
+	public String getGiveUpCd() {
+		return giveUpCd;
+	}
+	public void setGiveUpCd(String giveUpCd) {
+		this.giveUpCd = giveUpCd;
+	}
+	public String getInputName() {
+		return inputName;
+	}
+	public void setInputName(String inputName) {
+		this.inputName = inputName;
+	}
+	public String getSabunName() {
+		return sabunName;
+	}
+	public void setSabunName(String sabunName) {
+		this.sabunName = sabunName;
+	}
+	public String getSignerSabunName() {
+		return signerSabunName;
+	}
+	public void setSignerSabunName(String signerSabunName) {
+		this.signerSabunName = signerSabunName;
+	}
+	@Override
+	public int getRowType() {
+		return rowType;
+	}
+	@Override
+	public void setRowType(int rowType) {
+		this.rowType=rowType;
+	}
+}

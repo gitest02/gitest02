@@ -1,0 +1,653 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("Debt_Read");
+                this.set_classname("Debt_Read");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_debtor", this);
+            obj._setContents("<ColumnInfo><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListCode\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListName\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListGooboon\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListEnName\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListTel\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListPhone\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListPostal\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListAddress1\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListAddress2\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListOwance\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListRepay\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListStatus\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListEndDate\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListMgrNum\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListRegistDate\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListInput\" type=\"STRING\" size=\"256\"/><Column id=\"debtorMgrName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_check", this);
+            obj._setContents("<ColumnInfo><Column id=\"seq\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_tabGrid", this);
+            obj._setContents("<ColumnInfo><Column id=\"aprvprgrInfoStepCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoBookNo\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoUpSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWrit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritTit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCondCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoProcDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoFinWtr\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont2\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont3\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_positionCode", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count1", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count2", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count3", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_count4", this);
+            obj._setContents("<ColumnInfo><Column id=\"column0\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_occur", this);
+            obj._setContents("<ColumnInfo><Column id=\"debtorOccNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccStartdate\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccEnddate\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccReason\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccCheck\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccPrice\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccInput\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccEtc\" type=\"STRING\" size=\"256\"/><Column id=\"debtorOccCode\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"inputName\" type=\"STRING\" size=\"256\"/><Column id=\"sabunName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_return", this);
+            obj._setContents("<ColumnInfo><Column id=\"moneyInNo\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInSum\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInReason\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInInterest\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInDayin\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInInput\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInEtc\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"moneyInCode\" type=\"STRING\" size=\"256\"/><Column id=\"inputName\" type=\"STRING\" size=\"256\"/><Column id=\"sabunName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_stop", this);
+            obj._setContents("<ColumnInfo><Column id=\"adminStopNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignCheck\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopReasonCode\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopReason\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopMoney\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopInterest\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopDebtReturnMoney\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopRequestDate\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignEiNo\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignDate\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopSignerComment\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopProgressSummary\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopInput\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopEtc\" type=\"STRING\" size=\"256\"/><Column id=\"adminStopCd\" type=\"STRING\" size=\"256\"/><Column id=\"inputName\" type=\"STRING\" size=\"256\"/><Column id=\"sabunName\" type=\"STRING\" size=\"256\"/><Column id=\"signerSabunName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_giveUp", this);
+            obj._setContents("<ColumnInfo><Column id=\"giveUpNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpSign\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReasonCode\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReason\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpObtainMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReturnExpectMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpInterest\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpReturnMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpRemainDebtorMoney\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpRequestDate\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpDecideManNum\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpObtainDate\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpTotalOpinion\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpDecideManOpinion\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpProgressSummary\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpInput\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpEtc\" type=\"STRING\" size=\"256\"/><Column id=\"giveUpCd\" type=\"STRING\" size=\"256\"/><Column id=\"inputName\" type=\"STRING\" size=\"256\"/><Column id=\"sabunName\" type=\"STRING\" size=\"256\"/><Column id=\"signerSabunName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListName\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListMgrNum\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListTel\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListPhone\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListStatus\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListRegistDate\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListEndDate\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"debtorListNo\"/><Col id=\"debtorListName\"/><Col id=\"debtorListMgrNum\"/><Col id=\"debtorListTel\"/><Col id=\"debtorListPhone\"/><Col id=\"debtorListStatus\"/><Col id=\"debtorListRegistDate\"/><Col id=\"debtorListEndDate\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_combo", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codeName\">전체</Col><Col id=\"codeNo\">00</Col></Row><Row><Col id=\"codeName\">정상</Col><Col id=\"codeNo\">01</Col></Row><Row><Col id=\"codeName\">정지</Col><Col id=\"codeNo\">02</Col></Row><Row><Col id=\"codeName\">포기</Col><Col id=\"codeNo\">03</Col></Row><Row><Col id=\"codeName\">완납</Col><Col id=\"codeNo\">04</Col></Row><Row><Col id=\"codeNo\">05</Col><Col id=\"codeName\">기타</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("divWrapper", "absolute", "0%", "0%", null, null, "0%", "0%", this);
+            obj.set_taborder("0%");
+            this.addChild(obj.name, obj);
+            obj = new Div("div_Top", "absolute", "0%", "0%", null, "25%", "0%", null, this.divWrapper);
+            obj.set_taborder("0");
+            this.divWrapper.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1%", "0%", null, "42", "1%", null, this.divWrapper.div_Top);
+            obj.set_taborder("1");
+            obj.set_text("채무자 관리");
+            obj.style.set_background("transparent URL('img::bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 12 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "1%", "34.67%", null, null, "1%", "0%", this.divWrapper.div_Top);
+            obj.set_taborder("9");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2%", "37%", null, "21%", "88%", null, this.divWrapper.div_Top);
+            obj.set_taborder("10");
+            obj.set_text("채무자번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "12%", "37%", null, "21%", "66%", null, this.divWrapper.div_Top);
+            obj.set_taborder("11");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "34%", "37%", null, "21%", "56%", null, this.divWrapper.div_Top);
+            obj.set_taborder("12");
+            obj.set_text("채무자이름");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "44%", "37%", null, "21%", "34%", null, this.divWrapper.div_Top);
+            obj.set_taborder("13");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "66%", "37%", null, "21%", "24%", null, this.divWrapper.div_Top);
+            obj.set_taborder("14");
+            obj.set_text("채무담당자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "76%", "37%", null, "21%", "2%", null, this.divWrapper.div_Top);
+            obj.set_taborder("15");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "2%", "57%", null, "21%", "88%", null, this.divWrapper.div_Top);
+            obj.set_taborder("16");
+            obj.set_text("전화번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "12%", "57%", null, "21%", "66%", null, this.divWrapper.div_Top);
+            obj.set_taborder("17");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "34%", "57%", null, "21%", "56%", null, this.divWrapper.div_Top);
+            obj.set_taborder("18");
+            obj.set_text("휴대폰번호");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "44%", "57%", null, "21%", "34%", null, this.divWrapper.div_Top);
+            obj.set_taborder("19");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "66%", "57%", null, "21%", "24%", null, this.divWrapper.div_Top);
+            obj.set_taborder("20");
+            obj.set_text("상태");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static13", "absolute", "76%", "57%", null, "21%", "2%", null, this.divWrapper.div_Top);
+            obj.set_taborder("21");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static14", "absolute", "2%", "77%", null, null, "88%", "2%", this.divWrapper.div_Top);
+            obj.set_taborder("22");
+            obj.set_text("등록일자");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Static("Static15", "absolute", "12%", "77%", null, null, "2%", "2%", this.divWrapper.div_Top);
+            obj.set_taborder("23");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Button("btn_clean", "absolute", "84.8%", "82%", null, "13.33%", "10.2%", null, this.divWrapper.div_Top);
+            obj.set_taborder("24");
+            obj.set_text("초기화");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Button("btn_debtorSearch", "absolute", "91.8%", "82%", null, "13.33%", "3.2%", null, this.divWrapper.div_Top);
+            obj.set_taborder("25");
+            obj.set_text("검색");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Calendar("cal_regDay1", "absolute", "12.5%", "80.5%", null, "14%", "72.5%", null, this.divWrapper.div_Top);
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj.set_taborder("7");
+            obj.set_usecontextmenu("false");
+            obj = new Calendar("cal_regDay2", "absolute", "29.3%", "80.5%", null, "14%", "55.7%", null, this.divWrapper.div_Top);
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj.set_taborder("8");
+            obj = new Static("Static16", "absolute", "28%", "80.5%", null, "20", "70.9%", null, this.divWrapper.div_Top);
+            obj.set_taborder("26");
+            obj.set_text("~");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Edit("edt_debtorNo", "absolute", "12.5%", "41%", null, "14%", "66.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("0");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Edit("edt_name", "absolute", "44.5%", "41.33%", null, "14%", "34.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("2");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Edit("edt_tel", "absolute", "12.5%", "60.67%", null, "14%", "66.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("4");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Edit("edt_hp", "absolute", "44.5%", "60.67%", null, "14%", "34.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("5");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Edit("edt_mgrNo", "absolute", "76.5%", "41.33%", null, "14%", "2.5%", null, this.divWrapper.div_Top);
+            obj.set_taborder("3");
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj = new Combo("cmb_status", "absolute", "76.6%", "60%", null, "14.67%", "2.5%", null, this.divWrapper.div_Top);
+            this.divWrapper.div_Top.addChild(obj.name, obj);
+            obj.set_taborder("6");
+            obj.set_innerdataset("@ds_combo");
+            obj.set_codecolumn("codeNo");
+            obj.set_datacolumn("codeName");
+            obj.set_text("전체");
+            obj.set_value("O00");
+            obj.set_index("0");
+            obj = new Div("Div01", "absolute", "0%", "25%", null, "12%", "0%", null, this.divWrapper);
+            obj.set_taborder("3");
+            obj.set_text("Div01");
+            this.divWrapper.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "51%", "11%", "11%", "41%", null, null, this.divWrapper.Div01);
+            obj.set_taborder("2");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "51%", "51%", "11%", null, null, "7%", this.divWrapper.Div01);
+            obj.set_taborder("4");
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "41%", "11%", "11%", null, null, "7%", this.divWrapper.Div01);
+            obj.set_taborder("7");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            obj.set_text("결재진행상태");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", null, null, "4%", "40%", "7%", "5%", this.divWrapper.Div01);
+            obj.set_taborder("8");
+            obj.set_text("결재");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Button("btn_newDebtor", "absolute", null, null, "4%", "40%", "2%", "5%", this.divWrapper.Div01);
+            obj.set_taborder("9");
+            obj.set_text("신규");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "1%", null, null, "23%", "91.68%", "5%", this.divWrapper.Div01);
+            obj.set_taborder("10");
+            obj.set_text("채무자목록");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "61%", "51%", "11%", null, null, "7%", this.divWrapper.Div01);
+            obj.set_taborder("11");
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "61%", "11%", "11%", "41%", null, null, this.divWrapper.Div01);
+            obj.set_taborder("12");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "71%", "51%", "10%", null, null, "7%", this.divWrapper.Div01);
+            obj.set_taborder("13");
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "71%", "11%", "10%", "41%", null, null, this.divWrapper.Div01);
+            obj.set_taborder("14");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div01.addChild(obj.name, obj);
+            obj = new Div("Div02", "absolute", "0%", "37%", null, null, "0%", "0%", this.divWrapper);
+            obj.set_taborder("4");
+            obj.set_text("Div02");
+            obj.set_scrollbars("none");
+            this.divWrapper.addChild(obj.name, obj);
+            obj = new Static("Static00", "fixed", "1%", null, "11%", "6%", null, "5%", this.divWrapper.Div02);
+            obj.set_taborder("0");
+            obj.set_text("채무발생(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div02.addChild(obj.name, obj);
+            obj = new Static("Static01", "fixed", "11%", null, "11%", "6%", null, "5%", this.divWrapper.Div02);
+            obj.set_taborder("1");
+            obj.set_text("채무환입(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div02.addChild(obj.name, obj);
+            obj = new Static("Static02", "fixed", "21%", null, "11%", "6%", null, "5%", this.divWrapper.Div02);
+            obj.set_taborder("2");
+            obj.set_text("채무정지(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div02.addChild(obj.name, obj);
+            obj = new Static("Static03", "fixed", "31%", null, "11%", "6%", null, "5%", this.divWrapper.Div02);
+            obj.set_taborder("3");
+            obj.set_text("채무포기(0)");
+            obj.style.set_background("aliceblue");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 굴림");
+            this.divWrapper.Div02.addChild(obj.name, obj);
+            obj = new Button("btn_Inform", "absolute", null, null, "7%", "5%", "10%", "5%", this.divWrapper.Div02);
+            obj.set_taborder("4");
+            obj.set_text("채무정보");
+            this.divWrapper.Div02.addChild(obj.name, obj);
+            obj = new Button("btn_Detail", "absolute", null, null, "7%", "5%", "2%", "5%", this.divWrapper.Div02);
+            obj.set_taborder("5");
+            obj.set_text("상세관리");
+            this.divWrapper.Div02.addChild(obj.name, obj);
+            obj = new Grid("grid_DebtorList", "absolute", "1%", "1%", null, null, "1%", "15%", this.divWrapper.Div02);
+            obj.set_taborder("6");
+            obj.set_binddataset("ds_debtor");
+            obj.set_scrollbars("autoboth");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"90\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/><Row size=\"24\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"No.\"/><Cell col=\"1\" text=\"채무담당자\"/><Cell col=\"2\" text=\"채무자번호\"/><Cell col=\"3\" text=\"채무자이름\"/><Cell col=\"4\" text=\"상태\"/><Cell col=\"5\" text=\"총채무금액(원)\"/><Cell col=\"6\" text=\"총상환금액(원)\"/><Cell col=\"7\" text=\"전화번호\"/><Cell col=\"8\" text=\"휴대폰번호\"/><Cell col=\"9\" text=\"등록일자\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:debtorListMgrNum\"/><Cell col=\"2\" text=\"bind:debtorListNo\"/><Cell col=\"3\" text=\"bind:debtorListName\"/><Cell col=\"4\" displaytype=\"combo\" text=\"bind:debtorListStatus\" combodataset=\"ds_status\" combocodecol=\"codeNo\" combodatacol=\"codeName\"/><Cell col=\"5\" text=\"bind:debtorListOwance\"/><Cell col=\"6\" text=\"bind:debtorListRepay\"/><Cell col=\"7\" text=\"bind:debtorListTel\" mask=\"##-###-####\"/><Cell col=\"8\" text=\"bind:debtorListPhone\" mask=\"###-####-####\"/><Cell col=\"9\" text=\"bind:debtorListRegistDate\"/></Band><Band id=\"summary\"><Cell colspan=\"4\" displaytype=\"text\" expr=\"&quot;총 채무자 수 : &quot;+rowcount+&quot;명&quot;\"/><Cell col=\"4\" colspan=\"6\"/></Band></Format></Formats>");
+            this.divWrapper.Div02.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.div_Top,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+
+            	}
+            );
+            this.divWrapper.div_Top.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("3");
+            		p.set_text("Div01");
+
+            	}
+            );
+            this.divWrapper.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 400, this.divWrapper.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("4");
+            		p.set_text("Div02");
+            		p.set_scrollbars("none");
+
+            	}
+            );
+            this.divWrapper.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.divWrapper,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0%");
+
+            	}
+            );
+            this.divWrapper.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Debt_Read");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("Debt_Read.xfdl", function() {
+        // 로딩시 채무자 목록 출력
+        this.Debt_Read_onload = function(obj,e)
+        {
+        	Iject.formOnload(obj);
+        	
+        	this.debtorSearch();
+        }
+
+        
+        // 검색버튼
+        this.btn_debtorSearch_onclick = function(obj,e)
+        {
+        	this.debtorSearch();
+        }
+
+        
+        this.debtorSearch = function()
+        {
+        	var debtorListNo = this.divWrapper.div_Top.edt_debtorNo.value;
+        	var debtorListName = this.divWrapper.div_Top.edt_name.value;
+        	var debtorListMgrNum = this.divWrapper.div_Top.edt_mgrNo.value;
+        	var debtorListTel = this.divWrapper.div_Top.edt_tel.value;
+        	var debtorListPhone = this.divWrapper.div_Top.edt_hp.value;
+        	var debtorListStatus = this.divWrapper.div_Top.cmb_status.value;
+        	var debtorListRegistDate = this.divWrapper.div_Top.cal_regDay1.value;
+        	var debtorListEndDate = this.divWrapper.div_Top.cal_regDay2.value;
+        	trace(debtorListStatus);
+        	if((debtorListRegistDate != null && debtorListEndDate == null) || debtorListRegistDate > debtorListEndDate){
+        		var temp = debtorListRegistDate;
+        		debtorListRegistDate = debtorListEndDate;
+        		debtorListEndDate = temp;
+        		this.divWrapper.div_Top.cal_regDay1.set_value(debtorListRegistDate);
+        		this.divWrapper.div_Top.cal_regDay2.set_value(debtorListEndDate);		
+        		this.divWrapper.div_Top.cal_regDay1.setFocus();
+        	}
+        	
+        	this.ds_search.setColumn(0, "debtorListNo", debtorListNo);
+        	this.ds_search.setColumn(0, "debtorListName", debtorListName);
+        	this.ds_search.setColumn(0, "debtorListMgrNum", debtorListMgrNum);
+        	this.ds_search.setColumn(0, "debtorListTel", debtorListTel);
+        	this.ds_search.setColumn(0, "debtorListPhone", debtorListPhone);
+        	this.ds_search.setColumn(0, "debtorListStatus", debtorListStatus);
+        	this.ds_search.setColumn(0, "debtorListRegistDate", debtorListRegistDate);
+        	this.ds_search.setColumn(0, "debtorListEndDate", debtorListEndDate);
+        	trace("debtorListNo ==>> " + debtorListNo);
+        	this.debtorList();	
+        }
+
+        
+        this.debtorList = function()
+        {
+        	var oDatas = {
+        				svcid : "debtorList",
+        				sController : "debtorList.do",
+        				inds : ["ds_search=ds_search"],
+        				outds : ["ds_debtor=ds_debtor"],
+        				args : [],
+        				bAsync : true,
+        				nDataType : 0,
+        				bCompress : false,
+        		};
+        		trace(" this.ds_debtor : " + this.ds_debtor.saveXML());
+        	
+        		Iject.transaction(this,oDatas,function(){   
+        		
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" ds_debtor : " + pThis.ds_debtor.saveXML());
+        	});
+        }
+
+        
+        this.comboSetup = function()
+        {
+        	var oDatas =  {
+        		svcid : "comboStatus",
+        		sController : "comboStatus.do",
+        		inds :["ds_code=ds_code"],
+        		outds :["ds_status=ds_status"],
+        		args  : [],
+        		bAsync : true,
+        		nDataType : 0,
+        		bCompress :false,
+        	};
+        	Iject.transaction(this,oDatas,function(){
+        		var pThis = this.fobj;
+        	});
+        }
+
+        
+        // 검색영역 초기화
+        this.btn_clean_onclick = function(obj,e)
+        {
+        	this.divWrapper.div_Top.edt_debtorNo.set_value("");
+        	this.divWrapper.div_Top.edt_name.set_value("");
+        	this.divWrapper.div_Top.edt_mgrNo.set_value("");
+        	this.divWrapper.div_Top.edt_tel.set_value("");
+        	this.divWrapper.div_Top.edt_hp.set_value("");
+        	this.divWrapper.div_Top.cmb_status.set_index(0);
+        	this.divWrapper.div_Top.cal_regDay1.set_value(null);
+        	this.divWrapper.div_Top.cal_regDay2.set_value(null);
+        	
+        	this.debtorSearch();	
+        }
+
+        
+        this.btn_newDebtor_onclick = function(obj,e)
+        {
+        	this.divWrapper.set_url("Pattern::Debt_Write.xfdl");
+        }
+
+        
+        this.btn_Inform_onclick = function(obj,e)
+        {
+        	var deb_no = this.ds_debtor.getColumn(e.row);
+        	this.divWrapper.set_url("Pattern::Debt_Info.xfdl");
+        }
+
+        
+        this.btn_Detail_onclick = function(obj,e)
+        {
+        	this.divWrapper.set_url("Pattern::Debt_Tab.xfdl");
+        }
+
+        // 담당자 검색
+        this.edt_mgrNo_oneditclick = function(obj,e)
+        {
+        	var objChildFrame = new ChildFrame();
+            objChildFrame.init("chf_popup2", "absolute", 30, 30, 30, 30, null, null, "Pattern::Debt_Emp_Num.xfdl");
+            var objParam = {};
+            objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+        	
+        }
+
+        this.fn_popupCallback = function(strID,strTemp)
+        {
+        	var strTemp = strTemp;
+        	trace(strTemp);
+        	if(strTemp != undefined){
+        		this.ds_search.setColumn(0, "debtorListMgrNum", strTemp[0]);
+        	}
+        }
+
+        this.cal_regDay2_onChanged = function() {
+
+        	var cal_regDay1 = this.divWrapper.div_Top.cal_regDay1.value;
+
+        	if(cal_regDay1 != null){
+        		var startDate = new Date();
+        		var endDate = new Date();
+        		var day = 1000*60*60*24;
+        		
+        		startDate.setFullYear(this.divWrapper.div_Top.cal_regDay1.getYear());
+         		startDate.setMonth(this.divWrapper.div_Top.cal_regDay1.getMonth());
+        		startDate.setDate(this.divWrapper.div_Top.cal_regDay1.getDay());
+        	
+        		endDate.setTime(startDate.getTime() + (day * 31));
+        		
+        		var year;
+        		var month;
+        		var date;
+        		
+        		year = endDate.getYear();
+        		
+        		if(endDate.getMonth() < 10) {
+        			month = "0" + endDate.getMonth();
+        		} else {
+        			month = endDate.getMonth();
+        		}
+        		
+        		if(endDate.getDate() < 10) {
+        			date = "0" + endDate.getDate();
+        		} else {
+        			date = endDate.getDate();
+        		}
+        		
+        		var cal_regDay2 = year + month + date;
+        	
+        		this.divWrapper.div_Top.cal_regDay2.set_enable(true);
+        		this.divWrapper.div_Top.cal_regDay2.setFocus();
+        		this.divWrapper.div_Top.cal_regDay2.dropdown();
+        		this.divWrapper.div_Top.cal_regDay2.set_value(cal_regDay2);		
+        	}
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.Debt_Read_onload, this);
+            this.divWrapper.div_Top.btn_clean.addEventHandler("onclick", this.btn_clean_onclick, this);
+            this.divWrapper.div_Top.btn_debtorSearch.addEventHandler("onclick", this.btn_debtorSearch_onclick, this);
+            this.divWrapper.div_Top.cal_regDay1.addEventHandler("onchanged", this.cal_regDay1_onChanged, this);
+            this.divWrapper.div_Top.cal_regDay2.addEventHandler("onchanged", this.cal_regDay2_onChanged, this);
+            this.divWrapper.div_Top.edt_mgrNo.addEventHandler("oneditclick", this.edt_mgrNo_oneditclick, this);
+            this.divWrapper.div_Top.cmb_status.addEventHandler("onitemchanged", this.cmb_status_onitemchanged, this);
+            this.divWrapper.Div01.Button00.addEventHandler("onclick", this.btn_appr_onclick, this);
+            this.divWrapper.Div01.btn_newDebtor.addEventHandler("onclick", this.btn_newDebtor_onclick, this);
+            this.divWrapper.Div01.Static00.addEventHandler("onclick", this.Div01_Static00_onclick, this);
+            this.divWrapper.Div02.btn_Inform.addEventHandler("onclick", this.btn_Inform_onclick, this);
+            this.divWrapper.Div02.btn_Detail.addEventHandler("onclick", this.btn_Detail_onclick, this);
+            this.divWrapper.Div02.grid_DebtorList.addEventHandler("oncellclick", this.grid_DebtorList_OncellClick, this);
+
+        };
+
+        this.loadIncludeScript("Debt_Read.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,446 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("pattern_09s");
+                this.set_classname("pattern_09s");
+                this.set_titletext("그리드 연습용");
+                this._setFormPosition(0,0,800,465);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><ConstColumn id=\"pageIndex\" type=\"INT\" size=\"1\" value=\"\"/><ConstColumn id=\"pageSize\" type=\"INT\" size=\"5\" value=\"\"/><ConstColumn id=\"pageUnit\" type=\"INT\" size=\"5\" value=\"\"/><Column id=\"groupCd\" type=\"STRING\" size=\"100\"/><Column id=\"groupNm\" type=\"STRING\" size=\"100\"/></ColumnInfo><Rows><Row><Col id=\"groupCd\"/><Col id=\"groupNm\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_codeGroupList", this);
+            obj._setContents("<ColumnInfo><Column id=\"groupCd\" type=\"STRING\" size=\"10\"/><Column id=\"groupNm\" type=\"STRING\" size=\"20\"/><Column id=\"useFg\" type=\"STRING\" size=\"1\"/><Column id=\"createUser\" type=\"STRING\" size=\"12\"/><Column id=\"createDt\" type=\"DATE\" size=\"20\"/><Column id=\"updateUser\" type=\"STRING\" size=\"12\"/><Column id=\"updateDt\" type=\"DATE\" size=\"20\"/><Column id=\"groupDesc\" type=\"STRING\" size=\"100\"/></ColumnInfo><Rows><Row><Col id=\"groupCd\">10000</Col><Col id=\"groupNm\">화면연동</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"updateUser\">test</Col><Col id=\"createDt\">20120831155247000</Col><Col id=\"updateDt\">20120831155247000</Col><Col id=\"groupDesc\">화면을 연동하는 방식을 결정</Col></Row><Row><Col id=\"groupCd\">20000</Col><Col id=\"groupNm\">화면타입</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"updateUser\">test</Col><Col id=\"createDt\">20120831155247000</Col><Col id=\"updateDt\">20120831155247000</Col><Col id=\"groupDesc\">화면의 타입을 정의</Col></Row><Row><Col id=\"groupCd\">30000</Col><Col id=\"groupNm\">메뉴오픈</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"updateUser\">test</Col><Col id=\"createDt\">20120831155247000</Col><Col id=\"updateDt\">20120831155247000</Col><Col id=\"groupDesc\">메뉴를 오픈하는 방식을 결정</Col></Row><Row><Col id=\"groupCd\">40000</Col><Col id=\"groupNm\">화면그룹</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"updateUser\">test</Col><Col id=\"createDt\">20120831155247000</Col><Col id=\"updateDt\">20120831155247000</Col><Col id=\"groupDesc\">화면의 기능별 그룹</Col></Row><Row><Col id=\"groupCd\">50000</Col><Col id=\"groupNm\">메뉴상태</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"updateUser\">test</Col><Col id=\"createDt\">20120831155247000</Col><Col id=\"updateDt\">20120831155247000</Col><Col id=\"groupDesc\">메뉴의 상태를 결정</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_codeList", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeCd\" type=\"STRING\" size=\"10\"/><Column id=\"codeNm\" type=\"STRING\" size=\"20\"/><Column id=\"codeSeq\" type=\"INT\" size=\"38\"/><Column id=\"groupCd\" type=\"STRING\" size=\"10\"/><Column id=\"useFg\" type=\"STRING\" size=\"1\"/><Column id=\"createUser\" type=\"STRING\" size=\"12\"/><Column id=\"createDt\" type=\"DATE\" size=\"256\"/><Column id=\"updateUser\" type=\"STRING\" size=\"12\"/><Column id=\"updateDt\" type=\"DATE\" size=\"256\"/><Column id=\"codeGbn\" type=\"STRING\" size=\"12\"/><Column id=\"codeDesc\" type=\"STRING\" size=\"100\"/></ColumnInfo><Rows><Row><Col id=\"codeCd\">FORM</Col><Col id=\"codeNm\">일반화면</Col><Col id=\"codeSeq\">1</Col><Col id=\"groupCd\">10000</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"createDt\">2012083115194300</Col><Col id=\"updateUser\">test</Col><Col id=\"updateDt\">2012083115194300</Col><Col id=\"codeGbn\"/><Col id=\"codeDesc\">일반적인 화면으로 연동</Col></Row><Row><Col id=\"codeSeq\">2</Col><Col id=\"codeCd\">LINK</Col><Col id=\"codeNm\">웹페이지</Col><Col id=\"groupCd\">10000</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"createDt\">2012083115194300</Col><Col id=\"updateUser\">test</Col><Col id=\"updateDt\">2012083115194300</Col><Col id=\"codeGbn\"/><Col id=\"codeDesc\">웹페이지 연동</Col></Row><Row><Col id=\"codeSeq\">3</Col><Col id=\"codeCd\">EXEC</Col><Col id=\"codeNm\">외부연동</Col><Col id=\"groupCd\">10000</Col><Col id=\"useFg\">1</Col><Col id=\"createUser\">test</Col><Col id=\"createDt\">2012083115194300</Col><Col id=\"updateUser\">test</Col><Col id=\"updateDt\">2012083115194300</Col><Col id=\"codeGbn\"/><Col id=\"codeDesc\">외부모듈의 실행으로 연동</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_search", "absolute", "1%", "9", null, "37", "1%", null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Button("btn_search", "absolute", "79.67%", "6", null, "24", "11.51%", null, this.div_search);
+            obj.set_taborder("0");
+            obj.set_text("조회");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Static("static_searchCondition", "absolute", "1.28%", "6", null, "24", "90.66%", null, this.div_search);
+            obj.set_taborder("2");
+            obj.set_text("검색 조건");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Edit("edit_searchKeyword", "absolute", "30.82%", "6", null, "24", "40.03%", null, this.div_search);
+            obj.set_taborder("4");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Button("btn_insert", "absolute", "89.77%", "6", null, "24", "1.41%", null, this.div_search);
+            obj.set_taborder("5");
+            obj.set_text("저장");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Combo("cmb_searchCondition", "absolute", "10.36%", "6", null, "24", "71.48%", null, this.div_search);
+            this.div_search.addChild(obj.name, obj);
+            var cmb_searchCondition_innerdataset = new Dataset("cmb_searchCondition_innerdataset", this.div_search.cmb_searchCondition);
+            cmb_searchCondition_innerdataset._setContents("<ColumnInfo><Column id=\"codecolumn\" size=\"256\"/><Column id=\"datacolumn\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codecolumn\">0</Col><Col id=\"datacolumn\">명칭</Col></Row><Row><Col id=\"codecolumn\">1</Col><Col id=\"datacolumn\">코드</Col></Row></Rows>");
+            obj.set_innerdataset(cmb_searchCondition_innerdataset);
+            obj.set_taborder("6");
+            obj.set_codecolumn("codecolumn");
+            obj.set_datacolumn("datacolumn");
+
+            obj = new Div("div_top", "absolute", "1%", "54", null, "32", "1%", null, this);
+            obj.set_taborder("1");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1.28%", "5", null, "20", "90.41%", null, this.div_top);
+            obj.set_taborder("0");
+            obj.set_text("코드 그룹");
+            this.div_top.addChild(obj.name, obj);
+            obj = new Button("btn_group_insert", "absolute", "75.06%", "5", null, "20", "13.68%", null, this.div_top);
+            obj.set_taborder("1");
+            obj.set_text("행 추가");
+            this.div_top.addChild(obj.name, obj);
+            obj = new Button("btn_group_delete", "absolute", "87.34%", "5", null, "20", "1.41%", null, this.div_top);
+            obj.set_taborder("2");
+            obj.set_text("행 삭제");
+            this.div_top.addChild(obj.name, obj);
+
+            obj = new Grid("gird_group", "absolute", "1%", "93", null, "118", "1.13%", null, this);
+            obj.set_taborder("2");
+            obj.set_binddataset("ds_codeGroupList");
+            obj.set_cellsizingtype("col");
+            obj.set_createcellasync("true");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"79\"/><Column size=\"92\"/><Column size=\"252\"/><Column size=\"46\"/><Column size=\"79\"/><Column size=\"79\"/><Column size=\"79\"/><Column size=\"79\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"코드 그룹\"/><Cell col=\"1\" text=\"코드그룹명\"/><Cell col=\"2\" text=\"설명\"/><Cell col=\"3\" text=\"사용\"/><Cell col=\"4\" text=\"등록일\"/><Cell col=\"5\" text=\"등록자\"/><Cell col=\"6\" text=\"수정일\"/><Cell col=\"7\" text=\"수정자\"/></Band><Band id=\"body\"><Cell edittype=\"expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'\" text=\"bind:groupCd\"/><Cell col=\"1\" edittype=\"text\" text=\"bind:groupNm\"/><Cell col=\"2\" edittype=\"text\" text=\"bind:groupDesc\"/><Cell col=\"3\" displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:useFg\"/><Cell col=\"4\" displaytype=\"date\" edittype=\"none\" text=\"bind:createDt\" mask=\"####.##.##\"/><Cell col=\"5\" displaytype=\"normal\" edittype=\"text\" text=\"bind:createUser\"/><Cell col=\"6\" displaytype=\"date\" edittype=\"date\" text=\"bind:updateDt\" mask=\"####.##.######.##.##\"/><Cell col=\"7\" edittype=\"text\" text=\"bind:updateUser\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("div_grid_bottom_in", "absolute", "1%", "222", null, "32", "1%", null, this);
+            obj.set_taborder("3");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("static_msg", "absolute", "1.02%", "3", null, "24", "64.07%", null, this.div_grid_bottom_in);
+            obj.set_taborder("0");
+            obj.set_text("There is no data.");
+            this.div_grid_bottom_in.addChild(obj.name, obj);
+            obj = new Static("static_gird_count", "absolute", "85.04%", "3", null, "22", "1.41%", null, this.div_grid_bottom_in);
+            obj.set_taborder("1");
+            this.div_grid_bottom_in.addChild(obj.name, obj);
+
+            obj = new Grid("grid_code", "absolute", "1%", "285", null, "118", "1%", null, this);
+            obj.set_taborder("4");
+            obj.set_binddataset("ds_codeList");
+            obj.set_cellsizingtype("col");
+            obj.getSetter("userdata").set("nexa.code;nexa.name;nexa.code.division;nexa.dspt;nexa.code.order;nexa.use;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"72\"/><Column size=\"80\"/><Column size=\"53\"/><Column size=\"164\"/><Column size=\"46\"/><Column size=\"50\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"코드\"/><Cell col=\"1\" text=\"코드명\"/><Cell col=\"2\" text=\"구분\"/><Cell col=\"3\" text=\"설명\"/><Cell col=\"4\" text=\"순서\"/><Cell col=\"5\" text=\"사용\"/><Cell col=\"6\" text=\"등록일\"/><Cell col=\"7\" text=\"등록자\"/><Cell col=\"8\" text=\"수정일\"/><Cell col=\"9\" text=\"수정자\"/></Band><Band id=\"body\"><Cell edittype=\"normal\" text=\"bind:codeCd\"/><Cell col=\"1\" edittype=\"text\" text=\"bind:codeNm\"/><Cell col=\"2\" edittype=\"text\"/><Cell col=\"3\" edittype=\"text\" text=\"bind:codeDesc\"/><Cell col=\"4\" edittype=\"text\" text=\"bind:codeSeq\"/><Cell col=\"5\" displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:useFg\"/><Cell col=\"6\" displaytype=\"date\" edittype=\"date\" text=\"bind:createDt\"/><Cell col=\"7\" edittype=\"text\" text=\"bind:createUser\"/><Cell col=\"8\" displaytype=\"date\" edittype=\"date\" text=\"bind:updateDt\"/><Cell col=\"9\" edittype=\"text\" text=\"bind:updateUser\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("div_grid_bottom_out", "absolute", "1%", "414", null, "32", "1%", null, this);
+            obj.set_taborder("5");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("static_msg", "absolute", "0.77%", "4", null, "24", "64.07%", null, this.div_grid_bottom_out);
+            obj.set_taborder("0");
+            obj.set_text("There is no data.");
+            this.div_grid_bottom_out.addChild(obj.name, obj);
+            obj = new Static("static_gird_count", "absolute", "85.68%", "4", null, "23", "0.77%", null, this.div_grid_bottom_out);
+            obj.set_taborder("1");
+            this.div_grid_bottom_out.addChild(obj.name, obj);
+
+            obj = new Button("btn_code_insert", "absolute", "74.75%", "260", null, "20", "14.5%", null, this);
+            obj.set_taborder("6");
+            obj.set_text("행 추가");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_code_delete", "absolute", "86.75%", "260", null, "20", "2.5%", null, this);
+            obj.set_taborder("7");
+            obj.set_text("행 삭제");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "2.38%", "260", null, "20", "89.5%", null, this);
+            obj.set_taborder("8");
+            obj.set_text("코드 목록");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 37, this.div_search,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.div_search.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 784, 32, this.div_top,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.div_top.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 32, this.div_grid_bottom_in,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("3");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.div_grid_bottom_in.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 32, this.div_grid_bottom_out,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("5");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.div_grid_bottom_out.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 800, 465, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("pattern_09s");
+            		p.set_titletext("그리드 연습용");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","div_search.cmb_searchCondition","value","ds_Search","SEARCH_CONDITION");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("pattern_09s.xfdl", "Lib::Comm.xjs");
+        this.registerScript("pattern_09s.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        
+        this.form_onload = function (obj,e)
+        {
+        	Iject.formOnload(obj);  //form onload
+            this.fn_search();
+        }
+
+        
+        //조회
+        this.fn_search = function()
+        {
+        	this.ds_search.clearData();
+        	var rowIdx = this.ds_search.addRow();
+        	
+        	
+        	trace("컨디션 : "+this.div_search.cmb_searchCondition.value);	
+        	trace("키워드 : "+this.div_search.edit_searchKeyword.value); 
+        	this.div_search.cmb_searchCondition.value
+        	
+        	//조회 조건
+        	if(this.div_search.cmb_searchCondition.value == 0){
+        		this.ds_search.setColumn(rowIdx,"groupNm", this.div_search.edit_searchKeyword.value);
+        	}else if(this.div_search.cmb_searchCondition.value== 1){
+        		this.ds_search.setColumn(rowIdx,"groupCp", this.div_search.edit_searchKeyword.value);
+        	}
+        	
+        	//odatas 정의
+        	var oDatas = {
+        		svcid : "search",
+        		sController : "selectAllList.do",
+        		inds : ["ds_search=ds_search"],
+        		outds : ["ds_codeGroupList = ds_codeGroupList", "ds_codeList = ds_codeList"],
+        		args : [],
+        		bAsync : true,
+        		nDataTyep : 2, //ssv 타입
+        		bCompress : false,				
+        	};
+        	
+        	//공통 transaction 함수 호출(콜백함수)
+        	Iject.transaction(this,oDatas,function(){   
+        	if(this.errorcode < 0)
+        		{
+        		   Iject.alert(this.errorMsg,"알림");			
+        		   return;
+        		}
+
+        	var pThis = this.fobj;   //form object
+
+        	pThis.fn_result();  //조회후 처리
+        	});
+        }
+
+        // 조회 버튼
+        this.div_search_btn_search_onclick = function(obj,e)
+        {
+        	this.fn_search();
+        }
+
+        //상단 검색 현황
+        this.fn_result = function(){
+
+        	var nTotalCount01 = this.ds_codeGroupList.rowcount;
+        	var nCount01 = this.ds_codeGroupList.rowcount;
+        	
+        	this.div_grid_bottom_in.static_gird_count.set_text("Rows :" +nTotalCount01);
+        	this.div_grid_bottom_in.static_msg.set_text("Select has been complted successfully.");
+        	//this.div_grid_bottom_in.static_gird_count.set_text("Rows : "+nCount01);
+        }
+
+        //하단 검색 현황
+        this.fn_result_bottom = function(){
+
+        	var nTotalCount02 = this.ds_codeList.rowcount;
+        	var nCount02 = this.ds_codeList.rowcount;
+
+        	this.div_grid_bottom_out.static_gird_count.set_text("Rows : "+nTotalCount02);
+        	this.div_grid_bottom_out.static_msg.set_text("select has been complted successfully.");
+        	this.div_grid_bottom_out.static_gird_count.set_text("Rows : "+nCount02);
+        }
+
+        
+        //엔터처리
+        this.div_search_edit_searchKeyword_onkeyup = function(obj,e)
+        {
+        	if(e.keycode == 13){
+        		this.fn_search();
+        	}
+        }
+
+        //하단 조회
+        this.ds_codeGroupList_onrowposchanged = function(obj,e)
+        {
+        	
+        	var strFilter =  "";
+        	strFilter += "groupCd=='"+this.ds_codeGroupList.getColumn(e.newrow,"groupCd")+"'";
+        	this.ds_codeList.filter(strFilter);
+
+        	this.fn_result_bottom();  //조회후 처리
+        }
+
+        //상단 조회 행추가
+        this.div_top_btn_group_insert_onclick = function(obj,e)
+        {
+        	var today = new Date();
+        	var dd = today.getDate();
+        	var mm = today.getMonth()+1;
+        	var yyyy = today.getFullYear();
+        	
+        	today = mm+'/'+dd+'/'+yyyy;
+        	
+        	var nRow = this.ds_codeGroupList.addRow();
+        	//새로운 행 추가시 시간 넣기
+        	this.ds_codeGroupList.setColumn(nRow,"createDt",today);
+        	this.ds_codeGroupList.setColumn(nRow,"updateDt",today);
+        	
+        	//새로운 행 추가시 사용자명 넣기
+        	this.ds_codeGroupList.setColumn(nRow,"createUser","test");
+        	this.ds_codeGroupList.setColumn(nRow,"updateuser","test");
+        }
+
+        
+        //상단 조회 행 삭제
+        this.div_top_btn_group_delete_onclick = function(obj,e)
+        {
+        	var nDelRow = this.ds_codeGroupList.rowposition;
+        	var nRowType = this.ds_codeGroupList.getRowType(nDelRow);
+        	this.ds_codeGroupList.deleteRow(nDelRow);
+        }
+
+        //하단 조회 행 추가
+        this.btn_code_insert_onclick = function(obj,e)
+        {
+        	var today = new Date();
+        	var dd = today.getDate();
+        	var mm = today.getMonth()+1;
+        	var yyyy = today.getFullYear();
+        	
+        	today = mm+'/'+dd+'/'+yyyy;
+        	
+        	trace("현재날짜 :"+today);
+
+        	var nRow = this.ds_codeList.addRow();
+        	var nGroupVal;
+        	var nGroup_cd;
+        	nGroupVal = this.ds_codeGroupList.rowposition;
+        	nGroup_cd = this.ds_codeGroupList.getColumn(nGroupVal, "groupCd");
+        	trace("nGroup_cd : "+nGroup_cd);
+        	
+        	this.ds_codeList.setColumn(nRow,"groupCd",nGroup_cd);
+        	this.ds_codeList.setColumn(nRow, "createDt", today);
+        	this.ds_codeList.setColumn(nRow, "updateDt", today);
+        	this.ds_codeList.setColumn(nRow, "createUser", "test");
+        	this.ds_codeList.setColumn(nRow, "updateUser", "test");
+        }
+
+        //하단 조회 행 삭제
+        this.btn_code_delete_onclick = function(obj,e)
+        {
+
+        	var nDelRow = this.ds_codeList.rowposition;
+        	var nRowType = this.ds_codeList.getRowType(nDelRow);
+        	this.ds_codeList.deleteRow(nDelRow);
+        }
+
+        //저장 버튼
+        this.div_search_Button00_onclick = function(obj,e)
+        {
+
+        	var rtnValue = Iject.confirm("저장 하시겠습니까?");
+        	
+        	if(rtnValue)
+        	{
+        		this.fn_save();
+        		
+        	}else{
+        		this.fn_search();
+        	}		
+        }
+
+        // 저장
+        this.fn_save = function(){
+        	var oData ={
+        		svcid : "save",
+        		sController : "modifyAll.do",
+        		inds : ["ds_codeGroupList=ds_codeGroupList:U","ds_codeList=ds_codeList:U"],
+        		outds : [],
+        		args : [],
+        		bAsync : true,
+        		nDataType : 2,
+        		bCompress : false,
+        	};
+        	
+        	Iject.transaction(this,oData,function(){
+        		if(this.errorcode <0){
+        			Iject.alert(this.errorMsg,"알림");
+        			return;
+        		}
+        		
+        		var pThis = this.fobj; //form object
+        		this.fn_result();
+        		this.fn_result_bottom();
+        	
+        	});
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_codeGroupList.addEventHandler("onrowposchanged", this.ds_codeGroupList_onrowposchanged, this);
+            this.addEventHandler("onload", this.form_onload, this);
+            this.div_search.btn_search.addEventHandler("onclick", this.div_search_btn_search_onclick, this);
+            this.div_search.edit_searchKeyword.addEventHandler("onkeyup", this.div_search_edit_searchKeyword_onkeyup, this);
+            this.div_search.btn_insert.addEventHandler("onclick", this.div_search_Button00_onclick, this);
+            this.div_search.cmb_searchCondition.addEventHandler("onitemchanged", this.div_search_cmb_searchCondition_onitemchanged, this);
+            this.div_top.btn_group_insert.addEventHandler("onclick", this.div_top_btn_group_insert_onclick, this);
+            this.div_top.btn_group_delete.addEventHandler("onclick", this.div_top_btn_group_delete_onclick, this);
+            this.div_grid_bottom_out.static_msg.addEventHandler("onclick", this.div_grid_bottom_out_static_msg_onclick, this);
+            this.btn_code_insert.addEventHandler("onclick", this.btn_code_insert_onclick, this);
+            this.btn_code_delete.addEventHandler("onclick", this.btn_code_delete_onclick, this);
+
+        };
+
+        this.loadIncludeScript("pattern_09s.xfdl");
+
+       
+    };
+}
+)();

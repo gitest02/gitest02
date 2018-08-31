@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="FILE" classname="FILE" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="17" left="78.4%" top="610" right="13.7%" height="33"/>
+        <Static id="Static01" taborder="19" text="공통파일관리" left="1%" top="64" right="86.5%" height="32" onclick="Static01_onclick" style="background:lavenderblush;color:#133678ff;align:center;"/>
+        <Combo id="Combo00" taborder="20" text="Combo00" left="13.6%" top="64" right="71.3%" height="32" style="border:1 solid #a8a8a8ff ;" codecolumn="code" datacolumn="value" innerdataset="@File"/>
+        <Edit id="edit3" taborder="21" left="28.6%" top="64" right="55%" height="32" onchanged="edit3_onChanged"/>
+        <Button id="button3" taborder="22" text="검색" left="44.9%" top="64" right="47.5%" height="32" onclick="button3_OnClick"/>
+        <Button id="Button0" taborder="23" text="저장" left="52.5%" top="64" right="39.9%" height="32" onclick="Button0_OnClick"/>
+        <Button id="Button9" taborder="25" text="삭제" left="72.2%" top="64" right="20.2%" height="32" onclick="Button9_onclick"/>
+        <Button id="Button2" taborder="28" text="다른이름으로저장" left="60.1%" top="64" right="27.7%" height="32" onclick="Button2_onclick"/>
+        <Button id="Button4" taborder="29" text="파일이름변경" left="79.8%" top="64" right="8%" height="32" onclick="Button4_onclick"/>
+        <Button id="Button1" taborder="30" text="닫기" left="92%" top="64" right="1%" height="32" onclick="Button1_onclick"/>
+        <Grid id="Grid0" taborder="31" useinputpanel="false" left="1%" top="108" right="1%" height="339" autofittype="col" autosizingtype="both">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="62"/>
+                <Column size="84"/>
+                <Column size="65"/>
+                <Column size="76"/>
+                <Column size="66"/>
+                <Column size="65"/>
+                <Column size="64"/>
+                <Column size="66"/>
+                <Column size="65"/>
+                <Column size="75"/>
+                <Column size="96"/>
+                <Column size="92"/>
+                <Column size="0"/>
+                <Column size="94"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="일련번호"/>
+                <Cell col="2" text="채무자번호"/>
+                <Cell col="3" text="파일이름"/>
+                <Cell col="4" text="파일확장자"/>
+                <Cell col="5" text="파일종류"/>
+                <Cell col="6" text="파일크기"/>
+                <Cell col="7" text="삭제여부"/>
+                <Cell col="8" text="수정일시"/>
+                <Cell col="9" text="등록일시"/>
+                <Cell col="10" text="파일경로"/>
+                <Cell col="11" text="원본파일이름"/>
+                <Cell col="12" text="증명사진/파일"/>
+                <Cell col="13" text="증명사진/파일"/>
+                <Cell col="14" text="다운로드횟수"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="FileUp">
+        <ColumnInfo>
+          <Column id="addFileCheck" type="STRING" size="256"/>
+          <Column id="debtorListNo" type="STRING" size="256"/>
+          <Column id="addFileRelNum" type="STRING" size="256"/>
+          <Column id="addFileSerFileName" type="STRING" size="256"/>
+          <Column id="addFileSize" type="STRING" size="256"/>
+          <Column id="addFileDel" type="STRING" size="256"/>
+          <Column id="addFileSerPath" type="STRING" size="256"/>
+          <Column id="addFileChanDate" type="STRING" size="256"/>
+          <Column id="addFileRegDate" type="STRING" size="256"/>
+          <Column id="addFilePcFileExt" type="STRING" size="256"/>
+          <Column id="addFilePcFile" type="STRING" size="256"/>
+          <Column id="imgFile" type="STRING" size="256"/>
+          <Column id="addFileDownCount" type="STRING" size="256"/>
+          <Column id="addFileCode" type="STRING" size="256"/>
+          <Column id="count" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="File">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">add_File_Ser_File_Name</Col>
+            <Col id="value">파일이름</Col>
+          </Row>
+          <Row>
+            <Col id="code">add_File_Pc_File_Ext</Col>
+            <Col id="value">파일확장자</Col>
+          </Row>
+          <Row>
+            <Col id="code">add_File_Del</Col>
+            <Col id="value">삭제여부</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="FileName">
+        <ColumnInfo>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+
+function Combo00_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	var code=Combo00.text;
+	if(code=="전체"){
+		search_form();
+	}else{
+		if(code=="파일이름"){
+			code="001";	
+		}else if(code=="파일확장자"){
+			code="002";	
+		}else{
+			code="003";	
+		}
+		search_code(code);
+	}
+}]]></Script>
+  </Form>
+</FDL>

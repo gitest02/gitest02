@@ -1,0 +1,899 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_010");
+                this.set_classname("LawList");
+                this.set_titletext("현행법령목록");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"searchCondition\" type=\"STRING\" size=\"50\"/><Column id=\"searchLawClassName\" type=\"STRING\" size=\"256\"/><Column id=\"searchKeyword\" type=\"STRING\" size=\"256\"/><Column id=\"startDate\" type=\"STRING\" size=\"256\"/><Column id=\"endDate\" type=\"STRING\" size=\"256\"/><Column id=\"pageIndex\" type=\"INT\" size=\"256\"/><Column id=\"pageUnit\" type=\"INT\" size=\"256\"/><Column id=\"pageSize\" type=\"INT\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"searchCondition\">LAWNAME</Col><Col id=\"searchLawClassName\"/><Col id=\"searchKeyword\"/><Col id=\"pageIndex\">1</Col><Col id=\"pageUnit\">15</Col><Col id=\"pageSize\">10</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_lawClass", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawClassName\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"lawClassName\">== 전체 ==</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_searchLawList", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawId\" type=\"STRING\" size=\"50\"/><Column id=\"lawNo\" type=\"STRING\" size=\"50\"/><Column id=\"nowHistoryCode\" type=\"STRING\" size=\"50\"/><Column id=\"lawName\" type=\"STRING\" size=\"200\"/><Column id=\"createDate\" type=\"STRING\" size=\"50\"/><Column id=\"createNo\" type=\"STRING\" size=\"50\"/><Column id=\"isModify\" type=\"STRING\" size=\"50\"/><Column id=\"careDept\" type=\"STRING\" size=\"100\"/><Column id=\"lawClassName\" type=\"STRING\" size=\"50\"/><Column id=\"actDate\" type=\"STRING\" size=\"50\"/><Column id=\"isSelf\" type=\"STRING\" size=\"50\"/><Column id=\"detailLink\" type=\"STRING\" size=\"200\"/><Column id=\"cateNo\" type=\"STRING\" size=\"50\"/><Column id=\"isShow\" type=\"STRING\" size=\"50\"/><Column id=\"modifyText\" type=\"STRING\" size=\"10000\"/><Column id=\"modifyReason\" type=\"STRING\" size=\"10000\"/><Column id=\"searchCondition\" type=\"STRING\" size=\"256\"/><Column id=\"searchLawClassName\" type=\"STRING\" size=\"256\"/><Column id=\"searchKeyword\" type=\"STRING\" size=\"256\"/><Column id=\"firstIndex\" type=\"INT\" size=\"256\"/><Column id=\"lastIndex\" type=\"INT\" size=\"256\"/><Column id=\"userId\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_paging", this);
+            obj._setContents("<ColumnInfo><Column id=\"currentPageNo\" type=\"INT\" size=\"256\"/><Column id=\"pageSize\" type=\"INT\" size=\"256\"/><Column id=\"recordCountPerPage\" type=\"INT\" size=\"256\"/><Column id=\"totalPageCount\" type=\"INT\" size=\"256\"/><Column id=\"totalRecordCount\" type=\"INT\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_chooseLaw", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawId\" type=\"STRING\" size=\"256\"/><Column id=\"lawNo\" type=\"STRING\" size=\"256\"/><Column id=\"nowHistoryCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawName\" type=\"STRING\" size=\"256\"/><Column id=\"createDate\" type=\"STRING\" size=\"256\"/><Column id=\"createNo\" type=\"STRING\" size=\"256\"/><Column id=\"isModify\" type=\"STRING\" size=\"256\"/><Column id=\"careDept\" type=\"STRING\" size=\"256\"/><Column id=\"lawClassName\" type=\"STRING\" size=\"256\"/><Column id=\"actDate\" type=\"STRING\" size=\"256\"/><Column id=\"isSelf\" type=\"STRING\" size=\"256\"/><Column id=\"detailLink\" type=\"STRING\" size=\"256\"/><Column id=\"cateNo\" type=\"STRING\" size=\"256\"/><Column id=\"isShow\" type=\"STRING\" size=\"256\"/><Column id=\"modifyText\" type=\"STRING\" size=\"256\"/><Column id=\"modifyReason\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_articleCount", this);
+            obj._setContents("<ColumnInfo><Column id=\"joCount\" type=\"INT\" size=\"256\"/><Column id=\"hangCount\" type=\"INT\" size=\"256\"/><Column id=\"hoCount\" type=\"INT\" size=\"256\"/><Column id=\"mokCount\" type=\"INT\" size=\"256\"/><Column id=\"subCount\" type=\"INT\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_search", "absolute", "0.5%", "4", null, "45", "0.3%", null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Edit("edt_searchKeyword", "absolute", "35.89%", "24.44%", "9.98%", "51.11%", null, null, this.div_search);
+            obj.set_taborder("2");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Combo("cb_searchLawClassName", "absolute", "12.8%", "24.44%", "15.02%", "51.11%", null, null, this.div_search);
+            this.div_search.addChild(obj.name, obj);
+            obj.set_taborder("8");
+            obj.set_innerdataset("@ds_lawClass");
+            obj.set_codecolumn("lawClassName");
+            obj.set_datacolumn("lawClassName");
+            obj.set_value("== 전체 ==");
+            obj.set_text("== 전체 ==");
+            obj.set_type("filter");
+            obj.set_usecontextmenu("true");
+            obj.set_index("-1");
+            obj = new Static("sta_searchType", "absolute", "5.24%", "24.44%", "9.17%", "51.11%", null, null, this.div_search);
+            obj.set_taborder("9");
+            obj.set_text("법령구분명 : ");
+            obj.style.set_font("10 Dotum");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Static("sta_searchType00", "absolute", "30.85%", "24.44%", "5.14%", "51.11%", null, null, this.div_search);
+            obj.set_taborder("10");
+            obj.set_text("법령명 : ");
+            obj.style.set_font("10 Dotum");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Calendar("cal_searchActDate1", "absolute", "54.74%", "9", "9.98%", "26", null, null, this.div_search);
+            this.div_search.addChild(obj.name, obj);
+            obj.set_taborder("11");
+            obj.set_readonly("false");
+            obj.set_value("null");
+            obj.set_dateformat("yyyy-MM-dd ddd");
+            obj = new Static("sta_searchActDate", "absolute", "48.19%", "24.44%", "6.35%", "51.11%", null, null, this.div_search);
+            obj.set_taborder("12");
+            obj.set_text("시행일자 : ");
+            obj.style.set_font("10 Dotum");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Calendar("cal_searchActDate2", "absolute", "67.54%", "9", "9.98%", "26", null, null, this.div_search);
+            this.div_search.addChild(obj.name, obj);
+            obj.set_taborder("13");
+            obj.style.set_background("#ffffffff");
+            obj.style.setStyleValue("border", "readonly", "1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            obj.style.setStyleValue("color", "readonly", "#333333ff");
+            obj.set_readonly("false");
+            obj.set_enable("true");
+            obj.set_value("null");
+            obj.set_dateformat("yyyy-MM-dd ddd");
+            obj = new Static("sta_searchType02", "absolute", "65.73%", "24.44%", "1.61%", "51.11%", null, null, this.div_search);
+            obj.set_taborder("14");
+            obj.set_text("~");
+            obj.style.set_font("10 Dotum");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Button("btn_search", "absolute", "90.12%", "9", "8.47%", "26", null, null, this.div_search);
+            obj.set_taborder("16");
+            obj.set_text("검색");
+            obj.style.set_image("URL('img::btn_WF_SearchSmall.png')");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Button("Button03", "absolute", "80.44%", "9", "8.47%", "26", null, null, this.div_search);
+            obj.set_taborder("17");
+            obj.set_text("초기화");
+            obj.style.set_image("URL('img::btn_MF_Refresh_O.png')");
+            this.div_search.addChild(obj.name, obj);
+
+            obj = new Div("div_contents", "absolute", "0.4%", "56", null, "541", "0.6%", null, this);
+            obj.set_taborder("1");
+            obj.style.set_background("white");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Grid("grd_lawList", "absolute", "0.81%", "-4", null, "71.72%", "0.71%", null, this.div_contents);
+            obj.set_taborder("47");
+            obj.set_binddataset("ds_searchLawList");
+            obj.set_autofittype("col");
+            obj.set_fillareatype("linerow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"413\"/><Column size=\"80\"/><Column size=\"70\"/><Column size=\"100\"/><Column size=\"150\"/><Column size=\"150\"/><Column size=\"80\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"법령명\"/><Cell col=\"1\" text=\"공포일자\"/><Cell col=\"2\" text=\"공포번호\"/><Cell col=\"3\" text=\"제개정구분\"/><Cell col=\"4\" text=\"소관부처\"/><Cell col=\"5\" text=\"법령구분\"/><Cell col=\"6\" text=\"시행일자\"/></Band><Band id=\"body\"><Cell edittype=\"none\" style=\"align:left;padding:0 0 0 10;\" text=\"bind:lawName\"/><Cell col=\"1\" displaytype=\"date\" text=\"bind:createDate\"/><Cell col=\"2\" text=\"bind:createNo\"/><Cell col=\"3\" text=\"bind:isModify\"/><Cell col=\"4\" text=\"bind:careDept\"/><Cell col=\"5\" text=\"bind:lawClassName\"/><Cell col=\"6\" displaytype=\"date\" text=\"bind:actDate\"/></Band></Format></Formats>");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new Button("btn_lawSub", "absolute", "23.03%", "77.82%", "7.78%", "5.36%", null, null, this.div_contents);
+            obj.set_taborder("48");
+            obj.set_text("부칙");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 solid #999999ff");
+            obj.style.set_font("10 Dotum");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new Button("btn_lawArticle", "absolute", "6.26%", "77.82%", "15.05%", "5.36%", null, null, this.div_contents);
+            obj.set_taborder("49");
+            obj.set_text("조문");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 solid #999999ff");
+            obj.style.set_font("10 Dotum");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new Div("div_paging", "absolute", "0.3%", "72.46%", "98.38%", "4.62%", null, null, this.div_contents);
+            obj.set_taborder("50");
+            obj.set_scrollbars("none");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new Static("sta_searchType", "absolute", "2.32%", "78.19%", "3.94%", "4.62%", null, null, this.div_contents);
+            obj.set_taborder("51");
+            obj.set_text("요약 : ");
+            obj.style.set_font("10 Dotum");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new Button("btn_lawInsert", "absolute", "91.72%", "78.56%", "70", "24", null, null, this.div_contents);
+            obj.set_taborder("52");
+            obj.set_text("등록");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new Button("btn_save", "absolute", "75.56%", "78.56%", "70", "24", null, null, this.div_contents);
+            obj.set_taborder("53");
+            obj.set_text("저장");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new Button("btn_update", "absolute", "83.64%", "78.56%", "70", "24", null, null, this.div_contents);
+            obj.set_taborder("54");
+            obj.set_text("수정");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new PopupDiv("PopupDiv_lawSubtext", "absolute", "25.05%", "-70", "900", "700", null, null, this.div_contents);
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #808080ff");
+            obj.set_url("Pattern::V_LAW_011.xfdl");
+            this.div_contents.addChild(obj.name, obj);
+            obj = new PopupDiv("PopupDiv_lawArticle", "absolute", "5.66%", null, "900", "700", null, "-30", this.div_contents);
+            obj.style.set_background("white");
+            obj.style.set_border("1 solid #808080ff");
+            obj.set_url("Pattern::V_LAW_012.xfdl");
+            this.div_contents.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 992, 43, this.div_search,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div_search.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 974, 25, this.div_contents.div_paging,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("50");
+            		p.set_scrollbars("none");
+
+            	}
+            );
+            this.div_contents.div_paging.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1267, 700, this.div_contents,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.style.set_background("white");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div_contents.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("LawList");
+            		p.set_titletext("현행법령목록");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+        this.loadPreloadList = function()
+        {
+            this._addPreloadList("fdl", "Pattern::V_LAW_011.xfdl");
+            this._addPreloadList("fdl", "Pattern::V_LAW_012.xfdl");
+        };
+        
+        // User Script
+        this.addIncludeScript("V_LAW_010.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_010.xfdl", function() {
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        
+        // 부칙 팝업 띄우기 -
+        this.div_contents_btn_lawSub_onclick = function(obj,e)
+        {
+        	if(this.fn_valid2() == "exit")
+        	{
+        		alert("법령 선택 요망");
+        		return;
+        	}
+        	
+        	//this.div_contents.PopupDiv_lawSubtext.trackPopupByComponent(this.div_search.stc_title, 0, 0);
+        	application.open("modeless_lawSub","Pattern::V_LAW_011.xfdl",this.getOwnerFrame(), 
+        		{mode:'modeless',ds_chooseLaw:this.ds_chooseLaw}, "showtitlebar=false", 300, 20, 900, 700);
+        }
+
+        this.div_contents_btn_lawArticle_onclick = function(obj,e)
+        {
+        	if(this.fn_valid2() == "exit")
+        	{
+        		alert("법령 선택 요망");
+        		return;
+        	}
+        	application.open("modeless_lawItemAll","Pattern::V_LAW_013.xfdl",this.getOwnerFrame(), 
+        		{mode:'modeless',ds_chooseLaw:this.ds_chooseLaw}, "showtitlebar=false", 300, 20, 900, 700);
+        }
+
+        this.div_contents_btn_lawInsert_onclick = function(obj,e)
+        {
+        	application.open("modeless_lawListInsert","Pattern::V_OPR_024.xfdl",this.getOwnerFrame(), 
+        		{mode:'modeless',ds_chooseLaw:this.ds_chooseLaw}, "showtitlebar=false", 200, 20, 900, 700);
+        }
+
+        // 폼 로드
+        this.form_onload = function(obj,e)
+        {
+        	//기본 공통  함수 초기화
+        	Iject.formOnload(obj);
+        	
+        	// 시행일자 검색 setting
+        	this.fn_dateSetting();
+        	
+        	// 관리자 코드등록 버튼 보이기
+        	
+        	if (application.gds_userInfo.getColumn(0,"grade") != "G-001")
+        	{
+        		this.div_contents.btn_lawInsert.set_visible("true");
+        		this.div_contents.btn_update.set_visible("true");
+        		this.div_contents.btn_save.set_visible("true");
+        	}
+
+        	// 폼이 로드 될때 1번만 법령검색을 위한 정보를 가져와서 셋팅함.
+        	var oDatas =  {
+        		  svcid : "lawClassInfo",
+        		  sController : "searchLawClassName.do", 
+        		  inds :[],
+        		  outds :[
+        			"ds_lawClass = output1"
+        			 ],			     
+        		  args  : [				
+        		  ],
+        		  bAsync : false,    // 비동기여부 (true : async  false: sync)
+        		  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        		  bCompress :false,	 //			  
+        		}; 
+        		
+        	//공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        			/*  
+        			*   callback argument
+        			*   @param : {string}    this.svcid      : 서비스 ID
+        			*   @param : {object}    this.fobj       : 현재 form object
+        			*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        			*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        			*/   
+        				
+        		if(this.errorcode < 0)
+        		{		
+        			Iject.alert(this.errorMsg);			
+        			return;
+        		} 
+        			  
+        	});
+        	
+        	this.div_search.cb_searchLawClassName.dropbutton.set_visible(false);
+        	
+        	this.fn_search();
+        }
+
+        /*
+        	검색 요청
+        */
+        this.div_search_btn_search_onclick = function(obj,e)
+        {
+        	this.ds_searchLawList.clear();
+        	this.fn_search();
+        }
+
+        this.fn_search = function(buttonText)
+        {
+        	this.ds_chooseLaw.clearData();													// detail 초기화
+        	this.ds_chooseLaw.addRow();
+        	this.ds_searchLawList.clearData();											// list 초기화
+        	var beforeDate = this.div_search.cal_searchActDate1;
+        	var afterDate = this.div_search.cal_searchActDate2;
+
+        	//검색 방법
+        //  	var searchType = this.div_search.cb_searchType.value;
+        	var searchClassName = this.div_search.cb_searchLawClassName.value;				//검색법령구분명
+        //  	var searchCondition = this.div_search.cb_searchCondition.value;					//키워드검색:키워드
+         	
+         	if(buttonText!="button")
+         	{
+        		// dataset reset
+        		this.ds_search.clearData();
+        		this.ds_search.addRow();
+        		this.ds_search.setColumn(0,"pageIndex",1);
+        		this.ds_search.setColumn(0,"pageUnit",15);
+        		this.ds_search.setColumn(0,"pageSize",10);
+        		this.ds_search.setColumn(0,"startDate",beforeDate.value);
+        		this.ds_search.setColumn(0,"endDate",afterDate.value);
+        		
+        		this.ds_paging.clearData();
+        		
+        		var searchKeyword = this.div_search.edt_searchKeyword.value;				//검색어
+        		
+        		// 유효성 검사
+        		if (this.fn_valid() == "chooseClass")
+        		{
+        // 			this.alert("필수입력값 오류");
+        // 			this.div_search.edt_searchKeyword.set_value("");
+        // 			this.div_search.edt_searchKeyword.setFocus();
+        // 			return;
+        			this.ds_search.setColumn(0, "searchLawClassName", searchClassName);
+        		}
+        		this.ds_search.setColumn(0,"searchCondition","LAWNAME");
+        //		this.ds_search.setColumn(0, "searchCondition", searchCondition);
+        		this.ds_search.setColumn(0 ,"searchKeyword", searchKeyword);
+        	}
+        	
+        	var oDatas =  {
+        			  svcid : "searchInfo",
+        			  sController : "searchLawList.do",			 
+        			  inds :["ds_search=ds_search"],
+        			  outds :[
+        				 "ds_searchLawList = lawListOutput,"+
+        				 "ds_paging = pagingOutput"
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : false,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 // POST 데이터 압축 여부
+        			}; 
+        		
+        			 
+        	//공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		/*  
+        		*   callback argument0
+        		*   @param : {string}    this.svcid      : 서비스 ID
+        		*   @param : {object}    this.fobj       : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/   
+        				
+        // 		if(this.errorcode < 0)
+        // 		{		
+        // 			Iject.alert(this.errormsg);			
+        // 			return;
+        // 		} 
+        // 			  
+         		var pThis = this.fobj;   //form object
+         	
+        	});
+
+        	this.fn_firstListClick();
+        }
+
+        // 유효성검사 function
+        this.fn_valid = function()
+        {
+        	var className = this.div_search.cb_searchLawClassName.value;
+        	
+        	if (className != "== 전체 ==")
+        	{
+        		return "chooseClass";
+        	}
+        }
+
+        this.fn_valid2 = function()
+        {
+        	var subText = this.ds_chooseLaw.getColumn(0,"lawId");
+        	if(subText == undefined || subText == "")
+        	{
+        		return "exit";
+        	}
+        }
+
+        this.fn_paging = function()
+        {
+        	//var pThis = this.fobj;
+        	this.div_contents.div_paging.destroy();
+        	var objDiv = new Div("div_paging","absolute","0.3%","72.46%","98%","4.6%",null,null);
+        	this.div_contents.addChild("div_paging",objDiv);
+        	objDiv.show();
+        	
+        	//////////////
+        	var startPage = this.ds_searchLawList.getColumn(0,"firstIndex");
+            var endPage = this.ds_searchLawList.getColumn(0,"lastIndex");
+            var totalPage = this.ds_paging.getColumn(0,"totalPageCount");
+            var page = this.ds_paging.getColumn(0,"currentPageNo");
+            var countPage = this.ds_paging.getColumn(0,"pageSize");
+            
+            var position = (10-endPage%10);
+            
+            if(position == 10)
+            {
+        		position = 0;
+            }
+            
+            var btnLeft = 292+position*16;
+            var btnTop = "0.3%";
+            var btnHeight = "100%";
+            var btnWidth = 45;
+            var i = startPage;
+            var j = endPage;
+            
+
+        	// 처음으로버튼 생성
+            if(page != 1 && totalPage > 1){
+        		var objBtnId    = "paging_btn_First";
+        		var objButton = new Button(objBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);
+        		this.div_contents.div_paging.addChild(objBtnId, objButton);
+        		this.div_contents.div_paging.paging_btn_First.set_text("<<");
+        		this.div_contents.div_paging.paging_btn_First.set_enable(true);
+        		this.div_contents.div_paging.paging_btn_First.style.set_border("0px solid white");
+        		this.div_contents.div_paging.paging_btn_First.style.set_background("transparent");
+        		this.div_contents.div_paging.paging_btn_First.addEventHandler("onclick",this.div_pagingButton_onclick, this);
+        		objButton.show();
+            }
+            btnLeft = btnLeft + 40;
+            
+            // 이전버튼 생성
+            if(page > 10){
+        		var prevButton = new Button();
+        		var prevBtnId    = "paging_btn_Prev";
+        		prevButton.init(prevBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);       
+        		prevButton.set_text("<");
+        		prevButton.set_enable(true);
+        		prevButton.style.set_border("0px solid white");
+        		prevButton.style.set_background("transparent");
+        		prevButton.addEventHandler("onclick",this.div_pagingButton_onclick, this);
+        		this.div_contents.div_paging.addChild(prevBtnId,prevButton);
+        		prevButton.show();
+        		
+            }
+            btnLeft = btnLeft + 45;
+            
+            // 페이지 번호 생성
+            if(totalPage > 1){
+        		for(i ; i <= j; i++) {
+        			var objButton = new Button();
+        			var objBtnId    = "paging_btn_"+i;
+        			objButton.init(objBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,0);       
+        			objButton.set_text(i);
+        			if(page == i ){
+        				objButton.set_enable(false);
+        			}else{
+        				objButton.set_enable(true);
+        			}
+        			objButton.addEventHandler("onclick",this.div_pagingNumber_onclick , this);
+        			
+        			objButton.style.set_border("0px solid white");
+        			objButton.style.set_background("transparent");
+        			
+        			this.div_contents.div_paging.addChild(objBtnId,objButton);
+        			objButton.show();
+        			
+        			btnLeft = btnLeft + 30;
+        		}
+        	}
+            
+            btnWidth = 25;
+            if(totalPage > 1){
+        		for(i ; i <= j; i++) {
+        			var objButton = new Button();
+        			var objBtnId    = "paging_btn_"+i;
+        			objButton.init(objBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);       
+        			objButton.set_text(i);
+        			if(page == i ){
+        				objButton.set_enable(false);
+        			}else{
+        				objButton.set_enable(true);
+        			}
+        			objButton.addEventHandler("onclick",this.div_pagingNumber_onclick , this);
+        			
+        			objButton.style.set_border("0px solid white");
+        			objButton.style.set_background("transparent");
+        			
+        			this.div_contents.div_paging.addChild(objBtnId,objButton);
+        			objButton.show();
+        			
+        			btnLeft = btnLeft + 35;
+        		}
+        	}
+            btnWidth = 45;
+            btnLeft = btnLeft + 10;
+            
+            // 다음버튼 생성
+            if(endPage != totalPage){
+        		var nextButton = new Button();
+        		var nextBtnId    = "paging_btn_Next";
+        		nextButton.init(nextBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);       
+        		nextButton.set_text(">");
+        		nextButton.set_enable(true);
+        		nextButton.style.set_border("0px solid white");
+        		nextButton.style.set_background("transparent");
+        		nextButton.addEventHandler("onclick",this.div_pagingButton_onclick, this);
+        		this.div_contents.div_paging.addChild(nextBtnId,nextButton);
+        		nextButton.show();
+            }
+            btnLeft = btnLeft + 40;
+            
+            // 마지막으로버튼 생성
+        	if(page < totalPage && totalPage > 1){
+        		var lastButton = new Button();
+        		var lastBtnId    = "paging_btn_Last";
+        		lastButton.init(lastBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);       
+        		lastButton.set_text(">>");
+        		lastButton.set_enable(true);
+        		lastButton.style.set_border("0px solid white");
+        		lastButton.style.set_background("transparent");
+        		lastButton.addEventHandler("onclick",this.div_pagingButton_onclick, this);
+        		this.div_contents.div_paging.addChild(lastBtnId,lastButton);
+        		lastButton.show();
+        	}
+        }
+
+        //페이징 처리
+        this.div_pagingButton_onclick = function(obj,e){
+            var objName = obj.name.split('paging_btn_');
+            this.fn_page (objName[1]);
+        }
+
+        this.div_pagingNumber_onclick = function(obj,e){
+            this.fn_page (obj.text);
+        }
+
+        //버튼 클릭 후
+        this.fn_page = function (btnText){
+            var objNum = 1;
+            if(btnText=='First'){
+                objNum = 1;
+            }else if(btnText=='Prev'){
+                objNum = this.ds_searchLawList.getColumn(0,"firstIndex")-1;
+            }else if(btnText=='Last'){
+                objNum = this.ds_paging.getColumn(0,"totalPageCount");
+            }else if(btnText=='Next'){
+                objNum = this.ds_searchLawList.getColumn(0,"lastIndex")+1;
+            }else{
+        		objNum = btnText;
+            }
+            this.page_click(objNum);
+        }
+
+        //page버튼 클릭시 동작
+        this.page_click = function(pagenum){
+        	//page정보 갱신
+        	var pnum = 0;
+        	pnum = pagenum;
+        	this.ds_search.setColumn(0,"pageIndex",pnum);
+        	this.fn_search("button");
+        }
+
+        //grid내의 select list의 one row클릭 시 동작
+        this.fn_listClick = function(obj,e){
+        	var nToRow = 0;
+        	var nFromRow = e.row;	//복사할 row의 Position, int값
+        	
+        	this.ds_chooseLaw.copyRow(nToRow, this.ds_searchLawList, nFromRow);
+        	
+        	this.fn_articleCount();
+        	
+        	this.fn_countSetting();
+        }
+
+        this.fn_firstListClick = function(obj,e){
+        	var nToRow = 0;
+        	var nFromRow = 0;	//복사할 row의 Position, int값
+        	
+        	this.ds_chooseLaw.copyRow(nToRow, this.ds_searchLawList, nFromRow);
+        	
+        	this.fn_articleCount();
+        	
+        	this.fn_countSetting();
+        }
+
+        this.fn_countSetting = function() {
+        	var jo = this.ds_articleCount.getColumn(0,"joCount");
+        	var hang = this.ds_articleCount.getColumn(0,"hangCount");
+        	var ho = this.ds_articleCount.getColumn(0,"hoCount");
+        	var mok = this.ds_articleCount.getColumn(0,"mokCount");
+        	var sub = this.ds_articleCount.getColumn(0,"subCount");
+        	
+        	var countResult1 = jo+"조 "+hang+"항 "+ho+"호 "+mok+"목";
+        	var countResult2 = "부칙 "+sub+"건";
+        	
+        	this.div_contents.btn_lawArticle.set_text(countResult1);
+        	this.div_contents.btn_lawSub.set_text(countResult2);
+        	
+        // 	if(jo != 0) 
+        // 	{
+        // 		countResult = countResult + " 조 : " + jo + "건 ";
+        // 	}
+        // 	if(hang != 0) 
+        // 	{
+        // 		countResult = countResult + " 항 : " + hang + "건 ";
+        // 	}
+        // 	if(ho != 0) 
+        // 	{
+        // 		countResult = countResult + " 호 : " + ho + "건 ";
+        // 	}
+        // 	if(mok != 0) 
+        // 	{
+        // 		countResult = countResult + " 목 : " + mok + "건 ";
+        // 	}
+        // 	if(jo != 0) 
+        // 	{
+        // 		countResult = countResult + " 부칙 : " + sub + "건 ";
+        // 	}
+        // 	
+        // 	this.div_contents.sta_lawCount.set_text(countResult);
+        }
+
+        // url
+        // this.div_contents_edt_detailLink_oneditclick = function(obj:Edit,  e:nexacro.EditClickEventInfo)
+        // {
+        // 	var refFormLink = this.ds_chooseLaw.getColumn(0,"detailLink");
+        // 	if(refFormLink==undefined)
+        // 	{
+        // 		alert("법령 선택하세요.");
+        // 		return;
+        // 	}
+        // 	var link1 = refFormLink+"";
+        // 	var link2 = link1.replace("&type=HTML","&type=XML");
+        // 	var url = "http://www.law.go.kr"+link2;
+        // 	system.execBrowser(url);
+        // }
+
+        this.fn_dateSetting = function()
+        {
+        	var beforeDate = this.div_search.cal_searchActDate1;
+        	var afterDate = this.div_search.cal_searchActDate2;
+        	
+        	beforeDate.calendaredit.set_enable(false);
+        	beforeDate.calendaredit.style.set_background_color("transparent");
+        	beforeDate.calendaredit.style.set_color("black");
+        	
+        	afterDate.calendaredit.set_enable(false);
+        	afterDate.calendaredit.style.set_background_color("transparent");
+        	afterDate.calendaredit.style.set_color("black");
+        }
+
+        this.fn_validDate = function()
+        {
+        	var beforeDate = this.div_search.cal_searchActDate1;
+        	var afterDate = this.div_search.cal_searchActDate2;
+        	
+        	var currDate = new Date();
+        	var year = currDate.getFullYear().toString().padLeft(4, "0");
+        	var month = (currDate.getMonth()+1).toString().padLeft(2, "0");
+        	var day = currDate.getDate().toString().padLeft(2, "0");
+        	currDate = year+month+day
+        	
+        	if (afterDate.value > currDate)
+        	{
+        		alert("오늘날짜보다 클 수 없습니다.");
+        		afterDate.set_value(currDate);
+        		return;
+        	}
+        	
+        	if(afterDate.value == null)
+        	{
+        		if (beforeDate.value > currDate)
+        		{
+        			alert("오늘날짜보다 클 수 없습니다.");
+        			beforeDate.set_value(currDate);
+        			return;
+        		}
+        	} else {
+        		if(beforeDate.value > afterDate.value)
+        		{
+        			alert("시작날짜가 마지막날짜보다 클 수 없습니다.");
+        			beforeDate.set_value(afterDate.value);
+        			return;
+        		}
+        	}
+        }
+
+        //수정 버튼 누르고 법령명, 공포번호, 제개정구분, 소관부처, 법령구분 더블 클릭하면 수정 할 수 있는 에디트로 바뀌어서 수정 가능
+        this.div_contents_btn_update_onclick = function(obj,e)
+        {
+        	this.div_contents.grd_lawList.setCellProperty("body",0,"edittype","text"); //법령명
+        	this.div_contents.grd_lawList.setCellProperty("body",2,"edittype","text"); //공포번호
+        	this.div_contents.grd_lawList.setCellProperty("body",3,"edittype","text"); //제개정구분
+        	this.div_contents.grd_lawList.setCellProperty("body",4,"edittype","text"); //소관부처
+        	this.div_contents.grd_lawList.setCellProperty("body",5,"edittype","text"); //법령구분
+        }
+
+        //저장 버튼 누르면 수정이 되면서 수정 못 하게 막음
+        this.div_contents_btn_save_onclick = function(obj,e)
+        {
+        	this.div_contents.grd_lawList.setCellProperty("body",0,"edittype","none");
+        	this.div_contents.grd_lawList.setCellProperty("body",2,"edittype","none");
+        	this.div_contents.grd_lawList.setCellProperty("body",3,"edittype","none");
+        	this.div_contents.grd_lawList.setCellProperty("body",4,"edittype","none");
+        	this.div_contents.grd_lawList.setCellProperty("body",5,"edittype","none");
+        	
+        	//로그 기록 남기기 위한 유저 아이디 값 받기
+        	var userId = application.gds_userInfo.getColumn(0,"userid");
+        	this.ds_searchLawList.setColumn(0,"userId", userId);
+        	
+        	var oDatas =  {
+        			  svcid : "update",
+        			  sController : "lawUpdateVO.do",			 
+        			  inds :["input=ds_searchLawList:U"],
+        			  outds :[],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        			
+            //공통 transaction 함수 호츨   //function callback 
+             var save=confirm("데이터를 수정하시겠습니까?");
+        	if(save)
+        	{
+        		Iject.transaction(this,oDatas,function()
+        		{
+        			Iject.alert("저장완료");
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid       서비스 ID
+        		*   @param : {object}    this.fobj        : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/    
+        			if(this.errorcode < 0)
+        			{
+        				Iject.alert(this.errorMsg,"알림");
+        				return;
+        			}
+        			  
+        			var pThis = this.fobj;   //form object
+        	     
+        		});
+        	}
+        	
+        	this.fn_search("button");
+        }
+
+        this.fn_articleCount = function()
+        {
+        	var oDatas =  {
+        			  svcid : "strid",
+        			  sController : "searchArticleCount.do",			 
+        			  inds :["input=ds_chooseLaw"],
+        			  outds :["ds_articleCount = output1"],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : false,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        			
+        	Iject.transaction(this,oDatas,function()
+        	{
+        	/*  
+        	*   callback argument
+        	*   @param : {string}    this.svcid       서비스 ID
+        	*   @param : {object}    this.fobj        : 현재 form object
+        	*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        	*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        	*/    
+        		if(this.errorcode < 0)
+        		{
+        			Iject.alert(this.errorMsg,"알림");
+        			return;
+        		}
+        	});
+        }
+
+        this.div_contents_btn_lawArticle_onmouseenter = function(obj,e)
+        {
+        	obj.style.set_font("10 bold Dotum");
+        }
+
+        this.div_contents_btn_lawArticle_onmouseleave = function(obj,e)
+        {
+        	obj.style.set_font("10 Dotum");
+        }
+
+        this.div_contents_btn_lawSub_onmouseenter = function(obj,e)
+        {
+        	obj.style.set_font("10 bold Dotum");
+        }
+
+        this.div_contents_btn_lawSub_onmouseleave = function(obj,e)
+        {
+        	obj.style.set_font("10 Dotum");
+        }
+
+        this.Div01_Button00_onclick = function(obj,e)
+        {
+        	this.div_search.cal_searchActDate1.set_value();
+        	this.div_search.cal_searchActDate2.set_value();
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_paging.addEventHandler("onload", this.fn_paging, this);
+            this.addEventHandler("onload", this.form_onload, this);
+            this.div_search.cb_searchLawClassName.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.div_search.sta_searchType00.addEventHandler("onclick", this.sta_searchType00_onclick, this);
+            this.div_search.cal_searchActDate1.addEventHandler("onchanged", this.fn_validDate, this);
+            this.div_search.cal_searchActDate1.addEventHandler("oneditclick", this.div_search_cal_searchActDate1_oneditclick, this);
+            this.div_search.sta_searchActDate.addEventHandler("onclick", this.sta_searchType00_onclick, this);
+            this.div_search.cal_searchActDate2.addEventHandler("onchanged", this.fn_validDate, this);
+            this.div_search.sta_searchType02.addEventHandler("onclick", this.sta_searchType00_onclick, this);
+            this.div_search.btn_search.addEventHandler("onclick", this.div_search_btn_search_onclick, this);
+            this.div_search.Button03.addEventHandler("onclick", this.Div01_Button00_onclick, this);
+            this.div_contents.grd_lawList.addEventHandler("oncellclick", this.fn_listClick, this);
+            this.div_contents.btn_lawSub.addEventHandler("onclick", this.div_contents_btn_lawSub_onclick, this);
+            this.div_contents.btn_lawSub.addEventHandler("onmouseenter", this.div_contents_btn_lawSub_onmouseenter, this);
+            this.div_contents.btn_lawSub.addEventHandler("onmouseleave", this.div_contents_btn_lawSub_onmouseleave, this);
+            this.div_contents.btn_lawArticle.addEventHandler("onclick", this.div_contents_btn_lawArticle_onclick, this);
+            this.div_contents.btn_lawArticle.addEventHandler("onmouseenter", this.div_contents_btn_lawArticle_onmouseenter, this);
+            this.div_contents.btn_lawArticle.addEventHandler("onmouseleave", this.div_contents_btn_lawArticle_onmouseleave, this);
+            this.div_contents.sta_searchType.addEventHandler("onclick", this.div_contents_sta_searchType_onclick, this);
+            this.div_contents.btn_lawInsert.addEventHandler("onclick", this.div_contents_btn_lawInsert_onclick, this);
+            this.div_contents.btn_save.addEventHandler("onclick", this.div_contents_btn_save_onclick, this);
+            this.div_contents.btn_update.addEventHandler("onclick", this.div_contents_btn_update_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_010.xfdl");
+        this.loadPreloadList();
+       
+    };
+}
+)();

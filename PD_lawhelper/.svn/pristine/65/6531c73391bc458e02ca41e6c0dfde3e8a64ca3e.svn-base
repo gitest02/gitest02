@@ -1,0 +1,518 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_OPR_010");
+                this.set_classname("V_OPR_010");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_searchLog", this);
+            obj._setContents("<ColumnInfo><Column id=\"searchCondition\" type=\"STRING\" size=\"256\"/><Column id=\"searchKeyword\" type=\"STRING\" size=\"256\"/><Column id=\"search_userId\" type=\"STRING\" size=\"256\"/><Column id=\"search_logType\" type=\"STRING\" size=\"256\"/><Column id=\"search_logDate_fromdate\" type=\"STRING\" size=\"256\"/><Column id=\"search_logDate_todate\" type=\"STRING\" size=\"256\"/><Column id=\"page\" type=\"STRING\" size=\"256\"/><Column id=\"viewListCount\" type=\"STRING\" size=\"256\"/><Column id=\"viewPageNum\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"viewListCount\">15</Col><Col id=\"page\"/><Col id=\"viewPageNum\">10</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_menu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_SEQ\" type=\"int\" size=\"4\"/><Column id=\"MENU_OPTP\" type=\"string\" size=\"32\"/><Column id=\"PAGE_URL\" type=\"string\" size=\"32\"/><Column id=\"MENU_TOP\" type=\"string\" size=\"32\"/><Column id=\"MENU_ID\" type=\"string\" size=\"32\"/><Column id=\"MENU_GRP\" type=\"string\" size=\"32\"/><Column id=\"CREATE_DT\" type=\"string\" size=\"32\"/><Column id=\"MENU_LEVEL\" type=\"int\" size=\"4\"/><Column id=\"PAGE_ID\" type=\"string\" size=\"32\"/><Column id=\"PAGE_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_ARGS\" type=\"string\" size=\"32\"/><Column id=\"MENU_STAT\" type=\"string\" size=\"32\"/><Column id=\"CREATE_USER\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_DT\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_USER\" type=\"string\" size=\"32\"/><Column id=\"MENU_DESC\" type=\"string\" size=\"32\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_logData", this);
+            obj._setContents("<ColumnInfo><Column id=\"id\" type=\"INT\" size=\"256\"/><Column id=\"logType\" type=\"STRING\" size=\"256\"/><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"userIp\" type=\"STRING\" size=\"256\"/><Column id=\"logDetail\" type=\"STRING\" size=\"256\"/><Column id=\"macAddress\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_paging", this);
+            obj._setContents("<ColumnInfo><Column id=\"endList\" type=\"INT\" size=\"256\"/><Column id=\"endPage\" type=\"INT\" size=\"256\"/><Column id=\"page\" type=\"INT\" size=\"256\"/><Column id=\"startList\" type=\"INT\" size=\"256\"/><Column id=\"startPage\" type=\"INT\" size=\"256\"/><Column id=\"totalList\" type=\"INT\" size=\"256\"/><Column id=\"totalpage\" type=\"INT\" size=\"256\"/><Column id=\"viewListCount\" type=\"INT\" size=\"256\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Edit("edit_userId", "absolute", "52.2%", "44", null, "24", "35.9%", null, this);
+            obj.set_taborder("1");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00", "absolute", "1.7%", "75", "97%", "385", null, null, this);
+            obj.set_taborder("3");
+            obj.getSetter("titletext").set("LogList");
+            obj.set_binddataset("ds_logData");
+            obj.set_autofittype("col");
+            obj.set_fillareatype("allrow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"200\"/><Column size=\"200\"/><Column size=\"200\"/><Column size=\"200\"/><Column size=\"200\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell style=\"font:8 arial;\" text=\"LOGDATE\"/><Cell col=\"1\" style=\"font:8 arial;\" text=\"LOGTYPE\"/><Cell col=\"2\" style=\"font:8 arial;\" text=\"USERID\"/><Cell col=\"3\" style=\"font:8 arial;\" text=\"MacAddress\"/><Cell col=\"4\" style=\"font:8 arial;\" text=\"USERIP\"/></Band><Band id=\"body\"><Cell text=\"bind:logDate\"/><Cell col=\"1\" text=\"bind:logType\"/><Cell col=\"2\" text=\"bind:userId\"/><Cell col=\"3\" text=\"bind:macAddress\"/><Cell col=\"4\" text=\"bind:userIp\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edit_logType", "absolute", "69.4%", "44", null, "24", "17.9%", null, this);
+            obj.set_taborder("4");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("log_count", "absolute", "1.7%", "56", null, "10", "91.8%", null, this);
+            obj.set_taborder("7");
+            obj.set_text("총 :  0개");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("search_info", "absolute", "84%", "7.17%", "7%", "4%", null, null, this);
+            obj.set_taborder("21");
+            obj.set_tooltiptext("검색버튼");
+            obj.style.set_image("URL('img::btn_WF_SearchSmall.png')");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_text("검색");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "15.9%", "44", null, "24", "79.4%", null, this);
+            obj.set_taborder("23");
+            obj.set_text("검색일자 : ");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "49%", "44", null, "24", "48.4%", null, this);
+            obj.set_taborder("24");
+            obj.set_text("ID :");
+            obj.style.set_align("right");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "64.6%", "44", null, "24", "30.7%", null, this);
+            obj.set_taborder("25");
+            obj.set_text("Type : ");
+            obj.style.set_align("right");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "27.2%", "501", null, "50", "333", null, this);
+            obj.set_taborder("26");
+            this.addChild(obj.name, obj);
+            obj = new Static("stc_Prev", "absolute", "32.66%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("0");
+            obj.set_text("<<");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No0", "absolute", "37.72%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("1");
+            obj.set_text("1");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No1", "absolute", "41.77%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("2");
+            obj.set_text("2");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No2", "absolute", "46.58%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("3");
+            obj.set_text("3");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No3", "absolute", "50.63%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("4");
+            obj.set_text("4");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No4", "absolute", "55.19%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("5");
+            obj.set_text("5");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No5", "absolute", "59.75%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("6");
+            obj.set_text("6");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No6", "absolute", "64.05%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("7");
+            obj.set_text("7");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No7", "absolute", "68.61%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("8");
+            obj.set_text("8");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No8", "absolute", "73.42%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("9");
+            obj.set_text("9");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_No9", "absolute", "78.48%", "17", "15", "24", null, null, this.Div00);
+            obj.set_taborder("10");
+            obj.set_text("10");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("stc_Next", "absolute", "84.3%", "17", "17", "24", null, null, this.Div00);
+            obj.set_taborder("11");
+            obj.set_text(">>");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            obj.style.set_color("navy");
+            obj.style.set_align("middle");
+            obj.style.set_font("11 Arial");
+            obj.style.set_cursor("hand");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new Calendar("edit_logDate_todate", "absolute", "36%", "44", null, "24", "51.4%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("27");
+            obj.set_dateformat("yyyy-MM-dd ");
+
+            obj = new Static("Static03", "absolute", "34.5%", "49", null, "16", "64.4%", null, this);
+            obj.set_taborder("28");
+            obj.set_text("~");
+            this.addChild(obj.name, obj);
+
+            obj = new Calendar("edit_logDate_fromdate", "absolute", "21.6%", "44", null, "24", "65.8%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("29");
+            obj.set_dateformat("yyyy-MM-dd ");
+
+            obj = new Button("Button01", "absolute", "91.6%", "7.17%", "7%", "4%", null, null, this);
+            obj.set_taborder("30");
+            obj.set_text("초기화");
+            obj.style.set_image("URL('img::btn_MF_Refresh_O.png')");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 314, 67, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("26");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_OPR_010");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_OPR_010.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_OPR_010.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.log_iStartPageNo = 0;
+        this.log_iMaxPageNo = 10;
+
+        //실행 시 바로 조회
+
+        this.V_OPR_010_onload = function(obj,e){
+        	Iject.formOnload(obj);
+        	this.fn_logList();
+        }
+
+        //전체 리스트 조회
+        this.fn_logList = function(nowPage){
+        	  this.ds_logData.clearData();
+        	  this.ds_paging.clearData();
+        	  this.ds_logData.addRow();
+              var search_Condition =  "USERID";
+              var search_userId = this.edit_userId.value;       
+              var search_logType = this.edit_logType.value;
+        	  var search_logDate_fromdate = this.edit_logDate_fromdate.value;
+        	  var search_logDate_todate  = this.edit_logDate_todate.value;
+        	  this.fn_dateSetting();
+        		this.ds_searchLog.setColumn(0, "search_Condition", "USERID");
+        		this.ds_searchLog.setColumn(0, "search_userId", search_userId);
+         		this.ds_searchLog.setColumn(0, "search_logType", search_logType);
+        		this.ds_searchLog.setColumn(0, "search_logDate_fromdate", search_logDate_fromdate);
+        		this.ds_searchLog.setColumn(0, "search_logDate_todate", search_logDate_todate);
+        		
+        		if(nowPage == null || nowPage == undefined){
+         			nowPage = 1;
+         			this.ds_searchLog.setColumn(0, "page", nowPage);
+         		}
+         		
+        	var oDatas = {
+        		svcid : "search",
+        		sController : "logDataSelectList.do",
+        		inds : ["ds_searchLog = ds_searchLog"],
+        		outds : ["ds_logData = ds_logData", "ds_paging = ds_paging"],
+        		args : [],
+        		bAsync : false,
+        		nDataType : 0,
+        		bCompress : false,
+        		
+        	};
+        	
+        	//공통함수 transaction
+        	
+        	Iject.transaction(this, oDatas, function(){
+        		if(this.errorcode < 0){
+        			trace("에러");
+        			Iject.alert("검색결과가 없습니다.","알림");
+        			return;
+        		}
+        		
+        		var pThis = this.fobj;
+        		pThis.fn_logCount();
+        		
+        // 		trace("ds_logData : " + pThis.ds_logData.saveXML());
+        // 		trace("ds_paging : " + pThis.ds_paging.saveXML());
+        		
+
+        	});
+
+        	this.fn_log_setPageNo();
+        	
+        }
+        //조건검색
+        this.search_log_Button00_onclick = function(obj,e){
+        	this.log_iStartPageNo=0;
+        	this.fn_logList(1);
+        }
+
+        
+        //회원 총 인원
+        this.fn_logCount = function(){
+        	var count = this.ds_paging.getColumn(0,"totalList");
+        	this.log_count.set_text("총 : " + count);
+        }
+        this.Button01_onclick = function(obj,e)
+        {
+        	this.edit_logDate_fromdate.set_value();
+        	this.edit_logDate_todate.set_value();
+        }
+        //기간검색
+        this.fn_dateSetting = function(){
+
+        	var from_date = this.edit_logDate_fromdate;
+        	var to_date = this.edit_logDate_todate;
+        	
+        	var current_date = new Date();
+        	var year = current_date.getFullYear().toString().padLeft(4, "0");
+        	var month = (current_date.getMonth()+1).toString().padLeft(2, "0");
+        	var day = current_date.getDate().toString().padLeft(2, "0");
+        	current_date = year+month+day;
+
+        	if (to_date.value > current_date)
+        	{
+        		alert("오늘날짜보다 클 수 없습니다.");
+        		to_date.set_value(current_date);
+        		return;
+        	}
+        	
+        	if(to_date.value == null)
+        	{
+        		if (from_date.value > current_date)
+        		{
+        			alert("오늘날짜보다 클 수 없습니다.");
+        			from_date.set_value(current_date);
+        			return;
+        		}
+        	} else {
+        		if(from_date.value > to_date.value)
+        		{
+        			alert("시작날짜가 마지막날짜보다 클 수 없습니다.");
+        			from_date.set_value(to_date.value);
+        			return;
+        		}
+        	}
+        }
+        //번호클릭
+        this.div_paging_onclick = function(obj,e)
+        {
+        	var viewPageNum = this.ds_paging.getColumn(0,"viewPageNum"); //보여줄 페이지 번호 갯수
+        	
+        	var iNo = new Number(obj.text);
+        	var iFirstNum = (iNo-1) * viewPageNum + 1;
+        	var iLastNum = iFirstNum + viewPageNum;
+        	this.ds_searchLog.setColumn(0, "page", iNo);
+        	this.fn_logList(iNo);
+        	
+        }
+
+        
+        //prev  클릭
+        this.div_paging_prev_onclick = function(obj,e){
+        		
+        		this.log_iStartPageNo = this.log_iStartPageNo - 1;
+        			
+        		this.fn_logList((this.log_iStartPageNo*10)+1);
+        		
+        	}
+
+        
+        //next 클릭
+        this.div_paging_next_onclick = function(obj,e){
+        		
+        		this.log_iStartPageNo = this.log_iStartPageNo + 1;
+        		
+        		this.fn_logList((this.log_iStartPageNo*10)+1);
+        		
+        	}
+        	
+        //페이지 셋팅
+        this.fn_log_setPageNo = function(){
+        		
+        		var endList = this.ds_paging.getColumn(0,"endList"); //끝 게시물 번호
+        		var endPage = this.ds_paging.getColumn(0,"endPage"); //끝페이지 번호
+        		var page = this.ds_paging.getColumn(0,"page"); //선택페이지
+        		var startList = this.ds_paging.getColumn(0,"startList"); //시작게시물번호
+        		var startPage = this.ds_paging.getColumn(0,"startPage"); // 시작페이지번호
+        		var totalList = this.ds_paging.getColumn(0,"totalList"); //게시물 총수 
+        		var totalPage = this.ds_paging.getColumn(0,"totalPage"); //총 페이지수
+        		var viewListCount = this.ds_paging.getColumn(0,"viewListCount"); //보여질 게시물수
+        		var viewPageNum = this.ds_paging.getColumn(0,"viewPageNum"); //보여줄 페이지 번호 갯수
+        				
+        		var sPage = this.log_iStartPageNo * viewPageNum;
+        	
+        		var position = "";
+        		// Prev 버튼 처리
+        		if (this.log_iStartPageNo < 1)
+        		{
+        			this.Div00.stc_Prev.set_visible(false);
+        		} 
+        		else 
+        		{
+        			this.Div00.stc_Prev.set_visible(true);
+        		}
+        	   
+        		// Next 버튼 처리
+        		if (sPage+10 > totalPage)
+        		{
+        			this.Div00.stc_Next.set_visible(false);
+        		}
+        		else
+        		{
+        			this.Div00.stc_Next.set_visible(true);
+        		}
+
+        		// 인덱스 번호 처리
+        			for (var i = 0; i < 10; i++) //화면에 보여줄 페이지 갯수
+        		{
+        		
+        			this.Div00.components["stc_No"+i].set_visible(true);
+        			this.Div00.components["stc_No"+i].set_text(sPage+i+1);
+        	 
+        			if ( sPage+i+1 > totalPage)
+        			{
+        				this.Div00.components["stc_No"+i].set_visible(false);
+        				position = i;
+        			} 
+        			else 
+        			{
+        				this.Div00.components["stc_No"+i].set_visible(true);
+        			}
+        		}
+        		var test = 27.2+position*0.8+"%";
+        		this.Div02.set_left(test);	
+        	}
+
+        
+
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_OPR_010_onload, this);
+            this.search_info.addEventHandler("onclick", this.search_log_Button00_onclick, this);
+            this.Div00.stc_Prev.addEventHandler("onclick", this.div_paging_prev_onclick, this);
+            this.Div00.stc_No0.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No1.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No2.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No3.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No4.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No5.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No6.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No7.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No8.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_No9.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.Div00.stc_Next.addEventHandler("onclick", this.div_paging_next_onclick, this);
+            this.edit_logDate_todate.addEventHandler("oneditclick", this.edit_logDate_oneditclick, this);
+            this.edit_logDate_fromdate.addEventHandler("oneditclick", this.edit_logDate_oneditclick, this);
+            this.Button01.addEventHandler("onclick", this.Button01_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_OPR_010.xfdl");
+
+       
+    };
+}
+)();

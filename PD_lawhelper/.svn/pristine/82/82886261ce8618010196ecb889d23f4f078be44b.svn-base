@@ -1,0 +1,231 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_REC_002");
+                this.set_classname("V_REC_002");
+                this.set_titletext("담당자 조회");
+                this._setFormPosition(0,0,500,400);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_mgr", this);
+            obj._setContents("<ColumnInfo><Column id=\"insaSabun\" type=\"STRING\" size=\"256\"/><Column id=\"insaName\" type=\"STRING\" size=\"256\"/><Column id=\"insaEmail\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("mgr_no", this);
+            obj._setContents("<ColumnInfo><Column id=\"id\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"value\">전체</Col></Row><Row><Col id=\"id\">0</Col><Col id=\"value\">사번</Col></Row><Row><Col id=\"id\">1</Col><Col id=\"value\">이름</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_dept", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("Div00", "absolute", "1%", "50", null, "35", "1%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("Div00");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Button("btn_mgr_search", "absolute", "75%", "7", "56", "20", null, null, this.Div00);
+            obj.set_taborder("14");
+            obj.set_text("검색  ");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            obj.style.set_align("right middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("mgr_com", "absolute", "12.5%", "5", "21.93%", "24", null, null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("15");
+            obj.set_text("전체");
+            obj.set_codecolumn("id");
+            obj.set_datacolumn("value");
+            obj.set_type("filter");
+            obj.set_value("null");
+            obj.set_innerdataset("@mgr_no");
+            obj = new Edit("mgr_tx", "absolute", "36.48%", "5", "37.91%", "25", null, null, this.Div00);
+            obj.set_taborder("16");
+            obj.style.set_selectbackground("blue");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "1%", "0", null, "42", "1%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("담당자 조회");
+            obj.style.set_background("transparent URL('theme://images/bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 12 굴림");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "1.8%", "91", null, "24", "76.8%", null, this);
+            obj.set_taborder("3");
+            obj.set_text("공탁담당자 목록");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_close", "absolute", "89%", "370", null, "23", "1%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("닫기");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("grd_Search", "absolute", "1%", "91", null, "275", "1%", null, this);
+            obj.set_taborder("5");
+            obj.set_binddataset("ds_mgr");
+            obj.set_autofittype("col");
+            obj.style.set_border("1 solid #9f8f71ff,0 none #808080ff");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"58\"/><Column size=\"99\"/><Column size=\"98\"/><Column size=\"184\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"NO.\"/><Cell col=\"1\" text=\"사번\"/><Cell col=\"2\" text=\"담당자명\"/><Cell col=\"3\" text=\"이메일\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:insaSabun\"/><Cell col=\"2\" text=\"bind:insaName\"/><Cell col=\"3\" text=\"bind:insaEmail\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.set_text("Div00");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 500, 400, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_REC_002");
+            		p.set_titletext("담당자 조회");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","Div00.mgr_com","value","mgr_no","value");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_REC_002.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_REC_002.xfdl", function() {
+        /*
+        작 성 자 : 이창민
+        작 성 일 : 2018.08.16
+        프로그램 : 담당자 검색 팝업창
+        */
+        ////////////////////////////////////////////////////////////////////////////////
+
+        //include "Lib::Comm.xjs";
+
+        
+        //로딩 시
+        this.form_OnLoadCompleted = function(obj,e)
+        {
+        	this.depositSearch();
+        }
+
+        //검색 함수 실행
+        this.depositSearch = function()
+        {
+        	var codeNo = this.Div00.mgr_com.value;
+        	var codeName = this.Div00.mgr_tx.value;
+        	
+        	this.ds_mgr.setColumn(0, "codeNo", codeNo);
+        	this.ds_mgr.setColumn(0, "codeName", codeName);
+        	//test
+        	trace("codeNo =====>> "+codeNo);
+        	trace("codeName =====>> "+codeName);
+        	trace("getCodeNo =====>> "+this.ds_mgr.getColumn(0, "codeNo"));
+        	trace("getCodeName =====>> "+this.ds_mgr.getColumn(0, "codeName"));
+        	
+        	var oDatas =  {
+        			  svcid : "MgrList",
+        			  sController : "MgrList.do",
+        			  inds :["ds_mgr=ds_mgr"],
+        			  outds :["ds_mgr = ds_output"],
+        			  args  : [],
+        			  bAsync : false,
+        			  nDataType : 0,
+        			  bCompress :false,
+        			};
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+        }
+
+        //검색 버튼 클릭 시
+        this.btn_search_onc = function(obj,e)
+        {
+        	this.depositSearch();
+        }
+
+        //검색바 엔터키
+        this.depSearch_onkeydown = function(obj,e)
+        {
+        	if(e.keycode == 13) {
+        		this.depositSearch();		
+        	}
+        }
+
+        //셀 더블클릭
+        this.person_OnCellDblClick = function(obj,e)
+        {
+        	var name = this.ds_mgr.getColumn(e.row, "insaName");
+        	var no = this.ds_mgr.getColumn(e.row, "insaSabun");
+        	var strTempp = name + "/" + no;
+        	
+        	trace("strTemp ======> " + strTempp);
+        	this.close(strTempp);
+        }
+
+        //닫기 버튼 클릭 시
+        this.Div00_Button00_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_OnLoadCompleted, this);
+            this.Div00.btn_mgr_search.addEventHandler("onclick", this.btn_search_onc, this);
+            this.Div00.mgr_com.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Div00.mgr_tx.addEventHandler("onkeydown", this.depSearch_onkeydown, this);
+            this.btn_close.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.grd_Search.addEventHandler("oncelldblclick", this.person_OnCellDblClick, this);
+
+        };
+
+        this.loadIncludeScript("V_REC_002.xfdl");
+
+       
+    };
+}
+)();

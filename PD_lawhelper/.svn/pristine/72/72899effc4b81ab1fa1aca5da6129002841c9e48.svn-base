@@ -1,0 +1,464 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_OPR_002");
+                this.set_classname("V_OPR_002");
+                this._setFormPosition(0,0,500,550);
+            }
+            this.style.set_background("floralwhite");
+            this.style.set_border("1 solid #808080ff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_userInfo", this);
+            obj._setContents("<ColumnInfo><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"password\" type=\"STRING\" size=\"256\"/><Column id=\"grade\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"email\" type=\"STRING\" size=\"256\"/><Column id=\"career\" type=\"STRING\" size=\"256\"/><Column id=\"position\" type=\"STRING\" size=\"256\"/><Column id=\"sex\" type=\"STRING\" size=\"256\"/><Column id=\"birth\" type=\"STRING\" size=\"256\"/><Column id=\"engName\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_userDetail1", this);
+            obj._setContents("<ColumnInfo><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"password\" type=\"PASSWORD\" size=\"256\"/><Column id=\"grade\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"email\" type=\"STRING\" size=\"256\"/><Column id=\"career\" type=\"STRING\" size=\"256\"/><Column id=\"position\" type=\"STRING\" size=\"256\"/><Column id=\"sex\" type=\"STRING\" size=\"256\"/><Column id=\"birth\" type=\"STRING\" size=\"256\"/><Column id=\"engName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_paging", this);
+            obj._setContents("<ColumnInfo><Column id=\"endList\" type=\"INT\" size=\"5\"/><Column id=\"endPage\" type=\"INT\" size=\"5\"/><Column id=\"page\" type=\"INT\" size=\"5\"/><Column id=\"startList\" type=\"INT\" size=\"5\"/><Column id=\"startPage\" type=\"INT\" size=\"5\"/><Column id=\"totalList\" type=\"INT\" size=\"5\"/><Column id=\"totalpage\" type=\"INT\" size=\"5\"/><Column id=\"viewListCount\" type=\"INT\" size=\"5\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"5\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_searchJoin", this);
+            obj._setContents("<ColumnInfo><Column id=\"searchCondition\" type=\"STRING\" size=\"256\"/><Column id=\"search_userId\" type=\"STRING\" size=\"256\"/><Column id=\"search_career\" type=\"STRING\" size=\"256\"/><Column id=\"search_name\" type=\"STRING\" size=\"256\"/><Column id=\"search_address\" type=\"STRING\" size=\"256\"/><Column id=\"page\" type=\"INT\" size=\"256\"/><Column id=\"viewListCount\" type=\"INT\" size=\"256\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"viewListCount\">15</Col><Col id=\"viewPageNum\">10</Col><Col id=\"page\">1</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_userDetail", this);
+            obj._setContents("<ColumnInfo><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"password\" type=\"PASSWORD\" size=\"256\"/><Column id=\"grade\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"email\" type=\"STRING\" size=\"256\"/><Column id=\"career\" type=\"STRING\" size=\"256\"/><Column id=\"position\" type=\"STRING\" size=\"256\"/><Column id=\"sex\" type=\"STRING\" size=\"256\"/><Column id=\"birth\" type=\"STRING\" size=\"256\"/><Column id=\"engName\" type=\"STRING\" size=\"256\"/><Column id=\"gradeName\" type=\"STRING\" size=\"256\"/><Column id=\"loginId\" type=\"STRING\" size=\"256\"/><Column id=\"sexName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_userList", this);
+            obj._setContents("<ColumnInfo><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"password\" type=\"STRING\" size=\"256\"/><Column id=\"grade\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"email\" type=\"STRING\" size=\"256\"/><Column id=\"career\" type=\"STRING\" size=\"256\"/><Column id=\"position\" type=\"STRING\" size=\"256\"/><Column id=\"sex\" type=\"STRING\" size=\"256\"/><Column id=\"birth\" type=\"STRING\" size=\"256\"/><Column id=\"engName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "9.44%", "17", null, "26", "64.04%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("님의 정보");
+            obj.style.set_align("right");
+            obj.style.set_font("13 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_engName", "absolute", "4.2%", "379", null, "17", "81.6%", null, this);
+            obj.set_taborder("116");
+            obj.set_text("영문명");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_birth", "absolute", "2.2%", "347", null, "17", "81.6%", null, this);
+            obj.set_taborder("120");
+            obj.set_text("생년월일");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_sex", "absolute", "4.2%", "315", null, "17", "81.6%", null, this);
+            obj.set_taborder("122");
+            obj.set_text("성별");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_position", "absolute", "4.2%", "283", null, "17", "81.6%", null, this);
+            obj.set_taborder("124");
+            obj.set_text("직위");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edit_email", "absolute", "19.6%", "219", null, "17", "9.8%", null, this);
+            obj.set_taborder("125");
+            obj.style.set_background("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edit_career", "absolute", "19.6%", "251", null, "17", "9.8%", null, this);
+            obj.set_taborder("126");
+            obj.style.set_background("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edit_position", "absolute", "19.6%", "283", null, "17", "9.8%", null, this);
+            obj.set_taborder("127");
+            obj.style.set_background("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edit_address", "absolute", "19.6%", "155", null, "17", "9.8%", null, this);
+            obj.set_taborder("129");
+            obj.style.set_background("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edit_phone", "absolute", "19.6%", "187", null, "17", "9.8%", null, this);
+            obj.set_taborder("130");
+            obj.style.set_background("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_engName00", "absolute", "4.2%", "251", null, "17", "81.6%", null, this);
+            obj.set_taborder("131");
+            obj.set_text("소속");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_birth00", "absolute", "4.2%", "219", null, "17", "81.6%", null, this);
+            obj.set_taborder("132");
+            obj.set_text("E-MAIL");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_sex00", "absolute", "4.2%", "187", null, "17", "81.6%", null, this);
+            obj.set_taborder("133");
+            obj.set_text("연락처");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_position00", "absolute", "4.2%", "155", null, "17", "81.6%", null, this);
+            obj.set_taborder("134");
+            obj.set_text("주소");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_engName01", "absolute", "4.2%", "123", null, "17", "81.6%", null, this);
+            obj.set_taborder("135");
+            obj.set_text("권한");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_sex01", "absolute", "4.21%", "91", null, "17", "81.58%", null, this);
+            obj.set_taborder("138");
+            obj.set_text("이름");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("info_position01", "absolute", "4.22%", "59", null, "17", "81.56%", null, this);
+            obj.set_taborder("139");
+            obj.set_text("ID");
+            obj.style.set_align("right");
+            obj.style.set_background("transparent");
+            obj.style.set_padding("0 10 0 0");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("edit_userId", "absolute", "20.9%", "59", null, "17", "11.01%", null, this);
+            obj.set_taborder("145");
+            obj.style.set_align("left");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("edit_name", "absolute", "20.9%", "91", null, "17", "11.01%", null, this);
+            obj.set_taborder("146");
+            obj.style.set_align("left");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("edit_sex", "absolute", "20.8%", "315", null, "17", "18.2%", null, this);
+            obj.set_taborder("147");
+            obj.style.set_align("left");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("edit_birth", "absolute", "20.8%", "347", null, "17", "18.2%", null, this);
+            obj.set_taborder("148");
+            obj.style.set_align("left");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("edit_engName", "absolute", "20.8%", "379", null, "17", "18.2%", null, this);
+            obj.set_taborder("149");
+            obj.style.set_align("left");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "192", "489", null, "31", "6.2%", null, this);
+            obj.set_taborder("150");
+            this.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "71.48%", "3", "70", "24", null, null, this.Div00);
+            obj.set_taborder("0");
+            obj.set_text("닫기");
+            obj.style.set_image("URL('img::small_close.png')");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "16.61%", "3", "70", "24", null, null, this.Div00);
+            obj.set_taborder("1");
+            obj.set_text("수정");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button02", "absolute", "43.68%", "3", "70", "24", null, null, this.Div00);
+            obj.set_taborder("2");
+            obj.set_text("강제탈퇴");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new Div("edit_grade", "absolute", "21%", "123", null, "17", "11%", null, this);
+            obj.set_taborder("151");
+            obj.style.set_align("left");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 54, 17, this.info_birth00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("132");
+            		p.set_text("E-MAIL");
+            		p.style.set_align("right");
+            		p.style.set_background("transparent");
+            		p.style.set_padding("0 10 0 0");
+
+            	}
+            );
+            this.info_birth00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 17, this.edit_userId,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("145");
+            		p.style.set_align("left");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.edit_userId.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 17, this.edit_sex,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("147");
+            		p.style.set_align("left");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.edit_sex.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 17, this.edit_birth,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("148");
+            		p.style.set_align("left");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.edit_birth.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 277, 31, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("150");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 500, 550, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_OPR_002");
+            		p.style.set_background("floralwhite");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item4","edit_address","value","ds_userDetail","address");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","edit_phone","value","ds_userDetail","phone");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","edit_email","value","ds_userDetail","email");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","edit_career","value","ds_userDetail","career");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","edit_position","value","ds_userDetail","position");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item0","edit_userId","text","ds_userDetail","userId");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","edit_name","text","ds_userDetail","name");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item12","edit_sex","text","ds_userDetail","sexName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","edit_birth","text","ds_userDetail","birth");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","edit_engName","text","ds_userDetail","engName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","edit_grade","text","ds_userDetail","gradeName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_OPR_002.xfdl", "Lib::Comm.xjs");
+        this.addIncludeScript("V_OPR_002.xfdl", "Lib::V_OPR_001.xfdl.js");
+        this.registerScript("V_OPR_002.xfdl", function() {
+         //include "Lib::Comm.xjs";
+         //include "Lib::V_OPR_001.xfdl.js";
+
+         this.V_OPR_002_onload = function (obj,e){	
+
+         	this.ds_userDetail.deleteAll();
+         	this.ds_userDetail.copyData(this.parent.ds_userDetail);
+        	this.Static00.set_text(this.ds_userDetail.getColumn(0, "name")+ "님의 정보");
+        	
+        }
+         //수정버튼 클릭 시 저장
+         this.Button01_onclick = function(obj,e){
+         	this.fn_modify("update");
+         }
+         //수정
+         
+         this.fn_modify = function(strid){
+        	
+        	
+        	var newGrade = this.edit_grade.value; 
+        	var newCareer = this.edit_career.value;
+        	var newPosition = this.edit_position.value;	
+        	var loginId = application.gds_userInfo.getColumn(0, "userid");
+        	this.ds_userDetail.setColumn(0,"loginId",loginId);
+        	var bUpdate = confirm("변경 하시겠습니까?");
+        	
+        	if(bUpdate){
+        		var oDate = {
+        			svcid : "update",
+        			sController : "memberUpdate.do",
+        			inds:["ds_userDetail=ds_userDetail:U"],
+        			outds:[],
+        			args:[],
+        			bAsync: true, // 비동기여부 (true : async  false: sync)
+        			nDataType : 0, // (0: XML타입)
+        			bCompress : false,			
+        		};
+        				
+        		Iject.transaction(this,oDate,function(){
+        			if(this.errorcode < 0)
+        			{
+        				//Iject.alert(this.errorMsg,"알림")
+        				//return;
+        			}
+        	
+        		});
+        	}else{
+        		alter("취소 되었습니다.");
+        	}
+        	
+        	this.Button00_onclick();
+         }
+        //강제탈퇴 버튼 클릭 시
+        this.Button02_onclick = function(obj,e){
+        	this.fn_isShow("delete");
+        }
+
+         
+         //강제탈퇴버튼 클릭 시
+         this.fn_isShow = function(del){
+         	
+         	var rtnValue = Iject.confirm("강제탈퇴 시키시겠습니까?");
+        	if(rtnValue){	
+        		var oDate = {
+        			svcid : "delete",
+        			sController : "memberDelete.do",
+        			inds:["ds_userDetail=ds_userDetail"],
+        			outds:[],
+        			args:[],
+        			bAsync: false, // 비동기여부 (true : async  false: sync)
+        			nDataType : 0, // (0: XML타입)
+        			bCompress : false,			
+        		};
+        				
+        		Iject.transaction(this,oDate,function(){
+        			if(this.errorcode < 0)
+        			{
+        				//Iject.alert(this.errorMsg,"알림")
+        				//return;
+        			}
+        	
+        		});
+        	}else{
+        		alter("취소 되었습니다.");
+        	}
+        	this.Button00_onclick();
+         	
+         }
+
+        //닫기 버튼
+        this.Button00_onclick = function(obj,e)
+        {	
+        	var nFromRow = this.parent.nFromRow;
+        	this.opener.fn_memberSearch("페이지눌럿다",nFromRow);
+         	this.close();
+        }
+
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_userDetail1.addEventHandler("onload", this.V_OPR_002_onload, this);
+            this.addEventHandler("onload", this.V_OPR_002_onload, this);
+            this.Div00.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+            this.Div00.Button01.addEventHandler("onclick", this.Button01_onclick, this);
+            this.Div00.Button02.addEventHandler("onclick", this.Button02_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_OPR_002.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,208 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("Login");
+                this.set_classname("Login");
+                this.set_titletext("Login");
+                this.set_scrollbars("none");
+                this._setFormPosition(0,0,848,504);
+            }
+            this.style.set_background("transparent");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+
+            
+            // UI Components Initialize
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 848, 504, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Login");
+            		p.style.set_background("transparent");
+            		p.set_titletext("Login");
+            		p.set_scrollbars("none");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("Login_copy.xfdl", "Lib::Comm.xjs");
+        this.registerScript("Login_copy.xfdl", function() {
+        /***********************************************************************************
+        * SYSTEM      : 넥사크로플랫폼 PackageB
+        * BUSINESS    : 넥사크로플랫폼 PackageB
+        * FILE NAME   : Login.xfdl
+        * PROGRAMMER  : 
+        * DATE        : 
+        * DESCRIPTION : 로그인 화면
+        *------------------------------------------------------------------
+        * MODIFY DATE   PROGRAMMER			DESCRIPTION
+        *------------------------------------------------------------------
+        * 
+        *------------------------------------------------------------------
+        ***********************************************************************************/
+
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        
+        /***********************************************************************************
+        * Global/Local Variable
+        ***********************************************************************************/
+
+        
+        /***********************************************************************************
+        * Form Event
+        ***********************************************************************************/
+        /**
+         * form onload 함수
+         * @return 
+         * @example
+         *
+         * @memberOf this
+         */
+        this.form_onload = function (obj,e)
+        {
+        	if(nexacro.Browser == "Runtime") this.div_login.btn_close.set_visible(true);
+
+        	Iject.formOnload(obj);
+        	this.form_onsize();
+        }
+
+         
+        /***********************************************************************************
+        * User Function
+        ***********************************************************************************/
+
+        /**
+        * form onsize
+        * @return 
+        * @example
+        * @memberOf public
+        */ 
+        this.form_onsize = function()
+        {
+          	if(nexacro.Browser == "Runtime") return;
+
+          	var nLeft = (application.mainframe.width / 2) - Math.round((this.div_login.getOffsetWidth()) / 2);
+          	var nTop = (application.mainframe.height / 2) - Math.round((this.div_login.getOffsetHeight()) / 2);
+
+        	if(nLeft <= 0)
+        	{
+        		this.div_login.setOffsetLeft(0);
+        	}
+        	else
+        	{
+            	this.div_login.setOffsetLeft(nLeft);
+        		this.div_login.setOffsetTop(nTop);
+        	}
+        }
+
+        
+        /***********************************************************************************
+        * Component Event
+        ***********************************************************************************/
+        this.btn_login_onclick = function(obj,e)
+        {
+            this.fn_login();
+        }
+
+        
+        //login function
+        this.fn_login = function()
+        {
+              application.gds_userInfo.setColumn(0,"USER_ID",this.div_login.txt_userId.value);
+         	 application.gds_userInfo.setColumn(0,"USER_NM","관리자");
+        	
+        	
+        	if(nexacro.Browser == "Runtime")
+        	{
+        		var oArgs = "close";
+            	Iject.popClose(this,oArgs);
+
+        	}
+        	else
+        	{
+        	    Iject.setSeprateFrame();
+        	}
+        }
+
+        
+        /**
+        * 프레임 open
+        * @return 
+        * @example
+        * @memberOf public
+        */ 
+
+        this.fn_menuOpen = function()
+        {
+            gv_vFrameSet.set_separatesize("0,*,42");
+            gv_workFrame.frames["MainForm"].setFocus();
+        }
+
+        
+        this.Login_onsize = function(obj,e)
+        {
+             this.form_onsize(e.cx, e.cy);
+        }
+
+        this.fn_close = function(obj,e)
+        {
+        	application.exit();
+        }
+
+        this.div_login_btn_login_onkeyup = function(obj,e)
+        {
+        	if(e.keycode == 13)
+        	{
+        		this.fn_login();
+        	}
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_onload, this);
+            this.addEventHandler("onsize", this.Login_onsize, this);
+
+        };
+
+        this.loadIncludeScript("Login_copy.xfdl");
+
+       
+    };
+}
+)();

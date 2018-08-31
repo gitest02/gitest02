@@ -1,0 +1,491 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("Lawsuit_Registration");
+                this.set_classname("Lawsuit_Registration");
+                this.set_titletext("소 제기 의뢰 등록");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_def", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawRaisreqNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDefSeq\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDefRegno\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDefName\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDefTel\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDefPos\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDefAddr\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDefClamchg\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_raisreq", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawRaisreqNo\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqReqId\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqClasCode\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqEtcPoin\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqRepWtr\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqWtr\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqDalwCont\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqExptDate\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqRepCont\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqEtcreqPoin\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqRepDate\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqIssuPoin\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqTempSaveWtr\" type=\"STRING\" size=\"256\"/><Column id=\"lawRaisreqRea\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"lawRaisreqNo\"/><Col id=\"lawRaisreqReqId\"/><Col id=\"lawRaisreqClasCode\"/><Col id=\"lawRaisreqEtcPoin\"/><Col id=\"lawRaisreqReqDate\"/><Col id=\"lawRaisreqRepWtr\"/><Col id=\"lawRaisreqWtr\"/><Col id=\"lawRaisreqDalwCont\"/><Col id=\"lawRaisreqExptDate\"/><Col id=\"lawRaisreqRepCont\"/><Col id=\"lawRaisreqEtcreqPoin\"/><Col id=\"lawRaisreqRepDate\"/><Col id=\"lawRaisreqIssuPoin\"/><Col id=\"lawRaisreqTempSaveWtr\"/><Col id=\"lawRaisreqRea\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_clas_code", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_position", this);
+            obj._setContents("<ColumnInfo><Column id=\"aprvprgrInfoStepCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoBookNo\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoUpSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWrit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritTit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCondCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoProcDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoFinWtr\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmAdWtr\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_dept_code", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_position_code", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_ClasCode", this);
+            obj._setContents("<ColumnInfo><Column id=\"DATA\" type=\"STRING\" size=\"256\"/><Column id=\"LABEL\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("menu_form", "absolute", "1%", "0", null, "42", "1%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("소 제기 의뢰 등록");
+            obj.style.set_background("transparent URL('theme://images/bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 12 굴림");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("number_div_01", "absolute", "0%", "52", null, "35", "0%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("Div00");
+            obj.style.set_color("transparent");
+            this.addChild(obj.name, obj);
+            obj = new Static("number_basic_static", "absolute", "1%", "0", null, "35", "1%", null, this.number_div_01);
+            obj.set_taborder("2");
+            obj.set_text("Static00");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("transparent");
+            this.number_div_01.addChild(obj.name, obj);
+            obj = new Static("number_search_static", "absolute", "12.97%", "5", null, "25", "1.72%", null, this.number_div_01);
+            obj.set_taborder("3");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1px solid #c8c8c8ff");
+            obj.style.set_align("center middle");
+            this.number_div_01.addChild(obj.name, obj);
+            obj = new Static("number_static_name00", "absolute", "1.5%", "5", null, "25", "85.5%", null, this.number_div_01);
+            obj.set_taborder("4");
+            obj.set_text("소 제기 의뢰번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1px solid #c8c8c8ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 Dotum");
+            this.number_div_01.addChild(obj.name, obj);
+            obj = new Edit("edt_No", "absolute", "15%", "8", null, "19", "71.5%", null, this.number_div_01);
+            obj.set_taborder("5");
+            this.number_div_01.addChild(obj.name, obj);
+            obj = new Button("btn_search", "absolute", "29%", "20%", "70", "20", null, null, this.number_div_01);
+            obj.set_taborder("6");
+            obj.set_text("검색");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            obj.style.set_color("#444444ff");
+            this.number_div_01.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "37.69%", "5", null, "25", "27.56%", null, this.number_div_01);
+            obj.set_taborder("7");
+            obj.set_text("* 소 제기 의뢰 등록 시  의뢰 번호는 자동 생성 됩니다.");
+            obj.style.set_color("red");
+            obj.style.set_font("bold 9 Dotum");
+            this.number_div_01.addChild(obj.name, obj);
+            obj = new Button("btn_clean", "absolute", "90.98%", "7", "70", "20", null, null, this.number_div_01);
+            obj.set_taborder("8");
+            obj.set_text("초기화");
+            obj.style.set_background("@gradation URL('theme://images/btn_MF_Refresh_O.png') 5px 50px");
+            obj.style.set_color("#444444ff");
+            this.number_div_01.addChild(obj.name, obj);
+
+            obj = new Static("basic_label_01", "absolute", "1%", "89", null, "29", "85%", null, this);
+            obj.set_taborder("9");
+            obj.set_text("소 제기 의뢰 기본사항");
+            obj.style.set_color("#46463dff");
+            obj.style.set_font("bold 9 dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("basic_div_01", "absolute", "0%", "117", null, "35", "0%", null, this);
+            obj.set_taborder("10");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Static("basic_basic_static", "absolute", "1%", "0", null, "35", "1%", null, this.basic_div_01);
+            obj.set_taborder("0");
+            obj.set_text("Static00");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("transparent");
+            this.basic_div_01.addChild(obj.name, obj);
+            obj = new Static("Filling_name_static", "absolute", "1.5%", "5", null, "25", "85.5%", null, this.basic_div_01);
+            obj.set_taborder("2");
+            obj.set_text("의뢰자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_01.addChild(obj.name, obj);
+            obj = new Static("Filling_basic", "absolute", "14.4%", "5", null, "25", "1.72%", null, this.basic_div_01);
+            obj.set_text("Static00");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("transparent");
+            obj.set_taborder("1");
+            this.basic_div_01.addChild(obj.name, obj);
+            obj = new Static("Filling_type_static", "absolute", "34.8%", "5", null, "25", "52.2%", null, this.basic_div_01);
+            obj.set_taborder("3");
+            obj.set_text("소송제기분류");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_01.addChild(obj.name, obj);
+            obj = new Static("Filling_date_static", "absolute", "68.2%", "5", null, "25", "18.8%", null, this.basic_div_01);
+            obj.set_taborder("4");
+            obj.set_text("의뢰일자");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_01.addChild(obj.name, obj);
+            obj = new Edit("edt_Req_ID", "absolute", "15%", "8", null, "19", "71.5%", null, this.basic_div_01);
+            obj.set_taborder("5");
+            this.basic_div_01.addChild(obj.name, obj);
+            obj = new Combo("combo_Clas_Code", "absolute", "48.5%", "8", null, "19", "38%", null, this.basic_div_01);
+            this.basic_div_01.addChild(obj.name, obj);
+            obj.set_taborder("6");
+            obj = new Calendar("cal_Req_Date", "absolute", "82%", "8", null, "19", "4.5%", null, this.basic_div_01);
+            this.basic_div_01.addChild(obj.name, obj);
+            obj.set_taborder("7");
+            obj = new Static("Static00", "absolute", "36.8%", "9", null, "10", "61.3%", null, this.basic_div_01);
+            obj.set_taborder("8");
+            obj.set_text("*");
+            obj.style.set_color("red");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_01.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "71.3%", "10", null, "10", "26.8%", null, this.basic_div_01);
+            obj.set_taborder("9");
+            obj.set_text("*");
+            obj.style.set_color("red");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_01.addChild(obj.name, obj);
+
+            obj = new Static("Lawsuit_detail_name", "absolute", "1%", "154", null, "29", "85%", null, this);
+            obj.set_taborder("11");
+            obj.set_text("소 제기 의뢰 상세사항");
+            obj.style.set_font("bold 9 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("basic_div_Detail", "absolute", "0%", "183", null, "105", "0%", null, this);
+            obj.set_taborder("12");
+            obj.set_text("Div00");
+            obj.style.set_color("transparent");
+            this.addChild(obj.name, obj);
+            obj = new Static("basic_detail_basic_static", "absolute", "1%", "0", null, "105", "1%", null, this.basic_div_Detail);
+            obj.set_taborder("0");
+            obj.set_text("Static00");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("transparent");
+            obj.style.set_align("center middle");
+            this.basic_div_Detail.addChild(obj.name, obj);
+            obj = new Static("Lawsuit_reason_static", "absolute", "1.5%", "5", null, "65", "85.5%", null, this.basic_div_Detail);
+            obj.set_taborder("1");
+            obj.set_text("소송제기사유");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_Detail.addChild(obj.name, obj);
+            obj = new Static("detail_static", "absolute", "14.4%", "5", null, "65", "1.72%", null, this.basic_div_Detail);
+            obj.set_taborder("2");
+            obj.set_text("Static00");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("transparent");
+            this.basic_div_Detail.addChild(obj.name, obj);
+            obj = new Static("Lawsuit_etc_static", "absolute", "1.5%", "69", null, "30", "85.5%", null, this.basic_div_Detail);
+            obj.set_taborder("3");
+            obj.set_text("기타의뢰사항");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_align("center middle");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_Detail.addChild(obj.name, obj);
+            obj = new Static("etc_static", "absolute", "14.4%", "69", null, "30", "1.72%", null, this.basic_div_Detail);
+            obj.set_taborder("4");
+            obj.set_text("Static01");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("transparent");
+            this.basic_div_Detail.addChild(obj.name, obj);
+            obj = new TextArea("ta_Rea", "absolute", "15%", "10", null, "55", "2.4%", null, this.basic_div_Detail);
+            obj.set_taborder("5");
+            obj.set_scrollbars("alwaysvert");
+            this.basic_div_Detail.addChild(obj.name, obj);
+            obj = new TextArea("ta_Etc_Poin", "absolute", "15%", "75", null, "20", "2.43%", null, this.basic_div_Detail);
+            obj.set_taborder("6");
+            obj.set_scrollbars("alwaysvert");
+            this.basic_div_Detail.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "3.5%", "30", null, "10", "94.6%", null, this.basic_div_Detail);
+            obj.set_taborder("7");
+            obj.set_text("*");
+            obj.style.set_color("red");
+            obj.style.set_font("bold 9 Dotum");
+            this.basic_div_Detail.addChild(obj.name, obj);
+
+            obj = new Static("Lawsuit_defendant_name", "absolute", "1%", "294", null, "21", "85.7%", null, this);
+            obj.set_taborder("13");
+            obj.set_text("피고 사항 등록");
+            obj.style.set_font("bold 9 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("grd_Dep", "absolute", "1%", "319", null, "180", "1%", null, this);
+            obj.set_taborder("14");
+            obj.set_BindDataset("ds_def");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\"/><Column size=\"90\"/><Column size=\"90\"/><Column size=\"100\"/><Column size=\"90\"/><Column size=\"150\"/><Column size=\"120\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No.\"/><Cell col=\"1\" text=\"피고명\"/><Cell col=\"2\" text=\"청구금액\"/><Cell col=\"3\" text=\"주민등록번호\"/><Cell col=\"4\" text=\"연락처\"/><Cell col=\"5\" text=\"주소\"/><Cell col=\"6\" text=\"우편번호\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" colid=\"lawRaisreqDefName\" display=\"text\" edit=\"normal\" imemode=\"native\" limit=\"30\"/><Cell col=\"2\" colid=\"lawRaisreqDefClamchg\" display=\"number\" edit=\"mask\" limit=\"15\" Mask=\"###,###.###,###\"/><Cell col=\"3\" colid=\"lawRaisreqDefRegno\" display=\"text\" edit=\"mask\" Mask=\"######-#######\"/><Cell col=\"4\" colid=\"lawRaisreqDefTel\" display=\"text\" edit=\"mask\" limit=\"11\" Mask=\"expr:fn_masktel(currow)\"/><Cell col=\"5\" colid=\"lawRaisreqDefAddr\" display=\"text\" wordwrap=\"word\"/><Cell col=\"6\" colid=\"lawRaisreqDefPos\" display=\"text\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_reg", "absolute", "84.5%", "293", "70", "20", null, null, this);
+            obj.set_taborder("15");
+            obj.set_text("추가");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_del", "absolute", "92%", "293", null, "20", "1%", null, this);
+            obj.set_taborder("16");
+            obj.set_text("삭제");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Confirm_name", "absolute", "1%", "505", null, "20", "85.9%", null, this);
+            obj.set_taborder("17");
+            obj.set_text("결재 진행 상태");
+            obj.style.set_font("bold 9 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("confirm_div", "absolute", "1%", "530", null, "40", "1%", null, this);
+            obj.set_taborder("18");
+            obj.set_text("Div00");
+            obj.style.set_color("transparent");
+            this.addChild(obj.name, obj);
+            obj = new Static("first_confirm_class", "absolute", "0%", "0", null, "20", "86.02%", null, this.confirm_div);
+            obj.set_taborder("0");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("bold 9 Dotum");
+            this.confirm_div.addChild(obj.name, obj);
+            obj = new Static("second_confirm_class", "absolute", "13.98%", "0", null, "20", "72.04%", null, this.confirm_div);
+            obj.set_taborder("1");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("bold 9 Dotum");
+            this.confirm_div.addChild(obj.name, obj);
+            obj = new Static("third_confirm_class", "absolute", "27.96%", "0", null, "20", "58.06%", null, this.confirm_div);
+            obj.set_taborder("2");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("bold 9 Dotum");
+            this.confirm_div.addChild(obj.name, obj);
+            obj = new Static("first_confirm_name", "absolute", "0%", "20", null, "20", "86.02%", null, this.confirm_div);
+            obj.set_taborder("3");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("bold 9 Dotum");
+            this.confirm_div.addChild(obj.name, obj);
+            obj = new Static("second_confirm_name", "absolute", "13.98%", "20", null, "20", "72.04%", null, this.confirm_div);
+            obj.set_taborder("4");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.confirm_div.addChild(obj.name, obj);
+            obj = new Static("third_confirm_name", "absolute", "27.96%", "20", null, "20", "58.06%", null, this.confirm_div);
+            obj.set_taborder("5");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("bold 9 Dotum");
+            this.confirm_div.addChild(obj.name, obj);
+
+            obj = new Button("btn_app", "absolute", "75.7%", "507", "70", "21", null, null, this);
+            obj.set_taborder("19");
+            obj.set_text("결재");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_save", "absolute", "83.8%", "507", "70", "21", null, null, this);
+            obj.set_taborder("20");
+            obj.set_text("저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_close", "absolute", "91.9%", "507", null, "21", "1%", null, this);
+            obj.set_taborder("21");
+            obj.set_text("닫기");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "12.1%", "505", null, "20", "68.2%", null, this);
+            obj.set_taborder("22");
+            obj.set_text("결재가 완료되었습니다.");
+            obj.style.set_color("red");
+            obj.style.set_align("left middle");
+            obj.style.set_font("bold 12 굴림");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edt_addr1", "absolute", "64.5%", "294", "80", "20", null, null, this);
+            obj.set_taborder("23");
+            obj.set_visible("false");
+            obj.set_enable("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edt_zip", "absolute", "54%", "293", "80", "20", null, null, this);
+            obj.set_taborder("24");
+            obj.set_visible("false");
+            obj.set_enable("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edt_addr2", "absolute", "74.7%", "294", "80", "20", null, null, this);
+            obj.set_taborder("25");
+            obj.set_visible("false");
+            obj.set_enable("false");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.number_div_01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_text("Div00");
+            		p.style.set_color("transparent");
+
+            	}
+            );
+            this.number_div_01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.basic_div_01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("10");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.basic_div_01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 105, this.basic_div_Detail,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("12");
+            		p.set_text("Div00");
+            		p.style.set_color("transparent");
+
+            	}
+            );
+            this.basic_div_Detail.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 980, 40, this.confirm_div,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("18");
+            		p.set_text("Div00");
+            		p.style.set_color("transparent");
+
+            	}
+            );
+            this.confirm_div.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Lawsuit_Registration");
+            		p.set_titletext("소 제기 의뢰 등록");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","number_div_01.edt_No","value","ds_raisreq","lawRaisreqNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","basic_div_01.edt_Req_ID","value","ds_raisreq","lawRaisreqReqId");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","basic_div_01.combo_Clas_Code","value","ds_raisreq","lawRaisreqClasCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","basic_div_01.cal_Req_Date","value","ds_raisreq","lawRaisreqReqDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","basic_div_Detail.ta_Rea","value","ds_raisreq","lawRaisreqRea");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","basic_div_Detail.ta_Etc_Poin","value","ds_raisreq","lawRaisreqEtcPoin");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","confirm_div.first_confirm_name","text","ds_position_code","codeName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","confirm_div.second_confirm_name","text","ds_position_code","codeName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","confirm_div.third_confirm_name","text","ds_position_code","codeName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","confirm_div.first_confirm_class","text","ds_position","aprvInfoName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","confirm_div.second_confirm_class","text","ds_position","aprvInfoName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item11","confirm_div.third_confirm_class","text","ds_position","aprvInfoName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("Lawsuit_Registration.xfdl", function() {
+
+        this.Div00_Button00_onclick = function(obj,e)
+        {
+        	var strOpenStyle = "dragmovetype=all showtitlebar=false"
+        				+"showstatusbar=false autosize=false resizable=false";
+        	var popup = application.open("pop_regis_search","Pattern::COM_POP_REGIS_SEARCH.xfdl",this.getOwnerFrame(),
+        		{mode:'modeless'}, strOpenStyle, 200, 200, 700, 420);
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.number_div_01.btn_search.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.number_div_01.Static01.addEventHandler("onclick", this.number_div_01_Static01_onclick, this);
+            this.number_div_01.btn_clean.addEventHandler("onclick", this.Div00_Button00_onclick, this);
+            this.basic_div_01.combo_Clas_Code.addEventHandler("onitemchanged", this.basic_div_01_Filling_type_onitemchanged, this);
+
+        };
+
+        this.loadIncludeScript("Lawsuit_Registration.xfdl");
+
+       
+    };
+}
+)();

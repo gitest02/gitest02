@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="insertlaw.lawmapper.service.dao.DetcInsertMapper">
+	<insert id="detcList" parameterType="insertlaw.lawmapper.vo.DetcListVO">
+	<![CDATA[
+		 INSERT INTO
+				T_DETCLIST(
+				DETCNO,
+				DETCDATE,
+				CASENO,
+				CASENAME,
+				DETAILLINK
+			) VALUES( 
+				#{detcno},
+				#{detcdate, jdbcType=VARCHAR},
+				#{caseno, jdbcType=VARCHAR},
+				#{casename, jdbcType=VARCHAR},
+				#{detaillink, jdbcType=VARCHAR}
+			)
+	]]>
+	</insert>
+	<insert id="detcText" parameterType="insertlaw.lawmapper.vo.DetcListVO">
+	<![CDATA[
+		 INSERT INTO
+				T_DETCTEXT(
+				DETCNO,
+				CASECLASSCODE,
+				CASECLASSNAME,
+				JUDGECLASSCODE,
+				CASETEXT,
+				JUDGETEXT,
+				MAINTEXT,
+				REFERLAW,
+				REFERJUDGE,
+				TARGETLAW
+			) VALUES( 
+				#{detcno},
+				#{caseclasscode, jdbcType=VARCHAR},
+				#{caseclassname, jdbcType=VARCHAR},
+				#{judgeclasscode, jdbcType=VARCHAR},
+				#{casetext, jdbcType=VARCHAR},
+				#{judgetext, jdbcType=VARCHAR},
+				#{maintext, jdbcType=VARCHAR},
+				#{referlaw, jdbcType=VARCHAR},
+				#{referjudge, jdbcType=VARCHAR},
+				#{targetlaw, jdbcType=VARCHAR}
+			)
+	]]>
+	</insert>
+	
+	<!-- 헌재결정례 목록 엑셀 등록 -->
+	<update id="detcListInsert" parameterType="insertlaw.lawmapper.vo.DetcListVO"> 
+		MERGE INTO
+				T_DETCLIST
+				USING DUAL
+            	ON (DETCNO = #{detcno})
+            	WHEN MATCHED THEN
+                      UPDATE SET
+                      	DETCDATE = #{detcdate, jdbcType=VARCHAR},
+						CASENO = #{caseno, jdbcType=VARCHAR},
+						CASENAME = #{casename, jdbcType=VARCHAR},
+						DETAILLINK = #{detaillink, jdbcType=VARCHAR}
+                WHEN NOT MATCHED THEN
+                      INSERT (
+                      		  DETCNO,
+							  DETCDATE,
+							  CASENO,
+							  CASENAME,
+							  DETAILLINK
+                      		  ) 
+                      VALUES(
+                      		  #{detcno},
+							  #{detcdate, jdbcType=VARCHAR},
+							  #{caseno, jdbcType=VARCHAR},
+							  #{casename, jdbcType=VARCHAR},
+							  #{detaillink, jdbcType=VARCHAR}
+							  ) 
+	</update>
+	<!-- 헌재결정례 본문 엑셀 등록 -->
+	<update id="detcTextInsert" parameterType="insertlaw.lawmapper.vo.DetcListVO"> 
+		MERGE INTO 
+				T_DETCTEXT
+				USING DUAL
+            	ON (DETCNO = #{detcno})
+            	WHEN MATCHED THEN
+                      UPDATE SET
+                      	CASECLASSCODE = #{caseclasscode, jdbcType=VARCHAR},
+						CASECLASSNAME = #{caseclassname, jdbcType=VARCHAR},
+						JUDGECLASSCODE = #{judgeclasscode, jdbcType=VARCHAR},
+						CASETEXT = #{casetext, jdbcType=VARCHAR},
+						JUDGETEXT = #{judgetext, jdbcType=VARCHAR},
+						MAINTEXT = #{maintext, jdbcType=VARCHAR},
+						REFERLAW = #{referlaw, jdbcType=VARCHAR},
+						REFERJUDGE = #{referjudge, jdbcType=VARCHAR},
+						TARGETLAW = #{targetlaw, jdbcType=VARCHAR}	
+				WHEN NOT MATCHED THEN
+					INSERT(
+							DETCNO,
+							CASECLASSCODE,
+							CASECLASSNAME,
+							JUDGECLASSCODE,
+							CASETEXT,
+							JUDGETEXT,
+							MAINTEXT,
+							REFERLAW,
+							REFERJUDGE,
+							TARGETLAW
+							)
+					VALUES(
+							#{detcno},
+							#{caseclasscode, jdbcType=VARCHAR},
+							#{caseclassname, jdbcType=VARCHAR},
+							#{judgeclasscode, jdbcType=VARCHAR},
+							#{casetext, jdbcType=VARCHAR},
+							#{judgetext, jdbcType=VARCHAR},
+							#{maintext, jdbcType=VARCHAR},
+							#{referlaw, jdbcType=VARCHAR},
+							#{referjudge, jdbcType=VARCHAR},
+							#{targetlaw, jdbcType=VARCHAR}
+							) 
+	</update>
+	<select id="excelSearch" parameterType="insertlaw.lawmapper.vo.DetcListVO" resultType="insertlaw.lawmapper.vo.DetcListVO">
+		SELECT
+			DETCNO
+		FROM
+			T_DETCLIST
+		WHERE DETCNO = #{detcno}
+	</select>
+</mapper>

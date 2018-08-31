@@ -1,0 +1,197 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_MAIN_001_right");
+                this.set_classname("V_MAIN_001_right");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,535,200);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_board", this);
+            obj._setContents("<ColumnInfo><Column id=\"bNo\" type=\"INT\" size=\"50\"/><Column id=\"userId\" type=\"STRING\" size=\"50\"/><Column id=\"writerName\" type=\"STRING\" size=\"50\"/><Column id=\"title\" type=\"STRING\" size=\"200\"/><Column id=\"body\" type=\"STRING\" size=\"4000\"/><Column id=\"wDate\" type=\"STRING\" size=\"200\"/><Column id=\"password\" type=\"STRING\" size=\"50\"/><Column id=\"bGroup\" type=\"INT\" size=\"5\"/><Column id=\"bOrder\" type=\"INT\" size=\"5\"/><Column id=\"step\" type=\"INT\" size=\"5\"/><Column id=\"isshow\" type=\"STRING\" size=\"1\"/><Column id=\"startPage\" type=\"INT\" size=\"5\"/><Column id=\"endPage\" type=\"INT\" size=\"5\"/><Column id=\"totalPage\" type=\"INT\" size=\"5\"/><Column id=\"page\" type=\"INT\" size=\"5\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"5\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_menu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_SEQ\" type=\"int\" size=\"4\"/><Column id=\"MENU_OPTP\" type=\"string\" size=\"32\"/><Column id=\"PAGE_URL\" type=\"string\" size=\"32\"/><Column id=\"MENU_TOP\" type=\"string\" size=\"32\"/><Column id=\"MENU_ID\" type=\"string\" size=\"32\"/><Column id=\"MENU_GRP\" type=\"string\" size=\"32\"/><Column id=\"CREATE_DT\" type=\"string\" size=\"32\"/><Column id=\"MENU_LEVEL\" type=\"int\" size=\"4\"/><Column id=\"PAGE_ID\" type=\"string\" size=\"32\"/><Column id=\"PAGE_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_ARGS\" type=\"string\" size=\"32\"/><Column id=\"MENU_STAT\" type=\"string\" size=\"32\"/><Column id=\"CREATE_USER\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_DT\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_USER\" type=\"string\" size=\"32\"/><Column id=\"MENU_DESC\" type=\"string\" size=\"32\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><ConstColumn id=\"pageIndex\" type=\"INT\" size=\"1\" value=\"\"/><ConstColumn id=\"pageSize\" type=\"INT\" size=\"5\" value=\"\"/><ConstColumn id=\"pageUnit\" type=\"INT\" size=\"5\" value=\"\"/><Column id=\"userId\" type=\"STRING\" size=\"100\"/><Column id=\"title\" type=\"STRING\" size=\"100\"/><Column id=\"body\" type=\"STRING\" size=\"256\"/><Column id=\"page\" type=\"INT\" size=\"5\"/></ColumnInfo><Rows><Row><Col id=\"userId\"/><Col id=\"title\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_board00", this);
+            obj._setContents("<ColumnInfo><Column id=\"bNo\" type=\"INT\" size=\"50\"/><Column id=\"userId\" type=\"STRING\" size=\"50\"/><Column id=\"writerName\" type=\"STRING\" size=\"50\"/><Column id=\"title\" type=\"STRING\" size=\"200\"/><Column id=\"body\" type=\"STRING\" size=\"4000\"/><Column id=\"wDate\" type=\"STRING\" size=\"200\"/><Column id=\"password\" type=\"STRING\" size=\"50\"/><Column id=\"bGroup\" type=\"INT\" size=\"5\"/><Column id=\"bOrder\" type=\"INT\" size=\"5\"/><Column id=\"step\" type=\"INT\" size=\"5\"/><Column id=\"isshow\" type=\"STRING\" size=\"1\"/><Column id=\"startPage\" type=\"INT\" size=\"5\"/><Column id=\"endPage\" type=\"INT\" size=\"5\"/><Column id=\"totalPage\" type=\"INT\" size=\"5\"/><Column id=\"page\" type=\"INT\" size=\"5\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"5\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_paging", this);
+            obj._setContents("<ColumnInfo><Column id=\"endList\" type=\"INT\" size=\"5\"/><Column id=\"endPage\" type=\"INT\" size=\"5\"/><Column id=\"page\" type=\"INT\" size=\"5\"/><Column id=\"startList\" type=\"INT\" size=\"5\"/><Column id=\"startPage\" type=\"INT\" size=\"5\"/><Column id=\"totalList\" type=\"INT\" size=\"5\"/><Column id=\"totalpage\" type=\"INT\" size=\"5\"/><Column id=\"viewListCount\" type=\"INT\" size=\"5\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"5\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Grid("grid_searchList", "absolute", "3.18%", "37", null, "145", "2.8%", null, this);
+            obj.set_cssclass("grd_MF_Notice");
+            obj.set_taborder("0");
+            obj.set_binddataset("ds_board");
+            obj.set_autofittype("col");
+            obj.style.set_border("2 solid #9f8f71ff,0 none #808080ff,1 solid #9f8f71ff,0 none #808080ff");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"150\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"10\" band=\"head\"/><Row size=\"20\"/></Rows><Band id=\"head\"><Cell/><Cell col=\"1\"/><Cell col=\"2\"/><Cell col=\"3\"/></Band><Band id=\"body\"><Cell text=\"bind:bNo\"/><Cell col=\"1\" text=\"bind:title\"/><Cell col=\"2\" text=\"bind:writerName\"/><Cell col=\"3\" displaytype=\"normal\" edittype=\"none\" text=\"bind:wDate\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "3.21%", "8", null, "27", "59.88%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("문의(답변) 게시판");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 10 arial");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 535, 200, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_MAIN_001_right");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_MAIN_001_right.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_MAIN_001_right.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.board_load = function(obj,e)
+        {
+        	this.ds_menu.assign(application.gds_hiddenMenu);
+        	Iject.formOnload(obj);
+        	this.fn_search(1);
+        }
+
+        //검색
+        this.fn_search = function(page){	
+        	this.ds_board00.deleteAll();	
+        	var nowPage = page; // 선택페이지	
+        	this.ds_search.clearData();
+        	this.ds_search.addRow();
+        	this.ds_search.setColumn(0,"userId", application.gds_userInfo.getColumn(0,"userid"));
+        	this.ds_search.setColumn(0,"page",nowPage);	   
+        	trace("page :"+this.ds_search.getColumn(0,"page"));
+        		
+        	var oDatas = { 
+        		svcid : "search",
+        		sController : "boardSearch.do",
+        		inds : ["ds_search = ds_search"],
+        		outds : ["ds_board00 = ds_board","ds_paging = ds_paging"],
+        		args : [],
+        		bAsync : false,
+        		nDataTyep : 0, //xml 타입
+        		bCompress : false,
+        	}
+        	
+        	Iject.transaction(this,oDatas,function(){   
+        	if(this.errorcode < 0)
+        		{
+        		   alert(this.errorMsg,"알림");			
+        		   return;
+        		}
+        	var pThis = this.fobj;
+        	});
+        	
+        	//this.fn_SetPageNo();
+        	this.ds_board.clearData();
+        	for(var i=0; i<5; i++){
+        		this.ds_board.addRow();
+        		this.ds_board.copyRow(i,this.ds_board00,i);
+        		var date1 = this.ds_board.getColumn(i,"wDate");
+        		trace("날짜 타입 확인 : "+date1);
+        		if(date1 != null || date1 != undefined){
+        			var year	=	date1.slice(0,4);
+        			trace("년도 : "+year);
+        			var month	=	date1.slice(4,6);
+        			var day		=	date1.slice(6,8);
+        			var	date2	=	year+"."+month+"."+day;
+        			trace("날짜 : "+date2);
+        			this.ds_board.setColumn(i,"wDate",date2);
+        		}	
+        	}
+        	this.grid_searchList.set_enable(true);
+        	if(this.ds_board00.getRowCount() < 1 ){
+        		this.ds_board.setColumn(2, "title", "				작성한 글이 없습니다");
+        		this.grid_searchList.set_enable(false);
+        	}
+        }
+
+        //상세보기
+        this.grid_searchList_oncellclick = function(obj,e)
+        {
+        	application.gds_board.clearData();
+        	application.gds_board.addRow();
+        	
+        	var nToRow = 0;
+        	var nFromRow = e.row;	//선택 row
+        	
+        	//선택한 row위치의 값들을 검색용 ds에 복사하기
+        	var test=application.gds_board.copyRow(nToRow, this.ds_board00, nFromRow);
+        	
+        	this.fn_goPage(2);
+        	
+        }
+
+        //화면 전환 
+        this.fn_goPage = function(page)
+        {
+        	var oObj = {
+                  ds    : this.ds_menu,    // 메뉴 dataset 
+                  nRow  : page,              // 선택된 
+                  oArgs : []               // 넘길 argument
+            };    
+            Iject.Mdi.call(this,oObj);
+            //trace("이동 체크 :"+oObj.nRow);
+            this.close(obj);
+            application.gds_openMenu.deleteRow(3);
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.grid_searchList.addEventHandler("oncelldblclick", this.grid_searchList_oncellclick, this);
+
+        };
+
+        this.loadIncludeScript("V_MAIN_001_right.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_STATS_006" classname="V_STATS_006" left="0" top="0" width="500" height="400" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="의뢰자 조회" onclick="Static00_onclick" left="1%" top="8" right="2%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Static id="Static01" taborder="1" onclick="Div00_Static00_onclick" left="1.2%" top="56" right="2%" height="33" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+        <Combo id="Combo00" taborder="2" left="19.2%" top="62" right="66.8%" height="20" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="Combo00_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">0</Col>
+                <Col id="datacolumn">전체</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">사번</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">이름</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="Edit00" taborder="3" left="34%" top="63" right="33.4%" height="19" oneditclick="Edit00_oneditclick"/>
+        <Button id="Button00" taborder="4" text="검색" left="67.6%" top="63" right="19%" height="19" style="image:URL('img::img_LF_search.png');" onclick="Button00_onclick"/>
+        <Static id="Static02" taborder="5" text="소송담당자 목록" left="2%" top="92" right="77.4%" height="35"/>
+        <Grid id="Grid00" taborder="6" useinputpanel="false" left="2%" top="128" right="2%" height="251" binddataset="ds_out" autofittype="col" oncelldblclick="Grid00_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="65"/>
+                <Column size="107"/>
+                <Column size="128"/>
+                <Column size="179"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="사번"/>
+                <Cell col="2" text="담당자명"/>
+                <Cell col="3" text="이메일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:rownum"/>
+                <Cell col="1" text="bind:insa_sabun"/>
+                <Cell col="2" text="bind:insa_name"/>
+                <Cell col="3" text="bind:insa_email"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_in">
+        <ColumnInfo>
+          <Column id="searchCondition" type="STRING" size="256"/>
+          <Column id="searchKeyword" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_out">
+        <ColumnInfo>
+          <Column id="insa_sabun" type="STRING" size="256"/>
+          <Column id="insa_name" type="STRING" size="256"/>
+          <Column id="insa_email" type="STRING" size="256"/>
+          <Column id="rownum" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_onload("searchUser");
+}
+
+var id;
+
+this.Combo00_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	id = this.Combo00.value;
+}
+
+this.cellClick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{	
+	var lawsuitName = this.ds_lawsuit.getColumn(e.row, "lawsuitAdmNo");
+	var instAdmCode = this.ds_lawsuit.getColumn(e.row, "instAdmCode");
+	var strTemp = lawsuitAdmNo + "/" + instAdmCode;
+	this.close(strTemp);
+}
+
+
+this.fn_onload = function(strid)
+{
+	this.ds_in.addRow();
+	this.ds_in.setColumn(0,"searchCondition",id);
+	if(this.Edit00.value==""){
+		this.ds_in.setColumn(0,"searchKeyword",null);
+	}else{
+		this.ds_in.setColumn(0,"searchKeyword",this.Edit00.value);
+	}
+		
+	
+	var oDatas =  {
+			  svcid : strid,
+			  sController : strid+".do",			 
+			  inds :["ds_in=ds_in"],
+			  outds :[
+				 "ds_out=ds_out"
+			     ],			     
+			  args  : [				
+			  ],
+			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+			  bCompress :false,	 //			  
+			}; 
+			trace(" this.ds_out : " + this.ds_out.saveXML());
+    //공통 transaction 함수 호츨   //function callback 
+	Iject.transaction(this,oDatas,function(){   
+		/*  
+		*   callback argument
+		*   @param : {string}    this.svcid       서비스 ID
+		*   @param : {object}    this.fobj        : 현재 form object
+		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+		*/    
+		if(this.errorcode < 0)
+		{
+		   Iject.alert("저장되었습니다.");			
+		   return;
+		}			
+			var pThis = this.fobj;   //form object
+			this.close;
+	});
+	this.ds_in.deleteAll();
+}
+
+this.Grid00_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	
+}
+]]></Script>
+  </Form>
+</FDL>

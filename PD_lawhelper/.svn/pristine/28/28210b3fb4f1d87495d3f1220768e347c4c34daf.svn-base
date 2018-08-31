@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="pop_depo_no" classname="V_DSP_002" left="0" top="0" width="500" height="350" titletext="pop_depo_no">
+    <Layouts>
+      <Layout>
+        <Div id="dsp_nums" taborder="0" text="Div00" left="1%" top="50" right="1%" height="37" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Edit id="depo_no_tx" taborder="4" oneditclick="Div00_Edit00_oneditclick" left="34.84%" top="5" right="25.61%" height="25"/>
+              <Button id="btn_depo_search" taborder="5" text="검색  " onclick="Div00_Button00_onclick" left="75%" top="7" width="55" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;align:right middle;"/>
+              <Combo id="depo_no_com" taborder="6" innerdataset="@ds_depo_no" codecolumn="id" datacolumn="value" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="12.5%" top="5" width="21.93%" height="24" index="-1"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="depo_no" taborder="1" useinputpanel="false" left="1%" top="95" right="1%" height="250" scrollbars="alwaysvert" binddataset="ds_depo">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="110"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="공탁관리번호"/>
+                <Cell col="1" text="공탁자명"/>
+                <Cell col="2" text="피공탁자명"/>
+                <Cell col="3" text="공탁일자"/>
+                <Cell col="4" text="공탁금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:depositDepoAdmNo"/>
+                <Cell col="1" text="bind:depositOthDepoName"/>
+                <Cell col="2" text="bind:depositDepoName"/>
+                <Cell col="3" text="bind:depositForcExecSeq"/>
+                <Cell col="4" text="bind:depositDepoChg"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="2" text="공탁관리번호 조회" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;align:center middle;font:bold 12 굴림;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_depo_no">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">전체</Col>
+          </Row>
+          <Row>
+            <Col id="id">0</Col>
+            <Col id="value">공탁관리번호</Col>
+          </Row>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="value">강제집행일련번호</Col>
+          </Row>
+          <Row>
+            <Col id="id">2</Col>
+            <Col id="value">공탁자명</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_mgr">
+        <ColumnInfo>
+          <Column id="depositmgrDepoAdmNo" type="STRING" size="256"/>
+          <Column id="depositmgrSeq" type="STRING" size="256"/>
+          <Column id="depositmgrId" type="STRING" size="256"/>
+          <Column id="depositmgrDeptCode" type="STRING" size="256"/>
+          <Column id="depositmgrAsigDate" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_depo">
+        <ColumnInfo>
+          <Column id="depositDepoAdmNo" type="STRING" size="256"/>
+          <Column id="depositOthDepoName" type="STRING" size="256"/>
+          <Column id="depositDepoName" type="STRING" size="256"/>
+          <Column id="depositForcExecSeq" type="STRING" size="256"/>
+          <Column id="depositDepoChg" type="STRING" size="256"/>
+          <Column id="depositDepoDate" type="STRING" size="256"/>
+          <Column id="depositDepuName" type="STRING" size="256"/>
+          <Column id="depositJuriCortCode" type="STRING" size="256"/>
+          <Column id="depositKeepDeptCode" type="STRING" size="256"/>
+          <Column id="depositDepoReleDate" type="STRING" size="256"/>
+          <Column id="depositDepchgCollDate" type="STRING" size="256"/>
+          <Column id="depositDepoCollChg" type="STRING" size="256"/>
+          <Column id="depositDepoCollRea" type="STRING" size="256"/>
+          <Column id="depositmgrDepoAdmNo" type="STRING" size="256"/>
+          <Column id="depositmgrSeq" type="STRING" size="256"/>
+          <Column id="depositmgrId" type="STRING" size="256"/>
+          <Column id="depositmgrDeptCode" type="STRING" size="256"/>
+          <Column id="depositmgrAsigDate" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

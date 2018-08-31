@@ -1,0 +1,250 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_MAIN_001_under");
+                this.set_classname("V_MAIN_001_under");
+                this.set_titletext("New Form");
+                this.set_scrollbars("none");
+                this._setFormPosition(0,0,535,198);
+            }
+            this.style.set_cursor("default");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_precedents_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"precno\" type=\"STRING\" size=\"256\"/><Column id=\"judgedate\" type=\"STRING\" size=\"256\"/><Column id=\"judgeno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"caseno\" type=\"STRING\" size=\"256\"/><Column id=\"courtname\" type=\"STRING\" size=\"256\"/><Column id=\"courtclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"caseclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"caseclassname\" type=\"STRING\" size=\"256\"/><Column id=\"judgeclassname\" type=\"STRING\" size=\"256\"/><Column id=\"judge\" type=\"STRING\" size=\"256\"/><Column id=\"precdetaillink\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_precedents_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"casename_search\" type=\"STRING\" size=\"256\"/><Column id=\"caseno_search\" type=\"STRING\" size=\"256\"/><Column id=\"judgeno_search\" type=\"STRING\" size=\"256\"/><Column id=\"casetext_search\" type=\"STRING\" size=\"256\"/><Column id=\"judgetext_search\" type=\"STRING\" size=\"256\"/><Column id=\"referlaw_search\" type=\"STRING\" size=\"256\"/><Column id=\"referjudge_search\" type=\"STRING\" size=\"256\"/><Column id=\"fromdate_search\" type=\"STRING\" size=\"256\"/><Column id=\"todate_search\" type=\"STRING\" size=\"256\"/><Column id=\"judge_search\" type=\"STRING\" size=\"256\"/><Column id=\"case_search\" type=\"STRING\" size=\"256\"/><Column id=\"court_search\" type=\"STRING\" size=\"256\"/><Column id=\"orderby\" type=\"STRING\" size=\"256\"/><Column id=\"page\" type=\"INT\" size=\"256\"/><Column id=\"totalPage\" type=\"INT\" size=\"256\"/><Column id=\"startPage\" type=\"INT\" size=\"256\"/><Column id=\"endPage\" type=\"INT\" size=\"256\"/><Column id=\"countList\" type=\"INT\" size=\"256\"/><Column id=\"countPage\" type=\"INT\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"todate_search\"/><Col id=\"fromdate_search\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_detc_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"detcno\" type=\"STRING\" size=\"256\"/><Column id=\"detcdate\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"caseno\" type=\"STRING\" size=\"256\"/><Column id=\"judgeclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"precdetaillink\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_detc_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"fromdate_search\" type=\"STRING\" size=\"256\"/><Column id=\"todate_search\" type=\"STRING\" size=\"256\"/><Column id=\"casename_search\" type=\"STRING\" size=\"256\"/><Column id=\"caseno_search\" type=\"STRING\" size=\"256\"/><Column id=\"caseclasscode_search\" type=\"STRING\" size=\"256\"/><Column id=\"casetext_search\" type=\"STRING\" size=\"256\"/><Column id=\"judgetext_search\" type=\"STRING\" size=\"256\"/><Column id=\"referlaw_search\" type=\"STRING\" size=\"256\"/><Column id=\"referjudge_search\" type=\"STRING\" size=\"256\"/><Column id=\"judgeclasscode_search\" type=\"STRING\" size=\"256\"/><Column id=\"orderby\" type=\"STRING\" size=\"256\"/><Column id=\"page\" type=\"INT\" size=\"256\"/><Column id=\"totalPage\" type=\"INT\" size=\"256\"/><Column id=\"startPage\" type=\"INT\" size=\"256\"/><Column id=\"endPage\" type=\"INT\" size=\"256\"/><Column id=\"countList\" type=\"INT\" size=\"256\"/><Column id=\"countPage\" type=\"INT\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_menu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_NAME\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_SEQ\" type=\"INT\" size=\"4\"/><Column id=\"MENU_OPTP\" type=\"STRING\" size=\"32\"/><Column id=\"PAGE_URL\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_TOP\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_ID\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_GRP\" type=\"STRING\" size=\"32\"/><Column id=\"CREATE_DT\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_LEVEL\" type=\"INT\" size=\"4\"/><Column id=\"PAGE_ID\" type=\"STRING\" size=\"32\"/><Column id=\"PAGE_NAME\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_ARGS\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_STAT\" type=\"STRING\" size=\"32\"/><Column id=\"CREATE_USER\" type=\"STRING\" size=\"32\"/><Column id=\"UPDATE_DT\" type=\"STRING\" size=\"32\"/><Column id=\"UPDATE_USER\" type=\"STRING\" size=\"32\"/><Column id=\"MENU_DESC\" type=\"STRING\" size=\"32\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"incident\" type=\"STRING\" size=\"256\"/><Column id=\"pageIndex\" type=\"INT\" size=\"256\"/><Column id=\"pageUnit\" type=\"INT\" size=\"256\"/><Column id=\"pageSize\" type=\"INT\" size=\"256\"/><Column id=\"combotext\" type=\"STRING\" size=\"256\"/><Column id=\"searchCondition\" type=\"STRING\" size=\"256\"/><Column id=\"firstPageNo\" type=\"INT\" size=\"256\"/><Column id=\"lastPageNo\" type=\"INT\" size=\"256\"/><Column id=\"totalPageCount\" type=\"INT\" size=\"256\"/><Column id=\"today_search\" type=\"STRING\" size=\"256\"/><Column id=\"fromdate_search\" type=\"STRING\" size=\"256\"/><Column id=\"casenumber\" type=\"STRING\" size=\"256\"/><Column id=\"decision\" type=\"STRING\" size=\"256\"/><Column id=\"claim\" type=\"STRING\" size=\"256\"/><Column id=\"request\" type=\"STRING\" size=\"256\"/><Column id=\"reason\" type=\"STRING\" size=\"256\"/><Column id=\"authorities\" type=\"STRING\" size=\"256\"/><Column id=\"legislation\" type=\"STRING\" size=\"256\"/><Column id=\"provisionnumber\" type=\"STRING\" size=\"256\"/><Column id=\"orderby\" type=\"STRING\" size=\"256\"/><Column id=\"tmp\" type=\"STRING\" size=\"256\"/><Column id=\"todaytmp\" type=\"STRING\" size=\"256\"/><Column id=\"userid\" type=\"STRING\" size=\"256\"/><Column id=\"deccno\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"pageIndex\">1</Col><Col id=\"pageUnit\">10</Col><Col id=\"pageSize\">10</Col><Col id=\"searchCondition\"/><Col id=\"combotext\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_date", this);
+            obj._setContents("<ColumnInfo><Column id=\"deccno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"reclassname\" type=\"STRING\" size=\"256\"/><Column id=\"reorgname\" type=\"STRING\" size=\"256\"/><Column id=\"decidedate\" type=\"STRING\" size=\"256\"/><Column id=\"item\" type=\"STRING\" size=\"256\"/><Column id=\"choice\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Tab("Tab00", "absolute", "-1", "0", null, null, "0", "1", this);
+            obj.set_taborder("0");
+            obj.set_tabindex("0");
+            obj.set_scrollbars("autoboth");
+            obj.set_cssclass("tab_MF_Notice");
+            this.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage1", this.Tab00);
+            obj.set_text("최신 판례");
+            obj.style.set_background("#fafafaff");
+            this.Tab00.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "19", "11", "93.5%", "89.61%", null, null, this.Tab00.tabpage1);
+            obj.set_cssclass("grd_MF_Notice");
+            obj.set_taborder("0");
+            obj.set_binddataset("ds_precedents_list");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"240\"/><Column size=\"80\"/></Columns><Rows><Row size=\"18\" band=\"head\"/><Row size=\"20\"/></Rows><Band id=\"head\"><Cell style=\"font:bold 8 arial;\" text=\"최신판례\" expandsize=\"13\"/><Cell col=\"1\"/><Cell col=\"2\"/></Band><Band id=\"body\"><Cell text=\"bind:caseno\"/><Cell col=\"1\" text=\"bind:casename\"/><Cell col=\"2\" text=\"bind:judgedate\"/></Band></Format></Formats>");
+            this.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage2", this.Tab00);
+            obj.set_text("최근행정심판례");
+            obj.style.set_background("#fafafaff");
+            this.Tab00.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "3.54%", "6.92%", "93.66%", "89.94%", null, null, this.Tab00.tabpage2);
+            obj.set_cssclass("grd_MF_Notice");
+            obj.set_taborder("0");
+            obj.set_autofittype("col");
+            obj.set_binddataset("ds_date");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"85\"/><Column size=\"100\"/><Column size=\"95\"/><Column size=\"107\"/><Column size=\"40\"/></Columns><Rows><Row size=\"16\" band=\"head\"/><Row size=\"18\"/></Rows><Band id=\"head\"><Cell style=\"align:center middle;font:bold 9 arial;\" text=\" 사건명\"/><Cell col=\"1\" style=\"align:center middle;font:bold 9 arial;\" text=\" 처분일자\"/><Cell col=\"2\" style=\"align:center middle;font:bold 9 arial;\" text=\"재검청\"/><Cell col=\"3\" style=\"align:center;font:bold 9 arial;\" text=\"재결구분명\"/><Cell col=\"4\"/></Band><Band id=\"body\"><Cell style=\"align:center middle;\" text=\"bind:casename\"/><Cell col=\"1\" style=\"align:center middle;\" text=\"bind:decidedate\"/><Cell col=\"2\" style=\"align:center middle;\" text=\"bind:reorgname\"/><Cell col=\"3\" style=\"align:center;\" text=\"bind:reclassname\"/><Cell col=\"4\"/></Band></Format></Formats>");
+            this.Tab00.tabpage2.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.Tab00.tabpage1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("최신 판례");
+            		p.style.set_background("#fafafaff");
+
+            	}
+            );
+            this.Tab00.tabpage1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.Tab00.tabpage2,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("최근행정심판례");
+            		p.style.set_background("#fafafaff");
+
+            	}
+            );
+            this.Tab00.tabpage2.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 535, 198, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_MAIN_001_under");
+            		p.set_titletext("New Form");
+            		p.set_scrollbars("none");
+            		p.style.set_cursor("default");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_MAIN_001_under.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_MAIN_001_under.xfdl", function() {
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        //DB 갔다 오기
+        this.fn_DB_search = function(){
+        	this.ds_menu.assign(application.gds_menu);
+        	this.fn_DB_search_prec();
+        	this.fn_DB_search_detc();
+        }
+
+        this.fn_DB_search_prec = function(){
+        	var oDatas = {
+        				svcid : "selectList",
+        				sController : "PrecedentsSimpleSelectVO.do",
+        				inds : ["ds_precedents_search=ds_precedents_search"],
+        				outds : ["ds_precedents_list=ds_precedents_list"],
+        				args  : [],
+        				bAsync : true,    
+        				nDataType : 0,   
+        				bCompress :false,
+        	};
+        	
+        	trace(" this.ds_precedents_search : " + this.ds_precedents_search.saveXML());
+        	Iject.transaction(this,oDatas,function(){
+        		if(this.errorcode < 0){
+        		   Iject.alert(this.errorMsg);			
+        		   return;
+        		}	      
+        	       var pThis = this.fobj;   //form object	      
+        	       trace("pThis.ds_precedents_search : " + pThis.ds_precedents_search.saveXML());
+        	       
+        	});
+        }
+
+        this.fn_DB_search_detc = function(){
+        	
+        	var userid = application.gds_userInfo.getColumn(0,"userid");
+            this.ds_search.setColumn(0,"userid",userid);
+
+        	
+        	var oDatas = {
+        				svcid : "selectList",
+        				sController : "history.do",
+        				inds : ["ds_search=ds_search"],
+        				outds : ["ds_date=output1"],
+        				args  : [],
+        				bAsync : true,    
+        				nDataType : 0,   
+        				bCompress :false,
+        	};
+        	
+        	Iject.transaction(this,oDatas,function(){
+        		if(this.errorcode < 0){
+        		   Iject.alert(this.errorMsg);			
+        		   return;
+        		}	      
+        	       var pThis = this.fobj;   //form object	      
+        	       trace("###################: " + pThis.ds_date.saveXML());
+        	       
+        	});
+        }
+
+        this.fn_grid_action_prec = function(obj,e){
+        	var row = e.row;
+        	var no = this.ds_precedents_list.getColumn(row,"precno");
+        	
+        	this.fn_goPage(3);
+        	application.gds_precno.clearData();
+        	application.gds_precno.addRow();
+        	application.gds_precno.setColumn(0,"precno",no);
+        }
+        this.fn_grid_action_detc = function(obj,e){
+        	var row = e.row;
+        	var no = this.ds_date.getColumn(row,"deccno");
+        	var menuseq = this.ds_date.getColumn(row,"choice");
+
+        	this.fn_goPage(13);
+        	application.gds_detcno.clearData();
+        	application.gds_detcno.addRow();
+        	application.gds_detcno.setColumn(0,"deccno",no);
+        }
+
+        this.fn_goPage = function(menuseq)
+        {
+        	var oObj = {
+                  ds    : this.ds_menu,    // 메뉴 dataset 
+                  nRow  : menuseq,              // 선택된 
+                  
+                  oArgs : []               // 넘길 argument
+            };
+            Iject.Mdi.call(this,oObj);
+            trace("이동 체크 :"+oObj.nRow);	
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_precedents_search.addEventHandler("onload", this.fn_initPageSet, this);
+            this.ds_detc_search.addEventHandler("onload", this.fn_initPageSet, this);
+            this.Tab00.tabpage1.Grid00.addEventHandler("oncellclick", this.fn_grid_action_prec, this);
+            this.Tab00.tabpage2.Grid00.addEventHandler("oncellclick", this.fn_grid_action_detc, this);
+
+        };
+
+        this.loadIncludeScript("V_MAIN_001_under.xfdl");
+
+       
+    };
+}
+)();

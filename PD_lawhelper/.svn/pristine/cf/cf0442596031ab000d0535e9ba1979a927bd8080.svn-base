@@ -1,0 +1,707 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_PDL_021");
+                this.set_classname("V_PDL_021");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_out", this);
+            obj._setContents("<ColumnInfo><Column id=\"legaladvLawAdvReqNo\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOpenWtr\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvReqDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvReqMgrCode\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvAdvTit\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvFactRela\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvQuesIssu\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvEtc\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvLawAdvCode\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqWtr\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvReviDay\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepMgrCode\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepDate\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepCont\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepTit\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepWtr\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepWtrName\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvEtcRepPoin\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqTit\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqLyrid\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqRepdate\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqFact\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqQues\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqReq\" type=\"STRING\" size=\"256\"/><Column id=\"reqMgrName\" type=\"STRING\" size=\"256\"/><Column id=\"repMgrName\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvLawAdvName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_cost", this);
+            obj._setContents("<ColumnInfo><Column id=\"legaladvCostLawadvReqno\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvCostLawadvSeq\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvCostReqCost\" type=\"INT\" size=\"256\"/><Column id=\"legaladvCostStax\" type=\"INT\" size=\"256\"/><Column id=\"legaladvCostClamsumChg\" type=\"INT\" size=\"256\"/><Column id=\"legaladvCostRepCont\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"legaladvLawAdvReqNo\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvReqDate1\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvReqDate2\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvRepWtr\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvLawAdvCode\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvOutReqLyrid\" type=\"STRING\" size=\"256\"/><Column id=\"legaladvCostLawadvReqno\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("Div00", "absolute", "0.9%", "8", "98.2%", "35", null, null, this);
+            obj.set_taborder("0");
+            obj.set_text("법률자문회신");
+            obj.style.set_align("left top");
+            obj.style.set_padding("10 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "0.9%", "44", "98.2%", "44", null, null, this);
+            obj.set_taborder("1");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.addChild(obj.name, obj);
+            obj = new Div("Div00", "absolute", "8.47%", "4", "91.02%", "35", null, null, this.Div01);
+            obj.set_taborder("0");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("reqNo_edit", "absolute", "4.61%", "4", "15.73%", "25", null, null, this.Div01.Div00);
+            obj.set_taborder("0");
+            obj.style.set_selectbackground("blue");
+            obj.set_enable("false");
+            this.Div01.Div00.addChild(obj.name, obj);
+            obj = new Div("Div01", "absolute", "0.51%", "4", "11.73%", "35", null, null, this.Div01);
+            obj.set_taborder("6");
+            obj.set_text("법률자문의뢰번호");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("9 Dotum");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("searchBtn", "absolute", "28.06%", "9", "8.47%", "26", null, null, this.Div01);
+            obj.set_taborder("2");
+            obj.set_text("검색");
+            obj.style.set_image("URL('theme://images/searchBtn.png')");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("resetBtn", "absolute", "90.41%", "9", "8.47%", "26", null, null, this.Div01);
+            obj.set_taborder("3");
+            obj.set_text("초기화");
+            obj.style.set_image("URL('theme://images/resetBtn.png')");
+            obj.set_visible("false");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Div("Div02", "absolute", "0.9%", "124", "98.2%", "44", null, null, this);
+            obj.set_taborder("2");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.addChild(obj.name, obj);
+            obj = new Div("Div00", "absolute", "8.47%", "4", "91.02%", "35", null, null, this.Div02);
+            obj.set_taborder("6");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Edit("repMgrName_edit", "absolute", "4.61%", "4", "15.73%", "25", null, null, this.Div02.Div00);
+            obj.set_taborder("4");
+            obj.style.set_selectbackground("blue");
+            obj.set_readonly("false");
+            obj.set_enable("false");
+            this.Div02.Div00.addChild(obj.name, obj);
+            obj = new Calendar("req_date", "absolute", "34.27%", "4", "15.73%", "25", null, null, this.Div02.Div00);
+            this.Div02.Div00.addChild(obj.name, obj);
+            obj.set_taborder("5");
+            obj.set_readonly("false");
+            obj.set_enable("false");
+            obj = new Div("Div01", "absolute", "0.51%", "4", "11.73%", "35", null, null, this.Div02);
+            obj.set_taborder("7");
+            obj.set_text("의뢰담당자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_font("9 Dotum");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Div("Div02", "absolute", "27.45%", "4", "11.73%", "35", null, null, this.Div02);
+            obj.set_taborder("8");
+            obj.set_text("의뢰일자");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div02.addChild(obj.name, obj);
+
+            obj = new Div("Div03", "absolute", "0.9%", "102", "982", "15", null, null, this);
+            obj.set_taborder("3");
+            obj.set_text("회신정보");
+            obj.style.set_align("left middle");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div04", "absolute", "0.9%", "178", "982", "15", null, null, this);
+            obj.set_taborder("4");
+            obj.set_text("회신사항");
+            obj.style.set_align("left middle");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div05", "absolute", "0.9%", "202", "98.2%", "162", null, null, this);
+            obj.set_taborder("5");
+            obj.style.set_align("left top");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_padding("0 0 0 10");
+            obj.set_enable("true");
+            this.addChild(obj.name, obj);
+            obj = new Div("Div09", "absolute", "8.47%", "4", "91.02%", "35", null, null, this.Div05);
+            obj.set_taborder("14");
+            obj.set_text("Div09");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Edit("repTit_edit", "absolute", "4.61%", "4", "94.94%", "25", null, null, this.Div05.Div09);
+            obj.set_taborder("0");
+            obj.set_enable("false");
+            obj.set_visible("true");
+            this.Div05.Div09.addChild(obj.name, obj);
+            obj = new Div("Div10", "absolute", "8.47%", "38", "91.02%", "60", null, null, this.Div05);
+            obj.set_taborder("15");
+            obj.set_text("Div10");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new TextArea("repCont_area", "absolute", "4.61%", "4", "94.94%", "51", null, null, this.Div05.Div10);
+            obj.set_taborder("0");
+            obj.set_enable("false");
+            obj.style.set_padding("4 4 4 4");
+            this.Div05.Div10.addChild(obj.name, obj);
+            obj = new Div("Div11", "absolute", "8.47%", "97", "91.02%", "60", null, null, this.Div05);
+            obj.set_taborder("16");
+            obj.set_text("Div11");
+            obj.style.set_background("#f4f4f4ff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new TextArea("etcRepPoin_area", "absolute", "4.61%", "4", "94.94%", "51", null, null, this.Div05.Div11);
+            obj.set_taborder("0");
+            obj.set_enable("false");
+            obj.style.set_padding("4 4 4 4");
+            this.Div05.Div11.addChild(obj.name, obj);
+            obj = new Div("Div04", "absolute", "0.51%", "4", "11.73%", "35", null, null, this.Div05);
+            obj.set_taborder("22");
+            obj.set_text("회신제목");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div05", "absolute", "0.51%", "38", "11.73%", "60", null, null, this.Div05);
+            obj.set_taborder("23");
+            obj.set_text("회신내용");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+            obj = new Div("Div06", "absolute", "0.51%", "97", "11.73%", "60", null, null, this.Div05);
+            obj.set_taborder("24");
+            obj.set_text("기타회신사항");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            this.Div05.addChild(obj.name, obj);
+
+            obj = new Div("Div06", "absolute", "0.9%", "374", "982", "15", null, null, this);
+            obj.set_taborder("6");
+            obj.set_text("자문비내역");
+            obj.style.set_align("left middle");
+            obj.style.set_padding("0 0 0 10");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00", "absolute", "0.9%", "396", "98.2%", "165", null, null, this);
+            obj.set_taborder("7");
+            obj.set_binddataset("ds_cost");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"45\"/><Column size=\"487\"/><Column size=\"150\"/><Column size=\"150\"/><Column size=\"150\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/><Row size=\"24\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"No.\"/><Cell col=\"1\" text=\"자문비내역\"/><Cell col=\"2\" text=\"자문수수료\"/><Cell col=\"3\" text=\"부가세\"/><Cell col=\"4\" text=\"청구합계금액\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" displaytype=\"text\" edittype=\"normal\" editfilter=\"none\" text=\"bind:legaladvCostRepCont\" editautoselect=\"true\" editdisplay=\"edit\" combodisplay=\"edit\"/><Cell col=\"2\" displaytype=\"number\" edittype=\"normal\" editfilter=\"number\" text=\"bind:legaladvCostReqCost\"/><Cell col=\"3\" displaytype=\"number\" edittype=\"none\" editfilter=\"number\" text=\"bind:legaladvCostStax\"/><Cell col=\"4\" displaytype=\"number\" edittype=\"none\" text=\"bind:legaladvCostClamsumChg\"/></Band><Band id=\"summary\"><Cell colspan=\"4\"><Cell/><Cell col=\"1\" text=\"총\"/><Cell col=\"2\" text=\"계\"/><Cell col=\"3\"/></Cell><Cell col=\"4\" displaytype=\"number\" edittype=\"normal\" expr=\"dataset.getSum('nexacro.toNumber(legaladvCostClamsumChg, (Number.NaN, 0))')\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("insertBtn", "absolute", "81.9%", "367", "8.5%", "26", null, null, this);
+            obj.set_taborder("11");
+            obj.style.set_image("URL('theme://images/insertBtn.png')");
+            obj.set_visible("false");
+            obj.set_text("추가");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("deleteBtn", "absolute", "90.7%", "367", "8.5%", "26", null, null, this);
+            obj.set_taborder("12");
+            obj.set_text("삭제");
+            obj.style.set_image("URL('theme://images/deleteBtn.png')");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("saveBtn", "absolute", "81.9%", "566", "8.5%", "26", null, null, this);
+            obj.set_taborder("13");
+            obj.set_text("임시저장");
+            obj.style.set_image("URL('theme://images/tempSaveBtn.png')");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("outBtn", "absolute", "90.7%", "566", "8.5%", "26", null, null, this);
+            obj.set_taborder("14");
+            obj.set_text("회신확정");
+            obj.style.set_image("URL('theme://images/saveBtn.png')");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.set_text("법률자문회신");
+            		p.style.set_align("left top");
+            		p.style.set_padding("10 0 0 10");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div01.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div01.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 44, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 885, 35, this.Div02.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("6");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div02.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 74, this.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 15, this.Div03,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("3");
+            		p.set_text("회신정보");
+            		p.style.set_align("left middle");
+            		p.style.set_padding("0 0 0 10");
+
+            	}
+            );
+            this.Div03.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 15, this.Div04,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("4");
+            		p.set_text("회신사항");
+            		p.style.set_align("left middle");
+            		p.style.set_padding("0 0 0 10");
+
+            	}
+            );
+            this.Div04.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 35, this.Div05.Div09,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("14");
+            		p.set_text("Div09");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div05.Div09.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 60, this.Div05.Div10,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("15");
+            		p.set_text("Div10");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div05.Div10.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 60, this.Div05.Div11,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("16");
+            		p.set_text("Div11");
+            		p.style.set_background("#f4f4f4ff");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.Div05.Div11.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 255, this.Div05,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("5");
+            		p.style.set_align("left top");
+            		p.style.set_background("lavenderblush");
+            		p.style.set_border("1 solid #c8c8c8ff");
+            		p.style.set_padding("0 0 0 10");
+            		p.set_enable("true");
+
+            	}
+            );
+            this.Div05.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 982, 15, this.Div06,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("6");
+            		p.set_text("자문비내역");
+            		p.style.set_align("left middle");
+            		p.style.set_padding("0 0 0 10");
+
+            	}
+            );
+            this.Div06.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_PDL_021");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","Div01.Div00.reqNo_edit","value","ds_out","legaladvLawAdvReqNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div02.Div00.req_date","value","ds_out","legaladvOutReqDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div02.Div00.repMgrName_edit","value","ds_out","repMgrName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div05.Div09.repTit_edit","value","ds_out","legaladvRepTit");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div05.Div10.repCont_area","value","ds_out","legaladvRepCont");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div05.Div11.etcRepPoin_area","value","ds_out","legaladvEtcRepPoin");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","TextArea00","value","ds_out","legaladvRepCont");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_PDL_021.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_PDL_021.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.v_pdl_021_onload = function(obj,e)
+        {
+        //	lyrid = SubStr(gb_Param,"4","10");
+        	legaladvLawAdvReqNo = application.gds_temp.getColumn(0, 'legaladvLawAdvReqNo');
+        	lyrid = "2013082601";
+        	if(legaladvLawAdvReqNo != null)
+        	{
+        		this.outList(lyrid, legaladvLawAdvReqNo);
+        		this.cost(legaladvLawAdvReqNo);
+        		this.btnVisible();
+        	}
+        }
+
+        this.outList = function(lyrid,legaladvLawAdvReqNo)
+        {
+        	this.ds_search.setColumn(0,"legaladvLawAdvReqNo", legaladvLawAdvReqNo);
+        	this.ds_search.setColumn(0,"legaladvOutReqLyrid", lyrid);
+        	application.gds_temp.reset();
+        	var oDatas =  {
+        		  svcid : "outList",
+        		  sController : "OutList.do",
+        		  inds :["ds_search=ds_search"],
+        		  outds :["ds_out=ds_out"],
+        		  args  : [],
+        		  bAsync : false,
+        		  nDataType : 0,
+        		  bCompress :false,
+        		};
+
+        	Iject.transaction(this,oDatas,function(){
+        		var pThis = this.fobj;
+        	});
+
+        }
+
+        this.cost = function(legaladvLawAdvReqNo)
+        {
+        	this.ds_search.setColumn(0, "legaladvCostLawadvReqno", legaladvLawAdvReqNo);
+        	var oDatas = {
+        		svcid : "costList",
+        		sController : "CostList.do",
+        		inds : ["ds_search=ds_search"],
+        		outds : ["ds_cost=ds_cost"],
+        		args : [],
+        		bAsync : true,
+        		nDataType : 0,
+        		bCompress : false,
+        	};
+        	Iject.transaction(this, oDatas, function(){
+        		var pThis = this.fobj;
+        	});
+        }
+
+        this.searchBtn_onclick = function(obj,e)
+        {
+        	var objChildFrame = new ChildFrame();
+            objChildFrame.init("chf_popup1", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_022.xfdl");
+            var objParam = {};
+            objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+        }
+
+        this.fn_popupCallback = function(strID,legaladvLawAdvReqNo){
+
+        //	lyrid = SubStr(gb_Param,"4","10");
+        	lyrid = "2013082601";
+        	if(legaladvLawAdvReqNo != undefined){
+        		this.outList(lyrid, legaladvLawAdvReqNo);
+        		this.cost(legaladvLawAdvReqNo);
+        		this.btnVisible();
+        	}
+        }
+
+        this.saveBtn_onclick = function(obj,e)
+        {
+        	this.ds_out.setColumn(0, "legaladvRepWtr", "N");
+        	var row = this.ds_cost.rowcount;
+        	for(i = 0; i<row; i++) {
+        		var cont = this.ds_cost.getColumn(i, "legaladvCostRepCont");
+        		var cost = this.ds_cost.getColumn(i, "legaladvCostReqCost");
+        		if(cont == " " || cont == null) {
+        			alert("자문비내역을 입력해주세요");
+        			return;
+        		}
+
+        		if(cost == null) {
+        			alert("자문수수료를 입력해주세요");
+        			return;
+        		}
+        	}
+
+        	this.outSave();
+        	this.costInsert();
+        	alert("저장 되었습니다.");
+        }
+
+        this.outBtn_onclick = function(obj,e)
+        {
+        	this.ds_out.setColumn(0, "legaladvRepWtr", "Y");
+        	
+        	
+        	var repTit = this.ds_out.getColumn(0, "legaladvRepTit");
+        	var repCont = this.ds_out.getColumn(0, "legaladvRepCont");
+        	var repPoin = this.ds_out.getColumn(0, "legaladvEtcRepPoin");
+
+        	if(repTit == "" || repTit == null) {
+        		alert("회신제목을 입력해주세요.");
+        		return;
+        	}
+
+        	if(repCont == "" || repCont == null) {
+        		alert("회신내용을 입력해주세요.");
+        		return;
+        	}
+        	
+        	if(repPoin == "" || repPoin == null) {
+        		alert("기타회신사항을 입력해주세요.");
+        		return;
+        	}
+        	
+        	var row = this.ds_cost.rowcount;
+        	for(i = 0; i<row; i++) {
+        		var cont = this.ds_cost.getColumn(i, "legaladvCostRepCont");
+        		var cost = this.ds_cost.getColumn(i, "legaladvCostReqCost");
+        		if(cont == "" || cont == null) {
+        			alert("자문비내역을 입력해주세요");
+        			return;
+        		}
+
+        		if(cost == null) {
+        			alert("자문수수료를 입력해주세요");
+        			return;
+        		}
+        	}
+        	
+        	
+        	var bo = confirm("회신 확정이 되면 수정이 불가능합니다. \n정말 입력 하시겠습니까?");
+        	if(bo) {
+        		this.outSave();
+        		this.costInsert();
+        		this.btnVisible();
+        		alert("회신 되었습니다.");
+        	} else {
+        		alert("취소 되었습니다.");
+        	}
+        }
+
+        
+        this.outSave = function(){
+        	var oDatas = {
+        		svcid : "outUpdate",
+        		sController : "OutUpdate.do",
+        		inds : ["ds_out=ds_out:U"],
+        		outds : [],
+        		args : [],
+        		bAsync : true,
+        		nDataType : 0,
+        		bCompress : false,
+        	};
+        	Iject.transaction(this, oDatas, function(){
+        		var pThis = this.fobj;
+        	});
+        }
+
+        this.costInsert = function(){
+        	var oDatas = {
+        		svcid : "costInsert",
+        		sController : "CostInsert.do",
+        		inds : ["ds_cost=ds_cost:U"],
+        		outds : [],
+        		args : [],
+        		bAsync : true,
+        		nDataType : 0,
+        		bCompress : false,
+        	};
+        	Iject.transaction(this, oDatas, function(){
+        		var pThis = this.fobj;
+        	});
+        }
+
+        this.insertBtn_onclick = function(obj,e)
+        {
+        	var row = this.ds_cost.getRowCount();
+        	this.ds_cost.insertRow(row);
+        	var legaladvCostLawadvReqno = this.ds_out.getColumn(0, "legaladvLawAdvReqNo");
+        	this.ds_cost.setColumn(row, "legaladvCostLawadvReqno", legaladvCostLawadvReqno);		
+        }
+
+        this.deleteBtn_onclick = function(obj,e)
+        {
+        	var row = this.ds_cost.rowposition;
+        	if(this.ds_cost.rowcount == 0){
+        		alert("삭제할 데이터가 없습니다.");
+        		return;
+            }
+        	this.ds_cost.deleteRow(row);
+        }
+
+        this.resetBtn_onclick = function(obj,e)
+        {
+        	this.ds_out.reset();
+        	this.ds_cost.reset();
+        	this.btnVisible();
+        }
+
+        this.btnVisible = function() {
+        	var legaladvRepWtr = this.ds_out.getColumn(0, "legaladvRepWtr");
+        	if(legaladvRepWtr == 'N') {
+        		this.Div05.Div09.repTit_edit.set_enable(true);
+        		this.Div05.Div10.repCont_area.set_enable(true);
+        		this.Div05.Div11.etcRepPoin_area.set_enable(true);
+        		this.Div01.resetBtn.set_visible(true);
+        		this.insertBtn.set_visible(true);
+        		this.deleteBtn.set_visible(true);			
+        		this.saveBtn.set_visible(true);
+        		this.outBtn.set_visible(true);
+        	} else {
+        		this.Div05.Div09.repTit_edit.set_enable(false);
+        		this.Div05.Div10.repCont_area.set_enable(false);
+        		this.Div05.Div11.etcRepPoin_area.set_enable(false);
+        		this.Div01.resetBtn.set_visible(false);
+        		this.insertBtn.set_visible(false);
+        		this.deleteBtn.set_visible(false);
+        		this.saveBtn.set_visible(false);
+        		this.outBtn.set_visible(false);
+        	}
+        }
+
+        this.test = function(obj,e)
+        {
+        	var row = obj.rowposition;
+        	if(e.columnid == "legaladvCostReqCost") {
+        		obj.setColumn(row, "legaladvCostReqCost", e.newvalue)
+        		var legaladvCostStax = e.newvalue / 10;
+        		obj.setColumn(row, "legaladvCostStax", legaladvCostStax)
+        		var legaladvCostClamsumChg = legaladvCostStax + e.newvalue;
+        		obj.setColumn(row, "legaladvCostClamsumChg", legaladvCostClamsumChg)
+        	}
+        	
+        	if(e.columnid == "legaladvCostReqCont") {
+        		obj.setColumn(row, "legaladvCostReqCont", e.newvalue)
+        	}
+        }
+
+        
+        this.Div05_Div10_repCont_area_oneditclick = function(obj,e)
+        {
+        	
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_cost.addEventHandler("oncolumnchanged", this.test, this);
+            this.addEventHandler("onload", this.v_pdl_021_onload, this);
+            this.Div01.searchBtn.addEventHandler("onclick", this.searchBtn_onclick, this);
+            this.Div01.resetBtn.addEventHandler("onclick", this.resetBtn_onclick, this);
+            this.Div02.Div00.repMgrName_edit.addEventHandler("oneditclick", this.Div02_Div00_Edit00_oneditclick, this);
+            this.insertBtn.addEventHandler("onclick", this.insertBtn_onclick, this);
+            this.deleteBtn.addEventHandler("onclick", this.deleteBtn_onclick, this);
+            this.saveBtn.addEventHandler("onclick", this.saveBtn_onclick, this);
+            this.outBtn.addEventHandler("onclick", this.outBtn_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_PDL_021.xfdl");
+
+       
+    };
+}
+)();

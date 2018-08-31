@@ -1,0 +1,13 @@
+package legal.lawmapper.service;
+
+import java.util.List;
+
+import legal.lawmapper.vo.AlesSueVO;
+
+
+public interface AlesSueService {
+
+	public List<AlesSueVO> getAlesList(AlesSueVO alesSueVo);
+	
+	public void alesSueChange(List<AlesSueVO> listVO);
+}

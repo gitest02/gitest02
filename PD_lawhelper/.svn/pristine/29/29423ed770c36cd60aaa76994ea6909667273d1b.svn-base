@@ -1,0 +1,494 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_041");
+                this.set_classname("V_LAW_040");
+                this.set_titletext("New Form");
+                this.set_dragscrolltype("none");
+                this._setFormPosition(0,0,1000,600);
+            }
+            this.style.set_font("12 Dotum");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_laworg", this);
+            obj._setContents("<ColumnInfo><Column id=\"label\" type=\"STRING\" size=\"256\"/><Column id=\"level\" type=\"STRING\" size=\"256\"/><Column id=\"orgcode\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"label\">법원</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">1</Col></Row><Row><Col id=\"label\">헌법재판소</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">2</Col></Row><Row><Col id=\"label\">법무부</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">3</Col></Row><Row><Col id=\"label\">법률구조공단</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">4</Col></Row><Row><Col id=\"level\">1</Col><Col id=\"label\">등기소</Col><Col id=\"orgcode\">5</Col></Row><Row><Col id=\"label\">변호사회</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">6</Col></Row><Row><Col id=\"label\">검찰청</Col><Col id=\"level\">1</Col><Col id=\"orgcode\">7</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_orgarea", this);
+            obj._setContents("<ColumnInfo><Column id=\"areacode\" type=\"STRING\" size=\"256\"/><Column id=\"area\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"areacode\">SU</Col><Col id=\"area\">서울</Col></Row><Row><Col id=\"areacode\">BS</Col><Col id=\"area\">부산</Col></Row><Row><Col id=\"areacode\">US</Col><Col id=\"area\">울산</Col></Row><Row><Col id=\"areacode\">KJ</Col><Col id=\"area\">광주</Col></Row><Row><Col id=\"areacode\">DG</Col><Col id=\"area\">대구</Col></Row><Row><Col id=\"areacode\">DJ</Col><Col id=\"area\">대전</Col></Row><Row><Col id=\"areacode\">IC</Col><Col id=\"area\">인천</Col></Row><Row><Col id=\"areacode\">GG</Col><Col id=\"area\">경기</Col></Row><Row><Col id=\"areacode\">GW</Col><Col id=\"area\">강원</Col></Row><Row><Col id=\"areacode\">JL</Col><Col id=\"area\">전라</Col></Row><Row><Col id=\"areacode\">KS</Col><Col id=\"area\">경상</Col></Row><Row><Col id=\"areacode\">CC</Col><Col id=\"area\">충청</Col></Row><Row><Col id=\"areacode\">JJ</Col><Col id=\"area\">제주</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_laworg_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"orgcode\" type=\"STRING\" size=\"256\"/><Column id=\"areacode\" type=\"STRING\" size=\"256\"/><Column id=\"laworgcode\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"zipcode\" type=\"STRING\" size=\"256\"/><Column id=\"etc\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_laworg_info", this);
+            obj._setContents("<ColumnInfo><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"laworgcode\" type=\"STRING\" size=\"256\"/><Column id=\"zipcode\" type=\"STRING\" size=\"256\"/><Column id=\"etc\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_laworg_search", this);
+            obj._setContents("<ColumnInfo><ConstColumn id=\"pageIndex\" type=\"INT\" size=\"30\" value=\"\"/><ConstColumn id=\"pageSize\" type=\"INT\" size=\"30\" value=\"\"/><ConstColumn id=\"pageUnit\" type=\"INT\" size=\"30\" value=\"\"/><Column id=\"searchKeyword\" type=\"STRING\" size=\"256\"/><Column id=\"searchCondition\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_laworg_filter", this);
+            obj._setContents("<ColumnInfo><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"level\" type=\"STRING\" size=\"256\"/><Column id=\"orgcode\" type=\"STRING\" size=\"256\"/><Column id=\"areacode\" type=\"STRING\" size=\"256\"/><Column id=\"area\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_laworg_inpo", this);
+            obj._setContents("<ColumnInfo><Column id=\"orgcode\" type=\"STRING\" size=\"256\"/><Column id=\"areacode\" type=\"STRING\" size=\"256\"/><Column id=\"laworgcode\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"zipcode\" type=\"STRING\" size=\"256\"/><Column id=\"etc\" type=\"STRING\" size=\"256\"/><Column id=\"orgno\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div0", "absolute", "5%", "2.83%", null, "10%", "6%", null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Combo("Combo", "absolute", "50.9%", "10.64%", "15.84%", null, null, "57.45%", this.div0);
+            this.div0.addChild(obj.name, obj);
+            obj.set_taborder("2");
+            obj.set_displayrowcount("13");
+            obj.set_innerdataset("@ds_orgarea");
+            obj.set_datacolumn("area");
+            obj.set_codecolumn("areacode");
+            obj.set_type("dropdown");
+            obj.style.set_itemheight("30");
+            obj.style.set_font("10 Dotum");
+            obj.set_index("-1");
+            obj = new Combo("Combo00", "absolute", "30.34%", "10.64%", "15.84%", null, null, "57.45%", this.div0);
+            this.div0.addChild(obj.name, obj);
+            obj.set_taborder("1");
+            obj.set_displayrowcount("8");
+            obj.set_innerdataset("@ds_laworg");
+            obj.set_codecolumn("orgcode");
+            obj.set_datacolumn("label");
+            obj.set_type("dropdown");
+            obj.style.set_itemheight("30");
+            obj.style.set_font("10 Dotum");
+            obj.set_index("-1");
+            obj = new Edit("edit_searchKeyword", "absolute", "74.04%", "10.64%", "15.84%", null, null, "57.45%", this.div0);
+            obj.set_taborder("0");
+            obj.style.set_border("1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            obj.style.set_font("10 arial");
+            this.div0.addChild(obj.name, obj);
+            obj = new Button("btn_search", "absolute", "91.69%", "10.64%", "70", "24", null, null, this.div0);
+            obj.set_taborder("3");
+            obj.style.set_image("URL('img::btn_WF_SearchSmall.png')");
+            obj.style.set_border("1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff");
+            obj.style.set_font("9 Dotum");
+            obj.set_text("검색");
+            this.div0.addChild(obj.name, obj);
+            obj = new Static("search", "absolute", "68.76%", "10.64%", "6.52%", null, null, "57.45%", this.div0);
+            obj.set_taborder("4");
+            obj.set_text("검색어");
+            obj.style.set_border("0 none #a6a6a9ff");
+            obj.style.set_font("10 Dotum");
+            this.div0.addChild(obj.name, obj);
+            obj = new Static("search00", "absolute", "23.82%", "10.64%", "6.52%", null, null, "57.45%", this.div0);
+            obj.set_taborder("7");
+            obj.set_text("법조기관");
+            obj.style.set_border("0 none #a6a6a9ff");
+            obj.style.set_font("10 Dotum");
+            this.div0.addChild(obj.name, obj);
+            obj = new Static("search01", "absolute", "47.19%", "10.64%", "6.52%", null, null, "57.45%", this.div0);
+            obj.set_taborder("8");
+            obj.set_text("지역");
+            obj.style.set_border("0 none #a6a6a9ff");
+            obj.style.set_font("10 Dotum");
+            this.div0.addChild(obj.name, obj);
+
+            obj = new Div("div1", "absolute", "0%", "9.17%", "98.9%", "79.5%", null, null, this);
+            obj.set_taborder("1");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Grid("Grid01", "absolute", "4.95%", "2.91%", null, "92.17%", "4.95%", null, this.div1);
+            obj.set_taborder("14");
+            obj.set_binddataset("ds_laworg_info");
+            obj.style.set_align("center middle");
+            obj.style.set_font("10 Dotum");
+            obj.set_autofittype("col");
+            obj.set_autosizingtype("none");
+            obj.set_cellsizingtype("none");
+            obj.set_autosizebandtype("body");
+            obj.set_treeuseline("false");
+            obj.set_selecttype("cell");
+            obj.set_extendsizetype("row");
+            obj.set_wheelscrollrow("1");
+            obj.set_fillareatype("linerow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"206\"/><Column size=\"68\"/><Column size=\"339\"/><Column size=\"59\"/><Column size=\"41\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"26\"/></Rows><Band id=\"head\"><Cell style=\"align:center middle;padding:0 0 0 3;linespace:BIND(name);\" text=\"기관명\"/><Cell col=\"1\" style=\"align:center middle;padding:0 0 0 3;\" text=\"전화번호\"/><Cell col=\"2\" style=\"align:center middle;padding:0 0 0 3;\" text=\"주소\"/><Cell col=\"3\" style=\"align:center middle;padding:0 0 0 3;\" text=\"우편번호\"/><Cell col=\"4\" style=\"align:center middle;\" text=\"홈페이지\"/></Band><Band id=\"body\"><Cell style=\"align:left middle;padding:0 0 0 3;linespace:3;\" text=\"bind:name\" expandsize=\"13\" autosizerow=\"default\" autosizecol=\"default\"/><Cell col=\"1\" style=\"align:left middle;padding:0 0 0 3;linespace:3;\" text=\"bind:phone\" expandsize=\"13\" autosizerow=\"default\" autosizecol=\"default\"/><Cell col=\"2\" style=\"align:left middle;padding:0 0 0 3;linespace:3;\" text=\"bind:address\" expandsize=\"13\" autosizerow=\"default\" autosizecol=\"default\"/><Cell col=\"3\" style=\"align:center middle;padding:0 0 0 0;linespace:3;\" text=\"bind:zipcode\" expandsize=\"13\" autosizerow=\"default\" autosizecol=\"default\"/><Cell col=\"4\" displaytype=\"image\" style=\"cursor:hand;linespace:3;\" text=\"img::link.png\" expandsize=\"13\" tooltiptext=\"홈페이지\" autosizerow=\"limitmin\" autosizecol=\"limitmin\"/></Band></Format></Formats>");
+            this.div1.addChild(obj.name, obj);
+
+            obj = new Div("Div02", "absolute", "85.8%", "88.33%", "100", "30", null, null, this);
+            obj.set_taborder("2");
+            obj.set_text("Div02");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "18%", "3", "70", "24", null, null, this.Div02);
+            obj.set_taborder("0");
+            obj.set_text("신규등록");
+            obj.style.set_font("9 arial");
+            this.Div02.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1013, 56, this.div0,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div0.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.div1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 100, 30, this.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.set_text("Div02");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_040");
+            		p.set_titletext("New Form");
+            		p.style.set_font("12 Dotum");
+            		p.set_dragscrolltype("none");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_041.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_041.xfdl", function() {
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        this.V_LAW_041_onload = function(obj,e)
+        {	
+        	var grade = application.gds_userInfo.getColumn(0,"grade");
+        	if(grade == '0'){
+        		this.Div02.set_visible(true);
+        	}else{
+        		this.Div02.set_visible(false);
+        	};
+        	
+        	this.fn_areaSearch();
+        	
+        	this.div0_btn_search_onclick();
+        	
+        }
+
+        
+        // 지역코드 조회
+        this.fn_areaSearch = function() 
+        {
+        	var oDatas =  {
+        		  svcid : "laworgAreaList",
+        		  sController : "laworgAreaSearchVO.do", 
+        		  inds :[],
+        		  outds :[
+        			"ds_orgarea = output1, ds_laworg = output2"
+        			 ],			     
+        		  args  : [				
+        		  ],
+        		  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        		  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        		  bCompress :false,	 //			  
+        		}; 
+        		
+        	//공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        			/*  
+        			*   callback argument
+        			*   @param : {string}    this.svcid      : 서비스 ID
+        			*   @param : {object}    this.fobj       : 현재 form object
+        			*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        			*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        			*/   
+        				
+        		if(this.errorcode < 0)
+        		{		
+        			Iject.alert(this.errorMsg);			
+        			return;
+        		} 
+        			  
+        	});
+        }
+
+        // 법조기관의 이름으로 검색
+        this.div0_btn_search_onclick = function(thr_search)
+        {
+           var searchCondition =  "NAME";
+           var searchKeyword = this.div0.edit_searchKeyword.value;
+           
+           if(searchKeyword != undefined)
+           {
+        		searchKeyword = nexacro.trim(searchKeyword);
+        		this.div0.edit_searchKeyword.set_value(searchKeyword);
+           }
+           
+        	this.ds_laworg_search.setColumn(0, "searchCondition", "NAME");
+        	this.ds_laworg_search.setColumn(0, "searchKeyword", searchKeyword);
+           
+        	var oDatas =  {
+        			svcid : "search",
+        			sController : "laworgsearchVO.do",			 
+        			inds :  ["ds_laworg_search=ds_laworg_search"],
+        			outds : ["ds_laworg_info=output1"],			     
+        			args: [],
+        			bAsync : false,    
+        			nDataType : 0,   
+        			bCompress :false,	 			  
+        			}; 
+        	 trace(" this.ds_laworg_search : " + this.ds_laworg_search.saveXML());
+        	 
+            //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+
+        		if(this.errorcode < 0)
+        		{
+        		    Iject.alert("검색어를 입력해주세요.");			
+        		    return;
+        		} 	      
+        	       var pThis = this.fobj; 	      
+        	       trace(" ds_laworg_info : " + pThis.ds_laworg_info.saveXML());
+        	}); 
+        	
+        // 	// searchKeyword 검색된 list를 combo로 출력, 검색하기 위한 조건문
+        // 	if(thr_search == undefined)
+        // 	{
+        // 		this.ds_laworg_combo.copyData(this.ds_laworg_info);
+        // 	}
+        	
+        }
+
+        // 엔터처리
+        this.div0_search_btn_search_onclick = function(obj,e)
+        {
+        	if ( e.keycode == 13 )
+        	{
+        		this.div0_btn_search_onclick();
+        	}
+        }
+
+        
+
+        // 콤보로 1차 분류(기관분류) 
+
+        this.div0_Combo00_onitemchanged = function(obj,e)
+        {
+        	var nToRow = 0;
+        	var nFromRow = e.row;	//복사할 row의 Position
+        	//선택한 row위치의 orgcode를 가진 list를 복사
+        	this.ds_laworg_filter.setColumn(0,'orgcode',this.div0.Combo00.value);
+        	
+        	var oDatas = {
+        				svcid : "selectOne",
+        				sController : "laworgSelectOneVO.do",
+        				inds : ["ds_laworg_filter=ds_laworg_filter"],
+        				outds : ["ds_laworg_info=output2"],
+        				args  : [],
+        				bAsync : false,    	// 비동기여부 (true : async  false: sync)
+        				nDataType : 0,   	// (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        				bCompress :false,	//	
+        	};
+        					
+        	trace("this.ds_laworg_filter : " + this.ds_laworg_filter.saveXML);
+        	
+        	Iject.transaction(this,oDatas,function(){
+        		      
+        	       var pThis = this.fobj;   //form object	      
+        	       trace("pThis.ds_laworg_filter : " + pThis.ds_laworg_filter.saveXML());
+        	});
+        	if(this.ds_laworg_info.rowcount < 1)
+        	{
+        		alert("해당 지역에 해당 법조기관이 존재하지 않습니다.")
+        	}
+        }
+
+        
+        // 콤보로 2차 분류(지역분류) 
+
+        this.div0_Combo_onitemchanged = function(obj,e)
+        {
+        	
+        	var nToRow = 0;
+        	var nFromRow = e.row;	//복사할 row의 Position
+        	//선택한 row위치의 areacode를  filter에 복사
+        	this.ds_laworg_filter.setColumn(0,'areacode',this.div0.Combo.value);
+        	
+        // 위(기관분류)에서 가져온 orgcode와 콤보(지역분류)에서 선택한 areacode를 가진 list 출력	
+        	 var oDatas =  {
+        			  svcid : "selectTwo",
+        			  sController : "laworgSelectTwoVO1.do",			 
+        			  inds :["ds_laworg_filter=ds_laworg_filter"],
+        			  outds :["ds_laworg_info=output3"],			     
+        			  args  : [],
+        			  bAsync : false,    
+        			  nDataType : 0,   
+        			  bCompress :false,	 			  
+        			}; 
+        	 trace(" this.ds_laworg_filter : " + this.ds_laworg_filter.saveXML());
+            //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){
+        		      
+        	       var pThis = this.fobj;   //form object	      
+        	       trace("pThis.ds_laworg_filter : " + pThis.ds_laworg_filter.saveXML());
+        	});
+        		
+        	if(this.ds_laworg_info.rowcount < 1)
+        	{
+        		alert("해당 지역에 해당 법조기관이 존재하지 않습니다.")
+        	}
+        }
+
+        // 홈페이지 링크
+        this.ect_oncellclick = function(obj,e)
+        {
+        	if(e.col==4){
+         	var eRow = e.row;
+         	
+         	var url = this.ds_laworg_info.getColumn(0,'etc');
+        	system.execBrowser(url);
+        	}
+        }
+
+        //상세보기
+        this.fn_infopop = function(obj,e)
+        {
+        	this.ds_laworg_inpo.deleteAll();
+        	this.ds_laworg_inpo.addRow();
+        	var nToRow = 0;			//현재 dataSet에 복사되어 변경될 행의 위치
+        	var objDataset = this.ds_laworg_info;
+        	var nFromRow = e.row;	//복사할 row의 Position, int값
+        	
+        	//선택한 row위치의 값들을 검색용 ds에 복사하기
+        	this.ds_laworg_inpo.copyRow(nToRow, objDataset, nFromRow);
+        	
+        	this.fn_popup_modify();
+        }
+
+        
+        this.fn_popup_modify = function(){
+        	var strName = "V_LAW_099_open_modeless";
+        	var strFormURL ="Pattern::V_LAW_099.xfdl";
+        	var objParam = {ds_laworg_inpo : this.ds_laworg_inpo};
+        	var strOpenStyle = "dragmovetype=all showtitlebar=true"
+        						+"showstatusbar=false autosize=false resizable=false titletext=laworg";
+         	var nLeft = 380;
+         	var nTop = 150;
+         	var nWidth = 450;
+         	var nHeight = 600;					
+        	trace("ds_laworg_inpo : "+ this.ds_laworg_inpo.saveXML());
+        	application.open(strName, strFormURL, this.getOwnerFrame(), objParam, strOpenStyle, nLeft, nTop, nWidth, nHeight);					
+        	
+        }
+
+        
+        this.Div02_Button00_onclick = function(obj,e)
+        {
+        	this.ds_laworg_inpo.deleteAll();
+        	this.ds_laworg_inpo.addRow();
+        	var nToRow = 0;			//현재 dataSet에 복사되어 변경될 행의 위치
+        	var objDataset = this.ds_laworg_info;
+        	var nFromRow = e.row;	//복사할 row의 Position, int값
+        	
+        	//선택한 row위치의 값들을 검색용 ds에 복사하기
+        	this.ds_laworg_inpo.copyRow(nToRow, objDataset, nFromRow);
+        	
+        	this.fn_popup_insert();
+        }
+
+        
+        this.fn_popup_insert = function(){
+        	var strName = "V_LAW_098_open_modeless";
+        	var strFormURL ="Pattern::V_LAW_098.xfdl";
+        	var objParam = {ds_laworg_inpo : this.ds_laworg_inpo};
+        	var strOpenStyle = "dragmovetype=all showtitlebar=true"
+        						+"showstatusbar=false autosize=false resizable=false titletext=laworg";
+          	var nLeft = 380;
+         	var nTop = 150;
+         	var nWidth = 450;
+         	var nHeight = 600;					
+        	trace("ds_laworg_inpo : "+ this.ds_laworg_inpo.saveXML());
+        	application.open(strName, strFormURL, this.getOwnerFrame(), objParam, strOpenStyle, nLeft, nTop, nWidth, nHeight);					
+        	
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_laworg.addEventHandler("onrowposchanged", this.ds_laworg_onrowposchanged, this);
+            this.addEventHandler("onload", this.V_LAW_041_onload, this);
+            this.div0.Combo.addEventHandler("onitemchanged", this.div0_Combo_onitemchanged, this);
+            this.div0.Combo00.addEventHandler("onitemchanged", this.div0_Combo00_onitemchanged, this);
+            this.div0.edit_searchKeyword.addEventHandler("onkeyup", this.div0_search_btn_search_onclick, this);
+            this.div0.edit_searchKeyword.addEventHandler("oneditclick", this.div0_edit_searchKeyword_oneditclick, this);
+            this.div0.btn_search.addEventHandler("onclick", this.div0_btn_search_onclick, this);
+            this.div0.search.addEventHandler("onclick", this.Div02_Static00_onclick, this);
+            this.div0.search00.addEventHandler("onclick", this.Div02_Static00_onclick, this);
+            this.div0.search01.addEventHandler("onclick", this.Div02_Static00_onclick, this);
+            this.div1.Grid01.addEventHandler("oncellclick", this.ect_oncellclick, this);
+            this.div1.Grid01.addEventHandler("onlbuttonup", this.div1_Grid01_onlbuttonup, this);
+            this.div1.Grid01.addEventHandler("oncelldblclick", this.fn_infopop, this);
+            this.Div02.Button00.addEventHandler("onclick", this.Div02_Button00_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_041.xfdl");
+
+       
+    };
+}
+)();

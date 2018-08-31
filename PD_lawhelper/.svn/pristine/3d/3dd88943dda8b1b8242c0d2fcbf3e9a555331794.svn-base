@@ -1,0 +1,190 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_013");
+                this.set_classname("V_LAW_013");
+                this.set_titletext("법령조문전체보기");
+                this._setFormPosition(0,0,900,700);
+            }
+            this.style.set_border("1 solid #808080ff");
+            this.style.set_color("ivory");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_chooseLaw", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawId\" type=\"STRING\" size=\"50\"/><Column id=\"articleKey\" type=\"STRING\" size=\"50\"/><Column id=\"articleNo\" type=\"STRING\" size=\"50\"/><Column id=\"name\" type=\"STRING\" size=\"200\"/><Column id=\"actDate\" type=\"STRING\" size=\"50\"/><Column id=\"beforeMove\" type=\"STRING\" size=\"50\"/><Column id=\"afterMove\" type=\"STRING\" size=\"50\"/><Column id=\"isModify\" type=\"STRING\" size=\"50\"/><Column id=\"mainText\" type=\"STRING\" size=\"4000\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_lawItem", this);
+            obj._setContents("<ColumnInfo><Column id=\"cate\" type=\"STRING\" size=\"5\"/><Column id=\"itemNo\" type=\"STRING\" size=\"50\"/><Column id=\"itemText\" type=\"STRING\" size=\"4000\"/><Column id=\"higherItemNo\" type=\"STRING\" size=\"50\"/><Column id=\"lawId\" type=\"STRING\" size=\"50\"/><Column id=\"articleKey\" type=\"STRING\" size=\"50\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_mainText", "absolute", "0%", "32", "100%", "95.43%", null, null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+
+            obj = new TextArea("txa_mainText", "absolute", "25", "21", "850", "609", null, null, this);
+            obj.set_taborder("1");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 solid gray");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button00", "absolute", "80.33%", "93.86%", "70", "24", null, null, this);
+            obj.set_taborder("3");
+            obj.style.set_image("URL('img::Printer_icon_small.png')");
+            obj.style.set_background("@gradation");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_color("black");
+            obj.set_text("인쇄");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_close", "absolute", "89.22%", "657", "70", "24", null, null, this);
+            obj.set_taborder("4");
+            obj.set_text("닫기");
+            obj.style.set_image("URL('img::small_close.png')");
+            obj.style.set_color("black");
+            obj.style.set_gradation("linear 0,0 #fefefeff 0,100 #ecece5ff");
+            obj.set_wordwrap("none");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 816, 30, this.div_mainText,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div_mainText.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 900, 700, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_013");
+            		p.set_titletext("법령조문전체보기");
+            		p.style.set_border("1 solid #808080ff");
+            		p.style.set_color("ivory");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("articleMainText","txa_mainText","value","ds_lawItem","itemText");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_013.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_013.xfdl", function() {
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        
+        this.btn_close_onclick = function(obj,e)
+        {
+        	this.close("OK");
+        }
+
+        
+        this.form_onload = function(obj,e)
+        {
+        	var lawId = this.parent.ds_chooseLaw.getColumn(0,"lawId");
+        	this.ds_chooseLaw.setColumn(0,"lawId",lawId);
+        	
+        	this.ds_lawItem.clearData();
+        	this.ds_lawItem.addRow();
+
+        	var oDatas =  {
+        		  svcid : "searchLawArticleAll",
+        		  sController : "searchLawArticleAll.do", 
+        		  inds :["ds_search = ds_chooseLaw"],
+        		  outds :[
+        			"ds_lawItem = articleDetail"
+        			 ],			     
+        		  args  : [				
+        		  ],
+        		  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        		  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        		  bCompress :false,	 //			  
+        		}; 
+        		
+        	//공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        			/*  
+        			*   callback argument
+        			*   @param : {string}    this.svcid      : 서비스 ID
+        			*   @param : {object}    this.fobj       : 현재 form object
+        			*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        			*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        			*/   
+        				
+        		if(this.errorcode < 0)
+        		{		
+        			Iject.alert(this.errorMsg);			
+        			return;
+        		} 
+        		
+        		var pThis = this.fobj;   //form object	      
+        		   
+        		trace(" ds_lawItem : " + pThis.ds_lawItem.saveXML()); // 화면 출력
+        			
+        	});
+        }
+        this.Button00_onclick = function(obj,e)
+        {
+        	system.print(this.txa_mainText,false,"left", false);
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_onload, this);
+            this.txa_mainText.addEventHandler("oneditclick", this.txa_mainText_oneditclick, this);
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+            this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_013.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="register.lawmapper.service.dao.RegisterMapper">
+
+	<resultMap id="registerVo" type="register.lawmapper.vo.RegisterVo" ></resultMap>
+	<resultMap id="registerSearchVo" type="register.lawmapper.vo.RegisterSearchVo" ></resultMap>
+	<resultMap id="registerResultVo" type="register.lawmapper.vo.RegisterResultVo" >
+		<result property="insaSabun" column="INSA_SABUN" /> 
+		<result property="insaName" column="INSA_NAME" />
+		<result property="insaYears" column="INSA_YEARS" /> 
+		<result property="insaSex" column="INSA_SEX" /> 
+		<result property="insaPosGbnCode" column="INSA_POS_GBN_CODE" />  
+	</resultMap>
+	
+	<select id="getInsaSabun" resultMap="registerResultVo" parameterType="register.lawmapper.vo.RegisterResultVo">
+		SELECT 
+			INSA_SABUN,
+			INSA_NAME,
+			INSA_YEARS,
+			INSA_SEX,
+			INSA_POS_GBN_CODE
+		FROM 
+			c_insa
+		WHERE 1=1
+		<choose>
+			<when test="search1 =='002'">
+				<![CDATA[ 
+					AND insa_sabun LIKE '%' || #{search2} || '%'
+					ORDER BY insa_sabun ASC 
+				]]> 
+			</when>
+			<when test="search1 =='003'">
+				<![CDATA[ 
+					AND insa_name LIKE '%' || #{search2} || '%'
+					ORDER BY insa_name ASC 
+				]]> 
+			</when>
+			<otherwise>
+				<![CDATA[ ORDER BY INSA_NAME ASC ]]> 
+			</otherwise>
+		</choose>
+	</select>
+</mapper>

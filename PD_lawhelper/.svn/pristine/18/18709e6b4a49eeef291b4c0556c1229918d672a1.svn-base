@@ -1,0 +1,242 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_OPR_027");
+                this.set_classname("V_OPR_027");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,600,450);
+            }
+            this.style.set_background("teal");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_lawsubtext", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawid\" type=\"STRING\" size=\"50\"/><Column id=\"subkey\" type=\"STRING\" size=\"50\"/><Column id=\"showdate\" type=\"STRING\" size=\"50\"/><Column id=\"showno\" type=\"STRING\" size=\"50\"/><Column id=\"maintext\" type=\"STRING\" size=\"4000\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div1", "absolute", "-0.17%", "24", null, "426", "0%", null, this);
+            obj.set_taborder("0");
+            obj.style.set_background("white");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "1.68%", "6", null, "50", "59.93%", null, this.div1);
+            obj.set_taborder("0");
+            obj.set_text("법령 부칙 등록");
+            obj.style.set_align("middle");
+            obj.style.set_font("24 Dotum");
+            this.div1.addChild(obj.name, obj);
+            obj = new Static("sta_lawId01", "absolute", "1.01%", "59", null, "26", "83.5%", null, this.div1);
+            obj.set_taborder("1");
+            obj.set_text("법령 ID");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div1.addChild(obj.name, obj);
+            obj = new Static("sta_showDate", "absolute", "1.01%", "94", null, "33", "83.5%", null, this.div1);
+            obj.set_taborder("2");
+            obj.set_text("부칙 공포 일자");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div1.addChild(obj.name, obj);
+            obj = new Static("sta_subKey", "absolute", "1.01%", "141", null, "27", "83.5%", null, this.div1);
+            obj.set_taborder("3");
+            obj.set_text("부칙키");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div1.addChild(obj.name, obj);
+            obj = new Static("sta_showNo", "absolute", "1.01%", "186", null, "27", "83.5%", null, this.div1);
+            obj.set_taborder("4");
+            obj.set_text("부칙 공포 번호");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div1.addChild(obj.name, obj);
+            obj = new Edit("edt_lawId", "absolute", "18%", "62", null, "21", "58.67%", null, this.div1);
+            obj.set_taborder("5");
+            obj.style.set_border("1 solid gray");
+            obj.set_displaynulltext("ID를 입력하세요.");
+            this.div1.addChild(obj.name, obj);
+            obj = new Edit("edt_subKey", "absolute", "18.01%", "143", null, "21", "58.59%", null, this.div1);
+            obj.set_taborder("6");
+            obj.set_displaynulltext("부칙키를 입력하세요.");
+            obj.style.set_border("1 solid gray");
+            this.div1.addChild(obj.name, obj);
+            obj = new Edit("edt_showDate", "absolute", "18.01%", "100", null, "21", "58.59%", null, this.div1);
+            obj.set_taborder("7");
+            obj.style.set_border("1 solid gray");
+            this.div1.addChild(obj.name, obj);
+            obj = new Edit("edt_showNo", "absolute", "18%", "190", null, "21", "58.67%", null, this.div1);
+            obj.set_taborder("8");
+            obj.style.set_border("1 solid gray");
+            this.div1.addChild(obj.name, obj);
+            obj = new Static("sta_mainText00", "absolute", "44.61%", "56", null, "27", "41.08%", null, this.div1);
+            obj.set_taborder("9");
+            obj.set_text("부칙 내용");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div1.addChild(obj.name, obj);
+            obj = new TextArea("txa_mainText", "absolute", "44.61%", "90", null, "272", "3.37%", null, this.div1);
+            obj.set_taborder("10");
+            obj.set_wordwrap("char");
+            obj.style.set_border("1 solid gray");
+            this.div1.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "79.97%", "29", null, "33", "3.37%", null, this.div1);
+            obj.set_taborder("11");
+            obj.set_text("법령 부칙 등록");
+            this.div1.addChild(obj.name, obj);
+
+            obj = new Button("btn_close", "absolute", "86.33%", "407", null, "28", "3.5%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("닫기");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1267, 700, this.div1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_background("white");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 600, 450, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_OPR_027");
+            		p.set_titletext("New Form");
+            		p.style.set_background("teal");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","div1.edt_lawId","value","ds_lawsubtext","lawid");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","div1.edt_subKey","value","ds_lawsubtext","subkey");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","div1.edt_showDate","value","ds_lawsubtext","showdate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","div1.edt_showNo","value","ds_lawsubtext","showno");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","div1.txa_mainText","value","ds_lawsubtext","maintext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_OPR_027.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_OPR_027.xfdl", function() {
+
+        //include "Lib::Comm.xjs";
+
+        this.form_onload = function(obj,e)
+        {
+        	//기본 공통  함수 초기화
+        	Iject.formOnload(obj);	
+            //this.fn_search();
+           
+        } 
+        //저장버튼 클릭시
+        this.div1_Button00_onclick = function(obj,e)
+        {
+        	this.fn_save("save");
+        }
+        //저장
+        this.fn_save = function(strid)
+        {
+        	var lawId = this.div1.edt_lawId.value;
+        			if(lawId == null){
+        				alert("법령 ID를 입력하세요");
+        				return;
+        			}
+        			
+        	var oDatas =  {
+        			  svcid : strid,
+        			  sController : "lawSubtext.do",			 
+        			  inds :["ds_lawsubtext = ds_lawsubtext"],
+        			  outds :[
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        			
+            var save = confirm("저장하시겠습니까 ?");
+        	
+        	if(save){
+        		Iject.transaction(this,oDatas,function(){
+        		
+        			if(this.errorcode < 0)
+        			{
+        				alert("법령 ID가 중복 되었습니다.");
+        				//this.opener.fn_search(1);
+        				//Iject.alert(this.errorMsg,"알림")				
+        				return;
+        			}
+        			alert("저장 완료");
+        		});
+        	}else{
+        		alert("취소 되었습니다.");
+        	}
+        }
+
+        //닫기 클릭
+        this.btn_close_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.div1.Static02.addEventHandler("onclick", this.div_contents_Static01_onclick, this);
+            this.div1.sta_showDate.addEventHandler("onclick", this.div_contents_stc_02_onclick, this);
+            this.div1.edt_showNo.addEventHandler("oneditclick", this.div1_edt_lawId01_oneditclick, this);
+            this.div1.Button00.addEventHandler("onclick", this.div1_Button00_onclick, this);
+            this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_OPR_027.xfdl");
+
+       
+    };
+}
+)();

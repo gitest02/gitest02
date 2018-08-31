@@ -1,0 +1,404 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_OPR_20");
+                this.set_classname("V_OPR_20");
+                this.set_titletext("판례 등록");
+                this._setFormPosition(0,0,1000,600);
+            }
+            this.style.set_border("1 solid #808080ff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_precedentlist_Import", this);
+            obj._setContents("<ColumnInfo><Column id=\"precno\" type=\"STRING\" size=\"100\"/><Column id=\"casename\" type=\"STRING\" size=\"1000\"/><Column id=\"caseno\" type=\"STRING\" size=\"100\"/><Column id=\"judgedate\" type=\"STRING\" size=\"50\"/><Column id=\"courtname\" type=\"STRING\" size=\"100\"/><Column id=\"courtclasscode\" type=\"STRING\" size=\"100\"/><Column id=\"caseclassname\" type=\"STRING\" size=\"200\"/><Column id=\"caseclasscode\" type=\"STRING\" size=\"100\"/><Column id=\"judgeclassname\" type=\"STRING\" size=\"100\"/><Column id=\"judge\" type=\"STRING\" size=\"100\"/><Column id=\"precdetaillink\" type=\"STRING\" size=\"200\"/><Column id=\"casetext\" type=\"STRING\" size=\"2000\"/><Column id=\"judgetext\" type=\"STRING\" size=\"4000\"/><Column id=\"referlaw\" type=\"STRING\" size=\"4000\"/><Column id=\"referjudge\" type=\"STRING\" size=\"2000\"/><Column id=\"maintext\" type=\"STRING\" size=\"4194304000\"/><Column id=\"userid\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_precedentlist_Output", this);
+            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"precno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"1000\"/><Column id=\"caseno\" type=\"STRING\" size=\"100\"/><Column id=\"judgedate\" type=\"STRING\" size=\"50\"/><Column id=\"courtname\" type=\"STRING\" size=\"100\"/><Column id=\"courtclasscode\" type=\"STRING\" size=\"100\"/><Column id=\"caseclassname\" type=\"STRING\" size=\"200\"/><Column id=\"caseclasscode\" type=\"STRING\" size=\"100\"/><Column id=\"judgeclassname\" type=\"STRING\" size=\"100\"/><Column id=\"judge\" type=\"STRING\" size=\"100\"/><Column id=\"precdetaillink\" type=\"STRING\" size=\"200\"/><Column id=\"casetext\" type=\"STRING\" size=\"2000\"/><Column id=\"judgetext\" type=\"STRING\" size=\"4000\"/><Column id=\"referlaw\" type=\"STRING\" size=\"4000\"/><Column id=\"referjudge\" type=\"STRING\" size=\"2000\"/><Column id=\"maintext\" type=\"STRING\" size=\"4194304000\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_select", this);
+            obj._setContents("<ColumnInfo><Column id=\"precno\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_contents_20", "absolute", "1.4%", "12", "97.8%", "556", null, null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new FileUpload("FileUpload00", "absolute", "60.12%", "1.8%", "261", "24", null, null, this.div_contents_20);
+            obj.set_taborder("0");
+            obj.getSetter("retry").set("0");
+            obj.style.set_itemheight("24");
+            obj.style.set_buttontext("파일추가");
+            obj.set_index("0");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "2.86%", "68", null, "194", "3.37%", null, this.div_contents_20);
+            obj.set_taborder("1");
+            obj.set_binddataset("ds_precedentlist_Output");
+            obj.set_autofittype("col");
+            obj.set_fillareatype("linerow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\"/><Column size=\"110\"/><Column size=\"60\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"70\"/><Column size=\"110\"/><Column size=\"90\"/><Column size=\"110\"/><Column size=\"80\"/><Column size=\"50\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"50\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"chk\"/><Cell col=\"1\" text=\"판례일련번호\"/><Cell col=\"2\" text=\"사건명\"/><Cell col=\"3\" text=\"사건번호\"/><Cell col=\"4\" text=\"선고일자\"/><Cell col=\"5\" text=\"법원명\"/><Cell col=\"6\" text=\"법원종류코드\"/><Cell col=\"7\" text=\"사건종류명\"/><Cell col=\"8\" text=\"사건종류코드\"/><Cell col=\"9\" text=\"판결유형\"/><Cell col=\"10\" text=\"선고\"/><Cell col=\"11\" text=\"상세링크\"/><Cell col=\"12\" text=\"판시사항\"/><Cell col=\"13\" text=\"결정요지\"/><Cell col=\"14\" text=\"참조조문\"/><Cell col=\"15\" text=\"참조판례\"/><Cell col=\"16\" text=\"전문\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" text=\"bind:precno\"/><Cell col=\"2\" text=\"bind:casename\"/><Cell col=\"3\" text=\"bind:caseno\"/><Cell col=\"4\" text=\"bind:judgedate\"/><Cell col=\"5\" text=\"bind:courtname\"/><Cell col=\"6\" text=\"bind:courtclasscode\"/><Cell col=\"7\" text=\"bind:caseclassname\"/><Cell col=\"8\" text=\"bind:caseclasscode\"/><Cell col=\"9\" text=\"bind:judgeclassname\"/><Cell col=\"10\" text=\"bind:judge\"/><Cell col=\"11\" text=\"bind:precdetaillink\"/><Cell col=\"12\" text=\"bind:casetext\"/><Cell col=\"13\" text=\"bind:judgetext\"/><Cell col=\"14\" text=\"bind:referlaw\"/><Cell col=\"15\" text=\"bind:referjudge\"/><Cell col=\"16\" text=\"bind:maintext\"/></Band></Format></Formats>");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "4.09%", "44", null, "22", "3.99%", null, this.div_contents_20);
+            obj.set_taborder("3");
+            obj.set_text("* A2셀부터 데이터를 넣어주세요");
+            obj.style.set_color("red");
+            obj.style.set_font("12 Dotum");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "3.27%", "311", null, "61", "45.09%", null, this.div_contents_20);
+            obj.set_taborder("5");
+            obj.set_text("* A1 ~ P1 번까지 순서대로 위 그림과 같이 컬럼명을 넣어주세요.");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "1.53%", "254", null, "25", "92.64%", null, this.div_contents_20);
+            obj.set_taborder("6");
+            obj.set_text("예시");
+            obj.style.set_align("center");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new ImageViewer("ImageViewer00", "absolute", "2.76%", "281", null, "51", "3.48%", null, this.div_contents_20);
+            obj.set_taborder("7");
+            obj.style.set_border("0 solid #808080");
+            obj.set_stretch("fixaspectratio");
+            obj.set_image("URL('img::precedentSample.png')");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2.97%", "355", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("8");
+            obj.set_text("판례일련번호 : PRECNO");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "2.97%", "373", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("9");
+            obj.set_text("사건명 : CASENAME");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "2.97%", "391", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("10");
+            obj.set_text("사건번호 : CASENO");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "2.97%", "409", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("11");
+            obj.set_text("선고일자 : JUDGEDATE");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.97%", "427", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("12");
+            obj.set_text("법원명 : COURTNAME");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "2.97%", "445", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("13");
+            obj.set_text("법원종류코드 : COURTCLASSCODE");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "2.97%", "463", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("14");
+            obj.set_text("사건종류명 : CASECLASSNAME");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "2.97%", "481", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("15");
+            obj.set_text("사건종류코드 : CASECLASSCODE");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "29.96%", "355", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("16");
+            obj.set_text("판결유형 : JUDGECLASSNAME");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static09", "absolute", "29.96%", "373", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("17");
+            obj.set_text("선고 : JUDGE");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static13", "absolute", "29.96%", "391", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("18");
+            obj.set_text("상세링크 : PRECDETAILLINK");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static14", "absolute", "29.96%", "409", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("19");
+            obj.set_text("판시사항 : CASETEXT");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static15", "absolute", "29.96%", "427", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("20");
+            obj.set_text("결정요지 : JUDGETEXT");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static16", "absolute", "29.96%", "445", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("21");
+            obj.set_text("참조조문 : REFERLAW");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static17", "absolute", "29.96%", "463", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("22");
+            obj.set_text("참조판례 : REFERJUDGE");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Static("Static18", "absolute", "29.96%", "481", "250", "20", null, null, this.div_contents_20);
+            obj.set_taborder("23");
+            obj.set_text("전문 : MAINTEXT");
+            obj.style.set_font("bold 10 arial");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Button("btn_close", "absolute", "91.1%", "522", null, "25", "3.37%", null, this.div_contents_20);
+            obj.set_taborder("24");
+            obj.set_text("닫기");
+            obj.style.set_bordertype("normal 0 0");
+            this.div_contents_20.addChild(obj.name, obj);
+            obj = new Button("Button01", "absolute", "88.04%", "1.8%", "7.16%", "4.32%", null, null, this.div_contents_20);
+            obj.set_taborder("25");
+            obj.set_text("저장");
+            this.div_contents_20.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 556, this.div_contents_20,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div_contents_20.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_OPR_20");
+            		p.set_titletext("판례 등록");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_OPR_020.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_OPR_020.xfdl", function() {
+
+        //include "Lib::Comm.xjs";
+
+        this.form_onload = function(obj,e)
+        {
+
+        }
+
+        //파일 추가 누르면 자동으로 그리드에 출력
+        this.addFile = function(obj,e)
+        {
+        	trace("@@@@@@@@@@@@@@@@@@@");
+        	var value = obj.value;
+        	var fileEx = value.slice(value.lastIndexOf(".")+1).toLowerCase();
+        	trace(fileEx);
+        	if(fileEx!="xls" && fileEx!="xlsx"){
+        		alert("xls 또는 xlsx 파일양식만 가능합니다.");
+        		obj.deleteItem(0);
+        		obj.appendItem();
+        		return false;
+        	}
+        	
+        	var itemCount=this.div_contents_20.FileUpload00.getItemCount(true);
+        	if(itemCount==0){
+        		alert("파일을 첨부해주세요.");
+        		return false;
+        	}
+        	
+        	var url= "http://localhost:8080/nexacro-egov/precExcelUpload.do";
+        	this.div_contents_20.FileUpload00.upload(url);
+        }
+
+        this.upload_onerror = function(obj,e)
+        {
+        	alert(e.errormsg);
+        }
+
+        this.upload_onsuccess = function(obj,e)
+        {	
+        	if(e.errorcode<0){
+        		alert("오류 : "+e.errormsg);
+        	}
+        	trace("onsuccess errorcode=" + e.errorcode + ", errormsg=" + e.errormsg   + ", datasets=" + e.datasets + ", url=" + e.url);
+        	
+        	//Only Runtime
+        		if(nexacro.Browser == "Runtime" && e.datasets)
+        		{
+        			var outputDatasets = e.datasets;
+        			
+        			var outDs = outputDatasets[0];
+        			var ds = this.ds_precedentlist_Output;
+        			ds.assign(outDs); 
+        			trace(outDs.saveXML());
+        		} 
+        }
+
+        // 저장 클릭시
+        this.div_contents_20_Button01_onclick = function(obj,e)
+        {
+        	if(this.fn_import()){	
+        		var valChk=this.fn_valueCheck();
+        		if(valChk=="update"){
+        			var save = confirm("DB에 이미 값이 있습니다. 수정하시겠습니까? ("+this.ds_select.getColumn(0,"precno")+")");
+        			if(save){
+        				this.fn_save();
+        			}else{
+        				alert("등록을 취소하셨습니다.");
+        			}
+        		}else if(valChk=="insert"){
+        			this.fn_save();
+        		}else{
+        			alert("등록을 취소하셨습니다.");
+        		}
+        	}
+        }
+
+        //파일 자동 추가
+        this.fn_import = function(){
+        	var ds = this.ds_precedentlist_Import;
+        	var outds = this.ds_precedentlist_Output;
+        	var cnt=0;
+        	ds.clearData();
+        	for(var i=0; i<outds.rowcount;i++){
+        		var chkCol = outds.getColumn(i,"chk");
+        		if(chkCol != undefined && chkCol != 0){
+        			ds.addRow();
+        			ds.copyRow(ds.getRowCount()-1,outds,i);
+        			cnt++;	
+        		}
+        	}
+        	if(cnt==0){
+        		alert("1개 이상의 행을 선택해주세요.");
+        		return false;
+        	}
+        	return true;
+        }
+
+        // 판례 일련번호 중복 체크하고 나머지 내용이 DB에 없으면 insert, 있으면 update.
+        this.fn_valueCheck = function(){
+        	this.ds_select.clearData();
+        	var chk="close";
+        	var search = {
+        		svcid : "select",
+        		sController : "precedentExcelSearch.do",
+        		inds : ["ds_precedentlist_Import=ds_precedentlist_Import"],
+        		outds : ["ds_select=ds_select"],
+        		args : [],
+        		bAsync : false,
+        		nDataTyep : 2, //ssv 타입
+        		bCompress : false,				
+        	};
+
+        	var save = confirm("데이터를 입력하시겠습니까?");
+        	if(save){
+        		Iject.transaction(this,search,function(){
+        			if(this.errorcode < 0){
+        			   Iject.alert(this.errormsg);
+        			   return false;
+        			}else{
+        				var pThis = this.fobj;
+        				var precno = pThis.ds_select.getColumn(0,"precno");
+        				trace("this.ds_select : " + pThis.ds_select.saveXML());
+        				if(precno == undefined){
+        					chk="insert";
+        				}else{
+        					chk="update";
+        				}
+        			}	
+        		});	
+        	}else{
+        		return chk;
+        	}
+        	return chk;
+        }
+
+        //저장
+        this.fn_save = function(){
+        //odatas 정의
+        	var oDatas = {
+        		svcid : "insert",
+        		sController : "precedentInsert.do",
+        		inds : ["ds_precedentlist_Import = ds_precedentlist_Import"],
+        		outds : [],
+        		args : [],
+        		bAsync : false,
+        		nDataTyep : 2, //ssv 타입
+        		bCompress : false,				
+        	};
+        	
+        	//로그 기록 남기기 위한 유저 아이디 값 받기
+        	var userid = application.gds_userInfo.getColumn(0, "userid");
+        	this.ds_precedentlist_Import.setColumn(0, "userid", userid);
+        	
+        	Iject.transaction(this,oDatas,function(){
+        		if(this.errorcode < 0){
+        			Iject.alert(this.errormsg);
+        			return false;
+        			}
+        		else{
+        			var pThis = this.fobj;
+        			trace("this.ds_precedentlist_Output : " + pThis.ds_precedentlist_Output.saveXML());
+        			alert("등록 완료");
+        		}
+        	});	
+        }
+
+        // 닫기 클릭시
+        this.btn_close_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_onload, this);
+            this.div_contents_20.FileUpload00.addEventHandler("onsuccess", this.upload_onsuccess, this);
+            this.div_contents_20.FileUpload00.addEventHandler("onerror", this.upload_onerror, this);
+            this.div_contents_20.FileUpload00.addEventHandler("onitemchanged", this.addFile, this);
+            this.div_contents_20.Static10.addEventHandler("onclick", this.div_contents_Static10_onclick, this);
+            this.div_contents_20.Static03.addEventHandler("onclick", this.Static00_onclick, this);
+            this.div_contents_20.Static15.addEventHandler("onclick", this.Static00_onclick, this);
+            this.div_contents_20.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
+            this.div_contents_20.Button01.addEventHandler("onclick", this.div_contents_20_Button01_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_OPR_020.xfdl");
+
+       
+    };
+}
+)();

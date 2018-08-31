@@ -1,0 +1,181 @@
+package mediation.lawmapper.service.impl;
+
+import java.util.HashMap;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import outlegal.lawmapper.vo.OutPreiwrVO;
+
+import com.nexacro.spring.data.DataSetRowTypeAccessor;
+import com.nexacro.xapi.data.DataSet;
+
+import mediation.lawmapper.service.MediationService;
+import mediation.lawmapper.service.dao.MediationDao;
+import mediation.lawmapper.vo.MediationVo;
+import egovframework.rte.fdl.cmmn.AbstractServiceImpl;
+
+@Service("mediationService")
+public class MediationServiceImpl extends AbstractServiceImpl implements MediationService {
+
+	@Resource(name = "mediationDao")
+	private MediationDao mediationDao;
+	
+	// 조정안 기본사항 조회(심급)
+	@Override
+	public List<MediationVo> getMediationInstList(MediationVo mediationVo) throws Exception {
+							 
+		return mediationDao.getMediationInstList(mediationVo);
+	}
+
+	// 조정안 기본사항 조회(원피고)
+	@Override
+	public List<MediationVo> getMediationPladefList(MediationVo mediationVo) throws Exception {
+			
+		return mediationDao.getMediationPladefList(mediationVo);
+	}
+	
+	// 조정안 세부사항 조회
+	@Override
+	public List<MediationVo> getMediationDetail(MediationVo mediationVo) {
+		
+		return mediationDao.getMediationDetail(mediationVo);
+	}
+	
+    // 조정안 등록,수정,삭제
+	@Override
+	public void medChange(List<MediationVo> listMedVO) {
+		
+		for (int i = 0; i < listMedVO.size(); i++) {
+			MediationVo mediationVO = listMedVO.get(i);
+			if (mediationVO instanceof DataSetRowTypeAccessor) {
+				DataSetRowTypeAccessor accessor = (DataSetRowTypeAccessor) mediationVO;
+				if (accessor.getRowType() == DataSet.ROW_TYPE_INSERTED) {
+					System.out.println("insert 하겠습니다");
+					mediationDao.mediation_insert(mediationVO);
+				} else if (accessor.getRowType() == DataSet.ROW_TYPE_UPDATED) {
+					System.out.println("update 하겠습니다");
+					mediationDao.mediation_update(mediationVO);
+				} else if (accessor.getRowType() == DataSet.ROW_TYPE_DELETED) {
+					System.out.println("delete 하겠습니다");
+					mediationDao.mediation_delete(mediationVO);
+				}
+			}
+		}
+		
+//		MediationVo vo = new MediationVo();
+//		
+//		HashMap voMap = (HashMap<String, Object>) voObject;
+//	
+//		List voInsertList = (List) voMap.get("insert");
+//
+//		for (int i = 0; i < voInsertList.size(); i++) {
+//			System.out.println("insert 통과");
+//			vo = (MediationVo) voInsertList.get(i);
+//			mediationDao.mediation_insert( vo);
+//		    
+//		}
+//         
+//		List voUpdateList = (List) voMap.get("update"); 
+//
+//		for (int i = 0; i < voUpdateList.size(); i++) {
+//			System.out.println("update 통과");
+//			vo = (MediationVo) voUpdateList.get(i);
+//			mediationDao.mediation_update( vo);			
+//		}
+//		
+//		List voDeleteList = (List) voMap.get("delete"); 
+//     
+//		for (int i = 0; i < voDeleteList.size(); i++) {
+//			System.out.println("delete 통과");
+//			vo = (MediationVo) voDeleteList.get(i);
+//			mediationDao.mediation_delete( vo);			
+//		}
+		
+	}
+	
+	
+	// 소송종결 등록 
+	@Override
+	public void mediationReg(Object voObject) throws Exception {
+		
+        Object vo = new Object();
+		
+		HashMap voMap = (HashMap<String, Object>) voObject;
+		
+		List voUpdateList = (List) voMap.get("update"); 
+
+		for (int i = 0; i < voUpdateList.size(); i++) {
+			System.out.println("종결등록 통과");
+			vo = voUpdateList.get(i);
+			mediationDao.mediationReg((MediationVo) vo);
+			
+		}
+	}
+
+	// 종결시 결재상태 체크
+	@Override
+	public String getCount(Object voObject) throws Exception {
+		
+		String aprvCheck=""; // 리턴 변수
+		
+		HashMap voMap = (HashMap<String, Object>) voObject;
+		List getCount = (List) voMap.get("normal"); 
+		
+		MediationVo vo = new MediationVo(); // vo 선언
+		String[] maxCheck = new String[getCount.size()]; // 로우 수만큼 배열 생성  (확인용)
+		
+		int  nCount= 0; // 진행 갯수
+		int  xCount= 0; // 진행 안된 갯수 
+        
+		for (int i = 0; i < getCount.size(); i++) {
+			
+			vo = (MediationVo) getCount.get(i); 
+			
+            String temp = mediationDao.getCount(vo); // 쿼리 실행 결과 받는 변수
+           
+            maxCheck[i] = temp; // 결과값을 배열에 담는다 (확인용)
+            
+            // 전체 결재내역 확인
+	        if( temp == null){   // 결재를 안했을 경우
+	            
+	            xCount++;
+	            
+	        }else if( Integer.parseInt(temp) == 1){  // 결재가 진행중
+	               
+	            nCount++;
+	              
+	        }else if( Integer.parseInt(temp) == 0 ){ // 결재가 끝났을 경우
+	          
+	        }
+	        
+		}
+		
+		// 마지막 조정안의 결과값 확인
+		vo = (MediationVo) getCount.get(0); 
+		String lastTemp = mediationDao.getLastCount(vo);
+		
+		if( lastTemp == null ){  //결재를 안했을 경우 
+			
+			aprvCheck = getCount.size()+"&"+nCount+"&"+xCount+"&"+"X";
+			
+		}else if(Integer.parseInt( lastTemp ) ==1 ){ // 반려일 경우
+			
+			aprvCheck = getCount.size()+"&"+nCount+"&"+xCount+"&"+"Z";
+			
+		}else{  // 결재가 끝났을 경우, 결재가 진행중인 경우
+			
+			aprvCheck = getCount.size()+"&"+nCount+"&"+xCount+"&"+"Y";
+		}
+		
+		String temp ="";
+		for(String x : maxCheck ){temp+=" "+x+",";}
+		System.out.println("@@@@@ 쿼리 리턴값: "+ temp+" and "+lastTemp); 
+		System.out.println("@@@@@ 최종 리턴 값: "+ aprvCheck); 
+		
+		return aprvCheck;
+	}
+	
+}

@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_021" classname="V_PDL_021" left="0" top="0" width="1000" height="600" titletext="New Form" onload="v_pdl_021_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="법률자문회신" left="0.9%" top="8" width="98.2%" height="35" style="align:left top;padding:10 0 0 10;">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" left="0.9%" top="44" width="98.2%" height="44" style="background:lavenderblush;border:1 solid #c8c8c8ff ;">
+          <Layouts>
+            <Layout>
+              <Div id="Div00" taborder="0" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="reqNo_edit" taborder="0" left="4.61%" top="4" width="15.73%" height="25" style="selectbackground:blue;" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div01" taborder="6" text="법률자문의뢰번호" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;font:9 Dotum;"/>
+              <Button id="searchBtn" taborder="2" text="검색" left="28.06%" top="9" width="8.47%" height="26" style="image:URL('theme://images\searchBtn.png');" onclick="searchBtn_onclick"/>
+              <Button id="resetBtn" taborder="3" text="초기화" left="90.41%" top="9" width="8.47%" height="26" style="image:URL('theme://images\resetBtn.png');" onclick="resetBtn_onclick" visible="false"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div02" taborder="2" left="0.9%" top="124" width="98.2%" height="44" style="background:lavenderblush;border:1 solid #c8c8c8ff ;">
+          <Layouts>
+            <Layout width="982" height="74">
+              <Div id="Div00" taborder="6" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="885" height="35">
+                    <Edit id="repMgrName_edit" taborder="4" left="4.61%" top="4" width="15.73%" height="25" style="selectbackground:blue;" oneditclick="Div02_Div00_Edit00_oneditclick" readonly="false" enable="false"/>
+                    <Calendar id="req_date" taborder="5" left="34.27%" top="4" width="15.73%" height="25" readonly="false" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div01" taborder="7" text="의뢰담당자" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;font:9 Dotum;"/>
+              <Div id="Div02" taborder="8" text="의뢰일자" left="27.45%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div03" taborder="3" text="회신정보" left="0.9%" top="102" width="982" height="15" style="align:left middle;padding:0 0 0 10;">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Div id="Div04" taborder="4" text="회신사항" left="0.9%" top="178" width="982" height="15" style="align:left middle;padding:0 0 0 10;">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Div id="Div05" taborder="5" left="0.9%" top="202" width="98.2%" height="162" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;" enable="true">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="14" text="Div09" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="repTit_edit" taborder="0" enable="false" left="4.61%" top="4" width="94.94%" height="25" visible="true"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div10" taborder="15" text="Div10" left="8.47%" top="38" width="91.02%" height="60" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <TextArea id="repCont_area" taborder="0" enable="false" left="4.61%" top="4" width="94.94%" height="51" style="padding:4 4 4 4;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div11" taborder="16" text="Div11" left="8.47%" top="97" width="91.02%" height="60" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <TextArea id="etcRepPoin_area" taborder="0" enable="false" left="4.61%" top="4" width="94.94%" height="51" style="padding:4 4 4 4;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="22" text="회신제목" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div05" taborder="23" text="회신내용" left="0.51%" top="38" width="11.73%" height="60" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div06" taborder="24" text="기타회신사항" left="0.51%" top="97" width="11.73%" height="60" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div06" taborder="6" text="자문비내역" left="0.9%" top="374" width="982" height="15" style="align:left middle;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="15"/>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="7" useinputpanel="false" left="0.9%" top="396" height="165" width="98.2%" binddataset="ds_cost" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="45"/>
+                <Column size="487"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No."/>
+                <Cell col="1" text="자문비내역"/>
+                <Cell col="2" text="자문수수료"/>
+                <Cell col="3" text="부가세"/>
+                <Cell col="4" text="청구합계금액"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow+1"/>
+                <Cell col="1" displaytype="text" edittype="normal" editfilter="none" text="bind:legaladvCostRepCont" editautoselect="true" editdisplay="edit" combodisplay="edit"/>
+                <Cell col="2" displaytype="number" edittype="normal" editfilter="number" text="bind:legaladvCostReqCost"/>
+                <Cell col="3" displaytype="number" edittype="none" editfilter="number" text="bind:legaladvCostStax"/>
+                <Cell col="4" displaytype="number" edittype="none" text="bind:legaladvCostClamsumChg"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="4">
+                  <Cell/>
+                  <Cell col="1" text="총"/>
+                  <Cell col="2" text="계"/>
+                  <Cell col="3"/>
+                </Cell>
+                <Cell col="4" displaytype="number" edittype="normal" expr="dataset.getSum('nexacro.toNumber(legaladvCostClamsumChg, (Number.NaN, 0))')"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="insertBtn" taborder="11" left="81.9%" top="367" width="8.5%" height="26" style="image:URL('theme://images\insertBtn.png');" onclick="insertBtn_onclick" visible="false" text="추가"/>
+        <Button id="deleteBtn" taborder="12" text="삭제" left="90.7%" top="367" width="8.5%" height="26" style="image:URL('theme://images\deleteBtn.png');" onclick="deleteBtn_onclick" visible="false"/>
+        <Button id="saveBtn" taborder="13" text="임시저장" onclick="saveBtn_onclick" left="81.9%" top="566" width="8.5%" height="26" style="image:URL('theme://images\tempSaveBtn.png');" visible="false"/>
+        <Button id="outBtn" taborder="14" text="회신확정" onclick="outBtn_onclick" left="90.7%" top="566" width="8.5%" height="26" style="image:URL('theme://images\saveBtn.png');" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_out">
+        <ColumnInfo>
+          <Column id="legaladvLawAdvReqNo" type="STRING" size="256"/>
+          <Column id="legaladvOpenWtr" type="STRING" size="256"/>
+          <Column id="legaladvReqDeptCode" type="STRING" size="256"/>
+          <Column id="legaladvReqMgrCode" type="STRING" size="256"/>
+          <Column id="legaladvReqDate" type="STRING" size="256"/>
+          <Column id="legaladvAdvTit" type="STRING" size="256"/>
+          <Column id="legaladvFactRela" type="STRING" size="256"/>
+          <Column id="legaladvQuesIssu" type="STRING" size="256"/>
+          <Column id="legaladvEtc" type="STRING" size="256"/>
+          <Column id="legaladvLawAdvCode" type="STRING" size="256"/>
+          <Column id="legaladvOutReqWtr" type="STRING" size="256"/>
+          <Column id="legaladvReviDay" type="STRING" size="256"/>
+          <Column id="legaladvRepDeptCode" type="STRING" size="256"/>
+          <Column id="legaladvRepMgrCode" type="STRING" size="256"/>
+          <Column id="legaladvRepDate" type="STRING" size="256"/>
+          <Column id="legaladvRepCont" type="STRING" size="256"/>
+          <Column id="legaladvRepTit" type="STRING" size="256"/>
+          <Column id="legaladvRepWtr" type="STRING" size="256"/>
+          <Column id="legaladvRepWtrName" type="STRING" size="256"/>
+          <Column id="legaladvEtcRepPoin" type="STRING" size="256"/>
+          <Column id="legaladvOutReqTit" type="STRING" size="256"/>
+          <Column id="legaladvOutReqLyrid" type="STRING" size="256"/>
+          <Column id="legaladvOutReqRepdate" type="STRING" size="256"/>
+          <Column id="legaladvOutReqDate" type="STRING" size="256"/>
+          <Column id="legaladvOutReqFact" type="STRING" size="256"/>
+          <Column id="legaladvOutReqQues" type="STRING" size="256"/>
+          <Column id="legaladvOutReqReq" type="STRING" size="256"/>
+          <Column id="reqMgrName" type="STRING" size="256"/>
+          <Column id="repMgrName" type="STRING" size="256"/>
+          <Column id="legaladvLawAdvName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cost" oncolumnchanged="test">
+        <ColumnInfo>
+          <Column id="legaladvCostLawadvReqno" type="STRING" size="256"/>
+          <Column id="legaladvCostLawadvSeq" type="STRING" size="256"/>
+          <Column id="legaladvCostReqCost" type="INT" size="256"/>
+          <Column id="legaladvCostStax" type="INT" size="256"/>
+          <Column id="legaladvCostClamsumChg" type="INT" size="256"/>
+          <Column id="legaladvCostRepCont" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="legaladvLawAdvReqNo" type="STRING" size="256"/>
+          <Column id="legaladvReqDate1" type="STRING" size="256"/>
+          <Column id="legaladvReqDate2" type="STRING" size="256"/>
+          <Column id="legaladvRepWtr" type="STRING" size="256"/>
+          <Column id="legaladvLawAdvCode" type="STRING" size="256"/>
+          <Column id="legaladvOutReqLyrid" type="STRING" size="256"/>
+          <Column id="legaladvCostLawadvReqno" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div01.Div00.reqNo_edit" propid="value" datasetid="ds_out" columnid="legaladvLawAdvReqNo"/>
+      <BindItem id="item1" compid="Div02.Div00.req_date" propid="value" datasetid="ds_out" columnid="legaladvOutReqDate"/>
+      <BindItem id="item2" compid="Div02.Div00.repMgrName_edit" propid="value" datasetid="ds_out" columnid="repMgrName"/>
+      <BindItem id="item3" compid="Div05.Div09.repTit_edit" propid="value" datasetid="ds_out" columnid="legaladvRepTit"/>
+      <BindItem id="item4" compid="Div05.Div10.repCont_area" propid="value" datasetid="ds_out" columnid="legaladvRepCont"/>
+      <BindItem id="item5" compid="Div05.Div11.etcRepPoin_area" propid="value" datasetid="ds_out" columnid="legaladvEtcRepPoin"/>
+      <BindItem id="item6" compid="TextArea00" propid="value" datasetid="ds_out" columnid="legaladvRepCont"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";
+
+this.v_pdl_021_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+//	lyrid = SubStr(gb_Param,"4","10");
+	legaladvLawAdvReqNo = application.gds_temp.getColumn(0, 'legaladvLawAdvReqNo');
+	lyrid = "2013082601";
+	if(legaladvLawAdvReqNo != null)
+	{
+		this.outList(lyrid, legaladvLawAdvReqNo);
+		this.cost(legaladvLawAdvReqNo);
+		this.btnVisible();
+	}
+}
+
+this.outList = function(lyrid, legaladvLawAdvReqNo)
+{
+	this.ds_search.setColumn(0,"legaladvLawAdvReqNo", legaladvLawAdvReqNo);
+	this.ds_search.setColumn(0,"legaladvOutReqLyrid", lyrid);
+	application.gds_temp.reset();
+	var oDatas =  {
+		  svcid : "outList",
+		  sController : "OutList.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_out=ds_out"],
+		  args  : [],
+		  bAsync : false,
+		  nDataType : 0,
+		  bCompress :false,
+		};
+
+	Iject.transaction(this,oDatas,function(){
+		var pThis = this.fobj;
+	});
+
+}
+
+this.cost = function(legaladvLawAdvReqNo)
+{
+	this.ds_search.setColumn(0, "legaladvCostLawadvReqno", legaladvLawAdvReqNo);
+	var oDatas = {
+		svcid : "costList",
+		sController : "CostList.do",
+		inds : ["ds_search=ds_search"],
+		outds : ["ds_cost=ds_cost"],
+		args : [],
+		bAsync : true,
+		nDataType : 0,
+		bCompress : false,
+	};
+	Iject.transaction(this, oDatas, function(){
+		var pThis = this.fobj;
+	});
+}
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+    objChildFrame.init("chf_popup1", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_022.xfdl");
+    var objParam = {};
+    objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+}
+
+this.fn_popupCallback = function(strID, legaladvLawAdvReqNo){
+
+//	lyrid = SubStr(gb_Param,"4","10");
+	lyrid = "2013082601";
+	if(legaladvLawAdvReqNo != undefined){
+		this.outList(lyrid, legaladvLawAdvReqNo);
+		this.cost(legaladvLawAdvReqNo);
+		this.btnVisible();
+	}
+}
+
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_out.setColumn(0, "legaladvRepWtr", "N");
+	var row = this.ds_cost.rowcount;
+	for(i = 0; i<row; i++) {
+		var cont = this.ds_cost.getColumn(i, "legaladvCostRepCont");
+		var cost = this.ds_cost.getColumn(i, "legaladvCostReqCost");
+		if(cont == " " || cont == null) {
+			alert("자문비내역을 입력해주세요");
+			return;
+		}
+
+		if(cost == null) {
+			alert("자문수수료를 입력해주세요");
+			return;
+		}
+	}
+
+	this.outSave();
+	this.costInsert();
+	alert("저장 되었습니다.");
+}
+
+this.outBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_out.setColumn(0, "legaladvRepWtr", "Y");
+	
+	
+	var repTit = this.ds_out.getColumn(0, "legaladvRepTit");
+	var repCont = this.ds_out.getColumn(0, "legaladvRepCont");
+	var repPoin = this.ds_out.getColumn(0, "legaladvEtcRepPoin");
+
+	if(repTit == "" || repTit == null) {
+		alert("회신제목을 입력해주세요.");
+		return;
+	}
+
+	if(repCont == "" || repCont == null) {
+		alert("회신내용을 입력해주세요.");
+		return;
+	}
+	
+	if(repPoin == "" || repPoin == null) {
+		alert("기타회신사항을 입력해주세요.");
+		return;
+	}
+	
+	var row = this.ds_cost.rowcount;
+	for(i = 0; i<row; i++) {
+		var cont = this.ds_cost.getColumn(i, "legaladvCostRepCont");
+		var cost = this.ds_cost.getColumn(i, "legaladvCostReqCost");
+		if(cont == "" || cont == null) {
+			alert("자문비내역을 입력해주세요");
+			return;
+		}
+
+		if(cost == null) {
+			alert("자문수수료를 입력해주세요");
+			return;
+		}
+	}
+	
+	
+	var bo = confirm("회신 확정이 되면 수정이 불가능합니다. \n정말 입력 하시겠습니까?");
+	if(bo) {
+		this.outSave();
+		this.costInsert();
+		this.btnVisible();
+		alert("회신 되었습니다.");
+	} else {
+		alert("취소 되었습니다.");
+	}
+}
+
+
+this.outSave = function(){
+	var oDatas = {
+		svcid : "outUpdate",
+		sController : "OutUpdate.do",
+		inds : ["ds_out=ds_out:U"],
+		outds : [],
+		args : [],
+		bAsync : true,
+		nDataType : 0,
+		bCompress : false,
+	};
+	Iject.transaction(this, oDatas, function(){
+		var pThis = this.fobj;
+	});
+}
+
+this.costInsert = function(){
+	var oDatas = {
+		svcid : "costInsert",
+		sController : "CostInsert.do",
+		inds : ["ds_cost=ds_cost:U"],
+		outds : [],
+		args : [],
+		bAsync : true,
+		nDataType : 0,
+		bCompress : false,
+	};
+	Iject.transaction(this, oDatas, function(){
+		var pThis = this.fobj;
+	});
+}
+
+this.insertBtn_onclick = function(obj:Button, e:nexacro.GridClickEventInfo)
+{
+	var row = this.ds_cost.getRowCount();
+	this.ds_cost.insertRow(row);
+	var legaladvCostLawadvReqno = this.ds_out.getColumn(0, "legaladvLawAdvReqNo");
+	this.ds_cost.setColumn(row, "legaladvCostLawadvReqno", legaladvCostLawadvReqno);		
+}
+
+this.deleteBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var row = this.ds_cost.rowposition;
+	if(this.ds_cost.rowcount == 0){
+		alert("삭제할 데이터가 없습니다.");
+		return;
+    }
+	this.ds_cost.deleteRow(row);
+}
+
+this.resetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_out.reset();
+	this.ds_cost.reset();
+	this.btnVisible();
+}
+
+this.btnVisible = function() {
+	var legaladvRepWtr = this.ds_out.getColumn(0, "legaladvRepWtr");
+	if(legaladvRepWtr == 'N') {
+		this.Div05.Div09.repTit_edit.set_enable(true);
+		this.Div05.Div10.repCont_area.set_enable(true);
+		this.Div05.Div11.etcRepPoin_area.set_enable(true);
+		this.Div01.resetBtn.set_visible(true);
+		this.insertBtn.set_visible(true);
+		this.deleteBtn.set_visible(true);			
+		this.saveBtn.set_visible(true);
+		this.outBtn.set_visible(true);
+	} else {
+		this.Div05.Div09.repTit_edit.set_enable(false);
+		this.Div05.Div10.repCont_area.set_enable(false);
+		this.Div05.Div11.etcRepPoin_area.set_enable(false);
+		this.Div01.resetBtn.set_visible(false);
+		this.insertBtn.set_visible(false);
+		this.deleteBtn.set_visible(false);
+		this.saveBtn.set_visible(false);
+		this.outBtn.set_visible(false);
+	}
+}
+
+this.test = function(obj:Dataset,e:nexacro.DSColChangeEventInfo)
+{
+	var row = obj.rowposition;
+	if(e.columnid == "legaladvCostReqCost") {
+		obj.setColumn(row, "legaladvCostReqCost", e.newvalue)
+		var legaladvCostStax = e.newvalue / 10;
+		obj.setColumn(row, "legaladvCostStax", legaladvCostStax)
+		var legaladvCostClamsumChg = legaladvCostStax + e.newvalue;
+		obj.setColumn(row, "legaladvCostClamsumChg", legaladvCostClamsumChg)
+	}
+	
+	if(e.columnid == "legaladvCostReqCont") {
+		obj.setColumn(row, "legaladvCostReqCont", e.newvalue)
+	}
+}
+
+
+this.Div05_Div10_repCont_area_oneditclick = function(obj:TextArea,  e:nexacro.EditClickEventInfo)
+{
+	
+}
+]]></Script>
+  </Form>
+</FDL>

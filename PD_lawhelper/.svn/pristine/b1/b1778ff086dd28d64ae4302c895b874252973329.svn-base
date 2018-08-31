@@ -1,0 +1,397 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_BOD_002");
+                this.set_classname("V_BOD_002");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_menu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_SEQ\" type=\"int\" size=\"4\"/><Column id=\"MENU_OPTP\" type=\"string\" size=\"32\"/><Column id=\"PAGE_URL\" type=\"string\" size=\"32\"/><Column id=\"MENU_TOP\" type=\"string\" size=\"32\"/><Column id=\"MENU_ID\" type=\"string\" size=\"32\"/><Column id=\"MENU_GRP\" type=\"string\" size=\"32\"/><Column id=\"CREATE_DT\" type=\"string\" size=\"32\"/><Column id=\"MENU_LEVEL\" type=\"int\" size=\"4\"/><Column id=\"PAGE_ID\" type=\"string\" size=\"32\"/><Column id=\"PAGE_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_ARGS\" type=\"string\" size=\"32\"/><Column id=\"MENU_STAT\" type=\"string\" size=\"32\"/><Column id=\"CREATE_USER\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_DT\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_USER\" type=\"string\" size=\"32\"/><Column id=\"MENU_DESC\" type=\"string\" size=\"32\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_board", this);
+            obj._setContents("<ColumnInfo><Column id=\"bNo\" type=\"INT\" size=\"50\"/><Column id=\"userId\" type=\"STRING\" size=\"50\"/><Column id=\"writerName\" type=\"STRING\" size=\"50\"/><Column id=\"title\" type=\"STRING\" size=\"200\"/><Column id=\"body\" type=\"STRING\" size=\"4000\"/><Column id=\"wDate\" type=\"STRING\" size=\"200\"/><Column id=\"password\" type=\"STRING\" size=\"50\"/><Column id=\"bGroup\" type=\"INT\" size=\"5\"/><Column id=\"bOrder\" type=\"INT\" size=\"5\"/><Column id=\"step\" type=\"INT\" size=\"5\"/><Column id=\"isshow\" type=\"STRING\" size=\"1\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "4.3%", "7", null, "25", "65.9%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("문의(답변) 게시판 / 답변 작성");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 16 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "4.5%", "326", null, "14", "78%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("* 는 필수 입력사항입니다.");
+            obj.style.set_color("red");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "4.3%", "348", null, "193", "5%", null, this);
+            obj.set_taborder("2");
+            obj.style.set_border("1 solid darkgray");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2.81%", "16", null, "33", "82.14%", null, this.Div00);
+            obj.set_taborder("2");
+            obj.set_text("* 제목");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.81%", "64", null, "33", "82.14%", null, this.Div00);
+            obj.set_taborder("3");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            obj.set_text("* 내용");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "19.67%", "17", null, "30", "32.04%", null, this.Div00);
+            obj.set_taborder("6");
+            obj.style.set_padding("0 3 0 10");
+            obj.set_displaynulltext("제목을 입력하세요.");
+            this.Div00.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "19.56%", "64", null, "100", "2.87%", null, this.Div00);
+            obj.set_taborder("7");
+            obj.style.set_padding("10 10 0 10");
+            obj.set_displaynulltext("답변 내용을 입력하세요.");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "79.78%", "17", null, "30", "2.87%", null, this.Div00);
+            obj.set_taborder("8");
+            obj.set_displaynulltext("비밀번호를 입력하세요.");
+            obj.style.set_padding("0 3 0 10");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "69.06%", "16", null, "33", "21.1%", null, this.Div00);
+            obj.set_taborder("9");
+            obj.set_text("* 비밀번호");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "4.3%", "40", null, "29", "5%", null, this);
+            obj.set_taborder("5");
+            obj.set_wordwrap("none");
+            obj.style.set_background("#f8f8f8ff");
+            obj.style.set_border("1 solid darkgray");
+            obj.style.set_color("darkgray");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 9 arial");
+            obj.set_text(" ※ 답변하시기전에 질문 내용을 확인해 주세요.");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "4.3%", "77", null, "239", "5%", null, this);
+            obj.set_taborder("6");
+            obj.style.set_border("1 solid darkgray");
+            this.addChild(obj.name, obj);
+            obj = new Static("제목", "absolute", "2.76%", "48", null, "36", "82.21%", null, this.Div01);
+            obj.set_taborder("0");
+            obj.set_text("제목");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("제목00", "absolute", "2.76%", "88", null, "36", "82.21%", null, this.Div01);
+            obj.set_taborder("1");
+            obj.set_text("문의내용");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "19.67%", "49", null, "37", "2.76%", null, this.Div01);
+            obj.set_taborder("2");
+            obj.style.set_background("#edededff");
+            obj.style.set_padding("0 0 0 10");
+            this.Div01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "19.67%", "88", null, "130", "2.76%", null, this.Div01);
+            obj.set_taborder("3");
+            obj.set_readonly("true");
+            obj.style.set_padding("10 10 10 10");
+            obj.style.set_background("#edededff");
+            obj.style.set_color("#46463dff");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("제목01", "absolute", "2.76%", "6", null, "36", "91.93%", null, this.Div01);
+            obj.set_taborder("4");
+            obj.set_text("번호 :");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("제목02", "absolute", "19.56%", "6", null, "36", "73.37%", null, this.Div01);
+            obj.set_taborder("5");
+            obj.set_text("작성자 :");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("제목03", "absolute", "69.72%", "6", null, "36", "24.09%", null, this.Div01);
+            obj.set_taborder("6");
+            obj.set_text("작성일 :");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "9.28%", "7", null, "36", "82.43%", null, this.Div01);
+            obj.set_taborder("7");
+            obj.set_text("Static01");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "28.62%", "6", null, "36", "58.01%", null, this.Div01);
+            obj.set_taborder("8");
+            obj.set_text("Static01");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "77.35%", "7", null, "36", "2.87%", null, this.Div01);
+            obj.set_taborder("9");
+            obj.set_text("Static01");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("static_bOrder", "absolute", "-1.66%", "232", null, "5", "101.66%", null, this.Div01);
+            obj.set_taborder("10");
+            obj.set_text("Static04");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Button("Button00", "absolute", "88%", "547", "70", "24", null, null, this);
+            obj.set_taborder("7");
+            obj.set_text("닫기");
+            obj.style.set_image("URL('img::small_close.png')");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button01", "absolute", "80%", "547", "70", "24", null, null, this);
+            obj.set_taborder("8");
+            obj.set_text("답변달기");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 193, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.style.set_border("1 solid darkgray");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 239, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("6");
+            		p.style.set_border("1 solid darkgray");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_BOD_002");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item1","Div01.TextArea00","value","gds_board","body");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div01.Static01","text","gds_board","bNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div01.Static02","text","gds_board","writerName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div01.Static03","text","gds_board","wDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div01.static_bOrder","text","gds_board","bOrder");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Div00.Edit02","value","ds_board","title");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","Div00.Edit00","value","ds_board","password");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","Div00.TextArea00","value","ds_board","body");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_BOD_003.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_BOD_003.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.V_BOD_002_onload = function(obj,e)
+        {
+        	this.ds_menu.assign(application.gds_hiddenMenu);
+        	this.fn_setDate();
+        	this.fn_title();
+        	this.ds_board.clearData();
+        	this.ds_board.addRow();
+        }
+
+        //제목 셋팅
+        this.fn_title = function(){
+        	var step = application.gds_board.getColumn(0,"step");
+        	var title = application.gds_board.getColumn(0,"title");
+        	
+        	if(step != 0){
+        		var delStep = step*2;
+        		var endTitle = title.length;
+        		var newTitle = title.substring(delStep,endTitle);
+        		this.Div01.Static00.set_text(newTitle);
+        	}else{
+        		this.Div01.Static00.set_text(title);
+        	}
+
+        }
+
+        this.fn_setDate = function(){
+        	var viewDate = application.gds_board.getColumn(0,"wDate");
+        	var year = viewDate.substring(0,4);
+        	var mon = viewDate.substring(4,6);
+        	var day = viewDate.substring(6,8);
+        	var hour = viewDate.substring(8,10);
+        	var min = viewDate.substring(10,12);
+        	var sec = viewDate.substring(12,14);
+        	
+        	var viewDate = year+"년 "+mon+"월 "+day+"일 "+hour+":"+min+":"+sec;
+
+        	this.Div01.Static03.set_text(viewDate);
+        }
+
+        //목록 으로
+        this.Button00_onclick = function(obj,e)
+        {
+        	var precMenuId = application.gds_openMenu.findRow("MENU_ID","1007");
+        	var precWinId = application.gds_openMenu.getColumn(precMenuId,"WIN_ID");
+        	application.all["mainframe"].all["VFrameSet"].all["HFrameSet"].all["VFrameSet1"].all["WorkFrame"].all[precWinId];
+        	
+        	this.fn_goPage(3);
+        }
+
+        //답변 등록
+        this.Button01_onclick = function(obj,e)
+        {
+        	var title = this.Div00.Edit02.value;
+        	var body = this.Div00.TextArea00.value;
+        	var password = this.Div00.Edit00.value;
+        	
+        	if(title == null){
+        		alert("제목을 입력해 주세요");
+        		return;
+        	}else if(body == null){
+        		alert("내용을 입력해 주세요");
+        		return;
+        	}else if(password == null){
+        		alert("비밀번호를 입력해 주세요");
+        		return;
+        	}	
+        	
+        	var bGroup = application.gds_board.getColumn(0,7);
+        	var bOrder = application.gds_board.getColumn(0,8);
+        	var step = application.gds_board.getColumn(0,9);
+        	var loginId = application.gds_userInfo.getColumn(0,"userid"); 
+
+        	this.ds_board.setColumn(0,"bGroup",bGroup);
+        	this.ds_board.setColumn(0,"bOrder",bOrder);
+        	this.ds_board.setColumn(0,"step",step);
+        	this.ds_board.setColumn(0,"userID",loginId);
+        	this.ds_board.setColumn(0,"writerName",loginId);
+        	this.ds_board.setColumn(0,"isshow",'Y');
+        	
+        	//this.ds_board.set_step = application.gds_board.
+        	//this.ds_search.setColumn(0,"step", searchKeyword);
+        	
+        	var oDate = {
+        		svcid : "insert",
+        		sController : "boardreply.do",
+        		inds:["ds_board=ds_board:U"],
+        		outds:[],
+        		args:[],
+        		bAsync: true, // 비동기여부 (true : async  false: sync)
+        		nDataType : 0, // (0: XML타입)
+        		bCompress : false,			
+        	};
+        	//trace(" this.ds_board : " + this.ds_board.saveXML());
+        	
+        	var save = confirm("등록 하시겠습니까 ?");
+        	
+        	if(save){
+        		Iject.transaction(this,oDate,function(){
+        		
+        			if(this.errorcode < 0)
+        			{
+        				alert("등록 완료");
+        				
+        				//Iject.alert(this.errorMsg,"알림")
+        				//return;
+        			}
+        			//this.fn_goPage(3);
+        		});
+        	}else{
+        		alert("취소 되었습니다.");
+        		return;
+        	}
+        	
+        	var precMenuId = application.gds_openMenu.findRow("MENU_ID","1007");
+        	var precWinId = application.gds_openMenu.getColumn(precMenuId,"WIN_ID");
+        	application.all["mainframe"].all["VFrameSet"].all["HFrameSet"].all["VFrameSet1"].all["WorkFrame"].all[precWinId];
+        	
+        	this.V_BOD_002_onload();
+        	this.fn_goPage(3);
+        }
+
+        //화면전환
+        this.fn_goPage = function(page)
+        {
+        	var oObj = {
+                  ds    : this.ds_menu,    // 메뉴 dataset 
+                  nRow  : page,              // 선택된 
+                  oArgs : []               // 넘길 argument
+            };
+            
+            Iject.Mdi.call(this,oObj);
+            //trace("이동 체크 :"+oObj.nRow);
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_BOD_002_onload, this);
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+            this.Button01.addEventHandler("onclick", this.Button01_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_BOD_003.xfdl");
+
+       
+    };
+}
+)();

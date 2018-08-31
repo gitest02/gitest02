@@ -1,0 +1,443 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_BOD_002");
+                this.set_classname("V_BOD_002");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_menu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_SEQ\" type=\"int\" size=\"4\"/><Column id=\"MENU_OPTP\" type=\"string\" size=\"32\"/><Column id=\"PAGE_URL\" type=\"string\" size=\"32\"/><Column id=\"MENU_TOP\" type=\"string\" size=\"32\"/><Column id=\"MENU_ID\" type=\"string\" size=\"32\"/><Column id=\"MENU_GRP\" type=\"string\" size=\"32\"/><Column id=\"CREATE_DT\" type=\"string\" size=\"32\"/><Column id=\"MENU_LEVEL\" type=\"int\" size=\"4\"/><Column id=\"PAGE_ID\" type=\"string\" size=\"32\"/><Column id=\"PAGE_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_ARGS\" type=\"string\" size=\"32\"/><Column id=\"MENU_STAT\" type=\"string\" size=\"32\"/><Column id=\"CREATE_USER\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_DT\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_USER\" type=\"string\" size=\"32\"/><Column id=\"MENU_DESC\" type=\"string\" size=\"32\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_board", this);
+            obj._setContents("<ColumnInfo><Column id=\"bNo\" type=\"STRING\" size=\"50\"/><Column id=\"userID\" type=\"STRING\" size=\"50\"/><Column id=\"writerName\" type=\"STRING\" size=\"50\"/><Column id=\"title\" type=\"STRING\" size=\"200\"/><Column id=\"body\" type=\"STRING\" size=\"4000\"/><Column id=\"wDate\" type=\"STRING\" size=\"200\"/><Column id=\"password\" type=\"STRING\" size=\"50\"/><Column id=\"bGroup\" type=\"STRING\" size=\"5\"/><Column id=\"bOrder\" type=\"STRING\" size=\"5\"/><Column id=\"step\" type=\"STRING\" size=\"5\"/><Column id=\"isshow\" type=\"STRING\" size=\"1\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "4.3%", "7", null, "25", "65.9%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("문의(답변) 게시판 / 상세 내용");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 16 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("div_view", "absolute", "4.3%", "40", null, "457", "5%", null, this);
+            obj.set_taborder("6");
+            obj.style.set_border("1 solid darkgray");
+            this.addChild(obj.name, obj);
+            obj = new Div("Div00", "absolute", "2.27%", "84", null, "41", "2.16%", null, this.div_view);
+            obj.set_taborder("4");
+            obj.style.set_border("1 solid #edededff");
+            this.div_view.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "30.51%", "7", null, "26", "63.92%", null, this.div_view.Div00);
+            obj.set_taborder("0");
+            obj.set_text("작성자 : ");
+            this.div_view.Div00.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "75.52%", "7", null, "26", "18.91%", null, this.div_view.Div00);
+            obj.set_taborder("1");
+            obj.set_text("등록일 : ");
+            this.div_view.Div00.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "37.82%", "8", null, "25", "48.26%", null, this.div_view.Div00);
+            obj.set_taborder("2");
+            this.div_view.Div00.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "82.83%", "7", null, "26", "1.39%", null, this.div_view.Div00);
+            obj.set_taborder("3");
+            this.div_view.Div00.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "1.28%", "7", null, "26", "93.16%", null, this.div_view.Div00);
+            obj.set_taborder("4");
+            obj.set_text("번호 : ");
+            this.div_view.Div00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "6.03%", "7", null, "26", "88.4%", null, this.div_view.Div00);
+            obj.set_taborder("5");
+            this.div_view.Div00.addChild(obj.name, obj);
+            obj = new TextArea("txt_body", "absolute", "2.32%", "137", null, "302", "2.21%", null, this.div_view);
+            obj.set_taborder("5");
+            obj.set_readonly("false");
+            obj.set_displaynulltext("내용 들어가는 곳");
+            obj.style.set_padding("30 30 30 30");
+            this.div_view.addChild(obj.name, obj);
+            obj = new Edit("edit_title", "absolute", "2.32%", "16", null, "47", "2.21%", null, this.div_view);
+            obj.set_taborder("6");
+            obj.style.set_background("#f8f8f8ff");
+            obj.style.set_border("1 solid darkgray,2 solid darkgray,5 solid darkgray,1 solid darkgray");
+            obj.style.set_padding("0 0 0 30");
+            obj.style.set_font("bold 10 arial");
+            obj.set_displaynulltext("제목 들어가는 곳");
+            obj.set_readonly("false");
+            this.div_view.addChild(obj.name, obj);
+
+            obj = new Static("stc_pw", "absolute", "4.9%", "505", null, "31", "89.5%", null, this);
+            obj.set_taborder("11");
+            obj.set_text("비밀 번호");
+            obj.style.set_align("center middle");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("edit_pw", "absolute", "12.3%", "505", null, "31", "72%", null, this);
+            obj.set_taborder("12");
+            obj.set_displaynulltext("비밀번호 입력 하세요.");
+            obj.style.set_padding("0 0 0 10");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_list", "absolute", "88%", "511", "70", "24", null, null, this);
+            obj.set_taborder("13");
+            obj.set_text("닫기");
+            obj.style.set_image("URL('img::small_close.png')");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_delete", "absolute", "56%", "511", "70", "24", null, null, this);
+            obj.set_taborder("14");
+            obj.set_text("삭제");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_modify", "absolute", "64%", "511", "70", "24", null, null, this);
+            obj.set_taborder("15");
+            obj.set_text("수정");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_save", "absolute", "72%", "511", "70", "24", null, null, this);
+            obj.set_taborder("16");
+            obj.set_text("저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_reply", "absolute", "80%", "511", "70", "24", null, null, this);
+            obj.set_taborder("17");
+            obj.set_text("답변달기");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 41, this.div_view.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("4");
+            		p.style.set_border("1 solid #edededff");
+
+            	}
+            );
+            this.div_view.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 457, this.div_view,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("6");
+            		p.style.set_border("1 solid darkgray");
+
+            	}
+            );
+            this.div_view.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_BOD_002");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("body","div_view.txt_body","value","gds_board","body");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item0","div_view.Div00.Static02","text","gds_board","writerName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","div_view.Div00.Static05","text","gds_board","bNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_BOD_004.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_BOD_004.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.V_BOD_002_onload = function(obj,e)
+        {
+        	this.ds_menu.assign(application.gds_hiddenMenu);
+        	this.fn_title();
+        	this.fn_setDate();
+        	this.fn_setBtn();
+        }
+        //제목 셋팅
+        this.fn_title = function(){
+        	var step = application.gds_board.getColumn(0,"step");
+        	var title = application.gds_board.getColumn(0,"title");
+        	
+        	if(step != 0){
+        		var delStep = step*2;
+        		var endTitle = title.length;
+        		var newTitle = title.substring(delStep,endTitle);
+        	}
+        	
+        	this.div_view.edit_title.set_value(newTitle);
+        }
+
+        //날짜 만들기
+        this.fn_setDate = function(){
+        	var viewDate = application.gds_board.getColumn(0,"wDate");
+        	var year = viewDate.substring(0,4);
+        	var mon = viewDate.substring(4,6);
+        	var day = viewDate.substring(6,8);
+        	var hour = viewDate.substring(8,10);
+        	var min = viewDate.substring(10,12);
+        	var sec = viewDate.substring(12,14);
+        	
+        	var viewDate = year+"년 "+mon+"월 "+day+"일 "+hour+":"+min+":"+sec;
+
+        	this.div_view.Div00.Static03.set_text(viewDate);
+        }
+
+        
+        //화면전환
+        this.fn_goPage = function(page)
+        {
+        	application.mainframe.VFrameSet.HFrameSet.VFrameSet1.WorkFrame.MainForm.form.fn_chk_f();
+        	var oObj = {
+                  ds    : this.ds_menu,    // 메뉴 dataset 
+                  nRow  : page,              // 선택된 
+                  oArgs : []               // 넘길 argument
+            };
+            
+            Iject.Mdi.call(this,oObj);
+            //trace("이동 체크 :"+oObj.nRow);
+        }
+
+        //목록으로
+        this.btn_list_onclick = function(obj,e)
+        {
+        	
+        	var precMenuId = application.gds_openMenu.findRow("MENU_ID","1007");
+        	var precWinId = application.gds_openMenu.getColumn(precMenuId,"WIN_ID");
+        	application.all["mainframe"].all["VFrameSet"].all["HFrameSet"].all["VFrameSet1"].all["WorkFrame"].all[precWinId];
+        	
+        	this.fn_goPage(3);
+        }
+
+        //답변
+        this.btn_reply_onclick = function(obj,e)
+        {
+        	var precMenuId = application.gds_openMenu.findRow("MENU_ID","1015");
+        	var precWinId = application.gds_openMenu.getColumn(precMenuId,"WIN_ID");
+        	application.all["mainframe"].all["VFrameSet"].all["HFrameSet"].all["VFrameSet1"].all["WorkFrame"].all[precWinId];
+        	
+        	this.fn_goPage(1);
+        }
+
+        //수정
+        this.btn_modify_onclick = function(obj,e)
+        {
+        	this.div_view.edit_title.set_readonly(false);
+        	this.div_view.txt_body.set_readonly(false);
+        }
+
+        //삭제
+        this.btn_delete_onclick = function(obj,e)
+        {
+        	var pw = application.gds_board.getColumn(0,"password");
+        	var newTitle = this.div_view.edit_title.value; // 변경 제목	
+        	var newBody = this.div_view.txt_body.value; // 변경 내용
+        	var password = this.edit_pw.value; //비밀번호
+        		
+        	if(newTitle == null){
+        		alert("제목을 입력해 주세요!");
+        		return;
+        	}else if(newBody == null){
+        		alert("내용을 입력해 주세요1");
+        		return;
+        	}else if(password == null){
+        		alert("비밀번호를 입력해 주세요!");
+        		return;
+        	}else if(pw != password){
+        		alert("비밀번호가 틀립니다.");
+        		return;
+        	}
+        	
+        	var bDelete = confirm("삭제하시겠습니까?");
+        	
+        	if(bDelete){
+        		this.ds_board.clearData();;
+        		this.ds_board.addRow();
+        		
+        		this.ds_board.setColumn(0,"isshow",'N');
+        		
+        		var nToRow = 0;
+        		var nFromRow = 0;	//선택 row
+        		
+        		//선택한 row위치의 값들을 검색용 ds에 복사하기
+        		var test=this.ds_board.copyRow(nToRow, application.gds_board, nFromRow);
+        		
+        		trace(" this.ds_board : " + this.ds_board.saveXML());
+        	
+        		var oDate = {
+        			svcid : "insert",
+        			sController : "boardDelete.do",
+        			inds:["ds_board=ds_board:U"],
+        			outds:[],
+        			args:[],
+        			bAsync: true, // 비동기여부 (true : async  false: sync)
+        			nDataType : 0, // (0: XML타입)
+        			bCompress : false,			
+        		};
+        				
+        		Iject.transaction(this,oDate,function(){
+        			if(this.errorcode < 0)
+        			{
+        				//Iject.alert(this.errorMsg,"알림")
+        				//return;
+        			}
+        		});
+        	}else{
+        		alter("취소 되었습니다.");
+        	}
+        	
+        	var precMenuId = application.gds_openMenu.findRow("MENU_ID","1007");
+        	var precWinId = application.gds_openMenu.getColumn(precMenuId,"WIN_ID");
+        	application.all["mainframe"].all["VFrameSet"].all["HFrameSet"].all["VFrameSet1"].all["WorkFrame"].all[precWinId];
+        	
+        	this.fn_goPage(3);
+        }
+
+        //저장
+        this.btn_save_onclick = function(obj,e)
+        {	
+
+        	var pw = application.gds_board.getColumn(0,"password");
+        	var newTitle = this.div_view.edit_title.value; // 변경 제목	
+        	var newBody = this.div_view.txt_body.value; // 변경 내용
+        	var password = this.edit_pw.value; //비밀번호
+        		
+        	if(newTitle == null){
+        		alert("제목을 입력해 주세요!");
+        		return;
+        	}else if(newBody == null){
+        		alert("내용을 입력해 주세요1");
+        		return;
+        	}else if(password == null){
+        		alert("비밀번호를 입력해 주세요!");
+        		return;
+        	}else if(pw != password){
+        		alert("비밀번호가 틀립니다.");
+        		return;
+        	}
+        	
+        	
+        	this.ds_board.clearData();
+        	this.ds_board.addRow();
+        	
+        	var nToRow = 0;
+        	var nFromRow = 0;	//선택 row
+        	
+        	//선택한 row위치의 값들을 검색용 ds에 복사하기
+        	var test=this.ds_board.copyRow(nToRow, application.gds_board, nFromRow);
+        	
+        	this.ds_board.setColumn(0,"title",newTitle);
+        	this.ds_board.setColumn(0,"body",newBody);
+        	
+        	var bUpdate = confirm("변경 하시겠습니까?");
+        	
+        	if(bUpdate){
+        		var oDate = {
+        			svcid : "update",
+        			sController : "boardUpdate.do",
+        			inds:["ds_board=ds_board:U"],
+        			outds:[],
+        			args:[],
+        			bAsync: false, // 비동기여부 (true : async  false: sync)
+        			nDataType : 0, // (0: XML타입)
+        			bCompress : false,			
+        		};
+        				
+        		Iject.transaction(this,oDate,function(){
+        			if(this.errorcode < 0)
+        			{
+        				//Iject.alert(this.errorMsg,"알림")
+        				//return;
+        			}
+        	
+        		});
+        	}else{
+        		alter("취소 되었습니다.");
+        	}
+        	
+        	this.div_view.edit_title.set_readonly(true);
+        	this.div_view.txt_body.set_readonly(true);
+        	
+        	var precMenuId = application.gds_openMenu.findRow("MENU_ID","1007");
+        	var precWinId = application.gds_openMenu.getColumn(precMenuId,"WIN_ID");
+        	application.all["mainframe"].all["VFrameSet"].all["HFrameSet"].all["VFrameSet1"].all["WorkFrame"].all[precWinId];
+        	
+        	this.fn_goPage(3);	
+        }
+
+        //버튼 세팅
+        this.fn_setBtn = function(){
+        	var loginId = application.gds_userInfo.getColumn(0,"userid");
+        	var boardId = application.gds_board.getColumn(0,"writerName");
+        	
+        	trace("loginId: "+loginId);
+        	trace("boardId: "+boardId);
+
+        	if(loginId === boardId){
+        		this.btn_delete.set_visible(true);
+        		this.btn_modify.set_visible(true);
+        		this.btn_save.set_visible(true);
+        		this.edit_pw.set_visible(true);
+        		this.stc_pw.set_visible(true);
+        	}
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_BOD_002_onload, this);
+            this.div_view.Div00.Static01.addEventHandler("onclick", this.Div00_Div00_Static01_onclick, this);
+            this.div_view.edit_title.addEventHandler("oneditclick", this.div_view_edit_title_oneditclick, this);
+            this.btn_list.addEventHandler("onclick", this.btn_list_onclick, this);
+            this.btn_delete.addEventHandler("onclick", this.btn_delete_onclick, this);
+            this.btn_modify.addEventHandler("onclick", this.btn_modify_onclick, this);
+            this.btn_save.addEventHandler("onclick", this.btn_save_onclick, this);
+            this.btn_reply.addEventHandler("onclick", this.btn_reply_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_BOD_004.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,14 @@
+package outlegal.lawmapper.service;
+
+import java.util.List;
+
+import outlegal.lawmapper.vo.OutPreiwrVO;
+
+
+public interface OutPreiwrService {
+
+	public List<OutPreiwrVO> getPreiwrList(OutPreiwrVO outPreiwrVO);
+	
+	public void preiwrChange(List<OutPreiwrVO> listVO);
+	
+}

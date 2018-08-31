@@ -1,0 +1,381 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("INTEREST");
+                this.set_classname("INTEREST");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,603);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_interest", this);
+            obj._setContents("<ColumnInfo><Column id=\"interestCode\" type=\"STRING\" size=\"256\"/><Column id=\"interestId\" type=\"STRING\" size=\"256\"/><Column id=\"interestStday\" type=\"STRING\" size=\"256\"/><Column id=\"interestEnday\" type=\"STRING\" size=\"256\"/><Column id=\"interestRegistDate\" type=\"STRING\" size=\"256\"/><Column id=\"interestInput\" type=\"STRING\" size=\"256\"/><Column id=\"interestRate\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_code", this);
+            obj._setContents("<ColumnInfo><Column id=\"id\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"id\">H0101</Col><Col id=\"value\">상</Col></Row><Row><Col id=\"id\">H0102</Col><Col id=\"value\">중</Col></Row><Row><Col id=\"id\">H0103</Col><Col id=\"value\">하</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static01", "absolute", "1%", "48", null, "40", "1%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("  이자율 리스트");
+            obj.style.set_background("pink");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("grd_regularList", "absolute", "1%", "104", null, "237", "1%", null, this);
+            obj.set_taborder("2");
+            obj.set_binddataset("ds_interest");
+            obj.set_autofittype("col");
+            obj.style.set_border("15solid solid lavender");
+            obj.set_scrollbars("autovert");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"151\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"NO\"/><Cell col=\"1\" text=\"적용시작일자\"/><Cell col=\"2\" text=\"적용종료일자\"/><Cell col=\"3\" text=\"등록일시\"/><Cell col=\"4\" text=\"입력자사원번호\"/><Cell col=\"5\" text=\"이자율\"/></Band><Band id=\"body\"><Cell expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:interestStday\"/><Cell col=\"2\" text=\"bind:interestEnday\"/><Cell col=\"3\" text=\"bind:interestRegistDate\"/><Cell col=\"4\" text=\"bind:interestInput\"/><Cell col=\"5\" text=\"bind:interestRate\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "1%", "4", null, "40", "1%", null, this);
+            obj.set_taborder("11");
+            obj.set_text("이자율 관리");
+            obj.style.set_background("transparent URL('img::bg_Cal_click.png') stretch");
+            obj.style.set_color("aliceblue");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("10 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_addre", "absolute", "77%", "360", "70", "20", null, null, this);
+            obj.set_taborder("14");
+            obj.set_text("신규");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_savere", "absolute", "84.5%", "360", "70", "20", null, null, this);
+            obj.set_taborder("15");
+            obj.set_text("저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_deletere", "absolute", "92%", "360", "70", "20", null, null, this);
+            obj.set_taborder("16");
+            obj.set_text("삭제");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "1%", "432", null, "35", "89.9%", null, this);
+            obj.set_taborder("17");
+            obj.set_text("입력자사원번호");
+            obj.style.set_background("antiquewhite");
+            obj.style.set_color("blue");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit00", "absolute", "11.2%", "432", null, "35", "75.6%", null, this);
+            obj.set_taborder("18");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "25.5%", "432", null, "35", "65.2%", null, this);
+            obj.set_taborder("25");
+            obj.set_text("이자율");
+            obj.style.set_background("antiquewhite");
+            obj.style.set_color("blue");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit2", "absolute", "35.9%", "432", null, "35", "50.9%", null, this);
+            obj.set_taborder("26");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "49.6%", "432", null, "35", "41.1%", null, this);
+            obj.set_taborder("27");
+            obj.set_text("적용시작일자");
+            obj.style.set_background("antiquewhite");
+            obj.style.set_color("blue");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static05", "absolute", "74.5%", "432", null, "35", "16.2%", null, this);
+            obj.set_taborder("29");
+            obj.set_text("적용종료일자");
+            obj.style.set_background("antiquewhite");
+            obj.style.set_color("blue");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Calendar("Calendar00", "absolute", "60%", "432", null, "35", "26.3%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("30");
+
+            obj = new Calendar("Calendar01", "absolute", "84.9%", "432", null, "35", "1%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("31");
+
+            obj = new Button("btn_search", "absolute", "69.6%", "360", "70", "20", null, null, this);
+            obj.set_taborder("37");
+            obj.set_text("조회");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 603, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("INTEREST");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item1","btn_search","text","ds_interest","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","btn_addre","text","ds_interest","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","btn_savere","text","ds_interest","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","btn_deletere","text","ds_interest","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Edit00","value","ds_interest","interestInput");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Edit2","value","ds_interest","interestRate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","Calendar00","value","ds_interest","interestStday");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","Calendar01","value","ds_interest","interestEnday");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item11","grd_regularList","binddataset","ds_interest","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("INTEREST.xfdl", "Lib::Comm.xjs");
+        this.registerScript("INTEREST.xfdl", function() {
+        //include "Lib::Comm.xjs";
+        //조회
+        this.fn_search =function(obj,e)
+        {
+        //버튼 btn_search 에 onclick 이벤트로 fn_search 함수를 실행.
+        //var searchCondition = "NAME";
+        //var searchkeyword = this.edt_searchKeyword.value;
+        //this.ds_search.setColumn(0,"searchCondition","NAME");
+        //this.ds_search.setColumn(0,"searchKeyWord",searchKeyword);
+        //odatas 정의
+        var oDatas = {
+        svcid:"interest_list",
+        sController : "interest_list.do",//컨트롤러에서 이주소로 매핑된 곳을 찾아갑니다.
+        inds :[],//서버로 보낼 데이터셋
+        outds : ["ds_interest=output1"], //서버에서 보내는 데이터를 받을 데이터셋(왼 데이터셋 아이디,오 출력아이디)//컨트롤러 가서 
+        args : [], //파라미터
+        bAsync : true, //비동기식
+        nDataType : 0,
+        bCompress : false,
+        };
+         trace(" this.ds_interest : " + this.ds_interest.saveXML());//넥사크로 output위치에서 데이터셋 자취를 xml형식으로 남깁니다.
+            //공통 transaction 함수 호출   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		
+        		//alert(" this.errorcode : " + this.errorcode);
+        		
+        		
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid      : 서비스 ID
+        		*   @param : {object}    this.fobj       : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/   
+        		if(this.errorcode < 0)   //만약에 0보다 작으면 에러메세지를 발생시켜라.
+        		{
+        		   Iject.alert(this.errorMsg);			
+        		   return;
+        		} 
+        	      
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" pThis.ds_interest : " + pThis.ds_interest.saveXML()); //trace 자취를 남겨라
+        	});
+        }
+
+        //신규
+        this.fn_add = function(obj,e)
+        {
+        	var nRow = this.ds_interest.addRow(); //데이터셋 행 추가
+        	this.Edit00.set_value(""); //edit 공간에 공백처리
+        	this.Edit2.set_value("");
+        	this.Calendar00.set_value("");
+        	this.Calendar01.set_value("");
+        	//alert("userid");
+        	
+        	//데이터셋의 마지막에 새로운 행(row)를 추가하는 메소드입니다.
+        	//this.btn_search.set_value("");
+        	/*this.ds_interest.setColumn(row,"interestCode","null");//
+        	this.ds_interest.setColumn(row,"interestId","inter90");
+        	this.ds_interest.setColumn(row,"interestStday","20160131");
+        	this.ds_interest.setColumn(row,"interestEnday","20180131");
+        	this.ds_interest.setColumn(row,"interestRegistDate","null");
+        	this.ds_interest.setColumn(row,"interestInput","2000119702(신슬기)");
+        	this.ds_interest.setColumn(row,"interestRegistDate","10");
+        	*/
+        	//셋컬럼( , , ,) 차례대로 값을 변경하려는 행위위치.시작값0,값을변경하려는 열의 인덱스,변경하려는값
+        	//this.edt_searchKeyword.set_value("");
+        }
+        //삭제
+        this.fn_delete = function(obj,e)
+
+        {
+        	var nRow = this.ds_interest.rowposition;//로우포지션이란?데이터셋에서 현재행을 설정하는속성
+        	this.ds_interest.deleteRow(nRow);
+        	var rtnValue = Iject.confirm("삭제 하시겠습니까?");
+        	
+        	if(rtnValue)
+        	{
+        	
+        		this.fn_save("delete");
+        	}
+        	else
+        	{
+        		this.fn_search();
+        	}
+        	
+        	var oDatas = {
+        svcid:"delete",
+        sController : "create_interest.do",
+        inds :["input1=ds_interest:u"],
+        outds : [],
+        args : [],
+        bAsync : true, 
+        nDataType : 0,
+        bCompress : false,
+        };
+
+         trace(" this.ds_interest : " + this.ds_interest.saveXML());
+            //공통 transaction 함수 호출   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		
+        		//alert(" this.errorcode : " + this.errorcode);
+        		
+        		
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid      : 서비스 ID
+        		*   @param : {object}    this.fobj       : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/   
+        		if(this.errorcode < 0)
+        		{
+        		   Iject.alert(this.errorMsg);			
+        		   return;
+        		} 
+        	      
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" pThis.ds_interest : " + pThis.ds_interest.saveXML());
+        	       
+        	});
+        }
+
+        
+
+        //저장
+        this.fn_save = function(obj,e)
+        {
+        var oDatas =  {
+        			  svcid : "create_interest",
+        			  sController : "create_interest.do",			 
+        			  inds :["input1=ds_interest:U"],
+        			  outds :[
+        				 
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        			
+            //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		
+        		//alert(" this.errorcode : " + this.errorcode);
+        	/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid      : 서비스 ID
+        		*   @param : {object}    this.fobj       : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/   
+        		if(this.errorcode < 0)
+        		{
+        		   Iject.alert(this.errorMsg);			
+        		   return;
+        		} 
+        	      
+        	       var pThis = this.fobj;   //form object	      
+        	       trace(" ds_interest : " + pThis.ds_interest.saveXML());
+        	});
+        }
+
+        
+
+        
+
+        	
+
+        
+        this.Edit2_oneditclick = function(obj,e)
+        {
+        if(parseInt(obj) >=20.0){
+        	alert("현 최고이자율은 20%입니다");
+        	this.Edit2.text=" ";
+        }
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.grd_regularList.addEventHandler("oncellclick", this.fn_delete, this);
+            this.Static00.addEventHandler("onclick", this.Static00_onclick, this);
+            this.btn_addre.addEventHandler("onclick", this.fn_add, this);
+            this.btn_savere.addEventHandler("onclick", this.fn_save, this);
+            this.btn_deletere.addEventHandler("onclick", this.fn_delete, this);
+            this.Edit2.addEventHandler("onchanged", this.Edit2_onchanged, this);
+            this.Edit2.addEventHandler("oneditclick", this.Edit2_oneditclick, this);
+            this.Static05.addEventHandler("onclick", this.Static05_onclick, this);
+            this.btn_search.addEventHandler("onclick", this.fn_search, this);
+
+        };
+
+        this.loadIncludeScript("INTEREST.xfdl");
+
+       
+    };
+}
+)();

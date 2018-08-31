@@ -1,0 +1,187 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("TopFrame");
+                this.set_classname("TopFrame");
+                this._setFormPosition(0,0,1050,30);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"searchCondition\" type=\"STRING\" size=\"256\"/><Column id=\"searchKeyword\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "0", "0", null, "30", "0", null, this);
+            obj.set_taborder("0");
+            obj.set_cssclass("sta_TF_TopBg");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_leftMenuOpen", "absolute", "0", "0", "34", "29", null, null, this);
+            obj.set_taborder("1");
+            obj.set_cssclass("btn_TF_LeftMenuOpen");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button02", "absolute", null, "0", "67", "29", "45", null, this);
+            obj.set_taborder("3");
+            obj.set_cssclass("btn_TF_Logout");
+            obj.set_text("Log-out");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("stNm", "absolute", null, "0", "157", "29", "112", null, this);
+            obj.set_taborder("5");
+            obj.set_cssclass("sta_TF_Admin");
+            obj.set_usedecorate("true");
+            obj.style.set_font("bold underline 9 arial");
+            obj.style.set_cursor("hand");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "44", "53", "406", "22", null, null, this);
+            obj.set_taborder("6");
+            obj.set_text("<---- Left Menu Open Button (class : btn_TF_LeftMenuOpen)");
+            obj.set_visible("false");
+            obj.style.set_color("red");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1050, 30, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("TopFrame");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("TopFrame.xfdl", "Lib::Comm.xjs");
+        this.registerScript("TopFrame.xfdl", function() {
+        /***********************************************************************************
+        * SYSTEM      : 넥사크로플랫폼 PackageB
+        * BUSINESS    : 넥사크로플랫폼 PackageB
+        * FILE NAME   : TopFrame.xfdl
+        * PROGRAMMER  : 
+        * DATE        : 
+        * DESCRIPTION : TopFrame
+        *------------------------------------------------------------------
+        * MODIFY DATE   PROGRAMMER			DESCRIPTION
+        *------------------------------------------------------------------
+        * 
+        *------------------------------------------------------------------
+        ***********************************************************************************/
+
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        
+        /***********************************************************************************
+        * Global/Local Variable
+        ***********************************************************************************/
+
+        
+        /***********************************************************************************
+        * Form Event
+        ***********************************************************************************/
+        /**
+         * form onload 함수
+         * @return 
+         * @example
+         *
+         * @memberOf this
+         */
+        this.fn_onload = function(obj,e)
+        {
+        	this.fn_set();
+        }
+
+        
+        //left 펼침 접힘 실행
+        this.btn_leftMenuOpen_onclick = function(obj,e)
+        {
+           Iject.Mdi.leftMenuAction(this,obj);
+           application.all[0].all[0].all[1].all[0].form.reload();
+        }
+
+        //logout
+        this.fn_logout = function(obj,e)
+        {
+        	Iject.login(0);
+        }
+        // <b v='false'>님 환영합니다.</b>
+        this.fn_set = function()
+        {
+           this.stNm.set_text(application.gds_userInfo.getColumn(0,"name") + "님 환영합니다."
+            );
+        }
+
+        this.stNm_onclick = function(obj,e)
+        {
+        	//팝업생성
+        	var popWin = new ChildFrame;
+        	popWin.init("Pop1", "absolute", 0, 0, 800, 800, 0, 0, "Pattern::V_COM_011.xfdl");
+        	popWin.set_openalign("center middle"); //추가
+            popWin.showModal(this.getOwnerFrame(), {mode:'modal',ds:application.gds_userInfo}, this, "fn_pop_callback");	
+        	//팝업끝
+         
+        }
+
+        this.fn_popupCallback = function(strPopupID,strReturn)
+        {
+            if(strReturn == undefined){
+                return;
+            }
+
+            if(strPopupID == "chf_popup1"){
+                this.alert("Return Value: " + strReturn);
+            }
+        };
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.fn_onload, this);
+            this.btn_leftMenuOpen.addEventHandler("onclick", this.btn_leftMenuOpen_onclick, this);
+            this.Button02.addEventHandler("onclick", this.fn_logout, this);
+            this.stNm.addEventHandler("onclick", this.stNm_onclick, this);
+
+        };
+
+        this.loadIncludeScript("TopFrame.xfdl");
+
+       
+    };
+}
+)();

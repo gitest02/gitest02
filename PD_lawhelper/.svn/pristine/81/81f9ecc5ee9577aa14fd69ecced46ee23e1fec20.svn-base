@@ -1,0 +1,252 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_PDL_012");
+                this.set_classname("V_PDL_012");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+
+            
+            // UI Components Initialize
+            obj = new Div("Div00", "absolute", "0%", "0", null, "599", "0.2%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "3.21%", "19", null, "31", "87.37%", null, this.Div00);
+            obj.set_taborder("61");
+            obj.set_text("소송관리 번호");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "12.83%", "22", null, "21", "74.45%", null, this.Div00);
+            obj.set_taborder("62");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "26.35%", "22", null, "21", "67.43%", null, this.Div00);
+            obj.set_taborder("63");
+            obj.set_text("검색");
+            obj.set_cssclass("btn_WF_Search");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "34.07%", "19", null, "31", "60.72%", null, this.Div00);
+            obj.set_taborder("64");
+            obj.set_text("심급");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("Combo00", "absolute", "40.98%", "24", null, "21", "46.29%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("65");
+            obj = new Button("Button01", "absolute", "88.38%", "22", null, "21", "5.41%", null, this.Div00);
+            obj.set_taborder("68");
+            obj.set_text("초기화");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "0.8%", "52", null, "41", "87.47%", null, this.Div00);
+            obj.set_taborder("69");
+            obj.set_text("소송기본사항");
+            obj.style.set_align("center");
+            obj.style.set_font("bold 11 arial");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static04", "absolute", "3.21%", "95", null, "28", "87.98%", null, this.Div00);
+            obj.set_taborder("70");
+            obj.set_text("소송진행상태");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static05", "absolute", "30.56%", "95", null, "28", "56.71%", null, this.Div00);
+            obj.set_taborder("71");
+            obj.set_text("당사원피고구분");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static06", "absolute", "3.21%", "124", null, "28", "87.58%", null, this.Div00);
+            obj.set_taborder("72");
+            obj.set_text("신청사건번호");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "31.96%", "124", null, "28", "59.12%", null, this.Div00);
+            obj.set_taborder("73");
+            obj.set_text("평정금액");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static08", "absolute", "62.83%", "124", null, "28", "27.86%", null, this.Div00);
+            obj.set_taborder("74");
+            obj.set_text("상대담당자명");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "12.83%", "98", null, "21", "74.45%", null, this.Div00);
+            obj.set_taborder("75");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "12.83%", "127", null, "21", "74.45%", null, this.Div00);
+            obj.set_taborder("76");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("Combo02", "absolute", "40.98%", "127", null, "21", "46.29%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("78");
+            obj = new Edit("Edit03", "absolute", "74.55%", "127", null, "21", "12.73%", null, this.Div00);
+            obj.set_taborder("79");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static22", "absolute", "0.8%", "148", null, "41", "90.98%", null, this.Div00);
+            obj.set_taborder("111");
+            obj.set_text("원고목록");
+            obj.style.set_align("center");
+            obj.style.set_font("bold 11 arial");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Grid("Grid00", "absolute", "3.91%", "180", null, "135", "5.31%", null, this.Div00);
+            obj.set_taborder("112");
+            obj.set_fillareatype("linerow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"60\"/><Column size=\"80\"/><Column size=\"105\"/><Column size=\"130\"/><Column size=\"130\"/><Column size=\"150\"/><Column size=\"150\"/><Column size=\"100\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"NO\"/><Cell col=\"1\" text=\"일련번호\"/><Cell col=\"2\" text=\"성명\"/><Cell col=\"3\" text=\"원피고등록번호\"/><Cell col=\"4\" text=\"청구소가\"/><Cell col=\"5\" text=\"주요연락처전화번호\"/><Cell col=\"6\" text=\"추가연락처전화번호\"/><Cell col=\"7\" text=\"소송종결구분\"/></Band><Band id=\"body\"><Cell/><Cell col=\"1\"/><Cell col=\"2\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/></Band></Format></Formats>");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button09", "absolute", "88.38%", "541", null, "21", "5.41%", null, this.Div00);
+            obj.set_taborder("113");
+            obj.set_text("닫기");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button10", "absolute", "81.56%", "541", null, "21", "12.22%", null, this.Div00);
+            obj.set_taborder("114");
+            obj.set_text("저장");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button11", "absolute", "74.75%", "541", null, "21", "19.04%", null, this.Div00);
+            obj.set_taborder("115");
+            obj.set_text("결제");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button13", "absolute", "88.38%", "156", null, "21", "5.41%", null, this.Div00);
+            obj.set_taborder("117");
+            obj.set_text("종결");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("Combo01", "absolute", "40.98%", "98", null, "21", "46.29%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("120");
+            obj = new Static("Static02", "absolute", "61.02%", "95", null, "28", "26.25%", null, this.Div00);
+            obj.set_taborder("121");
+            obj.set_text("수행법원");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("Combo05", "absolute", "74.55%", "98", null, "21", "12.73%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("122");
+            obj.set_text("계약직");
+            obj = new Static("Static09", "absolute", "0.8%", "316", null, "41", "81.46%", null, this.Div00);
+            obj.set_taborder("123");
+            obj.set_text("원고 조정안 상세내역");
+            obj.style.set_align("center");
+            obj.style.set_font("bold 11 arial");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Grid("Grid01", "absolute", "3.91%", "353", null, "167", "76.55%", null, this.Div00);
+            obj.set_taborder("124");
+            obj.set_fillareatype("linerow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"60\"/><Column size=\"135\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"NO\"/><Cell col=\"1\" text=\"작성일자\"/></Band><Band id=\"body\"><Cell/><Cell col=\"1\"/></Band></Format></Formats>");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static10", "absolute", "23.95%", "354", null, "28", "67.13%", null, this.Div00);
+            obj.set_taborder("125");
+            obj.set_text("작성일자");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static11", "absolute", "23.95%", "410", null, "28", "67.13%", null, this.Div00);
+            obj.set_taborder("126");
+            obj.set_text("조정내용");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static12", "absolute", "23.95%", "477", null, "28", "64.03%", null, this.Div00);
+            obj.set_taborder("127");
+            obj.set_text("기타조정안참고사항");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Combo("Combo03", "absolute", "36.07%", "358", null, "21", "46.29%", null, this.Div00);
+            this.Div00.addChild(obj.name, obj);
+            obj.set_taborder("128");
+            obj = new Static("Static13", "absolute", "57.62%", "354", null, "28", "33.47%", null, this.Div00);
+            obj.set_taborder("129");
+            obj.set_text("조정금액");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Edit("Edit04", "absolute", "66.53%", "358", null, "21", "20.74%", null, this.Div00);
+            obj.set_taborder("130");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static14", "absolute", "78.46%", "355", null, "28", "17.33%", null, this.Div00);
+            obj.set_taborder("131");
+            obj.set_text("(원)");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "36.07%", "391", null, "60", "5.41%", null, this.Div00);
+            obj.set_taborder("132");
+            this.Div00.addChild(obj.name, obj);
+            obj = new TextArea("TextArea01", "absolute", "36.07%", "460", null, "60", "5.41%", null, this.Div00);
+            obj.set_taborder("133");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button03", "absolute", "88.38%", "323", null, "21", "5.41%", null, this.Div00);
+            obj.set_taborder("134");
+            obj.set_text("삭제");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Button("Button04", "absolute", "81.56%", "323", null, "21", "12.22%", null, this.Div00);
+            obj.set_taborder("135");
+            obj.set_text("신규");
+            obj.style.set_align("center");
+            this.Div00.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 599, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_PDL_012");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.Div00.Button04.addEventHandler("onclick", this.Div00_Button14_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_PDL_012.xfdl");
+
+       
+    };
+}
+)();

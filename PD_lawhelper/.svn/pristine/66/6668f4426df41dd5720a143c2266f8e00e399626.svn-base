@@ -1,0 +1,309 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("Login");
+                this.set_classname("Login");
+                this.set_titletext("Login");
+                this.set_scrollbars("none");
+                this._setFormPosition(0,0,519,759);
+            }
+            this.style.set_background("transparent");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "9.25%", "90", null, "30", "81.31%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("아 이 디");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "9.44%", "249", null, "33", "76.88%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("비 밀 번 호");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "9.44%", "290", null, "38", "72.25%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("비 밀 번 호 확인");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "9.25%", "345", null, "30", "81.31%", null, this);
+            obj.set_taborder("3");
+            obj.set_text("주 소");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "9.25%", "384", null, "30", "74.57%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("핸 드 폰 번 호");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static05", "absolute", "9.25%", "440", null, "30", "81.31%", null, this);
+            obj.set_taborder("5");
+            obj.set_text("이 메 일");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static06", "absolute", "9.44%", "490", null, "30", "81.12%", null, this);
+            obj.set_taborder("6");
+            obj.set_text("성 별");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static07", "absolute", "9.44%", "530", null, "30", "76.88%", null, this);
+            obj.set_taborder("7");
+            obj.set_text("생 년 월 일");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static08", "absolute", "9.25%", "146", null, "30", "81.31%", null, this);
+            obj.set_taborder("8");
+            obj.set_text("이 름");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static09", "absolute", "9.44%", "192", null, "32", "74.57%", null, this);
+            obj.set_taborder("9");
+            obj.set_text("영 문 이 름");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_id", "absolute", "32.18%", "90", null, "24", "36.99%", null, this);
+            obj.set_taborder("10");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_name", "absolute", "32.18%", "144", null, "24", "36.99%", null, this);
+            obj.set_taborder("11");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_ename", "absolute", "32.18%", "192", null, "24", "36.99%", null, this);
+            obj.set_taborder("12");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_password", "absolute", "32.18%", "249", null, "24", "36.99%", null, this);
+            obj.set_taborder("13");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_passwordchk", "absolute", "32.18%", "306", null, "24", "36.99%", null, this);
+            obj.set_taborder("14");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_address", "absolute", "32.18%", "345", null, "24", "36.99%", null, this);
+            obj.set_taborder("15");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_phone", "absolute", "32.18%", "384", null, "24", "36.99%", null, this);
+            obj.set_taborder("16");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_email", "absolute", "32.18%", "440", null, "24", "36.99%", null, this);
+            obj.set_taborder("17");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_birth", "absolute", "32.18%", "536", null, "24", "36.99%", null, this);
+            obj.set_taborder("18");
+            this.addChild(obj.name, obj);
+
+            obj = new Radio("rd_sex", "absolute", "21.97%", "493", null, "21", "53.37%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("19");
+            obj.set_innerdataset("@gds_sex");
+            obj.set_codecolumn("CD");
+            obj.set_datacolumn("CDNM");
+            obj.set_direction("vertical");
+
+            obj = new Button("btn_join", "absolute", "13.29%", "580", null, "31", "73.8%", null, this);
+            obj.set_taborder("20");
+            obj.set_text("가 입");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_cancel", "absolute", "50.67%", "580", null, "31", "36.99%", null, this);
+            obj.set_taborder("21");
+            obj.set_text("취 소");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_check", "absolute", "64.74%", "90", null, "25", "21.58%", null, this);
+            obj.set_taborder("22");
+            obj.set_text("중복검사");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_reset", "absolute", "32.37%", "580", null, "31", "55.3%", null, this);
+            obj.set_taborder("23");
+            obj.set_text("리 셋");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_search", "absolute", "63.2%", "19", null, "29", "8.86%", null, this);
+            obj.set_taborder("24");
+            obj.set_text("아이디/비밀번호 찾기");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_login", "absolute", "47.98%", "19", null, "29", "38.92%", null, this);
+            obj.set_taborder("25");
+            obj.set_text("로 그 인");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static10", "absolute", "31.98%", "114", null, "30", "29.67%", null, this);
+            obj.set_taborder("26");
+            obj.set_text("*4~10자리 영문과 숫자만 가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static11", "absolute", "31.98%", "168", null, "30", "29.67%", null, this);
+            obj.set_taborder("27");
+            obj.set_text("*2글자 이상 한글로만 입력가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static12", "absolute", "31.98%", "218", null, "30", "29.67%", null, this);
+            obj.set_taborder("28");
+            obj.set_text("*영어만 입력가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static13", "absolute", "31.98%", "272", null, "30", "26.01%", null, this);
+            obj.set_taborder("29");
+            obj.set_text("*6글자 이상 영문,숫자,특수기호 사용가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static14", "absolute", "31.98%", "464", null, "30", "26.01%", null, this);
+            obj.set_taborder("30");
+            obj.set_text("*이메일 형식으로 등록 ex)xxx@xxx.com");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static15", "absolute", "31.98%", "410", null, "30", "26.01%", null, this);
+            obj.set_taborder("31");
+            obj.set_text("*10자리 이상 숫자만 등록 가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 519, 759, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Login");
+            		p.style.set_background("transparent");
+            		p.set_titletext("Login");
+            		p.set_scrollbars("none");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("JoinFrame.xfdl", "Lib::Comm.xjs");
+        this.registerScript("JoinFrame.xfdl", function() {
+        /***********************************************************************************
+        * SYSTEM      : 넥사크로플랫폼 PackageB
+        * BUSINESS    : 넥사크로플랫폼 PackageB
+        * FILE NAME   : Login.xfdl
+        * PROGRAMMER  : 
+        * DATE        : 
+        * DESCRIPTION : 로그인 화면
+        *------------------------------------------------------------------
+        * MODIFY DATE   PROGRAMMER			DESCRIPTION
+        *------------------------------------------------------------------
+        * 
+        *------------------------------------------------------------------
+        ***********************************************************************************/
+
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+
+        
+        /***********************************************************************************
+        * Global/Local Variable
+        ***********************************************************************************/
+
+        
+        /***********************************************************************************
+        * Form Event
+        ***********************************************************************************/
+        /**
+         * form onload 함수
+         * @return 
+         * @example
+         *
+         * @memberOf this
+         */
+
+        
+         
+        /***********************************************************************************
+        * User Function
+        ***********************************************************************************/
+
+        /**
+        * form onsize
+        * @return 
+        * @example
+        * @memberOf public
+        */ 
+
+        
+        /***********************************************************************************
+        * Component Event
+        ***********************************************************************************/
+
+        /**
+        * 프레임 open
+        * @return 
+        * @example
+        * @memberOf public
+        */ 
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_onload, this);
+            this.addEventHandler("onsize", this.Login_onsize, this);
+            this.Static01.addEventHandler("onclick", this.Static01_onclick, this);
+            this.Static03.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static04.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static05.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static06.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static07.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static08.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static09.addEventHandler("onclick", this.Static03_onclick, this);
+
+        };
+
+        this.loadIncludeScript("JoinFrame.xfdl");
+
+       
+    };
+}
+)();

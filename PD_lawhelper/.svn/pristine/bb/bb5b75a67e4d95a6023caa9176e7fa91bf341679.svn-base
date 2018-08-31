@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_DOM_001" classname="V_DOM_001" left="0" top="0" width="1000" height="600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="서증관리" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;"/>
+        <Div id="Div00" taborder="1" text="Div00" left="0%" top="51" right="0%" height="207">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" onclick="Div00_Static00_onclick" left="1%" top="0" right="1%" height="37" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Button id="Button00" taborder="3" text="검색" onclick="Div00_Button00_onclick" left="30.6%" top="8" width="70" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;"/>
+              <Button id="reset_btn" taborder="4" text="초기화" onclick="reset_btn_onclick" left="90.6%" top="9" width="70" height="20" style="background:@gradation URL('theme://images\btn_MF_Refresh_O.png') 5px 50px;" visible="false"/>
+              <Static id="Static02" taborder="5" text="소송기본사항" left="1.1%" top="44" right="85.8%" height="23"/>
+              <Static id="Static03" taborder="6" onclick="Div00_Static00_onclick" left="1%" top="70" right="1%" height="129" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static01" taborder="13" text="소송관리번호" left="1.9%" top="6" right="84%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Edit id="Edit00" taborder="14" oneditclick="Div00_Edit00_oneditclick" left="16.3%" top="6" right="70.3%" height="25" enable="false"/>
+              <Static id="Static04" taborder="15" text="소제기의호번호" left="1.9%" top="80" right="84%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Edit id="Edit01" taborder="16" oneditclick="Div00_Edit00_oneditclick" left="16.4%" top="79" right="70.2%" height="25" enable="false"/>
+              <Static id="Static05" taborder="18" text="신청사건번호" left="30.4%" top="80" right="51.8%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static06" taborder="19" text="사건유형" left="64%" top="80" right="20.3%" height="25" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static07" taborder="21" text="신청법원" left="1.9%" top="109" right="84%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static08" taborder="23" text="당사원피고구분" left="30.5%" top="109" right="51.8%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static09" taborder="24" text="피고" left="64%" top="109" right="20.3%" height="25" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static10" taborder="27" text="소송제기사유" left="1.8%" top="137" right="84.1%" height="57" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <TextArea id="TextArea00" taborder="28" left="16.3%" top="136" right="2.4%" height="58" enable="false"/>
+              <Edit id="Edit02" taborder="46" oneditclick="Div00_Edit00_oneditclick" left="48.8%" top="77" right="36.5%" height="28" enable="false"/>
+              <Combo id="Combo00" taborder="47" text="Combo00" left="16.3%" top="108" right="70.2%" height="25" enable="false"/>
+              <Combo id="Combo01" taborder="48" text="Combo01" left="48.8%" top="109" right="36.6%" height="24" enable="false"/>
+              <Edit id="Edit03" taborder="49" left="80.5%" top="109" right="2.4%" height="25"/>
+              <Combo id="cb_searchLawClassName" taborder="50" value="== 전체 ==" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="80.5%" top="75" width="17.1%" height="29"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="2" text="사건호증목록" left="1.1%" top="250" right="87.5%" height="30"/>
+        <Button id="eul_delete_btn" taborder="6" text="삭제" onclick="eul_delete_btn_onclick" left="91.7%" top="256" width="70" height="20" style="background:@gradation 10px 50px;" visible="false"/>
+        <Button id="gap_delete_btn" taborder="7" text="삭제" onclick="gap_delete_btn_onclick" left="42.7%" top="256" width="70" height="20" style="background:@gradation 10px 50px;" visible="false"/>
+        <Button id="add_btn" taborder="8" text="추가" onclick="add_btn_onclick" left="91.7%" top="442" width="70" height="20" style="background:@gradation 10px 50px;" visible="false"/>
+        <Grid id="Grid00" taborder="9" binddataset="ds_edoc_gap" useinputpanel="false" autofittype="col" oncellclick="gapCellClick" left="1%" top="280" width="48.6%" height="158">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="45"/>
+                <Column size="60"/>
+                <Column size="291"/>
+                <Column size="90"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="4" text="갑호증"/>
+                <Cell col="4"/>
+                <Cell row="1" text="No"/>
+                <Cell row="1" col="1" text="종류"/>
+                <Cell row="1" col="2" text="명칭"/>
+                <Cell row="1" col="3" text="작성일"/>
+                <Cell row="1" col="4"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow+1"/>
+                <Cell col="1" text="bind:edocAdmHozkindSepCode"/>
+                <Cell col="2" text="bind:edocAdmName"/>
+                <Cell col="3" text="bind:edocAdmWritDate"/>
+                <Cell col="4" text="bind:rowNum"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="10" binddataset="ds_edoc_eul" useinputpanel="false" autofittype="col" oncellclick="eulCellClick" left="50.4%" top="280" width="48.6%" height="158">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="45"/>
+                <Column size="60"/>
+                <Column size="291"/>
+                <Column size="90"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="4" text="을호증"/>
+                <Cell col="4"/>
+                <Cell row="1" text="No"/>
+                <Cell row="1" col="1" text="종류"/>
+                <Cell row="1" col="2" text="명칭"/>
+                <Cell row="1" col="3" text="작성일"/>
+                <Cell row="1" col="4"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow+1"/>
+                <Cell col="1" text="bind:edocAdmHozkindSepCode"/>
+                <Cell col="2" text="bind:edocAdmName"/>
+                <Cell col="3" text="bind:edocAdmWritDate"/>
+                <Cell col="4" text="bind:rowNum"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div01" taborder="11" text="Div01" left="0%" top="462" right="0%" height="139">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" onclick="Div00_Static00_onclick" left="1%" top="6" right="1%" height="97" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static01" taborder="1" text="호증구분" left="1.8%" top="16" right="84.1%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Edit id="Edit01" taborder="3" onchanged="div_search_cb_searchLawClassName_onitemchanged" left="16.2%" top="44" right="36.5%" height="25"/>
+              <Static id="Static03" taborder="5" text="호증번호" left="33.6%" top="16" right="51.9%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Edit id="Edit02" taborder="6" oneditclick="Div00_Edit00_oneditclick" left="48.7%" top="13" right="36.6%" height="28"/>
+              <Combo id="cb_searchLawClassName01" taborder="9" value="== 전체 ==" innerdataset="@ds_hozkind_sepcode" codecolumn="codeNo" datacolumn="codeName" type="dropdown" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="80.4%" top="11" width="17.1%" height="29"/>
+              <Static id="Static04" taborder="10" text="서증명칭" left="1.8%" top="45" right="84.1%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static05" taborder="11" text="호중종류" left="64.2%" top="13" right="20.1%" height="25" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static06" taborder="12" text="작성일자" left="64.2%" top="42" right="20.1%" height="25" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Combo id="cb_searchLawClassName02" taborder="13" value="== 전체 ==" innerdataset="@ds_hoz_sepcode" codecolumn="codeNo" datacolumn="codeName" type="dropdown" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="16.2%" top="13" width="17.1%" height="29"/>
+              <Static id="Static02" taborder="14" text="첨부파일" left="1.8%" top="74" right="84.1%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static08" taborder="16" left="16.2%" top="74" right="2.4%" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;padding:0 0 0 0;align:center middle;"/>
+              <Static id="Static07" taborder="18" text="현 파일" left="20.3%" top="74" right="75.2%" height="24"/>
+              <Button id="save_btn" taborder="20" text="저장" onclick="save_btn_onclick" left="84.5%" top="111" width="70" height="20" style="background:@gradation 10px 50px;" visible="false"/>
+              <Button id="close_btn" taborder="21" text="닫기" onclick="close_btn_onclick" left="92%" top="111" width="70" height="20" style="background:@gradation 10px 50px;" visible="false"/>
+              <Calendar id="Calendar00" taborder="22" left="80.3%" top="43" right="2.6%" height="25"/>
+              <Static id="Static09" taborder="23" text="0" left="25.1%" top="70" right="72.8%" height="30"/>
+              <Static id="Static10" taborder="24" text="개" left="27%" top="65" right="70.7%" height="38"/>
+              <Static id="Static11" taborder="25" text="*" left="4.5%" top="41" right="93.3%" height="26" style="color:red;"/>
+              <Static id="Static12" taborder="26" text="*" left="36%" top="14" right="61.8%" height="26" style="color:red;"/>
+              <Static id="Static13" taborder="27" text="*" left="67.2%" top="12" right="30.6%" height="26" style="color:red;"/>
+              <Static id="Static14" taborder="28" text="*" left="67.2%" top="40" right="30.6%" height="26" style="color:red;"/>
+              <Button id="add_btn" taborder="29" text="첨부파일" left="28.5%" top="76" height="20" width="70" visible="false" onclick="Div01_add_btn_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Edit id="Edit00" taborder="12" left="3.5%" top="622" right="77.3%" height="70" visible="false"/>
+        <Edit id="Edit01" taborder="13" left="29.8%" top="622" right="50.6%" height="29" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_hoz_sepcode">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">갑호증</Col>
+            <Col id="codeNo">001</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">을호증</Col>
+            <Col id="codeNo">002</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_hozkind_sepcode">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="codeName">사건종류1</Col>
+            <Col id="codeNo">001</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">사건종류2</Col>
+            <Col id="codeNo">002</Col>
+          </Row>
+          <Row>
+            <Col id="codeName">사건종류3</Col>
+            <Col id="codeNo">003</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_edoc_gap">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="edocAdmHozSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmHozNo" type="STRING" size="256"/>
+          <Column id="edocAdmHozkindSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmName" type="STRING" size="256"/>
+          <Column id="edocAdmWritDate" type="STRING" size="256"/>
+          <Column id="rowNum" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_edoc_eul">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="edocAdmHozSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmHozNo" type="STRING" size="256"/>
+          <Column id="edocAdmHozkindSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmName" type="STRING" size="256"/>
+          <Column id="edocAdmWritDate" type="STRING" size="256"/>
+          <Column id="rowNum" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_edoc" oncolumnchanged="dataChange">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="edocAdmSeq" type="STRING" size="256"/>
+          <Column id="edocAdmHozSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmHozNo" type="STRING" size="256"/>
+          <Column id="edocAdmHozkindSepCode" type="STRING" size="256"/>
+          <Column id="edocAdmName" type="STRING" size="256"/>
+          <Column id="edocAdmWritDate" type="STRING" size="256"/>
+          <Column id="rowNum" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_lawsuit">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="lawRaisreqNo" type="STRING" size="256"/>
+          <Column id="lawsuitAplCortCode" type="STRING" size="256"/>
+          <Column id="lawsuitAplCaseCode" type="STRING" size="256"/>
+          <Column id="lawsuitCaseTyCode" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepcode" type="STRING" size="256"/>
+          <Column id="lawsuitAsitParcWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaCaseNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaChg" type="STRING" size="256"/>
+          <Column id="lawsuitTempReqiDate" type="STRING" size="256"/>
+          <Column id="lawsuitRaisRea" type="STRING" size="256"/>
+          <Column id="lawsuitCostCfnApldate" type="STRING" size="256"/>
+          <Column id="lawsuitConcDate" type="STRING" size="256"/>
+          <Column id="lawsuitFulfDetmWtr" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="instAdmCaseNo" type="STRING" size="256"/>
+          <Column id="instAdmPrgrCode" type="STRING" size="256"/>
+          <Column id="instAdmClamVop" type="STRING" size="256"/>
+          <Column id="instAdmCortCode" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="instAdmRaisreqDate" type="STRING" size="256"/>
+          <Column id="instAdmJudId" type="STRING" size="256"/>
+          <Column id="instAdmJudName" type="STRING" size="256"/>
+          <Column id="instAdmEntLyrName" type="STRING" size="256"/>
+          <Column id="lawsuitNotiAdmNo" type="STRING" size="256"/>
+          <Column id="lawsuitNotiCont" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item3" compid="Div00.cb_searchLawClassName" propid="value" datasetid="ds_lawsuit" columnid="lawsuitCaseTyCode"/>
+      <BindItem id="item0" compid="Div00.Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAdmNo"/>
+      <BindItem id="item1" compid="Div00.Edit01" propid="value" datasetid="ds_lawsuit" columnid="lawRaisreqNo"/>
+      <BindItem id="item2" compid="Div00.Edit02" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAplCaseCode"/>
+      <BindItem id="item4" compid="Div00.Combo00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAplCortCode"/>
+      <BindItem id="item5" compid="Div00.Combo01" propid="value" datasetid="ds_lawsuit" columnid="lawsuitCpPladefSepcode"/>
+      <BindItem id="item6" compid="Div00.Edit03" propid="value" datasetid="ds_lawsuit" columnid="pladefName"/>
+      <BindItem id="item7" compid="Div00.TextArea00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitRaisRea"/>
+      <BindItem id="item8" compid="Div01.cb_searchLawClassName02" propid="value" datasetid="ds_edoc" columnid="edocAdmHozSepCode"/>
+      <BindItem id="item9" compid="Div01.Edit02" propid="value" datasetid="ds_edoc" columnid="edocAdmHozNo"/>
+      <BindItem id="item10" compid="Div01.cb_searchLawClassName01" propid="value" datasetid="ds_edoc" columnid="edocAdmHozkindSepCode"/>
+      <BindItem id="item11" compid="Div01.Edit01" propid="value" datasetid="ds_edoc" columnid="edocAdmName"/>
+      <BindItem id="item12" compid="Div01.Calendar00" propid="value" datasetid="ds_edoc" columnid="edocAdmWritDate"/>
+      <BindItem id="item13" compid="Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitNotiCont"/>
+      <BindItem id="item14" compid="Edit01" propid="value" datasetid="ds_lawsuit" columnid="lawsuitNotiAdmNo"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";
+
+this.Div00_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+    objChildFrame.init("chf_popup2", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_026.xfdl");
+    var objParam = {};
+    objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+}
+
+this.fn_popupCallback = function(strID, strTemp)
+{
+	this.Div00.reset_btn.set_visible(true);
+	this.gap_delete_btn.set_visible(true);
+	this.eul_delete_btn.set_visible(true);
+	this.add_btn.set_visible(true);
+	this.Div01.save_btn.set_visible(true);
+	this.Div01.close_btn.set_visible(true);
+	this.Div01.add_btn.set_visible(true);
+	
+	var strTempSplit = strTemp.split("/");
+	if(strTemp != undefined){
+		this.ds_search.setColumn(0, "lawsuitAdmNo", strTempSplit[0]);
+		this.ds_search.setColumn(0, "instAdmCode", strTempSplit[1]);
+		this.getLawsuitInfo();
+		this.getEdocList();
+		this.ds_edoc.filter("edocAdmHozSepCode == '001'");
+		this.ds_edoc_gap.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("edocAdmHozSepCode == '002'");
+		this.ds_edoc_eul.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("");
+		
+	}
+}
+
+this.gapCellClick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{
+	var rowPos = this.ds_edoc_gap.rowposition;
+	var rowNum = this.ds_edoc_gap.getColumn(rowPos, "rowNum");
+	this.ds_edoc.filter("rowNum == " + rowNum);
+	this.ds_edoc.filter("");
+	var objIndex = this.ds_edoc.findRowExpr("rowNum == " + rowNum);
+	this.ds_edoc.set_rowposition(objIndex);
+
+}
+
+this.eulCellClick = function(obj:Grid,e:nexacro.GridClickEventInfo)
+{
+	var rowPos = this.ds_edoc_eul.rowposition;
+	var rowNum = this.ds_edoc_eul.getColumn(rowPos, "rowNum");
+	this.ds_edoc.filter("rowNum == " + rowNum);
+	this.ds_edoc.filter("");
+	var objIndex = this.ds_edoc.findRowExpr("rowNum == " + rowNum);
+	this.ds_edoc.set_rowposition(objIndex);
+}
+
+this.getLawsuitInfo = function() {
+	var oDatas =  {
+		  svcid : "lawPrgrSuitInfo",
+		  sController : "getPrgrLawsuitInfo.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_lawsuit=ds_lawsuit"],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+ 		if(this.errorcode < 0){
+		   Iject.alert(this.errormsg);
+		   return false;
+			}
+		else{
+			var pThis = this.fobj;
+			var lawsuitCpPladefSepcode = pThis.Div00.Combo01.text;
+			var lawsuitNotiCont = pThis.Edit00.text;
+			var lawsuitNotiAdmNo = pThis.Edit01.text;
+			
+			if(lawsuitCpPladefSepcode != "피고")
+			{
+				pThis.Div00.Static04.set_text("소송의뢰번호");
+				pThis.Div00.Static10.set_text("소송제기사유");
+				pThis.Div00.Static09.set_text("피고");
+				
+			}
+			else
+			{
+				pThis.Div00.Static04.set_text("소송고지번호");
+				pThis.Div00.Static10.set_text("고지내용");
+				pThis.Div00.Static09.set_text("원고");
+				if(lawsuitNotiCont != "")
+				{
+					pThis.Div00.Edit01.set_value(lawsuitNotiAdmNo);
+					pThis.Div00.TextArea00.set_value(lawsuitNotiCont);
+				}
+				
+			}
+		}
+	});	
+	
+}
+
+this.getEdocList = function() {
+	var oDatas =  {
+		  svcid : "edocAdmList",
+		  sController : "getEdocAdmList.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_edoc=ds_edoc1"],
+		  args  : [],
+		  bAsync : false,
+		  nDataType : 0,
+		  bCompress :true,
+	};
+	
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+
+}
+
+this.reset_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_edoc.deleteAll();
+	this.ds_edoc_gap.deleteAll();
+	this.ds_edoc_eul.deleteAll();	
+	this.ds_lawsuit.deleteAll();
+	this.Div00.reset_btn.set_visible(false);
+	this.gap_delete_btn.set_visible(false);
+	this.eul_delete_btn.set_visible(false);
+	this.add_btn.set_visible(false);
+	this.Div01.save_btn.set_visible(false);
+	this.Div01.close_btn.set_visible(false);
+	this.Div01.add_btn.set_visible(false);
+}
+
+this.eul_delete_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var rowPos = this.ds_edoc_eul.rowposition;
+	var oriNo = this.ds_edoc_eul.getColumn(rowPos, "rowNum");
+	var oriIndex = this.ds_edoc.findRowExpr("rowNum == " + oriNo);
+	this.ds_edoc.deleteRow(oriIndex);
+	this.ds_edoc_eul.deleteRow(rowPos);
+}
+
+this.gap_delete_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var rowPos = this.ds_edoc_gap.rowposition;
+	var oriNo = this.ds_edoc_gap.getColumn(rowPos, "rowNum");
+	var oriIndex = this.ds_edoc.findRowExpr("rowNum == " + oriNo);
+	this.ds_edoc.deleteRow(oriIndex);
+	this.ds_edoc_gap.deleteRow(rowPos);
+}
+
+this.add_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_edoc.insertRow(0);
+	this.ds_edoc.setColumn(0, "lawsuitAdmNo", this.ds_lawsuit.getColumn(0, "lawsuitAdmNo"));
+}
+
+this.save_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var oDatas =  {
+		  svcid : "edocChange",
+		  sController : "edocChange.do",
+		  inds :["ds_edoc=ds_edoc:U"],
+		  outds :[],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+
+ 		var pThis = this.fobj;
+	});
+}
+
+this.close_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close("OK");
+}
+
+this.div_search_cb_searchLawClassName_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	var edocAdmHozSepCode = this.Div01.cb_searchLawClassName02.value;
+	if(edocAdmHozSepCode == "001"){
+		this.ds_edoc_gap.setColumn(0, "lawsuitAdmNo", this.ds_lawsuit.getColumn(0, "lawsuitAdmNo"));
+	}
+	else {
+		this.ds_edoc_eul.setColumn(0, "lawsuitAdmNo", this.ds_lawsuit.getColumn(0, "lawsuitAdmNo"));
+	}
+	
+}
+
+this.dataChange = function(obj:Dataset,e:nexacro.DSColChangeEventInfo)
+{		
+ 		var objRowPos = obj.rowposition;
+ 		var objRowNum = obj.getColumn(objRowPos, "rowNum");
+		var objSepCode = obj.getColumn(objRowPos, "edocAdmHozSepCode");
+		var gapSepCode = this.ds_edoc_gap.getColumn(this.ds_edoc_gap.rowposition, "edocAdmHozSepCode");
+		var eulSepCode = this.ds_edoc_eul.getColumn(this.ds_edoc_eul.rowposition, "edocAdmHozSepCode");		
+		
+		this.ds_edoc.filter("edocAdmHozSepCode == '001'");
+		this.ds_edoc_gap.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("edocAdmHozSepCode == '002'");
+		this.ds_edoc_eul.copyData(this.ds_edoc, true);
+		this.ds_edoc.filter("");
+		
+		var objIndex = this.ds_edoc.findRowExpr("rowNum == " + objRowNum);
+		this.ds_edoc.set_rowposition(objIndex);
+
+		if(objSepCode == gapSepCode) {
+			var gapIndex = this.ds_edoc_gap.findRowExpr("rowNum == " + objRowNum);
+			this.ds_edoc_gap.set_rowposition(gapIndex);
+		} else {
+			var eulIndex = this.ds_edoc_eul.findRowExpr("rowNum == " + objRowNum);
+			this.ds_edoc_eul.set_rowposition(eulIndex);
+		}
+
+}
+
+this.Div01_add_btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+// 	alert(this.ds_edoc.rowposition);
+// 	alert(this.ds_edoc_gap.rowposition);
+// 	alert(this.ds_edoc_eul.rowposition);
+	
+	if(this.ds_edoc.rowposition<0)
+	{
+		alert("서증항목을 추가해주세요");
+		return;
+	}
+	else
+	{
+		var objChildFrame = new ChildFrame();
+		objChildFrame.init("addfile_popup", "absolute", 30, 30, 30, 30, null, null, "Pattern::COM_POP_ADDFILE.xfdl");
+		var objParam = {};
+		objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fnCallback");
+	}
+	
+	
+}
+]]></Script>
+  </Form>
+</FDL>

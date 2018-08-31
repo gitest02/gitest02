@@ -1,0 +1,20 @@
+package approval.lawmapper.service;
+
+import java.util.List;
+
+import approval.lawmapper.vo.ApprovalDefVO;
+import approval.lawmapper.vo.ApprovalProgVO;
+import approval.lawmapper.vo.ApprovalTotalVO;
+
+
+public interface ApprovalProgService {
+	
+	//작성자 조회
+	List<ApprovalProgVO> getApprovalWriter(String sabun);
+
+	//기안자&결재자 입력
+	public void createProg(List<ApprovalDefVO> approvalDefList) throws Exception;
+	
+//	//기안 정보 조회 (reload)
+//	List<ApprovalTotalVO> getApprovalVita(ApprovalTotalVO approvalTotalVO);
+}

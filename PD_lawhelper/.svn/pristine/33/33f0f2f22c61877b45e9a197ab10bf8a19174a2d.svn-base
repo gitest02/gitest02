@@ -1,0 +1,167 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("FILE");
+                this.set_classname("FILE");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("FileUp", this);
+            obj._setContents("<ColumnInfo><Column id=\"addFileCheck\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRelNum\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerFileName\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSize\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDel\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerPath\" type=\"STRING\" size=\"256\"/><Column id=\"addFileChanDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRegDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFileExt\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFile\" type=\"STRING\" size=\"256\"/><Column id=\"imgFile\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDownCount\" type=\"STRING\" size=\"256\"/><Column id=\"addFileCode\" type=\"STRING\" size=\"256\"/><Column id=\"count\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("File", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"code\">add_File_Ser_File_Name</Col><Col id=\"value\">파일이름</Col></Row><Row><Col id=\"code\">add_File_Pc_File_Ext</Col><Col id=\"value\">파일확장자</Col></Row><Row><Col id=\"code\">add_File_Del</Col><Col id=\"value\">삭제여부</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("FileName", this);
+            obj._setContents("<ColumnInfo><Column id=\"FILE_NAME\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static04", "absolute", "78.4%", "610", null, "33", "13.7%", null, this);
+            obj.set_taborder("17");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "1%", "64", null, "32", "86.5%", null, this);
+            obj.set_taborder("19");
+            obj.set_text("공통파일관리");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_color("#133678ff");
+            obj.style.set_align("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("Combo00", "absolute", "13.6%", "64", null, "32", "71.3%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("20");
+            obj.set_text("Combo00");
+            obj.style.set_border("1 solid #a8a8a8ff");
+            obj.set_codecolumn("code");
+            obj.set_datacolumn("value");
+            obj.set_innerdataset("@File");
+
+            obj = new Edit("edit3", "absolute", "28.6%", "64", null, "32", "55%", null, this);
+            obj.set_taborder("21");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("button3", "absolute", "44.9%", "64", null, "32", "47.5%", null, this);
+            obj.set_taborder("22");
+            obj.set_text("검색");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button0", "absolute", "52.5%", "64", null, "32", "39.9%", null, this);
+            obj.set_taborder("23");
+            obj.set_text("저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button9", "absolute", "72.2%", "64", null, "32", "20.2%", null, this);
+            obj.set_taborder("25");
+            obj.set_text("삭제");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button2", "absolute", "60.1%", "64", null, "32", "27.7%", null, this);
+            obj.set_taborder("28");
+            obj.set_text("다른이름으로저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button4", "absolute", "79.8%", "64", null, "32", "8%", null, this);
+            obj.set_taborder("29");
+            obj.set_text("파일이름변경");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button1", "absolute", "92%", "64", null, "32", "1%", null, this);
+            obj.set_taborder("30");
+            obj.set_text("닫기");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid0", "absolute", "1%", "108", null, "339", "1%", null, this);
+            obj.set_taborder("31");
+            obj.set_autofittype("col");
+            obj.set_autosizingtype("both");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\"/><Column size=\"62\"/><Column size=\"84\"/><Column size=\"65\"/><Column size=\"76\"/><Column size=\"66\"/><Column size=\"65\"/><Column size=\"64\"/><Column size=\"66\"/><Column size=\"65\"/><Column size=\"75\"/><Column size=\"96\"/><Column size=\"92\"/><Column size=\"0\"/><Column size=\"94\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\"/><Cell col=\"1\" text=\"일련번호\"/><Cell col=\"2\" text=\"채무자번호\"/><Cell col=\"3\" text=\"파일이름\"/><Cell col=\"4\" text=\"파일확장자\"/><Cell col=\"5\" text=\"파일종류\"/><Cell col=\"6\" text=\"파일크기\"/><Cell col=\"7\" text=\"삭제여부\"/><Cell col=\"8\" text=\"수정일시\"/><Cell col=\"9\" text=\"등록일시\"/><Cell col=\"10\" text=\"파일경로\"/><Cell col=\"11\" text=\"원본파일이름\"/><Cell col=\"12\" text=\"증명사진/파일\"/><Cell col=\"13\" text=\"증명사진/파일\"/><Cell col=\"14\" text=\"다운로드횟수\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\"/><Cell col=\"1\"/><Cell col=\"2\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/><Cell col=\"14\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("FILE");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("FILE.xfdl", function() {
+
+        
+        function Combo00_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+        {
+        	var code=Combo00.text;
+        	if(code=="전체"){
+        		search_form();
+        	}else{
+        		if(code=="파일이름"){
+        			code="001";	
+        		}else if(code=="파일확장자"){
+        			code="002";	
+        		}else{
+        			code="003";	
+        		}
+        		search_code(code);
+        	}
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.Static01.addEventHandler("onclick", this.Static01_onclick, this);
+            this.edit3.addEventHandler("onchanged", this.edit3_onChanged, this);
+            this.button3.addEventHandler("onclick", this.button3_OnClick, this);
+            this.Button0.addEventHandler("onclick", this.Button0_OnClick, this);
+            this.Button9.addEventHandler("onclick", this.Button9_onclick, this);
+            this.Button2.addEventHandler("onclick", this.Button2_onclick, this);
+            this.Button4.addEventHandler("onclick", this.Button4_onclick, this);
+            this.Button1.addEventHandler("onclick", this.Button1_onclick, this);
+
+        };
+
+        this.loadIncludeScript("FILE.xfdl");
+
+       
+    };
+}
+)();

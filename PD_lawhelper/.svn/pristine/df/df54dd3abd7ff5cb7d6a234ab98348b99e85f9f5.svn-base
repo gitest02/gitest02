@@ -1,0 +1,303 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("LawNoSearch");
+                this.set_classname("Example_pattern");
+                this.set_titletext("소송관리번호 조회");
+                this._setFormPosition(0,0,600,400);
+            }
+            this.style.set_border("1 solid #c8c8c8ff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("div_combo", this);
+            obj._setContents("<ColumnInfo><Column id=\"id\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"id\">전체</Col><Col id=\"value\">0</Col></Row><Row><Col id=\"id\">소제기의뢰번호</Col><Col id=\"value\">1</Col></Row><Row><Col id=\"id\">심급명</Col><Col id=\"value\">2</Col></Row><Row><Col id=\"id\">원피고명</Col><Col id=\"value\">3</Col></Row><Row><Col id=\"id\">소송담당자</Col><Col id=\"value\">4</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("grd_lawsuit_no", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCpPladefSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"pladefName\" type=\"STRING\" size=\"256\"/><Column id=\"insaName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_instanceType_cp", this);
+            obj._setContents("<ColumnInfo><Column id=\"codename\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("grd_lawsuit_no_cp", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawsuitAdmNo\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmCode\" type=\"STRING\" size=\"256\"/><Column id=\"instAdmName\" type=\"STRING\" size=\"256\"/><Column id=\"lawsuitCpPladefSepCode\" type=\"STRING\" size=\"256\"/><Column id=\"pladefName\" type=\"STRING\" size=\"256\"/><Column id=\"insaName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_instanceType", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "1%", "0", null, "42", "1%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("소송관리번호 조회");
+            obj.style.set_background("transparent URL('theme://images/bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 12 굴림");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "0%", "49", null, "42", "0%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("Div01");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1%", "0", null, "36", "1%", null, this.Div01);
+            obj.set_taborder("0");
+            obj.getSetter("OnKeyDown").set("legal_input_OnKeyDown");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#080808ff");
+            obj.style.set_font("bold 9 굴림");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("btn_search", "absolute", "69%", "8", "70", "20", null, null, this.Div01);
+            obj.set_taborder("3");
+            obj.set_text("검색");
+            obj.style.set_background("@gradation URL('theme://images/btn_TF_Search.png') 10px 50px");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Combo("Search1", "absolute", "19.17%", "6", "120", "24", null, null, this.Div01);
+            this.Div01.addChild(obj.name, obj);
+            obj.set_taborder("4");
+            obj.set_codecolumn("value");
+            obj.set_datacolumn("id");
+            obj.set_type("filter");
+            obj = new Edit("legal_input", "absolute", "39.83%", "6", "170", "24", null, null, this.Div01);
+            obj.set_taborder("5");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Grid("grd_Search", "absolute", "1%", "91", null, "301", "1%", null, this);
+            obj.set_taborder("5");
+            obj.set_binddataset("grd_lawsuit_no");
+            obj.set_autofittype("col");
+            obj.getSetter("OnUnloadCompleted").set("LawNoSearch_OnUnloadCompleted");
+            obj.style.set_border("1 solid #9f8f71ff,0 none #808080ff");
+            obj.set_tooltiptype("default");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"97\"/><Column size=\"39\"/><Column size=\"147\"/><Column size=\"53\"/><Column size=\"73\"/><Column size=\"66\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"소송관리번호\"/><Cell col=\"1\" text=\"심급\"/><Cell col=\"2\" text=\"심급명\"/><Cell col=\"3\" text=\"원피고구분\"/><Cell col=\"4\" text=\"원피고명\"/><Cell col=\"5\" text=\"소송담당자명\"/></Band><Band id=\"body\"><Cell text=\"bind:lawsuitAdmNo\"/><Cell col=\"1\" text=\"bind:instAdmCode\"/><Cell col=\"2\" text=\"bind:instAdmName\"/><Cell col=\"3\" text=\"bind:lawsuitCpPladefSepCode\"/><Cell col=\"4\" text=\"bind:pladefName\"/><Cell col=\"5\" text=\"bind:insaName\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 42, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.set_text("Div01");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 600, 400, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Example_pattern");
+            		p.set_titletext("소송관리번호 조회");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item2","Div00.med_input2","value","grd_lawsuit_no","lawsuitAdmNo");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div00.med_input3","value","grd_lawsuit_no","instAdmCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div00.med_input4","value","grd_lawsuit_no","instAdmName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div00.med_input5","value","grd_lawsuit_no","lawsuitCpPladefSepCode");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Div00.med_input6","value","grd_lawsuit_no","pladefName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","Div00.med_input7","value","grd_lawsuit_no","insaName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_MED_002.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_MED_002.xfdl", function() {
+        ////////////////////////////////////////////////////////////////////////////////
+        /*
+        작 성 자 : 이창민
+        작 성 일 : 2018.08.02
+        프로그램 : 조정안 관리
+        */
+        ////////////////////////////////////////////////////////////////////////////////
+        //include "Lib::Comm.xjs";
+
+        //Onload
+        this.V_MED_001_onload = function(obj,e)
+        {
+        	this.code_select(); 	// 공통코드 호출 [단 1회 호출추천]
+        	this.comboSetup(); 	//  공통코드 콤보데이터에 맞게 분할
+        	this.legal_input.SetFocus();
+        	this.LawNoSearch();	//소송관리번호 조회
+        	
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+        //콤보 셋업
+        this.comboSetup = function()
+        {
+        	var str = 0;
+        	
+        	for(i=0; i<=dscmmCd.rowcount; i++){
+        		//심급차수코드
+        		if(ds_cmmCd.GetColumn(i,"classCode")=="G01" && ds_cmmCd.GetColumn(i,"useYn")=="Y"){
+        			ds_instanceType.AddRow();
+        			ds_instanceType.SetColumn(str,"codeNo", ds_cmmCd.GetColumn(i,"codeNo"));
+        			ds_instanceType.SetColumn(str,"codeName", ds_cmmCd.GetColumn(i,"codeName"));
+        			str++;
+        		}
+        	}
+        }
+
+        //목록 클릭 시
+        this.grd_Search_OnCellDblClick = function(obj,e)
+        {
+        	close(grd_Search.GetCellValue(nRow,0)+grd_Search.GetCellValue(nRow,1));
+        }
+
+        //검색 버튼 클릭 시
+        this.btn_search_OnClick = function(obj,e)
+        {
+        	if(Search1.Value != 0) {
+        		if(legal_input.Text == ""){
+        			alert("검색어를 입력하세요.");
+        			legal_input.Text='';
+        			legal_input.SetFocus();
+        			return;
+        		}
+        	}else{
+        		if(legal_input.Text != ""){
+        			alert("검색조건을 선택해주세요.");
+        			return;
+        		}
+        	}
+        	
+        	LawNoSearch();
+        }
+
+        //엔터키 입력했을 때 event
+        this.legal_input_OnKeyDown = function(obj,e)
+        {
+        	if(nChar==13){ 
+        		btn_search_OnClick();
+        	}
+        }
+
+        //콜백 함수
+        this.fnCallback = function(svcid,errcd,errmsg)
+        {
+        	switch(svcid)
+        	{
+        		case "select":
+        			//데이터 조회 에러 발생시
+        			if(errcd != "0"){	
+        				alert("데이터가 정상적으로 조회되지 않았습니다.\n"
+        					+ "소송관리조회 에러내용: "+ errmsg);
+        			return false;
+        			}
+        			else{
+        				
+        			}
+        			break;
+        	}
+        }
+
+        
+        //소송관리번호 조회
+        this.LawNoSearch = function()
+        {
+        	var oDatas =  {
+        		svcid : "select",
+        		sController : "common/LawNoSearch.do",  //앞에 common. 이클립스에서 세팅하고 제거
+        		inds :[""],
+        		outds : "grd_lawsuit_no=ds_output",
+        		
+        		search1 : [search1.Value],				//이게 맞나 몰라...
+        		search2 : [legal_input.Text],
+            
+        		param1 : ["selectedId=" + Quote(search1)],	
+        		param2 : [" selectedId1=" + Quote(search2)],
+        		fnCallback : "fnCallback",
+        		
+        		args  : [],
+        		bAsync : true,
+        		nDataType : 0,
+        		bCompress :false,
+        	};
+        	Iject.transaction(this,oDatas,function(){
+        		var pThis = this.fobj;
+        	});
+        }
+
+        //헤더 정렬
+        this.Grd_Search_OnHeadClick = function(obj,e)
+        {
+        	gfn_GridSort(grd_Search,grd_lawsuit_no,nCell,10);
+        }
+
+        //화면 종료 시
+        this.LawNoSearch_OnUnloadCompleted = function()
+        {
+        	LawNoSearch.Close();
+        }
+
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_MED_001_onload, this);
+            this.Div01.Static00.addEventHandler("onclick", this.Div00_Static00_onclick, this);
+            this.Div01.btn_search.addEventHandler("onclick", this.btn_search_OnClick, this);
+            this.Div01.Search1.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.grd_Search.addEventHandler("oncellclick", this.grd_Search_OnCellDblClick, this);
+            this.grd_Search.addEventHandler("oncelldblclick", this.grid_searchList_oncellclick, this);
+            this.grd_Search.addEventHandler("OnHeadClick", this.Grd_Search_OnHeadClick, this);
+
+        };
+
+        this.loadIncludeScript("V_MED_002.xfdl");
+
+       
+    };
+}
+)();

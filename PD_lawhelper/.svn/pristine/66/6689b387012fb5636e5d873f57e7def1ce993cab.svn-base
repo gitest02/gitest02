@@ -1,0 +1,616 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_BOD_001");
+                this.set_classname("V_LAW_020");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_board", this);
+            obj._setContents("<ColumnInfo><Column id=\"bNo\" type=\"INT\" size=\"50\"/><Column id=\"userId\" type=\"STRING\" size=\"50\"/><Column id=\"writerName\" type=\"STRING\" size=\"50\"/><Column id=\"title\" type=\"STRING\" size=\"200\"/><Column id=\"body\" type=\"STRING\" size=\"4000\"/><Column id=\"wDate\" type=\"STRING\" size=\"200\"/><Column id=\"password\" type=\"STRING\" size=\"50\"/><Column id=\"bGroup\" type=\"INT\" size=\"5\"/><Column id=\"bOrder\" type=\"INT\" size=\"5\"/><Column id=\"step\" type=\"INT\" size=\"5\"/><Column id=\"isshow\" type=\"STRING\" size=\"1\"/><Column id=\"startPage\" type=\"INT\" size=\"5\"/><Column id=\"endPage\" type=\"INT\" size=\"5\"/><Column id=\"totalPage\" type=\"INT\" size=\"5\"/><Column id=\"page\" type=\"INT\" size=\"5\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"5\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_menu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_SEQ\" type=\"int\" size=\"4\"/><Column id=\"MENU_OPTP\" type=\"string\" size=\"32\"/><Column id=\"PAGE_URL\" type=\"string\" size=\"32\"/><Column id=\"MENU_TOP\" type=\"string\" size=\"32\"/><Column id=\"MENU_ID\" type=\"string\" size=\"32\"/><Column id=\"MENU_GRP\" type=\"string\" size=\"32\"/><Column id=\"CREATE_DT\" type=\"string\" size=\"32\"/><Column id=\"MENU_LEVEL\" type=\"int\" size=\"4\"/><Column id=\"PAGE_ID\" type=\"string\" size=\"32\"/><Column id=\"PAGE_NAME\" type=\"string\" size=\"32\"/><Column id=\"MENU_ARGS\" type=\"string\" size=\"32\"/><Column id=\"MENU_STAT\" type=\"string\" size=\"32\"/><Column id=\"CREATE_USER\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_DT\" type=\"string\" size=\"32\"/><Column id=\"UPDATE_USER\" type=\"string\" size=\"32\"/><Column id=\"MENU_DESC\" type=\"string\" size=\"32\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><ConstColumn id=\"pageIndex\" type=\"INT\" size=\"1\" value=\"\"/><ConstColumn id=\"pageSize\" type=\"INT\" size=\"5\" value=\"\"/><ConstColumn id=\"pageUnit\" type=\"INT\" size=\"5\" value=\"\"/><Column id=\"writerName\" type=\"STRING\" size=\"100\"/><Column id=\"title\" type=\"STRING\" size=\"100\"/><Column id=\"body\" type=\"STRING\" size=\"256\"/><Column id=\"page\" type=\"INT\" size=\"5\"/></ColumnInfo><Rows><Row><Col id=\"writerName\"/><Col id=\"title\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_paging", this);
+            obj._setContents("<ColumnInfo><Column id=\"endList\" type=\"INT\" size=\"5\"/><Column id=\"endPage\" type=\"INT\" size=\"5\"/><Column id=\"page\" type=\"INT\" size=\"5\"/><Column id=\"startList\" type=\"INT\" size=\"5\"/><Column id=\"startPage\" type=\"INT\" size=\"5\"/><Column id=\"totalList\" type=\"INT\" size=\"5\"/><Column id=\"totalpage\" type=\"INT\" size=\"5\"/><Column id=\"viewListCount\" type=\"INT\" size=\"5\"/><Column id=\"viewPageNum\" type=\"INT\" size=\"5\"/></ColumnInfo><Rows><Row><Col id=\"viewListCount\">8</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_search", "absolute", "3.1%", "8", null, "41", "2.8%", null, this);
+            obj.set_taborder("0");
+            obj.style.set_border("1 solid darkgray");
+            obj.style.set_font("15 Dotum");
+            this.addChild(obj.name, obj);
+            obj = new Static("static_condition", "absolute", "0.96%", "7", null, "27", "92.03%", null, this.div_search);
+            obj.set_taborder("0");
+            obj.set_text("검색 조건");
+            obj.style.set_color("dimgray");
+            obj.style.set_font("9 Dotum");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Combo("cmb_searchCondition", "absolute", "9.27%", "8", null, "23", "76.29%", null, this.div_search);
+            this.div_search.addChild(obj.name, obj);
+            var cmb_searchCondition_innerdataset = new Dataset("cmb_searchCondition_innerdataset", this.div_search.cmb_searchCondition);
+            cmb_searchCondition_innerdataset._setContents("<ColumnInfo><Column id=\"codecolumn\" size=\"256\"/><Column id=\"datacolumn\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codecolumn\">0</Col><Col id=\"datacolumn\">작성자</Col></Row><Row><Col id=\"codecolumn\">1</Col><Col id=\"datacolumn\">제목</Col></Row><Row><Col id=\"codecolumn\">2</Col><Col id=\"datacolumn\">내용</Col></Row></Rows>");
+            obj.set_innerdataset(cmb_searchCondition_innerdataset);
+            obj.set_taborder("1");
+            obj.style.set_font("9 Dotum");
+            obj.set_codecolumn("codecolumn");
+            obj.set_datacolumn("datacolumn");
+            obj.set_displaynulltext("선택하세요");
+            obj = new Edit("edit_searchKeyword", "absolute", "24.14%", "9", null, "22", "49.68%", null, this.div_search);
+            obj.set_taborder("2");
+            obj.set_displaynulltext("검색내용을 입력하세요.");
+            obj.style.set_color("dimgray");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("9 Dotum");
+            this.div_search.addChild(obj.name, obj);
+
+            obj = new Div("div_searchList", "absolute", "3.1%", "55", null, "493", "2.8%", null, this);
+            obj.set_taborder("1");
+            obj.style.set_border("1 solid darkgray");
+            this.addChild(obj.name, obj);
+            obj = new Static("static_result", "absolute", "2.34%", "7", null, "28", "88.18%", null, this.div_searchList);
+            obj.set_taborder("0");
+            obj.set_text("검색 결과");
+            obj.style.set_color("dimgray");
+            obj.style.set_font("11 Dotum");
+            this.div_searchList.addChild(obj.name, obj);
+            obj = new Grid("grid_searchList", "absolute", "1%", "42", null, "379", "1%", null, this.div_searchList);
+            obj.set_taborder("1");
+            obj.style.set_border("2 solid #9f8f71ff,0 none #808080ff,1 solid #9f8f71ff,0 none #808080ff");
+            obj.set_binddataset("ds_board");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"74\"/><Column size=\"149\"/><Column size=\"502\"/><Column size=\"192\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"43\"/></Rows><Band id=\"head\"><Cell text=\"글번호\"/><Cell col=\"1\" text=\"작성자\"/><Cell col=\"2\" text=\"제목\"/><Cell col=\"3\" text=\"작성일\"/></Band><Band id=\"body\"><Cell text=\"bind:bNo\"/><Cell col=\"1\" text=\"bind:writerName\"/><Cell col=\"2\" style=\"align:left;padding:0 0 0 20;\" text=\"bind:title\"/><Cell col=\"3\" displaytype=\"normal\" edittype=\"date\" text=\"bind:wDate\" mask=\"yyyy-MM-dd HH:mm:ss\"/></Band></Format></Formats>");
+            this.div_searchList.addChild(obj.name, obj);
+            obj = new Static("static_searchCount", "absolute", "91.8%", "14", null, "17", "2.02%", null, this.div_searchList);
+            obj.set_taborder("2");
+            obj.set_text("총 : 0 건");
+            obj.style.set_color("dimgray");
+            this.div_searchList.addChild(obj.name, obj);
+            obj = new Div("div_page", "absolute", "23.43%", "441", null, "31", "23.54%", null, this.div_searchList);
+            obj.set_taborder("3");
+            obj.set_text("Div00");
+            obj.style.set_border("0 solid #808080ff");
+            this.div_searchList.addChild(obj.name, obj);
+            obj = new Static("stc_Prev", "absolute", "13.86%", "6", null, "20", "81.12%", null, this.div_searchList.div_page);
+            obj.set_taborder("10");
+            obj.set_text("<<");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("false");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No0", "absolute", "20.48%", "6", null, "20", "74.7%", null, this.div_searchList.div_page);
+            obj.set_taborder("0");
+            obj.set_text("1");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No1", "absolute", "27.11%", "6", null, "20", "68.27%", null, this.div_searchList.div_page);
+            obj.set_taborder("1");
+            obj.set_text("2");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No2", "absolute", "33.73%", "6", null, "20", "61.85%", null, this.div_searchList.div_page);
+            obj.set_taborder("11");
+            obj.set_text("3");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No3", "absolute", "40.16%", "6", null, "20", "55.22%", null, this.div_searchList.div_page);
+            obj.set_taborder("9");
+            obj.set_text("4");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No4", "absolute", "46.59%", "6", null, "20", "48.59%", null, this.div_searchList.div_page);
+            obj.set_taborder("8");
+            obj.set_text("5");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No5", "absolute", "53.01%", "6", null, "20", "41.97%", null, this.div_searchList.div_page);
+            obj.set_taborder("7");
+            obj.set_text("6");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No6", "absolute", "59.64%", "6", null, "20", "35.54%", null, this.div_searchList.div_page);
+            obj.set_taborder("6");
+            obj.set_text("7");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No7", "absolute", "66.27%", "6", null, "20", "28.92%", null, this.div_searchList.div_page);
+            obj.set_taborder("5");
+            obj.set_text("8");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No8", "absolute", "72.89%", "6", null, "20", "22.49%", null, this.div_searchList.div_page);
+            obj.set_taborder("4");
+            obj.set_text("9");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_No9", "absolute", "79.32%", "6", null, "20", "16.06%", null, this.div_searchList.div_page);
+            obj.set_taborder("3");
+            obj.set_text("10");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("true");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+            obj = new Static("stc_next", "absolute", "85.74%", "6", null, "20", "9.44%", null, this.div_searchList.div_page);
+            obj.set_taborder("2");
+            obj.set_text(">>");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            obj.set_visible("false");
+            this.div_searchList.div_page.addChild(obj.name, obj);
+
+            obj = new Button("btm_search", "absolute", "88.4%", "16", "70", "24", null, null, this);
+            obj.set_taborder("4");
+            obj.set_text("검색");
+            obj.set_tooltiptext("검색버튼");
+            obj.style.set_image("URL('img::btn_WF_SearchSmall.png')");
+            obj.style.set_align("center middle");
+            obj.style.set_cursor("hand");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_newInsert", "absolute", "88.8%", "503", "70", "24", null, null, this);
+            obj.set_taborder("5");
+            obj.set_text("신규");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1230, 49, this.div_search,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_border("1 solid darkgray");
+            		p.style.set_font("15 Dotum");
+
+            	}
+            );
+            this.div_search.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 500, 31, this.div_searchList.div_page,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("3");
+            		p.set_text("Div00");
+            		p.style.set_border("0 solid #808080ff");
+
+            	}
+            );
+            this.div_searchList.div_page.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 493, this.div_searchList,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.style.set_border("1 solid darkgray");
+
+            	}
+            );
+            this.div_searchList.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_020");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_BOD_001.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_BOD_001.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.fv_iStartPageNo = 0; // 전체 페이지 순서
+        this.fv_iMaxPageNum = 10;  // 화면에 보여줄 최대 Page번호 갯수
+
+        this.V_BOD_001_onload = function(obj,e)
+        {
+        	this.ds_menu.assign(application.gds_hiddenMenu);
+        	Iject.formOnload(obj);
+        	var grade = application.gds_userInfo.getColumn(0, "grade");
+        	if(grade == "G-001"){
+        		this.btn_newInsert.set_visible(true);
+        	}
+        	var check = application.gds_search.rowcount;
+        	
+        	if(check > 0 ){
+
+        		var savePage = application.gds_index.getColumn(0,"savePage");
+        		this.fv_iStartPageNo = savePage;
+        		this.fn_gdsSearch();
+        		
+        	}else{
+        		this.fn_search(1);
+        	}
+        	
+        	this.div_searchList.static_searchCount.value();
+        }
+
+        //새글작성
+        this.btn_newInsert_onclick = function(obj,e)
+        {	
+        	this.fn_goPage(0);
+        }
+
+        //상세보기
+        this.grid_searchList_oncellclick = function(obj,e)
+        {
+        	application.gds_board.clearData();
+        	application.gds_board.addRow();
+        	
+        	var nToRow = 0;
+        	var nFromRow = e.row;	//선택 row
+        	
+        	//선택한 row위치의 값들을 검색용 ds에 복사하기
+        	var test=application.gds_board.copyRow(nToRow, this.ds_board, nFromRow);
+        	
+        	this.fn_goPage(2);
+        	
+        }
+
+        //화면 전환 
+        this.fn_goPage = function(page)
+        {
+        	var oObj = {
+                  ds    : this.ds_menu,    // 메뉴 dataset 
+                  nRow  : page,              // 선택된 
+                  oArgs : []               // 넘길 argument
+            };
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+        	application.gds_index.clearData();
+        	application.gds_index.addRow();
+
+        	var nToRow = 0;
+        	var savePage = this.fv_iStartPageNo;	//화면 페이징값 저장	
+        	application.gds_index.setColumn(nToRow,"savePage",savePage)  //선택한 row위치의 값들을 검색용 ds에 복사하기
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            Iject.Mdi.call(this,oObj);
+            //trace("이동 체크 :"+oObj.nRow);
+        }
+
+        //검색 기록 값 조회
+        this.fn_gdsSearch = function(){
+
+        		this.ds_search.clearData();
+        		this.ds_search.addRow();
+        		
+        		var nToRow = 0;
+        		var nFromRow = 0;	
+        		
+        		//선택한 row위치의 값들을 검색용 ds에 복사하기
+        		var test=this.ds_search.copyRow(nToRow, application.gds_search, 0);
+        		
+        		var oDatas = { 
+        		svcid : "search",
+        		sController : "boardSearch.do",
+        		inds : ["ds_search = ds_search"],
+        		outds : ["ds_board = ds_board","ds_paging = ds_paging"],
+        		args : [],
+        		bAsync : false,
+        		nDataTyep : 0, //xml 타입
+        		bCompress : false,
+        	}
+        	
+        	Iject.transaction(this,oDatas,function(){   
+        	if(this.errorcode < 0)
+        		{
+        		   alert(this.errorMsg,"알림");			
+        		   return;
+        		}
+        //	trace(" ds_t_board : " + pThis.ds_t_board.saveXML()); // 화면 출력
+        	var pThis = this.fobj;   //form object
+        	
+        	pThis.fn_setDate(); //총 갯수
+        	});
+        	//this.fn_SetStyle();
+        	//this.div_searchList.div_page.stc_No0.style.set_color("red");
+        	this.fn_SetPageNo();
+        }
+
+        
+
+        //검색
+        this.fn_search = function(page)
+        {
+        	
+        	this.ds_board.clearData();	
+        	
+        	var nowPage = page; // 선택페이지	
+        	this.ds_search.setColumn(0,"page",nowPage); 
+        	
+        ////////////////////////////////////////////////////////////////////////	
+        	//검색 기록
+        	application.gds_search.clearData();
+        	application.gds_search.addRow();
+        	//선택한 row위치의 값들을 검색용 ds에 복사하기
+        	application.gds_search.copyRow(0, this.ds_search, 0);
+        	var test = application.gds_search.setColumn(0,"page",nowPage);
+        ///////////////////////////////////////////////////////////////////////	
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+        	//페이징 기록  저장하기
+        	application.gds_index.clearData();
+        	application.gds_index.addRow();
+
+        	var nToRow = 0;
+        	var savePage = this.fv_iStartPageNo;	//화면 페이징값 저장	
+        	application.gds_index.setColumn(nToRow,"savePage",savePage)  //선택한 row위치의 값들을 검색용 ds에 복사하기
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        	
+        	var oDatas = { 
+        		svcid : "search",
+        		sController : "boardSearch.do",
+        		inds : ["ds_search = ds_search"],
+        		outds : ["ds_board = ds_board","ds_paging = ds_paging"],
+        		args : [],
+        		bAsync : false,
+        		nDataTyep : 0, //xml 타입
+        		bCompress : false,
+        	}
+        	
+        	Iject.transaction(this,oDatas,function(){   
+        	if(this.errorcode < 0)
+        		{
+        		   alert(this.errorMsg,"알림");			
+        		   return;
+        		}
+        //	trace(" ds_t_board : " + pThis.ds_t_board.saveXML()); // 화면 출력
+        	var pThis = this.fobj;   //form object
+        	
+        	pThis.fn_setDate(); //총 갯수
+        	});
+
+        	this.fn_SetPageNo();
+        }
+
+        //카운터 
+        this.fn_setDate = function(){
+
+        	var count = this.ds_paging.getColumn(0,5);
+        	this.div_searchList.static_searchCount.set_text("총 : " +count+" 건");
+        }
+
+        //조회
+        this.div_search_btm_search_onclick = function(obj,e)
+        {
+        	this.fv_iStartPageNo = 0;
+        	this.fn_search_key();
+        }
+
+        //조회 기록 남기기
+        this.fn_search_key = function(){
+        	
+        	this.ds_search.clearData();
+        	var rowIdx = this.ds_search.addRow();
+        	
+            var searchKeyword = this.div_search.edit_searchKeyword.value;    	
+            
+            trace("searchCondition :"+this.div_search.cmb_searchCondition.value);
+            trace("searchKeyword : "+this.div_search.edit_searchKeyword.value);
+        		
+            //콤보박스 선택에 따른 검색키워드 보내기
+            if(this.div_search.cmb_searchCondition.value == 0){
+        		this.ds_search.setColumn(rowIdx,"writerName", searchKeyword);
+         	}else if(this.div_search.cmb_searchCondition.value== 1){
+         		this.ds_search.setColumn(rowIdx,"title", searchKeyword);
+         	}else if(this.div_search.cmb_searchCondition.value== 2){
+         		this.ds_search.setColumn(rowIdx,"body", searchKeyword);
+        	}else if(this.div_search.cmb_searchCondition.value== null){
+        		alert("검색조건을 선택해 주세요");
+        	}
+        	
+        //////////////////////////////////////////////////////////////////////////	
+        // 	application.gds_search.clearData();
+        // 	application.gds_search.addRow();
+        // 	var nToRow = 0;
+        // 	var nFromRow = 0;	//선택 row
+        // 	//선택한 row위치의 값들을 검색용 ds에 복사하기
+        // 	var test=application.gds_search.copyRow(nToRow, this.ds_search, 0);
+        //////////////////////////////////////////////////////////////////////////
+
+        	this.fn_SetStyle();
+        	this.div_searchList.div_page.stc_No0.style.set_color("red");	
+        	this.fn_search(1);
+        }
+
+        //엔터처리
+        this.div_search_edit_searchKeyword_onkeyup = function(obj,e)
+        {
+        	if(e.keycode == 13){
+        		this.fn_search_key();
+        	}
+        }
+
+        //페이징 처리
+        //번호 클릭
+        this.div_paging_onclick = function(obj,e)
+        {
+        	var viewPageNum = this.ds_paging.getColumn(0,8); //보여줄 페이지 번호 갯수
+        	
+        	var iNo = new Number(obj.text);
+        	var iFirstNum = (iNo-1) * viewPageNum + 1;
+        	var iLastNum = iFirstNum + viewPageNum;
+        	
+        	this.fn_SetStyle();
+        	obj.style.set_color("red");
+        	this.fn_search(iNo);
+
+        }
+
+        //prev 클릭
+        this.div_paging_prev_onclick = function(obj,e)
+        {
+        	this.fv_iStartPageNo = this.fv_iStartPageNo - 1;
+        	// Transaction()코딩 할 부분
+        	this.fn_SetStyle();	
+        	this.fn_search((this.fv_iStartPageNo*10)+1);
+        	this.div_searchList.div_page.stc_No0.style.set_color("red");
+        }
+
+        //next 클릭
+        this.div_paging_next_onclick = function(obj,e)
+        {
+        	this.fv_iStartPageNo = this.fv_iStartPageNo + 1;
+        	// Transaction()코딩 할 부분
+        	this.fn_SetStyle();	
+        	this.fn_search((this.fv_iStartPageNo*10)+1);
+        	this.div_searchList.div_page.stc_No0.style.set_color("red");
+        }
+
+        this.fn_SetPageNo = function()
+        {
+
+        	var endList = this.ds_paging.getColumn(0,0); //끝 게시물 번호
+         	var endPage = this.ds_paging.getColumn(0,1); //끝페이지 번호
+         	var page = this.ds_paging.getColumn(0,2); //선택페이지
+         	var startList = this.ds_paging.getColumn(0,3); //시작게시물번호
+         	var startPage = this.ds_paging.getColumn(0,4); // 시작페이지번호
+         	var totalList = this.ds_paging.getColumn(0,5); //게시물 총수 
+         	var totalPage = this.ds_paging.getColumn(0,6); //총 페이지수
+         	var viewListCount = this.ds_paging.getColumn(0,7); //보여질 게시물수
+         	var viewPageNum = this.ds_paging.getColumn(0,8); //보여줄 페이지 번호 갯수
+         	
+         	trace("totalPage:"+totalPage);
+         	
+         	var sPage = this.fv_iStartPageNo * viewPageNum;
+         
+           	// Prev 버튼 처리
+           	if (this.fv_iStartPageNo < 1)
+           	{
+        		trace(this.fv_iStartPageNo);
+           		this.div_searchList.div_page.stc_Prev.set_visible(false);
+           	} 
+           	else 
+           	{
+           		this.div_searchList.div_page.stc_Prev.set_visible(true);
+           	}
+           
+           	// Next 버튼 처리
+           	if (sPage+10 > totalPage)
+           	{
+        		this.div_searchList.div_page.stc_next.set_visible(false);
+           	}
+           	else
+           	{
+           		this.div_searchList.div_page.stc_next.set_visible(true);
+           	}
+
+         	// 인덱스 번호 처리
+         	 	for (var i = 0; i < 10; i++) //화면에 보여줄 페이지 갯수
+         	{
+        	
+         		this.div_searchList.div_page.components["stc_No"+i].set_visible(true);
+         		this.div_searchList.div_page.components["stc_No"+i].set_text(sPage+i+1);
+         
+         		if ( sPage+i+1 > totalPage)
+         		{
+         			this.div_searchList.div_page.components["stc_No"+i].set_visible(false);			
+         		} 
+         		else 
+         		{
+         			this.div_searchList.div_page.components["stc_No"+i].set_visible(true);			
+         		}
+         	}	
+        }
+
+        //스타일
+        this.fn_SetStyle = function()
+        {
+        	for (var i = 0; i < this.fv_iMaxPageNum; i++)
+        	{
+        		this.div_searchList.div_page.components["stc_No"+i].style.set_color("blue");			
+        	}	
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_BOD_001_onload, this);
+            this.div_search.edit_searchKeyword.addEventHandler("oneditclick", this.div_search_edit_searchKeyword_oneditclick, this);
+            this.div_search.edit_searchKeyword.addEventHandler("onkeyup", this.div_search_edit_searchKeyword_onkeyup, this);
+            this.div_searchList.grid_searchList.addEventHandler("oncelldblclick", this.grid_searchList_oncellclick, this);
+            this.div_searchList.div_page.addEventHandler("onclick", this.div_searchList_div_page_onclick, this);
+            this.div_searchList.div_page.stc_Prev.addEventHandler("onclick", this.div_paging_prev_onclick, this);
+            this.div_searchList.div_page.stc_No0.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No1.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No2.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No3.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No4.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No5.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No6.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No7.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No8.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_No9.addEventHandler("onclick", this.div_paging_onclick, this);
+            this.div_searchList.div_page.stc_next.addEventHandler("onclick", this.div_paging_next_onclick, this);
+            this.btm_search.addEventHandler("onclick", this.fn_gdsSearch, this);
+            this.btn_newInsert.addEventHandler("onclick", this.btn_newInsert_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_BOD_001.xfdl");
+
+       
+    };
+}
+)();

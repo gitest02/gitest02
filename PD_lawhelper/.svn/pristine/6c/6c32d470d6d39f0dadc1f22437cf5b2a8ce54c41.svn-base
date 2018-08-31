@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="outEdocAdm">
+	<resultMap type="outlegal.lawmapper.vo.OutEdocAdmVO" id="outEdocAdmVO">
+		<result property="lawsuitAdmNo" column="LAWSUIT_ADM_NO" />
+		<result property="edocAdmSeq" column="EDOC_ADM_SEQ" />
+		<result property="edocAdmHozSepCode" column="EDOC_ADM_HOZ_SEPCODE" />
+		<result property="edocAdmHozNo" column="EDOC_ADM_HOZ_NO" />
+		<result property="edocAdmHozkindSepCode" column="EDOC_ADM_HOZKIND_SEPCODE" />
+		<result property="edocAdmName" column="EDOC_ADM_NAME" />
+		<result property="edocAdmWritDate" column="EDOC_ADM_WRIT_DATE" />
+		<result property="rowNum" column="ROWNUMBER" />
+	</resultMap>
+
+	<select id="getEdocAdmList" parameterType="outlegal.lawmapper.vo.OutEdocAdmVO" resultMap="outEdocAdmVO">
+		SELECT 
+			LAWSUIT_ADM_NO
+			,EDOC_ADM_SEQ
+			,EDOC_ADM_HOZ_SEPCODE
+			,EDOC_ADM_HOZ_NO
+			,EDOC_ADM_HOZKIND_SEPCODE
+			,EDOC_ADM_NAME
+			,EDOC_ADM_WRIT_DATE
+			,ROWNUM AS ROWNUMBER
+		FROM 
+			PD_LAW.TAB_EDOC_ADM
+		WHERE 
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+			AND EDOC_ADM_SEQ > 0
+	</select>
+	
+	<!-- 서증 삽입 -->
+	<insert id="edocAdmInsert" parameterType="outlegal.lawmapper.vo.OutEdocAdmVO">
+		<selectKey resultType="int" keyProperty="edocAdmSeq" order="BEFORE">
+			SELECT 
+				DECODE(COUNT(*), 0, '1', MAX(ABS(EDOC_ADM_SEQ))+1) 
+			FROM 
+				PD_LAW.TAB_EDOC_ADM 
+			WHERE 
+				LAWSUIT_ADM_NO=#{lawsuitAdmNo}
+		</selectKey>
+		
+		INSERT	INTO  PD_LAW.TAB_EDOC_ADM (
+				LAWSUIT_ADM_NO	
+				,EDOC_ADM_SEQ	
+				,EDOC_ADM_HOZ_SEPCODE	
+				,EDOC_ADM_HOZ_NO	
+				,EDOC_ADM_HOZKIND_SEPCODE	
+				,EDOC_ADM_NAME	
+				,EDOC_ADM_WRIT_DATE
+		) VALUES (
+				#{lawsuitAdmNo}
+				,#{edocAdmSeq}
+				,#{edocAdmHozSepCode}
+				,#{edocAdmHozNo}
+				,#{edocAdmHozkindSepCode}
+				,#{edocAdmName}
+				,#{edocAdmWritDate}
+		)
+	</insert>
+	
+	
+	<!-- 서증 수정 -->
+	<update id="edocAdmUpdate" parameterType="outlegal.lawmapper.vo.OutEdocAdmVO">
+		UPDATE 
+			PD_LAW.TAB_EDOC_ADM
+		SET 
+			EDOC_ADM_HOZ_SEPCODE = #{edocAdmHozSepCode}
+			,EDOC_ADM_HOZ_NO = #{edocAdmHozNo}
+			,EDOC_ADM_HOZKIND_SEPCODE = #{edocAdmHozkindSepCode}
+			,EDOC_ADM_NAME = #{edocAdmName}
+			,EDOC_ADM_WRIT_DATE = #{edocAdmWritDate}
+		WHERE 
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+			AND EDOC_ADM_SEQ = #{edocAdmSeq}		
+	</update>
+	
+	
+	<!-- 서증 삭제 -->
+	<update id="edocAdmDelete" parameterType="outlegal.lawmapper.vo.OutEdocAdmVO">
+		UPDATE 
+			PD_LAW.TAB_EDOC_ADM
+		SET 
+			EDOC_ADM_SEQ = EDOC_ADM_SEQ*(-1)
+		WHERE 
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+		AND EDOC_ADM_SEQ = #{edocAdmSeq}
+	</update>	
+</mapper>

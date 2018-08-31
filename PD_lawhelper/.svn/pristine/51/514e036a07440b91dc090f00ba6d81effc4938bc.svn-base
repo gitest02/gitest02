@@ -1,0 +1,105 @@
+package approval.lawmapper.web;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import nexacro.sample.web.AdvancedFileController;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.nexacro.spring.data.NexacroResult;
+
+import approval.lawmapper.service.ApprovalProgService;
+import approval.lawmapper.service.ApprovalService;
+import approval.lawmapper.vo.ApprovalDefVO;
+import approval.lawmapper.vo.ApprovalProgVO;
+import approval.lawmapper.vo.ApprovalTotalVO;
+import egovframework.rte.fdl.property.EgovPropertyService;
+
+@Controller
+public class ApprovalProgController {
+
+	@Resource(name = "approvalProgService")
+	public ApprovalProgService approvalProgService;
+
+	private static final Logger log = LoggerFactory.getLogger(AdvancedFileController.class);
+	
+	@Resource
+	private Validator validator;
+
+    @InitBinder
+	public void initBinder(WebDataBinder dataBinder){
+		dataBinder.setValidator(this.validator);
+	}
+    
+
+	//작성자 정보 조회
+	@RequestMapping(value = "/getAprvWriter.do")
+	public NexacroResult approvalList() throws Exception {
+
+		NexacroResult result = new NexacroResult();
+
+		String sabun = "2014042902";    //파라미터로 받는 법?
+		
+		List<ApprovalProgVO> approvalWriter = approvalProgService.getApprovalWriter(sabun);
+	
+		result.addDataSet("ds_output", approvalWriter);
+
+		return result;
+	}
+
+	//기안자&결재자 등록
+	@RequestMapping(value="/createProg.do")
+	public NexacroResult createProg(List<ApprovalDefVO> approvalDefList) throws Exception {
+		
+		approvalProgService.createProg(approvalDefList);
+		
+		NexacroResult result = new NexacroResult();
+			
+		return result;
+	}
+	
+//	//기안 정보 조회 (reload)
+//	@RequestMapping(value = "/approvalProg/approvalVita.do")
+//	public ModelAndView approvalVita(
+//			@ModelAttribute("ApprovalTotalVO") ApprovalTotalVO approvalTotalVO, 
+//			UdDTO miDTO) {
+//			ModelAndView mav = new ModelAndView("miplatformViewByMap");
+//
+//			try{
+//				Map<String, String> param = miDTO.getVariableList(); // 마이플랫폼 값을 받아옴
+//				
+//				approvalTotalVO.setAprvprgrInfoBookNo(param.get("bookNo"));
+//
+//				
+//				List<ApprovalTotalVO> approvalVita = approvalProgService.getApprovalVita(approvalTotalVO);
+//				// System.out.println("hj : "+approvalWriter.get(1));
+//				
+//				mav.addObject("MiResultCode", "0");
+//				mav.addObject("MiResultMsg", "success");
+//
+//				mav.addObject("ds_output", approvalVita);
+//
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				mav.addObject("MiResultCode", "-1");
+//				mav.addObject("MiResultMsg", e.toString());
+//			}
+//				
+//			return mav;
+//		}
+	
+
+	
+}

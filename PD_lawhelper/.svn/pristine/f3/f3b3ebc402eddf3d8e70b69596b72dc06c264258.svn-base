@@ -1,0 +1,672 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_COM_011");
+                this.set_classname("V_COM_011");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,531,773);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_position", this);
+            obj._setContents("<ColumnInfo><Column id=\"class_code\" type=\"STRING\" size=\"256\"/><Column id=\"code_no\" type=\"STRING\" size=\"256\"/><Column id=\"code_name\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("dsLogin", this);
+            obj._setContents("<ColumnInfo><Column id=\"userid\" type=\"STRING\" size=\"256\"/><Column id=\"password\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_sex", this);
+            obj._setContents("<ColumnInfo><Column id=\"class_code\" type=\"STRING\" size=\"256\"/><Column id=\"code_no\" type=\"STRING\" size=\"256\"/><Column id=\"code_name\" type=\"STRING\" size=\"256\"/><Column id=\"code_name2\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "9.25%", "90", null, "30", "81.31%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("아 이 디");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "9.44%", "249", null, "33", "76.88%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("비 밀 번 호");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "9.44%", "290", null, "38", "72.25%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("비 밀 번 호 확인");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "9.42%", "420", null, "30", "74.39%", null, this);
+            obj.set_taborder("4");
+            obj.set_text("핸 드 폰 번 호");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static05", "absolute", "9.23%", "561", null, "30", "81.17%", null, this);
+            obj.set_taborder("5");
+            obj.set_text("이 메 일");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static06", "absolute", "9.42%", "611", null, "30", "80.98%", null, this);
+            obj.set_taborder("6");
+            obj.set_text("성 별");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static07", "absolute", "9.42%", "651", null, "30", "76.84%", null, this);
+            obj.set_taborder("7");
+            obj.set_text("생 년 월 일");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static08", "absolute", "9.25%", "146", null, "30", "81.31%", null, this);
+            obj.set_taborder("8");
+            obj.set_text("이 름");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static09", "absolute", "9.44%", "192", null, "32", "74.57%", null, this);
+            obj.set_taborder("9");
+            obj.set_text("영 문 이 름");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_id", "absolute", "32.18%", "90", null, "24", "36.99%", null, this);
+            obj.set_taborder("10");
+            obj.set_readonly("true");
+            obj.style.set_border("1 solid black");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_name", "absolute", "32.18%", "144", null, "24", "36.99%", null, this);
+            obj.set_taborder("11");
+            obj.set_readonly("true");
+            obj.style.set_border("1 solid black");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_ename", "absolute", "32.18%", "192", null, "24", "36.99%", null, this);
+            obj.set_taborder("12");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_password", "absolute", "32.18%", "249", null, "24", "36.99%", null, this);
+            obj.set_taborder("13");
+            obj.set_password("true");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_passwordchk", "absolute", "32.18%", "306", null, "24", "36.99%", null, this);
+            obj.set_taborder("14");
+            obj.set_password("true");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_phone", "absolute", "32.2%", "420", null, "24", "37.1%", null, this);
+            obj.set_taborder("16");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_email", "absolute", "32.2%", "561", null, "24", "36.91%", null, this);
+            obj.set_taborder("17");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_birth", "absolute", "32.2%", "657", null, "24", "36.91%", null, this);
+            obj.set_taborder("18");
+            obj.set_readonly("true");
+            obj.style.set_border("1 solid black");
+            this.addChild(obj.name, obj);
+
+            obj = new Radio("rd_sex", "absolute", "32.2%", "614", null, "21", "37.1%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("19");
+            obj.set_readonly("true");
+            obj.set_direction("vertical");
+            obj.set_innerdataset("@ds_sex");
+            obj.set_datacolumn("code_name2");
+            obj.set_codecolumn("code_name");
+
+            obj = new Button("btn_join", "absolute", "20.99%", "701", null, "31", "65.84%", null, this);
+            obj.set_taborder("20");
+            obj.set_text("수 정");
+            obj.style.set_background("#444444ff");
+            obj.style.set_color("white");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_cancel", "absolute", "50.57%", "701", null, "31", "37.02%", null, this);
+            obj.set_taborder("21");
+            obj.set_text("취 소");
+            obj.style.set_background("#444444ff");
+            obj.style.set_color("white");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_delete", "absolute", "49.9%", "48", null, "29", "36.99%", null, this);
+            obj.set_taborder("25");
+            obj.set_text("탈 퇴");
+            obj.style.set_background("#444444ff");
+            obj.style.set_color("white");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static13", "absolute", "31.98%", "272", null, "30", "26.01%", null, this);
+            obj.set_taborder("29");
+            obj.set_text("*6글자 이상 영문,숫자,특수기호 사용가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static17", "absolute", "9.42%", "477", null, "30", "81.17%", null, this);
+            obj.set_taborder("32");
+            obj.set_text("직 장");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static18", "absolute", "9.42%", "515", null, "30", "81.17%", null, this);
+            obj.set_taborder("33");
+            obj.set_text("직 급");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_career", "absolute", "32.2%", "480", null, "24", "37.1%", null, this);
+            obj.set_taborder("34");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("cb_position", "absolute", "32.2%", "515", null, "27", "37.1%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("35");
+            obj.set_innerdataset("ds_position");
+            obj.set_codecolumn("code_name");
+            obj.set_datacolumn("code_name");
+            obj.set_enable("true");
+
+            obj = new Static("Static12", "absolute", "32.06%", "218", null, "30", "29.58%", null, this);
+            obj.set_taborder("36");
+            obj.set_text("*영문이름은 영어만 입력가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static15", "absolute", "32.2%", "448", null, "30", "21.28%", null, this);
+            obj.set_taborder("38");
+            obj.set_text("*핸드폰 번호는 10자리 이상 숫자만 등록 가능");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static14", "absolute", "32.02%", "586", null, "30", "26.37%", null, this);
+            obj.set_taborder("39");
+            obj.set_text("*이메일 형식으로 등록 ex)xxx@xxx.com");
+            obj.style.set_color("tomato");
+            obj.style.set_font("8 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_address", "absolute", "32.2%", "345", null, "24", "51.22%", null, this);
+            obj.set_taborder("40");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static19", "absolute", "8.66%", "348", null, "18", "73.07%", null, this);
+            obj.set_taborder("41");
+            obj.set_text("우 편 번 호");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "8.66%", "381", null, "30", "74.01%", null, this);
+            obj.set_taborder("42");
+            obj.set_text("상 세 주 소");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_address01", "absolute", "32.02%", "384", null, "24", "37.1%", null, this);
+            obj.set_taborder("43");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button00", "absolute", "50.28%", "346", null, "22", "37.29%", null, this);
+            obj.set_taborder("44");
+            obj.set_text("주소검색");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 531, 773, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_COM_011");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item4","ed_address","value","gds_address","code");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item0","ed_id","value","gds_userInfo","userid");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","ed_name","value","gds_userInfo","name");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","ed_ename","value","gds_userInfo","engname");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","ed_phone","value","gds_userInfo","phone");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","ed_career","value","gds_userInfo","career");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","cb_position","value","gds_userInfo","position");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","ed_email","value","gds_userInfo","email");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","ed_birth","value","gds_userInfo","birth");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item9","ed_address01","value","gds_address","road");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_COM_011.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_COM_011.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.form_onload = function(obj,e)
+        {
+        	//기본 공통  함수 초기화
+        	Iject.formOnload(obj);	
+            //this.fn_search();
+        	 this.ds_sex.clearData();
+             this.ds_sex.addRow();
+             this.ds_position.clearData();
+             this.ds_position.addRow();
+        	 this.fn_start();	
+        	 this.fn_start_position();
+        	 application.gds_address.clearData();
+        	 application.gds_address.addRow();
+        	 this.fn_search_user();
+        	
+        } 
+        this.btn_cancel_onclick = function(obj,e)
+        {
+        		this.close();
+        }
+
+        this.btn_delete_onclick = function(obj,e)
+        {
+            var nRow = application.gds_userInfo.rowposition;
+        	application.gds_userInfo.deleteRow(nRow);
+        	
+        	var rtnValue = Iject.confirm("탈퇴 하시겠습니까?");
+        	
+        	if(rtnValue)
+        	{
+        		this.fn_save("delete");
+        	}else{
+        		this.fn_search();
+        	}		
+        	
+        }
+
+        this.fn_save = function(strid)
+        {
+             
+        	var oDatas =  {
+        			  svcid : strid,
+        			  sController : "userdeleteVO.do",			 
+        			  inds :["input1=gds_userInfo:U"],
+        			  outds :[
+        				 "ds_user=output1"
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        		
+            //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid       서비스 ID
+        		*   @param : {object}    this.fobj        : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/    
+        		if(this.errorcode < 0)
+        		{
+        		   //Iject.alert(this.errorMsg,"알림");			
+        		   alert("실패하였습니다");
+        		   return;
+        		}			
+        	      
+        	      var pThis = this.fobj;   //form object
+        	       
+        	      switch(this.svcid)
+        	      {
+        	         case "save" : 
+        				Iject.alert("저장완료");
+        				break;
+        	         case "delete" : 
+        	            Iject.alert("삭제완료");
+        				break; 
+        			case "update" :
+        				Iject.alert("수정완료");
+        				break; 
+        	      }
+        	});
+        	this.close();
+        	Iject.login(0);
+        }
+
+        this.btn_join_onclick = function(obj,e)
+        {
+        	application.gds_userInfo.setColumn(0,"engname",this.ed_ename.value);
+        	application.gds_userInfo.setColumn(0,"password",this.ed_password.value);
+        	var address = "["+this.ed_address.value+"]"+this.ed_address01.value;
+        	application.gds_userInfo.setColumn(0,"address",address);
+        	application.gds_userInfo.setColumn(0,"address01",this.ed_address01.value);
+        	application.gds_userInfo.setColumn(0,"phone",this.ed_phone.value);
+        	application.gds_userInfo.setColumn(0,"email",this.ed_email.value);	
+        	application.gds_userInfo.setColumn(0,"career",this.ed_career.value);
+        	application.gds_userInfo.setColumn(0,"position",this.cb_position.value);
+        	
+        	this.fn_chk();
+        }
+
+        this.fn_update = function(strid)
+        {	
+        	var oDatas =  {
+        			  svcid : strid,
+        			  sController : "userModifyVO.do",			 
+        			  inds :["input1=gds_userInfo:U"],
+        			  outds :[
+        				 "gds_userInfo=output1"
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        		
+            //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid       서비스 ID
+        		*   @param : {object}    this.fobj        : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/    
+        		if(this.errorcode < 0)
+        		{
+        		   //Iject.alert(this.errorMsg,"알림");			
+        		   alert("실패하였습니다");
+        		   return;
+        		}			
+        	      
+        	      var pThis = this.fobj;   //form object
+        	       
+        	      switch(this.svcid)
+        	      {
+        	         case "save" : 
+        				Iject.alert("저장완료");
+        				break;
+        	         case "delete" : 
+        	            Iject.alert("삭제완료");
+        				break; 
+        			case "update" :
+        				Iject.alert("수정완료");
+        				break; 
+        	      }
+        	});
+        	
+        	application.gds_userInfo.setColumn(0,"engname",this.ed_ename.value);
+        	application.gds_userInfo.setColumn(0,"password",this.ed_password.value);
+        	application.gds_userInfo.setColumn(0,"address",this.ed_address.value);
+        	application.gds_userInfo.setColumn(0,"phone",this.ed_phone.value);
+        	application.gds_userInfo.setColumn(0,"email",this.ed_email.value);	
+        	application.gds_userInfo.setColumn(0,"career",this.ed_career.value);
+        	application.gds_userInfo.setColumn(0,"position",this.cb_position.value);
+        	
+        	application.mainframe.VFrameSet.HFrameSet.VFrameSet1.WorkFrame.MainForm.form.fn_chk_f();
+        	
+        	this.close();
+        }
+
+        //유효성 검사
+        this.fn_chk = function(){
+
+        //비밀번호 유효성 검사
+        if(this.ed_password.value==null|| this.ed_password.value=="" || this.ed_passwordchk.value==null 
+        	|| this.ed_passwordchk.value=="" ||this.ed_password.value!=this.ed_passwordchk.value || 
+        	this.ed_password.value<6 || this.ed_passwordchk.value<6){
+        	alert("비밀번호를 확인해주세요.");
+        	return;
+        }
+
+        
+        //영문이름 유효성 검사
+        if(this.ed_ename.value==null || this.ed_ename.value=="" || this.ed_ename.value.length<3 || this.ed_ename.value.length>20){
+        	alert("세 글자 이상 영문이름을 입력해주세요.");
+        	return;
+        	}
+        	//var kpattern = /[^가-힣ㄱ-ㅎㅏ-ㅣ0-9]/gi;
+        	var epattern = /[^a-zA-Z]/gi;
+        	//alert(this.ed_ename.value.length);
+        for(var i=0; i<this.ed_ename.value.length; i++){
+        if(this.ed_ename.value.charAt(i).match(epattern))
+        {
+        alert("영문만 사용 가능합니다.");
+        	return;
+        }
+        }
+        //주소 유효성
+        if(this.ed_address.value==null || this.ed_address==""
+        	|| this.ed_address.value.length < 5 || this.ed_address.value.length >30){
+        alert("주소를 정확히 입력해주세요.");
+        return;
+        }
+        var apattern = /[^가-힣ㄱ-ㅎㅏ-ㅣ0-9]/gi;
+        for(var i=0; i<this.ed_address.value.length; i++){
+        if(this.ed_address.value.charAt(i).match(apattern))
+        {
+        alert("한글만 사용 가능합니다.");
+        	return;
+        }
+        }
+
+        //핸드폰 유효성검사
+        if(this.ed_phone.value==null || this.ed_phone==""
+        	|| this.ed_phone.value.length < 12 || this.ed_phone.value.length >16){
+        alert("핸드폰번호를 정확히 입력해주세요.");
+        return;
+        }
+
+        //직장 유효성 검사
+        if(this.ed_career.value==null || this.ed_career.value=="")
+        {
+        alert("직장을 입력해주세요.");
+        return;
+        }
+        //직급 유효성 검사
+        if(this.cb_position.value==null || this.cb_position.value=="")
+        {
+        alert("직급을 선택해주세요.");
+        return;
+        }
+
+        //이메일 유효성 검사
+        if(this.ed_email.value==null || this.ed_email.value=="")
+        {
+        alert("이메일을 입력해주세요.");
+        return;
+        }
+
+        var epattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        if(this.ed_email.value.match(epattern)!=null){
+        }else{
+        alert("이메일 형식이 잘못되었습니다.");
+        	return;
+        }
+
+        
+        this.fn_update("update");
+        }
+
+        this.ed_phone_onkeyup = function(obj,e)
+        {
+        	var str = this.ed_phone.value;
+        	this.ed_phone.set_maxlength(13);
+        	this.autoHypenPhone(str);
+        }
+
+        this.autoHypenPhone = function(str){
+        var tmp = '';
+          if(str.length < 4){
+            return str;
+          }else if(str.length < 7){
+        	tmp += str.substr(0, 3);
+            tmp += '-';
+            tmp += str.substr(3);
+            this.ed_phone.value.trim();
+            return tmp;
+          }else if(str.length < 11){
+            tmp += str.substr(0, 3);
+            tmp += '-';
+            tmp += str.substr(3, 3);
+            tmp += '-';
+            tmp += str.substr(6);
+            this.ed_phone.value.trim();
+            return tmp;
+          }else{        
+            tmp += str.substr(0, 3);
+            tmp += '-';
+            tmp += str.substr(3, 4);
+            tmp += '-';
+            tmp += str.substr(7);
+            this.ed_phone.value.trim();
+            this.ed_phone.set_value(tmp);
+            return tmp;
+          }
+          }
+
+        this.fn_start = function(){
+        	
+        	var oDatas = {
+        				svcid : "setting",
+        				sController : "usersexdata.do",
+        				inds : [],
+        				outds :[
+        				 "ds_sex=ds_sex"
+        			     ],	
+        				args  : [],
+        				bAsync : false, 
+        				nDataType : 0, 
+        				bCompress :false,
+        	};
+        	
+        	trace(" this.ds_sex : " + this.ds_sex.saveXML());
+        	Iject.transaction(this,oDatas,function(){
+        	});
+        	this.rd_sex.set_value(application.gds_userInfo.getColumn(0,13));
+        }
+
+        this.fn_start_position = function(){
+        	
+        	var oDatas = {
+        				svcid : "setting",
+        				sController : "userpositiondata.do",
+        				inds : [],
+        				outds :[
+        				 "ds_position=ds_position"
+        			     ],	
+        				args  : [],
+        				bAsync : false, 
+        				nDataType : 0, 
+        				bCompress :false,
+        	};
+        	
+        	trace(" this.ds_position : " + this.ds_position.saveXML());
+        	Iject.transaction(this,oDatas,function(){
+        	});
+        }
+        this.Button00_onclick = function(obj,e)
+        {
+        	var nLeft = (application.mainframe.width / 2); - Math.round((this.getOffsetWidth()) / 4);
+          	var nTop = (application.mainframe.height / 2); - Math.round((this.getOffsetHeight()) / 2);
+        	application.open("search","Pattern::V_COM_012.xfdl",this.getOwnerFrame(), 
+           {mode:'modeless',ds:this.Dataset01}, "showtitlebar=true", nLeft, nTop);
+        }
+
+        this.fn_search_user = function(){
+        var oDatas = {
+        				svcid : "search",
+        				sController : "userfindVO.do",
+        				inds : ["dsLogin=dsLogin"],
+        				outds :[
+        				 "gds_userInfo=output1"
+        			     ],	
+        				args  : [],
+        				bAsync : false, 
+        				nDataType : 0, 
+        				bCompress :false,
+        	};
+        	
+
+        	Iject.transaction(this,oDatas,function(){
+        	});
+        	
+        	var address = application.gds_userInfo.getColumn(0,"address").substring(1);
+        	var saddress = address.split(']');
+        	
+        	for(var i in saddress){
+         		application.gds_address.setColumn(0,"code",saddress[0]);
+         		application.gds_address.setColumn(0,"road",saddress[1]);
+         	}	
+        	
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_onload, this);
+            this.Static01.addEventHandler("onclick", this.Static01_onclick, this);
+            this.Static04.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static05.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static06.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static07.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static08.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Static09.addEventHandler("onclick", this.Static03_onclick, this);
+            this.ed_id.addEventHandler("oneditclick", this.ed_id_oneditclick, this);
+            this.ed_phone.addEventHandler("onkeyup", this.ed_phone_onkeyup, this);
+            this.btn_join.addEventHandler("onclick", this.btn_join_onclick, this);
+            this.btn_cancel.addEventHandler("onclick", this.btn_cancel_onclick, this);
+            this.btn_delete.addEventHandler("onclick", this.btn_delete_onclick, this);
+            this.Static03.addEventHandler("onclick", this.Static03_onclick, this);
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_COM_011.xfdl");
+
+       
+    };
+}
+)();

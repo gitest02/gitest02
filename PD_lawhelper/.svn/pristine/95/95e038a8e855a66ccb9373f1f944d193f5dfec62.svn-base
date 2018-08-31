@@ -1,0 +1,189 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_33");
+                this.set_classname("V_LAW_33");
+                this.set_titletext("법률용어");
+                this._setFormPosition(0,0,405,579);
+            }
+            this.style.set_background("floralwhite");
+            this.style.set_border("1 solid #808080ff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_dict_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"dictword\" type=\"STRING\" size=\"256\"/><Column id=\"detaillink\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordCode\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordCodename\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordSource\" type=\"STRING\" size=\"256\"/><Column id=\"mainText\" type=\"STRING\" size=\"4000\"/><Column id=\"dictwordNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Button("Button00", "absolute", "56.3%", "529", "70", "24", null, null, this);
+            obj.set_taborder("10");
+            obj.style.set_image("URL('img::Printer_icon_small.png')");
+            obj.style.set_background("@gradation");
+            obj.style.set_border("1 solid #808080ff");
+            obj.set_text("인쇄");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button01", "absolute", "77.28%", "529", "70", "24", null, null, this);
+            obj.set_taborder("11");
+            obj.set_text("닫기");
+            obj.style.set_background("@gradation");
+            obj.style.set_border("1 solid #808080ff");
+            obj.style.set_font("9 Dotum");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "0%", "0", null, "529", "0%", null, this);
+            obj.set_taborder("12");
+            this.addChild(obj.name, obj);
+            obj = new TextArea("dictword", "absolute", "3.25%", "44", null, "28", "0.25%", null, this.Div00);
+            obj.set_taborder("1");
+            obj.set_wordwrap("char");
+            obj.set_enable("false");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "9 Dotum");
+            this.Div00.addChild(obj.name, obj);
+            obj = new TextArea("code", "absolute", "3.21%", "92", null, "28", "0.74%", null, this.Div00);
+            obj.set_taborder("3");
+            obj.set_wordwrap("char");
+            obj.set_enable("false");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "9 Dotum");
+            this.Div00.addChild(obj.name, obj);
+            obj = new TextArea("source", "absolute", "3.21%", "156", null, "44", "0.74%", null, this.Div00);
+            obj.set_taborder("5");
+            obj.set_wordwrap("char");
+            obj.set_enable("false");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "9 Dotum");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "3.25%", "216", null, "42", "76%", null, this.Div00);
+            obj.set_taborder("6");
+            obj.set_text("법률 정의");
+            obj.style.set_font("bold 12 arial");
+            this.Div00.addChild(obj.name, obj);
+            obj = new TextArea("text", "absolute", "3.13%", "261", null, "267", "0.38%", null, this.Div00);
+            obj.set_taborder("7");
+            obj.set_wordwrap("char");
+            obj.set_enable("false");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "10 Dotum");
+            this.Div00.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 800, 529, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("12");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 405, 579, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_33");
+            		p.set_titletext("법률용어");
+            		p.style.set_background("floralwhite");
+            		p.style.set_border("1 solid #808080ff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item3","Div00.dictword","value","ds_dict_list","dictword");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div00.code","value","ds_dict_list","dictwordCodename");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div00.code","","ds_dict_list","");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div00.source","value","ds_dict_list","dictwordSource");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item0","Div00.text","value","ds_dict_list","mainText");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_33.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_33.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.form_onload = function(obj,e)
+        {
+        	this.ds_dict_list.deleteAll();
+        	this.ds_dict_list.copyData(this.parent.ds_dict_list);
+        } 
+        this.Button00_onclick = function(obj,e)
+        {
+        	system.print(this.Div00,false,"left", false);
+        }
+
+        this.Button01_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.form_onload, this);
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+            this.Button01.addEventHandler("onclick", this.Button01_onclick, this);
+            this.Div00.dictword.addEventHandler("oneditclick", this.Div01_TextArea02_oneditclick, this);
+            this.Div00.code.addEventHandler("oneditclick", this.Div01_TextArea02_oneditclick, this);
+            this.Div00.source.addEventHandler("oneditclick", this.Div01_TextArea02_oneditclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_33.xfdl");
+
+       
+    };
+}
+)();

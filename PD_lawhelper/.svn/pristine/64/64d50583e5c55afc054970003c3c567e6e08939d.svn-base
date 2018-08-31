@@ -1,0 +1,296 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_OPR_026");
+                this.set_classname("V_OPR_026");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,601,451);
+            }
+            this.style.set_background("teal");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_lawarticle", this);
+            obj._setContents("<ColumnInfo><Column id=\"lawid\" type=\"STRING\" size=\"50\"/><Column id=\"articlekey\" type=\"STRING\" size=\"50\"/><Column id=\"articleno\" type=\"STRING\" size=\"50\"/><Column id=\"name\" type=\"STRING\" size=\"200\"/><Column id=\"actdate\" type=\"STRING\" size=\"50\"/><Column id=\"beforemove\" type=\"STRING\" size=\"50\"/><Column id=\"aftermove\" type=\"STRING\" size=\"50\"/><Column id=\"ismodify\" type=\"STRING\" size=\"50\"/><Column id=\"maintext\" type=\"STRING\" size=\"4000\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div", "absolute", "0%", "24", null, "426", "0%", null, this);
+            obj.set_taborder("0");
+            obj.style.set_background("white");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "1.18%", "6", null, "50", "60.34%", null, this.div);
+            obj.set_taborder("137");
+            obj.set_text("법령 조문 등록");
+            obj.style.set_align("middle");
+            obj.style.set_font("24 Dotum");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_articleNo", "absolute", "1.03%", "95", null, "29", "83.51%", null, this.div);
+            obj.set_taborder("138");
+            obj.set_text("조문 번호");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_name", "absolute", "1.03%", "137", null, "29", "83.51%", null, this.div);
+            obj.set_taborder("139");
+            obj.set_text("조문 제목");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_articleKey", "absolute", "1.03%", "180", null, "29", "83.51%", null, this.div);
+            obj.set_taborder("140");
+            obj.set_text("조문키");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_isModify00", "absolute", "1.03%", "222", null, "29", "83.51%", null, this.div);
+            obj.set_taborder("141");
+            obj.set_text("조문변경여부");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_beforeMove", "absolute", "1.03%", "264", null, "29", "83.51%", null, this.div);
+            obj.set_taborder("142");
+            obj.set_text("조문이동이전");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_afterMove", "absolute", "1.03%", "303", null, "29", "83.51%", null, this.div);
+            obj.set_taborder("143");
+            obj.set_text("조문이동이후");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_actDate00", "absolute", "1.03%", "349", null, "29", "83.51%", null, this.div);
+            obj.set_taborder("144");
+            obj.set_text("조문시행일자");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_lawid", "absolute", "18.49%", "63", null, "21", "58.66%", null, this.div);
+            obj.set_taborder("145");
+            obj.style.set_border("1 solid gray");
+            obj.set_displaynulltext("ID를 입력하세요.");
+            obj.set_readonly("false");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_afterMove", "absolute", "18.56%", "307", null, "21", "58.59%", null, this.div);
+            obj.set_taborder("146");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_beforeMove", "absolute", "18.56%", "268", null, "21", "58.59%", null, this.div);
+            obj.set_taborder("147");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_isModify2", "absolute", "18.21%", "226", null, "21", "58.25%", null, this.div);
+            obj.set_taborder("148");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_articleKey", "absolute", "18.21%", "183", null, "21", "58.25%", null, this.div);
+            obj.set_taborder("149");
+            obj.set_displaynulltext("조문키를 입력하세요.");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_name", "absolute", "18.21%", "141", null, "21", "58.25%", null, this.div);
+            obj.set_taborder("150");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_articleNo", "absolute", "18.56%", "99", null, "21", "58.59%", null, this.div);
+            obj.set_taborder("151");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_mainText", "absolute", "46.22%", "55", null, "30", "37.48%", null, this.div);
+            obj.set_taborder("152");
+            obj.set_text("조문 내용");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new TextArea("txa_mainText", "absolute", "46.05%", "91", null, "285", "3.61%", null, this.div);
+            obj.set_taborder("153");
+            obj.set_wordwrap("char");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Static("sta_lawId00", "absolute", "1.01%", "59", null, "26", "83.53%", null, this.div);
+            obj.set_taborder("163");
+            obj.set_text("법령 ID");
+            obj.style.set_border("1 solid #edededff");
+            obj.style.set_align("center middle");
+            this.div.addChild(obj.name, obj);
+            obj = new Edit("edt_actdate", "absolute", "17.87%", "355", null, "21", "58.59%", null, this.div);
+            obj.set_taborder("164");
+            obj.style.set_border("1 solid gray");
+            this.div.addChild(obj.name, obj);
+            obj = new Button("btn_close", "absolute", "86.39%", "383", null, "28", "3.53%", null, this.div);
+            obj.set_taborder("165");
+            obj.set_text("닫기");
+            this.div.addChild(obj.name, obj);
+            obj = new Button("save", "absolute", "80.34%", "18", null, "33", "4.2%", null, this.div);
+            obj.set_taborder("166");
+            obj.set_text("법령 조문 등록");
+            this.div.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1267, 700, this.div,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("0");
+            		p.style.set_background("white");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.div.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 601, 451, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_OPR_026");
+            		p.set_titletext("New Form");
+            		p.style.set_background("teal");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","div.edt_lawid","value","ds_lawarticle","lawid");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","div.edt_name","value","ds_lawarticle","name");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","div.edt_articleNo","value","ds_lawarticle","articleno");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","div.edt_articleKey","value","ds_lawarticle","articlekey");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","div.edt_isModify2","value","ds_lawarticle","ismodify");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","div.edt_beforeMove","value","ds_lawarticle","beforemove");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","div.edt_afterMove","value","ds_lawarticle","aftermove");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","div.edt_actdate","value","ds_lawarticle","actdate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","div.txa_mainText","value","ds_lawarticle","maintext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_OPR_026.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_OPR_026.xfdl", function() {
+
+        //include "Lib::Comm.xjs";
+
+        this.form_onload = function(obj,e)
+        {
+        	//기본 공통  함수 초기화
+        	Iject.formOnload(obj);	
+            //this.fn_search();
+           
+        } 
+        //저장버튼 클릭시
+        this.div_save_onclick = function(obj,e)
+        {
+        	this.fn_save("save");
+        }
+        //저장
+        this.fn_save = function(strid)
+        {
+        	var lawId = this.div.edt_lawid.value;
+        			if(lawId == null){
+        				alert("법령 ID를 입력하세요");
+        				return;
+        			}
+        			
+        	var oDatas =  {
+        			  svcid : strid,
+        			  sController : "lawArticle.do",			 
+        			  inds :["ds_lawarticle = ds_lawarticle"],
+        			  outds :[
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : true,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //			  
+        			}; 
+        			
+            var save = confirm("저장하시겠습니까 ?");
+        	
+        	if(save){
+        		Iject.transaction(this,oDatas,function(){
+        		
+        			if(this.errorcode < 0)
+        			{
+        				alert("법령 ID가 중복 되었습니다.");
+        				//this.opener.fn_search(1);
+        				//Iject.alert(this.errorMsg,"알림")				
+        				return;
+        			}
+        			alert("저장 완료");
+        		});
+        	}else{
+        		alert("취소 되었습니다.");
+        	}
+        }
+
+        //닫기 클릭
+        this.div_btn_close_onclick = function(obj,e)
+        {
+        	this.close("OK");
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.div.Static01.addEventHandler("onclick", this.div_contents_Static01_onclick, this);
+            this.div.sta_afterMove.addEventHandler("onclick", this.div_contents_stc_05_onclick, this);
+            this.div.edt_lawid.addEventHandler("oneditclick", this.div_edt_lawid_oneditclick, this);
+            this.div.edt_articleNo.addEventHandler("oneditclick", this.div_contents_edt_articleNo_oneditclick, this);
+            this.div.edt_actdate.addEventHandler("oneditclick", this.div_contents_edt_lawId_oneditclick, this);
+            this.div.btn_close.addEventHandler("onclick", this.div_btn_close_onclick, this);
+            this.div.save.addEventHandler("onclick", this.div_save_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_OPR_026.xfdl");
+
+       
+    };
+}
+)();

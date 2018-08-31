@@ -1,0 +1,92 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("sample_frame_04");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1024,768);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+
+            
+            // UI Components Initialize
+            obj = new Button("btnPopup", "absolute", "30", "20", "120", "50", null, null, this);
+            obj.set_taborder("0");
+            obj.set_text("Create Popup");
+            obj.getSetter("leftbase").set("");
+            obj.getSetter("topbase").set("");
+            obj.getSetter("bottombase").set("");
+            obj.getSetter("rightbase").set("");
+            obj.getSetter("widthbase").set("");
+            obj.getSetter("heightbase").set("");
+            obj.set_opacity("");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1024, 768, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("dfdfff.xfdl", function() {
+
+        this.PopupMenu00_onmenuclick = function(obj,e)
+        {
+        	var objChildFrame = new ChildFrame();  
+        	objChildFrame.init("childframe00", 0, 0, 300, 300, null, null);
+        	objChildFrame.set_border("1px solid #999999");
+        	objChildFrame.set_showstatusbar(true);
+        	objChildFrame.set_openalign('center middle');
+        	objChildFrame.set_resizable(true);
+        	objChildFrame.set_overlaycolor("rgba(255,0,0,0.3)");
+        	objChildFrame.set_background("#ffffff");
+        	objChildFrame.showModal(this.getOwnerFrame());
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.btnPopup.addEventHandler("onclick", this.btnPopup_onclick, this);
+
+        };
+
+        this.loadIncludeScript("dfdfff.xfdl");
+
+       
+    };
+}
+)();

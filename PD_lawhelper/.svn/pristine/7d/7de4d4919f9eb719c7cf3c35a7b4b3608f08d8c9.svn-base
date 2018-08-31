@@ -1,0 +1,438 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_031");
+                this.set_classname("DictWordList_wordtree");
+                this.set_titletext("법률용어 가나다검색");
+                this._setFormPosition(0,0,1000,280);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_dict_kind", this);
+            obj._setContents("<ColumnInfo><Column id=\"dictwordCode\" type=\"STRING\" size=\"100\"/><Column id=\"dictwordCodeName\" type=\"STRING\" size=\"100\"/></ColumnInfo><Rows><Row><Col id=\"dictwordCode\"/><Col id=\"dictwordCodeName\">전체</Col></Row><Row><Col id=\"dictwordCode\">011401</Col><Col id=\"dictwordCodeName\">법령용어사전</Col></Row><Row><Col id=\"dictwordCode\">011402</Col><Col id=\"dictwordCodeName\">법령정의사전</Col></Row><Row><Col id=\"dictwordCode\">011403</Col><Col id=\"dictwordCodeName\">법령영어사전</Col></Row><Row><Col id=\"dictwordCode\">011405</Col><Col id=\"dictwordCodeName\">생활용어사전</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_dict_index", this);
+            obj._setContents("<ColumnInfo><Column id=\"index\" type=\"STRING\" size=\"10\"/><Column id=\"beforeIndex\" type=\"STRING\" size=\"256\"/><Column id=\"afterIndex\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"index\">전체</Col><Col id=\"beforeIndex\"/><Col id=\"afterIndex\"/></Row><Row><Col id=\"index\">가</Col><Col id=\"beforeIndex\">가</Col><Col id=\"afterIndex\">나</Col></Row><Row><Col id=\"index\">나</Col><Col id=\"beforeIndex\">나</Col><Col id=\"afterIndex\">다</Col></Row><Row><Col id=\"index\">다</Col><Col id=\"beforeIndex\">다</Col><Col id=\"afterIndex\">라</Col></Row><Row><Col id=\"index\">라</Col><Col id=\"beforeIndex\">라</Col><Col id=\"afterIndex\">마</Col></Row><Row><Col id=\"index\">마</Col><Col id=\"beforeIndex\">마</Col><Col id=\"afterIndex\">바</Col></Row><Row><Col id=\"index\">바</Col><Col id=\"beforeIndex\">바</Col><Col id=\"afterIndex\">사</Col></Row><Row><Col id=\"index\">사</Col><Col id=\"beforeIndex\">사</Col><Col id=\"afterIndex\">아</Col></Row><Row><Col id=\"index\">아</Col><Col id=\"beforeIndex\">아</Col><Col id=\"afterIndex\">자</Col></Row><Row><Col id=\"index\">자</Col><Col id=\"beforeIndex\">자</Col><Col id=\"afterIndex\">차</Col></Row><Row><Col id=\"index\">차</Col><Col id=\"beforeIndex\">차</Col><Col id=\"afterIndex\">카</Col></Row><Row><Col id=\"index\">카</Col><Col id=\"beforeIndex\">카</Col><Col id=\"afterIndex\">타</Col></Row><Row><Col id=\"index\">타</Col><Col id=\"beforeIndex\">타</Col><Col id=\"afterIndex\">파</Col></Row><Row><Col id=\"index\">파</Col><Col id=\"beforeIndex\">파</Col><Col id=\"afterIndex\">하</Col></Row><Row><Col id=\"index\">하</Col><Col id=\"beforeIndex\">하</Col><Col id=\"afterIndex\">金</Col></Row><Row><Col id=\"index\">기타[0~9]</Col><Col id=\"beforeIndex\">0</Col><Col id=\"afterIndex\">A</Col></Row><Row><Col id=\"index\">기타[a~z]</Col><Col id=\"beforeIndex\">a</Col><Col id=\"afterIndex\">가</Col></Row><Row><Col id=\"index\">기타[A-Z]</Col><Col id=\"beforeIndex\">A</Col><Col id=\"afterIndex\">a</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_search", this);
+            obj._setContents("<ColumnInfo><Column id=\"dictwordCodeSearch\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordCodeName\" type=\"STRING\" size=\"256\"/><Column id=\"beforeIndex\" type=\"STRING\" size=\"10\"/><Column id=\"afterIndex\" type=\"STRING\" size=\"10\"/><Column id=\"orderby\" type=\"INT\" size=\"4\"/><Column id=\"totalPage\" type=\"INT\" size=\"4\"/><Column id=\"countList\" type=\"INT\" size=\"4\"/><Column id=\"countPage\" type=\"INT\" size=\"4\"/><Column id=\"page\" type=\"INT\" size=\"4\"/><Column id=\"startPage\" type=\"INT\" size=\"4\"/><Column id=\"endPage\" type=\"INT\" size=\"4\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_dict_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"dictword\" type=\"STRING\" size=\"256\"/><Column id=\"detaillink\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordCode\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordCodename\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordSource\" type=\"STRING\" size=\"256\"/><Column id=\"mainText\" type=\"STRING\" size=\"4000\"/><Column id=\"dictwordNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_filter", this);
+            obj._setContents("<ColumnInfo><Column id=\"dictword\" type=\"STRING\" size=\"256\"/><Column id=\"detaillink\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_dict_content", this);
+            obj._setContents("<ColumnInfo><Column id=\"dictword\" type=\"STRING\" size=\"256\"/><Column id=\"detaillink\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordCode\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordCodename\" type=\"STRING\" size=\"256\"/><Column id=\"dictwordSource\" type=\"STRING\" size=\"256\"/><Column id=\"mainText\" type=\"STRING\" size=\"4000\"/><Column id=\"dictwordNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("div_paging", "absolute", "0%", "280", null, null, "0%", "-3", this);
+            obj.set_taborder("1");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("div_wordtree", "absolute", "0%", "0", null, "597", "0", null, this);
+            obj.set_taborder("2");
+            this.addChild(obj.name, obj);
+            obj = new Static("st_kindName", "absolute", "50.8%", "13", null, "25", "43.1%", null, this.div_wordtree);
+            obj.set_taborder("6");
+            obj.set_text("사전종류");
+            this.div_wordtree.addChild(obj.name, obj);
+            obj = new Combo("cb_dictKind", "absolute", "57.1%", "12", null, "25", "29.4%", null, this.div_wordtree);
+            this.div_wordtree.addChild(obj.name, obj);
+            obj.set_taborder("7");
+            obj.set_text("전체");
+            obj.set_innerdataset("@ds_dict_kind");
+            obj.set_codecolumn("dictwordCode");
+            obj.set_datacolumn("dictwordCodeName");
+            obj.set_index("0");
+            obj = new Static("st_indexName", "absolute", "72.4%", "11", null, "25", "24.8%", null, this.div_wordtree);
+            obj.set_taborder("8");
+            obj.set_text("색인");
+            this.div_wordtree.addChild(obj.name, obj);
+            obj = new Combo("cb_dictIndex", "absolute", "76.4%", "12", null, "25", "10.2%", null, this.div_wordtree);
+            this.div_wordtree.addChild(obj.name, obj);
+            obj.set_taborder("9");
+            obj.set_value("전체");
+            obj.set_text("전체");
+            obj.set_innerdataset("@ds_dict_index");
+            obj.set_codecolumn("index");
+            obj.set_datacolumn("index");
+            obj.set_index("0");
+            obj = new Grid("Grid00", "absolute", "0%", "43", "100%", "213", null, null, this.div_wordtree);
+            obj.set_taborder("10");
+            obj.set_binddataset("ds_dict_list");
+            obj.style.set_align("center middle");
+            obj.set_autofittype("col");
+            obj.set_fillareatype("linerow");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"250\"/><Column size=\"300\"/><Column size=\"70\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"법률용어\"/><Cell col=\"1\" text=\"출처\"/><Cell col=\"2\" text=\"법률사전\"/></Band><Band id=\"body\"><Cell style=\"align:left middle;\" text=\"bind:dictword\"/><Cell col=\"1\" style=\"align:left middle;\" text=\"bind:dictwordSource\"/><Cell col=\"2\" text=\"bind:dictwordCodename\"/></Band></Format></Formats>");
+            this.div_wordtree.addChild(obj.name, obj);
+            obj = new Button("Button00", "absolute", "91.1%", "12", "70", "24", null, null, this.div_wordtree);
+            obj.set_taborder("12");
+            obj.set_text("검색");
+            obj.style.set_image("URL('img::btn_WF_SearchSmall.png')");
+            obj.style.set_font("9 Dotum");
+            this.div_wordtree.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 250, 650, this.div_wordtree,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+
+            	}
+            );
+            this.div_wordtree.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 280, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("DictWordList_wordtree");
+            		p.set_titletext("법률용어 가나다검색");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_031.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_031.xfdl", function() {
+        /***********************************************************************************
+        * Common Library
+        ***********************************************************************************/
+        //include "Lib::Comm.xjs";
+        var parents=this.parent.parent.parent;
+        this.searchTreeOnload = function(obj,e)
+        {
+        	
+        	var countList=10;
+        	var countPage=10;
+        	var page=1;
+        	this.ds_search.setColumn(0,"countList",countList);
+        	this.ds_search.setColumn(0,"countPage",countPage);
+        	this.ds_search.setColumn(0,"page",page);	
+
+        	this.fn_DB_search();
+        }
+
+        this.ds_dict_list_onrowposchanged = function(obj,e)
+        {
+        	//trace("현재 선택한 리스트 : "+e.newrow+", 값 : "+this.ds_dict_list.getColumn(e.newrow,"dictword"));
+        	var clickedRow = this.ds_dict_list.getColumn(e.newrow, "dictword");
+        	this.ds_filter.setColumn(0,"dictword",clickedRow);
+        	//trace("복사된 필터 데이터  : "+this.ds_filter.getColumn(0,"dictword"));
+        	var oDatas = {
+        		svcid : "selectOne",
+        		sController : "dicSearchSelectOneVO.do",
+        		inds : ["ds_dict_list=ds_filter"],
+        		outds : ["ds_dict_content=ds_dict_content"],
+        		args : [],
+        		bAsync : false,
+        		nDataType : 0,
+        		bCompress : false
+        	};
+        	
+        	
+        	Iject.transaction(this,oDatas,function(){
+        		if(this.errorcode < 0){
+        			Iject.alert(this.errorMsg);
+        			return;
+        		}
+        		var pThis = this.fobj;
+        		//trace("this.ds_dict_content"+pThis.ds_dict_content.saveXML());
+        		pThis.parent.parent.parent.ds_dict_content.copyRow(0,pThis.ds_dict_content,0);
+        		//trace("@@"+pThis.parent.parent.parent.ds_dict_content);
+        	});	
+        }
+
+        this.fn_DB_modify = function(){
+        	var oDatas = {
+        		svcid: "update",
+        		sController: "dicSearchUpdateVO.do",
+        		inds:["ds_dict_list=ds_dict_list:U"],
+        		outds:[],
+        		args:[],
+        		bAsync:false,
+        		nDataType:0,
+        		bCompress:false
+        	};
+        	
+        	
+        	Iject.transaction(this, oDatas, function(){
+        		if(this.errorcode<0){
+        			Iject.alert(this.errormsg);
+        			return ;
+        		}
+        		var pThis = this.fobj;
+        		trace("this.ds_dict_list : " + pThis.ds_dict_list.saveXML());
+        	});
+        }
+
+        this.fn_DB_search = function(){
+        	var oDatas = {
+        			svcid: "select",
+        			sController: "dicSearchSelectVO.do",
+        			inds:["ds_search=ds_search"],
+        			outds:["ds_dict_list=ds_dict_list, ds_search=ds_search"],
+        			args:[],
+        			bAsync:false,
+        			nDataType:0,
+        			bCompress:false
+        		};
+        		
+        		
+        		Iject.transaction(this, oDatas, function(){
+        			if(this.errorcode<0){
+        				Iject.alert(this.errormsg);
+        				return ;
+        			}
+        			var pThis = this.fobj;
+        			//trace("this.ds_dict_list : " + pThis.ds_dict_list.saveXML());
+        			//trace("데이터 소스 값 : "+pThis.ds_dict_list.getColumn(0,"dictword"));
+        		});
+        };
+        this.div_wordtree_Button00_onclick = function(obj,e)
+        {
+        	var kindNum = this.div_wordtree.cb_dictKind.index;
+        	var indexNum = this.div_wordtree.cb_dictIndex.index;
+        	var code=this.ds_dict_kind.getColumn(kindNum,"dictwordCode");
+        	var bIndex=this.ds_dict_index.getColumn(indexNum,"beforeIndex");
+        	var aIndex=this.ds_dict_index.getColumn(indexNum,"afterIndex");
+        	
+        	trace("사전종류 : "+code+",사전 인덱스 : "+bIndex);
+        	
+        	this.ds_search.setColumn(0,"dictwordCodeSearch",code);
+        	this.ds_search.setColumn(0,"beforeIndex",bIndex);
+        	this.ds_search.setColumn(0,"afterIndex",aIndex);
+        	this.ds_search.setColumn(0,"page",1);
+        	this.fn_DB_search();
+        }
+
+        //페이지 숫자 클릭시 페이지 이동
+        this.page_click = function(pagenum){
+        	var pnum = 0;
+        	pnum = pagenum;
+        	trace("페이지 갱신 정보 여부 : "+pnum);
+        	this.ds_search.setColumn(0,"page",pnum);
+        	this.fn_DB_search();
+        };
+
+        //페이징 처리
+        this.div_pagingButton_onclick = function(obj,e){
+        	var objName = obj.name.split('paging_btn_');
+        	this.fn_page(objName[1]);
+        };
+        //페이징 숫자버튼 클릭시 이동
+        this.div_pagingNumber_onclick = function(obj,e){
+        	this.fn_page(obj.text);
+        }
+        //버튼 셋팅
+        this.fn_initPageSet = function(){
+        	this.div_paging.destroy();
+        	var objDiv = new Div("div_paging","absolute","0%",258,null,32,"0%",null);
+        	this.addChild("div_paging", objDiv);
+        	objDiv.show();
+        	trace("페이징 영역 생성 중");
+        	this.initPageSet(this.ds_search);
+        }
+        this.initPageSet = function(objDs){
+        	var startPage = objDs.getColumn(0,"startPage");
+        	var endPage = objDs.getColumn(0,"endPage");
+        	var totalPage = objDs.getColumn(0,"totalPage");
+        	var page = objDs.getColumn(0,"page");
+        	var countPage = objDs.getColumn(0,"countPage");
+        	trace("시작 페이지 : "+startPage+", 끝 페이지 : "+endPage);
+        	var fWidth = this.width;
+        	var sDivPagingWidth =(45*4+10+10)+(10+10)+(countPage*50);
+        	
+        	//parentPage.div_paging.setOffsetWidth(sDivPagingWidth);
+        	
+        	var btnLeft= (fWidth-sDivPagingWidth)/2;
+        	var btnTop =2;
+        	var btnWidth =45;
+        	var btnHeight = 21;
+        	var i= startPage;
+        	var j= endPage;
+        	
+        	//처음으로 버튼
+        	if(page !=1 && totalPage >1){
+        		var objBtnId = "paging_btn_First";
+        		var objButton = new Button(objBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);
+        		objButton.style.set_border("0px none black");
+        		objButton.style.set_background("none");
+        		this.div_paging.addChild(objBtnId, objButton);
+        		this.div_paging.paging_btn_First.set_text("<<");
+        		this.div_paging.paging_btn_First.set_enable(true);
+        		this.div_paging.paging_btn_First.addEventHandler("onclick",this.div_pagingButton_onclick,this);
+        		objButton.show();
+        	}
+        	btnLeft = btnLeft +45+10;
+
+        	//이전버튼 생성
+        	if(page > 5){
+        		var prevButton = new Button();
+        		var prevBtnId = "paging_btn_Prev";
+        		prevButton.init(prevBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);
+        		prevButton.style.set_border("0px none black");
+        		prevButton.style.set_background("none");
+        		prevButton.set_text("<");
+        		prevButton.set_enable(true);
+        		prevButton.addEventHandler("onclick",this.div_pagingButton_onclick,this);
+        		this.div_paging.addChild(prevBtnId, prevButton);
+        		prevButton.show();
+        	}
+        	btnLeft = btnLeft +45+10;
+        	
+        	if(totalPage > 1){
+        		for(i; i<=j; i++){
+        			var objButton = new Button();
+        			var objBtnId = "paging_btn_"+i;
+        			objButton.init(objBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);
+        			objButton.style.set_border("0px none black");
+        			objButton.style.set_background("none");
+        			objButton.set_text(i);
+        			if(page==i){
+        				objButton.set_enable(false);
+        			}else{
+        				objButton.set_enable(true);
+        			}
+        			objButton.addEventHandler("onclick", this.div_pagingNumber_onclick, this);
+        			
+        			this.div_paging.addChild(objBtnId,objButton);
+        			objButton.show();
+        			btnLeft = btnLeft+45+5;
+        		}
+        	}
+        	
+        	btnLeft = btnLeft+10;
+        	//다음버튼
+        	if(endPage != totalPage){
+        		var nextButton = new Button();
+        		var nextBtnId = "paging_btn_Next";
+        		nextButton.init(nextBtnId, "absolute", btnLeft, btnTop, btnWidth, btnHeight, null, null);
+        		nextButton.style.set_border("0px none black");
+        		nextButton.style.set_background("none");
+        		nextButton.set_text(">");
+        		nextButton.set_enable(true);
+        		nextButton.addEventHandler("onclick",this.div_pagingButton_onclick, this);
+        		this.div_paging.addChild(nextBtnId,nextButton);
+        		nextButton.show();
+        	}
+        		btnLeft = btnLeft+45+10;
+        	//마지막 버튼
+        	if(page < totalPage && totalPage > 1){
+        		var lastButton = new Button();
+        		var lastBtnId = "paging_btn_Last";
+        		lastButton.init(lastBtnId,"absolute",btnLeft,btnTop,btnWidth,btnHeight,null,null);
+        		lastButton.style.set_border("0px none black");
+        		lastButton.style.set_background("none");
+        		lastButton.set_text(">>");
+        		lastButton.set_enable(true);
+        		lastButton.addEventHandler("onclick", this.div_pagingButton_onclick, this);
+        		this.div_paging.addChild(lastBtnId,lastButton);
+        		lastButton.show();
+        	}
+        	
+        	trace("페이징 영역 버튼 생성 완료");
+        }
+        	this.fn_page = function (btnText){
+        		var objNum = 1;
+        		trace("버튼 클릭 번호 : "+btnText);
+        		if(btnText=='First'){
+        			objNum = 1;
+        		}else if(btnText=='Prev'){
+        			objNum=this.ds_search.getColumn(0,"startPage")-1;
+        		}else if(btnText=='Last'){
+        			objNum=this.ds_search.getColumn(0,"totalPage");
+        		}else if(btnText=='Next'){
+        			objNum=this.ds_search.getColumn(0,"endPage")+1;
+        		}else{
+        			objNum=btnText;
+        		}
+        		//trace("이동할 페이지 : "+objNum);
+        		this.page_click(objNum);
+        	};
+
+        
+
+        this.div_keyword_Button01_onclick = function(obj,e)
+        {
+        	application.open("modeless_lawSub","Pattern::V_OPR_025.xfdl",this.getOwnerFrame(), 
+        	{mode:'modeless'}, "showtitlebar=false", 300, 20, 900, 600);
+        }
+
+        this.Button00_onclick = function(obj,e)
+        {
+        	parents.div_contents.edt_source.set_readonly(false);
+        	parents.div_contents.edt_text.set_readonly(false);
+        }
+
+        this.save_onclick = function(obj,e)
+        {
+        	var list = this.ds_dict_list;
+        	var content = parents.ds_dict_content;
+        	
+        	this.ds_dict_list.copyRow(list.rowposition,content,content.rowposition);
+        	this.fn_DB_modify();
+        	
+        	parents.div_contents.edt_source.set_readonly(true);
+        	parents.div_contents.edt_text.set_readonly(true);
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_search.addEventHandler("onload", this.fn_initPageSet, this);
+            this.ds_dict_list.addEventHandler("onrowposchanged", this.ds_dict_list_onrowposchanged, this);
+            this.addEventHandler("onload", this.searchTreeOnload, this);
+            this.div_wordtree.cb_dictKind.addEventHandler("onitemchanged", this.div_wordtree_cb_dictKind_onitemchanged, this);
+            this.div_wordtree.cb_dictIndex.addEventHandler("onitemchanged", this.div_wordtree_cb_dictIndex_onitemchanged, this);
+            this.div_wordtree.Grid00.addEventHandler("oncellclick", this.dictwordlist_oncellclick, this);
+            this.div_wordtree.Button00.addEventHandler("onclick", this.fn_DB_search, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_031.xfdl");
+
+       
+    };
+}
+)();

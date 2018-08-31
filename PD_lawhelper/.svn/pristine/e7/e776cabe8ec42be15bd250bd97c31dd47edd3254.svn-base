@@ -1,0 +1,331 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_002");
+                this.set_classname("V_LAW_002");
+                this.set_titletext("V_LAW_002");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_precedent_detail", this);
+            obj._setContents("<ColumnInfo><Column id=\"precno\" type=\"STRING\" size=\"256\"/><Column id=\"judgedate\" type=\"STRING\" size=\"256\"/><Column id=\"judgeno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"caseno\" type=\"STRING\" size=\"256\"/><Column id=\"courtname\" type=\"STRING\" size=\"256\"/><Column id=\"courtclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"caseclasscode\" type=\"STRING\" size=\"256\"/><Column id=\"caseclassname\" type=\"STRING\" size=\"256\"/><Column id=\"judgeclassname\" type=\"STRING\" size=\"256\"/><Column id=\"judge\" type=\"STRING\" size=\"256\"/><Column id=\"precdetaillink\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"precno\"/></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_precedent_context", this);
+            obj._setContents("<ColumnInfo><Column id=\"precno\" type=\"STRING\" size=\"256\"/><Column id=\"casetext\" type=\"STRING\" size=\"256\"/><Column id=\"judgetext\" type=\"STRING\" size=\"256\"/><Column id=\"referlaw\" type=\"STRING\" size=\"256\"/><Column id=\"referjudge\" type=\"STRING\" size=\"256\"/><Column id=\"maintext\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("Div02", "absolute", "0.8%", "5", null, "67", "0.6%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("Div02");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "2.77%", "9", null, "23", "91.16%", null, this.Div02);
+            obj.set_taborder("0");
+            obj.set_text("선고일자");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "8.02%", "5", null, "29", "71.94%", null, this.Div02);
+            obj.set_taborder("1");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "29.91%", "9", null, "23", "63.93%", null, this.Div02);
+            obj.set_taborder("2");
+            obj.set_text("선고법원");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "35.25%", "5", null, "29", "44.6%", null, this.Div02);
+            obj.set_taborder("3");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "57.25%", "9", null, "23", "36.69%", null, this.Div02);
+            obj.set_taborder("4");
+            obj.set_text("사건번호");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Edit("Edit02", "absolute", "62.59%", "5", null, "29", "17.37%", null, this.Div02);
+            obj.set_taborder("5");
+            this.Div02.addChild(obj.name, obj);
+            obj = new Button("Button04", "absolute", "90.37%", "5", "70", "24", null, null, this.Div02);
+            obj.set_taborder("6");
+            obj.set_text("닫기");
+            obj.style.set_image("URL('img::small_close.png')");
+            this.Div02.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "23.3%", "48", null, "537", "0.8%", null, this);
+            obj.set_taborder("5");
+            obj.set_text("Div01");
+            this.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "1.88%", "14", null, "522", "0.8%", null, this.Div01);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.style.setStyleValue("cursor", "readonly", "default");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Div("Div00", "absolute", "0.8%", "43", null, "548", "76.3%", null, this);
+            obj.set_taborder("6");
+            obj.set_text("Div00");
+            this.addChild(obj.name, obj);
+            obj = new Tab("Tab00", "absolute", "3.49%", "5", null, "162", "2.62%", null, this.Div00);
+            obj.set_taborder("0");
+            obj.set_tabindex("0");
+            obj.set_scrollbars("autoboth");
+            obj.set_dragscrolltype("both");
+            obj.set_tooltiptype("default");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage1", this.Div00.Tab00);
+            obj.set_text("참조판례");
+            this.Div00.Tab00.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "0.94%", "4", null, "128", "0.47%", null, this.Div00.Tab00.tabpage1);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab00.tabpage1.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage2", this.Div00.Tab00);
+            obj.set_text("참조조문");
+            this.Div00.Tab00.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "0.94%", "5", null, "128", "0.47%", null, this.Div00.Tab00.tabpage2);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_usecontextmenu("false");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab00.tabpage2.addChild(obj.name, obj);
+            obj = new Tab("Tab01", "absolute", "3.7%", "181", null, "367", "3.7%", null, this.Div00);
+            obj.set_taborder("1");
+            obj.set_tabindex("0");
+            obj.set_scrollbars("autoboth");
+            this.Div00.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage1", this.Div00.Tab01);
+            obj.set_text("판결요지");
+            this.Div00.Tab01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "1.08%", "2", null, "335", "0.54%", null, this.Div00.Tab01.tabpage1);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab01.tabpage1.addChild(obj.name, obj);
+            obj = new Tabpage("tabpage2", this.Div00.Tab01);
+            obj.set_text("판시사항");
+            this.Div00.Tab01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "0.95%", "3", null, "459", "0.47%", null, this.Div00.Tab01.tabpage2);
+            obj.set_taborder("0");
+            obj.set_scrollbars("autovert");
+            obj.set_wordwrap("char");
+            obj.set_readonly("true");
+            obj.set_usecontextmenu("false");
+            obj.set_dragscrolltype("none");
+            this.Div00.Tab01.tabpage2.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 67, this.Div02,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.set_text("Div02");
+
+            	}
+            );
+            this.Div02.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 759, 673, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("5");
+            		p.set_text("Div01");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 221, 643, this.Div00.Tab00.tabpage1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("참조판례");
+
+            	}
+            );
+            this.Div00.Tab00.tabpage1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.Div00.Tab00.tabpage2,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("참조조문");
+
+            	}
+            );
+            this.Div00.Tab00.tabpage2.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 221, 643, this.Div00.Tab01.tabpage1,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("판결요지");
+
+            	}
+            );
+            this.Div00.Tab01.tabpage1.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 0, this.Div00.Tab01.tabpage2,
+            	//-- Layout function
+            	function(p) {
+            		p.set_text("판시사항");
+
+            	}
+            );
+            this.Div00.Tab01.tabpage2.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 548, this.Div00,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("6");
+            		p.set_text("Div00");
+
+            	}
+            );
+            this.Div00.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_002");
+            		p.set_titletext("V_LAW_002");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item5","Div00.Tab00.tabpage2.TextArea00","value","ds_precedent_context","referlaw");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div00.Tab00.tabpage1.TextArea00","value","ds_precedent_context","referjudge");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div01.TextArea00","value","ds_precedent_context","maintext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item0","Div02.Edit00","value","ds_precedent_detail","judgedate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div02.Edit02","value","ds_precedent_detail","caseno");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item6","Div02.Edit01","value","ds_precedent_detail","courtname");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div00.Tab01.tabpage2.TextArea00","value","ds_precedent_context","casetext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item7","Div00.Tab01.tabpage1.TextArea00","value","ds_precedent_context","judgetext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_002.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_002.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.V_LAW_002_onload = function (obj,e){	
+        	this.ds_precedent_detail.copyData(this.parent.ds_precedent_detail);
+        	this.ds_precedent_context.copyData(this.parent.ds_precedent_context);
+        	if(this.ds_precedent_context.getColumn(0,"precno") == null || this.ds_precedent_context.getColumn(0,"precno") == undefined){
+        		this.close();
+        	}else{
+        		this.fn_context_fix("maintext");
+        		this.fn_context_fix("referlaw");
+        		this.fn_context_fix("referjudge");
+        		this.fn_context_fix("casetext");
+        		this.fn_context_fix("judgetext");
+        	}
+        }
+
+        this.fn_context_fix = function(text){
+        	var context	=	this.ds_precedent_context.getColumn(0,text);
+        	if(context != null){
+        		context		=	context.replace(/<br\/>/gi,"\r\n");
+        		context		=	context.replace(/\[/gi,"\r\n[");
+        		var loop	=	true;
+        		while(loop){
+        			var start	=	context.indexOf("<");
+        			var end		=	context.indexOf(">")+1;
+        			var slice	=	context.slice(start,end);
+        			context		=	context.replace(slice, "");
+        			if(start < 0){
+        				loop	=	false;
+        			}
+        		}
+        		this.ds_precedent_context.setColumn(0,text,context);
+        	}
+        }
+
+        this.Div02_Button04_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+
+        this.Button05_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+
+        this.Div00_Tab01_tabpage1_TextArea00_oneditclick = function(obj,e)
+        {
+        	
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_LAW_002_onload, this);
+            this.Div02.Edit00.addEventHandler("oneditclick", this.Div02_Edit00_oneditclick, this);
+            this.Div02.Static01.addEventHandler("onclick", this.Div02_Static01_onclick, this);
+            this.Div02.Button04.addEventHandler("onclick", this.Div02_Button04_onclick, this);
+            this.Div01.TextArea00.addEventHandler("oneditclick", this.Div01_TextArea00_oneditclick, this);
+            this.Div00.Tab01.tabpage1.TextArea00.addEventHandler("oneditclick", this.Div00_Tab01_tabpage1_TextArea00_oneditclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_002.xfdl");
+
+       
+    };
+}
+)();

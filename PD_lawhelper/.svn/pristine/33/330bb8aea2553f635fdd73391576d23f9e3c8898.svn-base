@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="InstAdmSearch">
+
+	<resultMap type="legal.lawmapper.vo.InstAdmSearchVO" id="InstAdmSearchVO">
+		<result property="lawsuitAdmNo" column="LAWSUIT_ADM_NO" />
+		<result property="instAdmCode" column="INST_ADM_CODE" />
+		<result property="instAdmName" column="INST_ADM_NAME" />
+		<result property="pladefName" column="PLADEF_NAME" />
+		<result property="lawsuitCpPladefSepCode" column="LAWSUIT_CP_PLADEF_SEPCODE" />
+		<result property="insaName" column="INSA_NAME" />
+		<result property="instAdmEntLyrId" column="INST_ADM_ENT_LYR_ID" />
+		<result property="instAdmCaseNo" column="INST_ADM_CASE_NO" />
+		<result property="instAdmPrgrCode" column="INST_ADM_PRGR_CODE" />
+		<result property="instAdmClamVop" column="INST_ADM_CLAM_VOP" />
+		<result property="instAdmCortCode" column="INST_ADM_CORT_CODE" />
+		<result property="lawsuitCaseTyCode" column="LAWSUIT_CASE_TY_CODE" />
+		<result property="lawsuitCpPladefSepcode" column="LAWSUIT_CP_PLADEF_SEPCODE" />
+		
+	    <result property="lawRaisreqNo" column="LAW_RAISREQ_NO" />
+	    <result property="lawsuitAplCortCode" column="LAWSUIT_APL_CORT_CODE" />
+	    <result property="lawsuitAplCaseCode" column="LAWSUIT_APL_CASE_CODE" />
+	    <result property="lawsuitAsitParcWtr" column="LAWSUIT_ASIT_PARC_WTR" />
+	    <result property="lawsuitCtaWtr" column="LAWSUIT_CTA_WTR" />
+	    <result property="lawsuitCtaNo" column="LAWSUIT_CTA_NO" />
+	    <result property="lawsuitCtaCaseNo" column="LAWSUIT_CTA_CASE_NO" />
+	    <result property="lawsuitCtaChg" column="LAWSUIT_CTA_CHG" />
+	    <result property="lawsuitTempReqiDate" column="LAWSUIT_TEMP_REQI_DATE" />
+	    <result property="lawsuitRaisRea" column="LAWSUIT_RAIS_REA" />
+	    <result property="lawsuitCostCfnApldate" column="LAWSUIT_COST_CFN_APLDATE" />
+	    <result property="lawsuitConcDate" column="LAWSUIT_CONC_DATE" />
+	    <result property="lawsuitFulfDetmWtr" column="LAWSUIT_FULF_DETMWTR" />
+	    <result property="instAdmRaisreqDate" column="INST_ADM_RAISREQ_DATE" />
+	    <result property="instAdmJudId" column="INST_ADM_JUD_ID" />
+	    <result property="instAdmJudName" column="INST_ADM_JUD_NAME" />
+	    <result property="instAdmEntLyrName" column="INST_ADM_ENT_LYR_NAME" /> 
+	    <result property="lawsuitNotiAdmNo" column="LAWSUIT_NOTI_ADM_NO" />
+	    <result property="lawsuitNotiCont" column="LAWSUIT_NOTI_CONT" />
+	    <result property="alesSueIssuPoin" column="ALES_SUE_ISSU_POIN" />
+	    <result property="alesSueReqCont" column="ALES_SUE_REQ_CONT" />
+	    <result property="alesSueRepoDate" column="ALES_SUE_REPO_DATE" />
+		
+	</resultMap>
+	
+	<select id="getInstAdmList" parameterType="legal.lawmapper.vo.InstAdmSearchVO" resultMap="InstAdmSearchVO">
+		SELECT 
+			NVL (T1.LAWSUIT_ADM_NO, '미등록') AS LAWSUIT_ADM_NO,
+			NVL (T2.INST_ADM_NAME, '미등록') AS INST_ADM_NAME,
+			T2.INST_ADM_CODE AS INST_ADM_CODE,
+			CASE T1.LAWSUIT_CP_PLADEF_SEPCODE
+				WHEN '001' 
+					THEN '당사원고'
+				WHEN '002' 
+					THEN '당사피고'
+				WHEN '' 
+					THEN '미등록'
+				ELSE '기타'
+			END AS LAWSUIT_CP_PLADEF_SEPCODE,
+			NVL (T3.PLADEF_NAME, '미등록') AS PLADEF_NAME,
+			NVL (T2.INSA_NAME, '미등록') AS INSA_NAME
+<!-- 			T2.INST_ADM_ENT_LYR_ID AS INST_ADM_ENT_LYR_ID -->
+		FROM 
+			PD_LAW.TAB_LAWSUIT T1,
+			(SELECT 
+				A.LAWSUIT_ADM_NO,
+				A.INST_ADM_CODE,
+				A.INST_ADM_NAME,
+<!-- 				A.INST_ADM_ENT_LYR_ID, -->
+				B.INSA_NAME
+			FROM 
+				(SELECT 
+					IT0.LAWSUIT_ADM_NO,
+					IT0.INST_ADM_CODE,
+					IT0.INST_ADM_NAME,
+<!-- 					IT0.INST_ADM_ENT_LYR_ID, -->
+					MAX (IT1.LAWSUIT_MGR_ID)
+					KEEP (DENSE_RANK FIRST ORDER BY IT1.LAWSUIT_MGR_ASIG_DATE DESC) AS LAWSUIT_MGR_ID
+				FROM 
+					PD_LAW.TAB_INST_ADM IT0, PD_LAW.TAB_LAWSUIT_MGR IT1
+				WHERE 
+					IT0.LAWSUIT_ADM_NO = IT1.LAWSUIT_ADM_NO(+)
+					AND DECODE (IT0.INST_ADM_JUDG_DATE, NULL, TO_CHAR (SYSDATE, 'YYYYMMDD'), IT0.INST_ADM_JUDG_DATE) >= IT1.LAWSUIT_MGR_ASIG_DATE(+)
+				GROUP BY 
+					IT0.LAWSUIT_ADM_NO,
+					IT0.INST_ADM_CODE,
+					IT0.INST_ADM_NAME
+<!-- 					IT0.INST_ADM_ENT_LYR_ID -->
+					) A,
+				PD_LAW.TAB_INSA B
+			WHERE 
+				A.LAWSUIT_MGR_ID = B.INSA_SABUN(+)) T2,
+			(SELECT 
+				TT1.LAWSUIT_ADM_NO, 
+				TT1.PLADEF_NAME || ' 외 ' || TT2.NAMEC || ' 명' AS PLADEF_NAME
+			FROM 
+				(SELECT 
+					LAWSUIT_ADM_NO, PLADEF_NAME
+				FROM 
+					(SELECT 
+						LAWSUIT_ADM_NO,
+						PLADEF_NAME,
+						ROW_NUMBER () 
+						OVER (PARTITION BY LAWSUIT_ADM_NO ORDER BY LAWSUIT_ADM_NO, PLADEF_NAME) AS NUM
+					FROM 
+						PD_LAW.TAB_PLADEF)
+				WHERE 
+					NUM = 1) TT1,
+				(SELECT 
+					LAWSUIT_ADM_NO, COUNT (PLADEF_NAME) - 1 AS NAMEC
+				FROM 
+					PD_LAW.TAB_PLADEF
+				GROUP BY 
+					LAWSUIT_ADM_NO) TT2
+			WHERE 
+				TT1.LAWSUIT_ADM_NO = TT2.LAWSUIT_ADM_NO) T3,
+			PD_LAW.TAB_LAW_RAISREQ T4
+		WHERE 
+			T1.LAWSUIT_ADM_NO = T2.LAWSUIT_ADM_NO(+)
+			AND T1.LAWSUIT_ADM_NO = T3.LAWSUIT_ADM_NO(+)
+			AND T1.LAW_RAISREQ_NO = T4.LAW_RAISREQ_NO(+)
+<!-- 			AND T2.INST_ADM_ENT_LYR_ID = #{instAdmEntLyrId} -->
+			<if test="search1 != null">
+			AND
+				(CASE #{search1}
+					WHEN '0'
+						THEN T1.LAWSUIT_ADM_NO
+					WHEN '1'
+						THEN T1.LAW_RAISREQ_NO
+					WHEN '2'
+						THEN T2.INST_ADM_NAME
+					WHEN '3'
+						THEN T3.PLADEF_NAME
+					WHEN '4'
+						THEN T2.INSA_NAME
+				END)
+						LIKE <![CDATA['%'||#{search2}||'%']]>
+			</if>
+		ORDER BY LAWSUIT_ADM_NO DESC, INST_ADM_CODE DESC
+	</select>
+	
+	<!-- 소송기본정보 가져오기 -->
+	<select id="getLawsuitInfo" parameterType="legal.lawmapper.vo.FixinfoVO" resultMap="InstAdmSearchVO">
+		SELECT 
+            INST_ADM_CASE_NO,
+            INST_ADM_CLAM_VOP,
+            INST_ADM_CORT_CODE,
+            INST_ADM_CODE,
+            LAWSUIT_ADM_NO,
+            LAW_RAISREQ_NO,
+            INST_ADM_PRGR_CODE,
+            LAWSUIT_APL_CORT_CODE,
+            LAWSUIT_APL_CASE_CODE,
+            LAWSUIT_CASE_TY_CODE,
+            LAWSUIT_CP_PLADEF_SEPCODE,
+            LAWSUIT_ASIT_PARC_WTR,
+            LAWSUIT_CTA_WTR,
+            LAWSUIT_CTA_NO,
+            LAWSUIT_CTA_CASE_NO,
+            LAWSUIT_CTA_CHG,
+            LAWSUIT_TEMP_REQI_DATE,
+            LAWSUIT_RAIS_REA,
+            LAWSUIT_COST_CFN_APLDATE,
+            LAWSUIT_CONC_DATE,
+            LAWSUIT_FULF_DETM_WTR,
+            INST_ADM_ENT_LYR_ID,
+            PLADEF_NAME,
+            INST_ADM_RAISREQ_DATE,
+            INST_ADM_JUD_ID,
+            INST_ADM_NAME,
+            INST_ADM_JUD_NAME,
+            LAWSUIT_NOTI_ADM_NO,
+            LAWSUIT_NOTI_CONT,
+            ALES_SUE_ISSU_POIN,
+            ALES_SUE_REQ_CONT,
+            ALES_SUE_REPO_DATE 
+        FROM 
+            (SELECT 
+                T3.INST_ADM_CASE_NO,
+                INST_ADM_CLAM_VOP,
+                INST_ADM_CORT_CODE,
+                T3.INST_ADM_CODE,
+                T1.LAWSUIT_ADM_NO,
+                LAW_RAISREQ_NO,
+                INST_ADM_PRGR_CODE,
+                LAWSUIT_APL_CORT_CODE,
+                LAWSUIT_APL_CASE_CODE,
+                LAWSUIT_CASE_TY_CODE,
+                LAWSUIT_CP_PLADEF_SEPCODE,
+                LAWSUIT_ASIT_PARC_WTR,
+                LAWSUIT_CTA_WTR,
+                LAWSUIT_CTA_NO,
+                LAWSUIT_CTA_CASE_NO,
+                LAWSUIT_CTA_CHG,
+                LAWSUIT_TEMP_REQI_DATE,
+                LAWSUIT_RAIS_REA,
+                LAWSUIT_COST_CFN_APLDATE,
+                LAWSUIT_CONC_DATE,
+                LAWSUIT_FULF_DETM_WTR,
+                T3.INST_ADM_ENT_LYR_ID,
+                PLADEF_NAME || (SELECT 
+                                    DECODE (COUNT (*), 0, '', 1, '',    ' 외 ' || (COUNT (*) - 1) || '명') AS PLADEF_NAME
+                                FROM 
+                                    PD_LAW.TAB_PLADEF
+                                WHERE 
+                                    LAWSUIT_ADM_NO = #{lawsuitAdmNo}) AS PLADEF_NAME,
+                T3.INST_ADM_RAISREQ_DATE,
+                T3.INST_ADM_JUD_ID,
+                T3.INST_ADM_NAME,
+                (SELECT 
+                    LEGAL_OFFICIALINFO_LYR_NAME
+                FROM 
+                    PD_LAW.TAB_LEGAL_OFFICIALINFO
+                WHERE 
+                    LEGAL_OFFICIALINFO_RELA_NO = T3.INST_ADM_JUD_ID) AS INST_ADM_JUD_NAME,
+                T4.LAWSUIT_NOTI_ADM_NO,
+                LAWSUIT_NOTI_CONT,
+                ALES_SUE_ISSU_POIN,
+                ALES_SUE_REQ_CONT,
+                ALES_SUE_REPO_DATE                    
+            FROM 
+                PD_LAW.TAB_LAWSUIT T1,
+                PD_LAW.TAB_PLADEF T2,
+                PD_LAW.TAB_INST_ADM T3,
+                PD_LAW.TAB_LAWSUIT_NOTI T4,
+                PD_LAW.TAB_ALES_SUE T5
+            WHERE 
+                T1.LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+                AND T1.LAWSUIT_ADM_NO = T2.LAWSUIT_ADM_NO(+)
+                AND T1.LAWSUIT_NOTI_ADM_NO = T4.LAWSUIT_NOTI_ADM_NO(+)
+                AND T1.LAWSUIT_ADM_NO = T5.LAWSUIT_ADM_NO(+)
+                AND T1.LAWSUIT_ADM_NO = T3.LAWSUIT_ADM_NO
+            ORDER BY 
+                T2.PLADEF_SEQ ASC) a
+        WHERE 
+            ROWNUM = 1
+            AND INST_ADM_CODE = #{instAdmCode}
+	</select>	
+	
+</mapper>

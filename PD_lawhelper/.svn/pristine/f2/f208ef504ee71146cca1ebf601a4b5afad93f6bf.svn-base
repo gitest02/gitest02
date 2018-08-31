@@ -1,0 +1,347 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("Example_pattern");
+                this.set_classname("Example_pattern");
+                this.set_titletext("결재 상신");
+                this._setFormPosition(0,0,500,250);
+            }
+            this.style.set_border("1 solid #c8c8c8ff");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_dept_code", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_insa", this);
+            obj._setContents("<ColumnInfo><Column id=\"insaDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"insaName\" type=\"STRING\" size=\"256\"/><Column id=\"insaSabun\" type=\"STRING\" size=\"256\"/><Column id=\"insaDeptName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_comment", this);
+            obj._setContents("<ColumnInfo><Column id=\"aprvprgrInfoStepCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoBookNo\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmUpId\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCondCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoProcDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoReqDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoFinWtr\" type=\"STRING\" size=\"256\"/><Column id=\"aprvInfoCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoUpSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritSabun\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWrit\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritDate\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritCont\" type=\"STRING\" size=\"256\"/><Column id=\"aprvprgrInfoWritTit\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_firstAprvLine", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeSabun\" type=\"STRING\" size=\"256\"/><Column id=\"codeDeptCode\" type=\"STRING\" size=\"256\"/><Column id=\"codeDeptName\" type=\"STRING\" size=\"256\"/><Column id=\"codeUpId\" type=\"STRING\" size=\"256\"/><Column id=\"codeNameSabun\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_position_pig", this);
+            obj._setContents("<ColumnInfo><Column id=\"aprvlineAdmSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmUpSeq\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmProcCode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmAprvId\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmAprvDeptId\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmUpAprvcode\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmAdWtr\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmAprvIdName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmAprvDeptIdName\" type=\"STRING\" size=\"256\"/><Column id=\"aprvlineAdmAprvUpId\" type=\"STRING\" size=\"256\"/><Column id=\"insaName\" type=\"STRING\" size=\"256\"/><Column id=\"classCode\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_dept_code_0", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeName\" type=\"STRING\" size=\"256\"/><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_Wri_dept_code", this);
+            obj._setContents("<ColumnInfo><Column id=\"codeNo\" type=\"STRING\" size=\"256\"/><Column id=\"codeName\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "1%", "0", null, "42", "1%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("결재상신");
+            obj.style.set_background("transparent URL('theme://images/bg_Cal_click.png') stretch");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_padding("0 0 0 10");
+            obj.style.set_font("bold 12 굴림");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div01", "absolute", "0%", "49", null, "196", "0%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("Div01");
+            this.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "1%", "40", null, "103", "1.2%", null, this.Div01);
+            obj.set_taborder("0");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_color("#080808ff");
+            obj.style.set_font("bold 9 굴림");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static07", "absolute", "1%", "11", null, "20", "88.17%", null, this.Div01);
+            obj.set_taborder("5");
+            obj.set_text("결재라인");
+            obj.style.set_font("10 bold Dotum");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "2.33%", "46", "100", "24", null, null, this.Div01);
+            obj.set_taborder("7");
+            obj.set_text("제목");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_align("middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "2.33%", "69", "100", "68", null, null, this.Div01);
+            obj.set_taborder("9");
+            obj.set_text("참고의견");
+            obj.style.set_background("#f4edfaff");
+            obj.style.set_border("1 solid #c8c8c8ff");
+            obj.style.set_align("middle");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("TextArea1", "absolute", "22.4%", "69", "374", "68", null, null, this.Div01);
+            obj.set_taborder("10");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("Button3", "absolute", "69.6%", "149", "70", "20", null, null, this.Div01);
+            obj.set_taborder("11");
+            obj.set_text("상신");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Button("btn_close", "absolute", "84.8%", "149", "70", "20", null, null, this.Div01);
+            obj.set_taborder("12");
+            obj.set_text("닫기");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("Edit6", "absolute", "22.4%", "46", "374", "24", null, null, this.Div01);
+            obj.set_taborder("13");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Combo("Combo0", "absolute", "74.8%", "8", "120", "24", null, null, this.Div01);
+            this.Div01.addChild(obj.name, obj);
+            obj.set_taborder("14");
+            obj.set_codecolumn("insaName");
+            obj.set_datacolumn("insaName");
+            obj.set_type("filter");
+            obj.set_innerdataset("@ds_position_pig");
+            obj = new Static("Static01", "absolute", "61.8%", "7", null, "27", "26.4%", null, this.Div01);
+            obj.set_taborder("15");
+            obj.set_text("1차 결재자");
+            this.Div01.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 196, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("2");
+            		p.set_text("Div01");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 500, 250, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("Example_pattern");
+            		p.set_titletext("결재 상신");
+            		p.style.set_border("1 solid #c8c8c8ff");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item0","Div01.Edit6","text","ds_comment","aprvprgrInfoWritTit");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item2","Div01.TextArea1","text","ds_comment","aprvprgrInfoWritCont");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div01.Combo0","value","ds_position_pig","insaName");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_MED_003.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_MED_003.xfdl", function() {
+        ////////////////////////////////////////////////////////////////////////////////
+        /*
+        작 성 자 : 이창민
+        작 성 일 : 2018.08.02
+        프로그램 : 조정안 관리
+        */
+        ////////////////////////////////////////////////////////////////////////////////
+        //include "Lib::Comm.xjs";
+
+        var Sabun = "";
+        var Value = "";
+        var BookNo = "";
+        var comboIndex = "";
+
+        
+        //초기화면_Onload
+        this.V_MED_003_onload = function(obj,e)
+        {
+        	this.getApprovalPigList.command(objParam, this, "funcCallBack");
+        }
+
+        
+        //결재라인 불러오기
+        this.getApprovalPigList = function()
+        {
+        	var oDatas =  {
+        		  svcid : "outList",
+        		  sController : "approvalPigList.do",
+        		  inds :[""],
+        		  outds :["ds_position_pig=ds_output"],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+        }
+
+        //결재라인 불러오기_콜백
+        this.funcCallBack = function()
+        {
+        	this.getAprvWriter.command(objParam, this, "funcCallBack");
+        }
+
+        //작성자정보 불러오기
+        this.getAprvWriter = function()
+        {
+        	var oDatas =  {
+        		  svcid : "getAprvWriter",
+        		  sController : "getAprvWriter.do",
+        		  inds :[""],
+        		  outds :["ds_insa=ds_output"],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+        }
+
+        //작성자정보 불러오기_콜백
+        this.funcCallBack2 = function()
+        {
+        	
+        }
+
+        
+
+        //상신버튼 눌렀을 때
+        this.btn_sangsin_onclick = function(obj,e)
+        {
+        	// 유효성 변수
+        	var validation = true;
+        	var bookNo = this.ds_comment.getColumn(0, "aprvprgrInfoBookNo");
+        	
+        	var codeNameSabun = this.ds_firstAprvLine.getColumn(i, "codeNameSabun");
+        	var aprvprgrInfoWritTit = this.ds_comment.getColumn(i, "aprvprgrInfoWritTit");	
+        	var aprvprgrInfoWritCont = this.ds_comment.getColumn(i, "aprvprgrInfoWritCont");
+        		
+        	//test
+        	trace("bookNo ===> " + bookNo);
+        	trace("codeNameSabun ===>>> " + codeNameSabun);
+        	trace("aprvprgrInfoWritTit ===>>> " + aprvprgrInfoWritTit);
+        	trace("aprvprgrInfoWritCont ===>>> " + aprvprgrInfoWritCont);
+
+        	if(this.nullChk(reconcilExptjudgChg, "결재자를 입력하세요")) {
+        		return;
+        	}
+        	if(this.nullChk(reconcilAppvChg, "제목을 선택하세요")) {
+        		return;
+        	}
+        	if(this.nullChk(reconcilReqChg, "참고의견을 선택하세요")) {
+        		return;
+        	}
+        		
+        	alert("상신 되었습니다.");
+        	
+        	this.close(bookNo);
+        	
+        }
+
+        //결재자&기안자 의견 등록
+        this.getRaisreqInsert = function()
+        {
+        	var oDatas =  {
+        		  svcid : "createProg",
+        		  sController : "createProg.do",
+        		  inds :["ds_input=ds_comment:U"],
+        		  outds :[""],
+        		  args  : [],
+        		  bAsync : true,
+        		  nDataType : 0,
+        		  bCompress :false,
+        	};
+
+        	Iject.transaction(this,oDatas,function(){
+         		var pThis = this.fobj;
+        	});	
+        	
+        	
+        	var strSvcID = "createProg";
+        	var strURL = "svc::approvalProg/createProg.do";
+        	var strInDatasets = "ds_input=ds_comment:u";
+        	var strOutDatasets = "";
+        	var strArgument = "voClass='pdsystem.approval.model.ApprovalDefVO'";
+        	var strCallbackFunc = "fnCallback4";	
+           
+        	Transaction(strSvcID,
+        				strURL,
+        				strInDatasets,
+        				strOutDatasets,
+        				strArgument,
+        				strCallbackFunc);
+        }
+
+        //NULL 체크
+        this.nullChk = function(val,text) 
+        {
+        	if(val == "" || val == null) {
+        		alert(text);
+        		return true;
+        	} else {
+        		return false;
+        	}
+        }
+
+        //닫기 버튼 클릭 시
+        this.btn_close_onclick = function(obj,e){
+        	this.close();
+        }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_MED_003_onload, this);
+            this.Static00.addEventHandler("onclick", this.Static00_onclick, this);
+            this.Div01.Static00.addEventHandler("onclick", this.Div00_Static00_onclick, this);
+            this.Div01.TextArea1.addEventHandler("oneditclick", this.Div00_Edit00_oneditclick, this);
+            this.Div01.Button3.addEventHandler("onclick", this.btn_sangsin_onclick, this);
+            this.Div01.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
+            this.Div01.Combo0.addEventHandler("onitemchanged", this.div_search_cb_searchLawClassName_onitemchanged, this);
+            this.Div01.Static01.addEventHandler("onclick", this.Div01_Static01_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_MED_003.xfdl");
+
+       
+    };
+}
+)();

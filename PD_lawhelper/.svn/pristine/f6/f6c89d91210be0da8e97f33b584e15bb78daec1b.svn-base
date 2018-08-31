@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="outPreiwr"> 
+	<resultMap type="outlegal.lawmapper.vo.OutPreiwrVO" id="outPreiwrVO">
+		<result property="lawsuitAdmNo" column="LAWSUIT_ADM_NO" />
+		<result property="instAdmCode" column="INST_ADM_CODE" />
+		<result property="preIwrNo" column="PRE_IWR_NO" />
+		<result property="preIwrDfsDeg" column="PRE_IWR_DFS_DEG" />
+		<result property="preIwrIssuSepCode" column="PRE_IWR_ISSU_SEPCODE" />
+		<result property="preIwrName" column="PRE_IWR_NAME" />
+		<result property="preIwrCont" column="PRE_IWR_CONT" />
+		<result property="preIwrWritDate" column="PRE_IWR_WRIT_DATE" />
+		<result property="preIwrCompWtr" column="PRE_IWR_COMP_WTR" />
+		<result property="preIwrOutLyrId" column="PRE_IWR_OUT_LYRID" />
+		<result property="preIwrOutLyrName" column="PRE_IWR_OUT_LYRNAME" /> 
+	</resultMap> 
+
+	<select id="getPreiwrList" parameterType="outlegal.lawmapper.vo.OutPreiwrVO" resultMap="outPreiwrVO">
+		SELECT
+			LAWSUIT_ADM_NO
+			,INST_ADM_CODE
+			,PRE_IWR_NO
+			,PRE_IWR_DFS_DEG
+			,PRE_IWR_ISSU_SEPCODE
+			,PRE_IWR_NAME
+			,PRE_IWR_CONT
+			,PRE_IWR_WRIT_DATE
+			,PRE_IWR_COMP_WTR
+			,PRE_IWR_OUT_LYRID
+			,(
+			SELECT LEGAL_OFFICIALINFO_LYR_NAME
+			FROM PD_LAW.TAB_LEGAL_OFFICIALINFO
+			WHERE LEGAL_OFFICIALINFO_RELA_NO = T1.PRE_IWR_OUT_LYRID
+			) PRE_IWR_OUT_LYRNAME
+		FROM 
+			PD_LAW.TAB_PRE_IWR T1
+		WHERE 
+			LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+		ORDER BY 
+			PRE_IWR_WRIT_DATE DESC
+	</select>
+	
+	<insert id="preiwrInsert" parameterType="outlegal.lawmapper.vo.OutPreiwrVO">
+		<selectKey resultType="int" keyProperty="preIwrNo" order="BEFORE">
+			SELECT	DECODE(COUNT(*), 0,'1',MAX(PRE_IWR_NO)+1) 
+			FROM PD_LAW.TAB_PRE_IWR
+		</selectKey>
+		INSERT INTO
+			PD_LAW.TAB_PRE_IWR
+			(
+				INST_ADM_CODE
+				,LAWSUIT_ADM_NO
+				,PRE_IWR_NO
+				,PRE_IWR_DFS_DEG
+				,PRE_IWR_ISSU_SEPCODE
+				,PRE_IWR_NAME
+				,PRE_IWR_CONT
+				,PRE_IWR_WRIT_DATE
+				,PRE_IWR_COMP_WTR
+				,PRE_IWR_OUT_LYRID
+			) 
+		VALUES (
+			#{instAdmCode}
+			,#{lawsuitAdmNo}
+			,#{preIwrNo}
+			,#{preIwrDfsDeg}
+			,#{preIwrIssuSepCode}
+			,#{preIwrName}
+			,#{preIwrCont}
+			,to_Char(SYSDATE,'YYYYMMDD')
+			,#{preIwrCompWtr}
+			,#{preIwrOutLyrId}
+		)
+	</insert>
+	
+	<!-- 준비서면(update) -->
+	<update id="preiwrUpdate" parameterType="outlegal.lawmapper.vo.OutPreiwrVO">
+		UPDATE 
+			PD_LAW.TAB_PRE_IWR
+		SET 
+			PRE_IWR_DFS_DEG = #{preIwrDfsDeg}
+			,PRE_IWR_ISSU_SEPCODE = #{preIwrIssuSepCode}
+			,PRE_IWR_NAME = #{preIwrName}
+			,PRE_IWR_CONT = #{preIwrCont}
+			,PRE_IWR_WRIT_DATE = to_Char(SYSDATE,'YYYYMMDD')
+			,PRE_IWR_COMP_WTR = #{preIwrCompWtr}
+		WHERE 
+			INST_ADM_CODE = #{instAdmCode}
+			AND LAWSUIT_ADM_NO = #{lawsuitAdmNo}
+			AND PRE_IWR_NO = #{preIwrNo}
+	</update>
+		
+	<!--  준비서면(delete) -->	
+	<delete id="preiwrDelete" parameterType="outlegal.lawmapper.vo.OutPreiwrVO">
+		DELETE FROM 
+			PD_LAW.TAB_PRE_IWR
+		WHERE 
+			PRE_IWR_NO = #{preIwrNo}
+	</delete>
+    
+</mapper>

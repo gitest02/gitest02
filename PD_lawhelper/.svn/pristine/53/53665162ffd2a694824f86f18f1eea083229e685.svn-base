@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_PDL_023" classname="V_PDL_023" left="0" top="0" width="1000" height="600" titletext="New Form" onload="v_pdl_023_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="0" left="0.9%" top="44" width="98.2%" height="44" style="background:lavenderblush;border:1 solid #c8c8c8ff ;">
+          <Layouts>
+            <Layout width="982" height="44">
+              <Div id="Div00" taborder="7" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" style="selectbackground:blue;" enable="false"/>
+                    <Combo id="Combo00" taborder="1" text="Combo00" left="45.96%" top="4" height="25" width="15.73%" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div01" taborder="8" text="소송관리번호" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;font:9 Dotum;">
+                <Layouts>
+                  <Layout/>
+                </Layouts>
+              </Div>
+              <Button id="Button00" taborder="9" text="검색" left="28.06%" top="9" width="8.47%" height="26" style="image:URL('theme://images\searchBtn.png');" onclick="searchBtn_onclick"/>
+              <Button id="Button01" taborder="10" text="초기화" left="90.41%" top="9" width="8.47%" height="26" style="image:URL('theme://images\resetBtn.png');" onclick="Div01_Button01_onclick" visible="false"/>
+              <Div id="Div02" taborder="11" text="심급" left="38.16%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;font:9 Dotum;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="1" text="기일정보관리" left="0.9%" top="8" width="98.2%" height="35" style="align:left top;padding:10 0 0 10;"/>
+        <Div id="Div05" taborder="2" left="0.9%" top="111" width="98.2%" height="114" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="25" text="Div09" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit01" taborder="36" left="39.78%" top="4" width="15.73%" height="26" enable="false"/>
+                    <Edit id="Edit02" taborder="38" left="72.92%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div11" taborder="27" text="Div11" left="8.47%" top="72" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div10" taborder="31" text="Div10" left="8.47%" top="38" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit01" taborder="37" left="39.78%" top="4" width="15.73%" height="25" enable="false"/>
+                    <Edit id="Edit02" taborder="39" left="72.92%" top="4" width="15.71%" height="25" enable="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="28" text="사건번호" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div05" taborder="29" text="당사원피고구분" left="0.51%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div06" taborder="30" text="수행법원" left="0.51%" top="72" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div00" taborder="32" text="사건유형" left="32.45%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout/>
+                </Layouts>
+              </Div>
+              <Div id="Div01" taborder="33" text="피고" left="32.45%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div02" taborder="34" text="진행상태" left="62.65%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div03" taborder="35" text="청구소가" left="62.65%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div04" taborder="3" text="심급기본사항" left="0.9%" top="92" width="982" height="15" style="align:left middle;padding:0 0 0 10;"/>
+        <Div id="Div02" taborder="4" text="기일정보" left="0.9%" top="237" width="982" height="15" style="align:left middle;padding:0 0 0 10;"/>
+        <Grid id="Grid00" taborder="5" binddataset="ds_fixinfo" useinputpanel="false" left="0.9%" top="263" width="98.2%" height="92" autofittype="col" oncellclick="test">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="45"/>
+                <Column size="90"/>
+                <Column size="160"/>
+                <Column size="527"/>
+                <Column size="160"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No."/>
+                <Cell col="1" text="구분"/>
+                <Cell col="2" text="일시"/>
+                <Cell col="3" text="장소"/>
+                <Cell col="4" text="마감일시"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow+1"/>
+                <Cell col="1" displaytype="normal" edittype="none" text="bind:lawFixinfoSepName"/>
+                <Cell col="2" text="bind:lawFixinfoDate"/>
+                <Cell col="3" text="bind:lawFixinfoPlc"/>
+                <Cell col="4" text="bind:lawFixinfoDlinDate"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div03" taborder="6" left="0.9%" top="364" width="98.2%" height="197" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="25" text="Div09" left="8.47%" top="4" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Calendar id="Calendar00" taborder="0" left="4.61%" top="4" width="15.73%" height="25" editformat="yyyy-MM-dd HH:mm" value="null" onchanged="startDateChange"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div10" taborder="26" text="Div10" left="8.47%" top="38" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Combo id="Combo00" taborder="1" left="4.61%" top="4" width="15.73%" height="25" codecolumn="codeNo" datacolumn="codeName" innerdataset="@ds_sep" onitemchanged="Div03_Div10_Combo00_onitemchanged" index="-1"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div13" taborder="42" text="Div09" left="60.71%" top="4" width="38.78%" height="70" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Edit id="Edit00" taborder="0" left="17.99%" top="4" width="80.69%" height="60" enable="true"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div11" taborder="27" text="Div11" left="8.47%" top="72" width="91.02%" height="60" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="60">
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="46.74%" height="50" enable="true" visible="true" readonly="false"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="28" text="일시" left="0.51%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div05" taborder="29" text="구분" left="0.51%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div06" taborder="30" text="상대방주장" left="0.51%" top="72" width="11.73%" height="60" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout/>
+                </Layouts>
+              </Div>
+              <Div id="Div01" taborder="32" text="Div11" left="8.47%" top="131" width="91.02%" height="60" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="60">
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="46.74%" height="50" enable="true"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00" taborder="31" text="재판부의견" left="0.51%" top="131" width="11.73%" height="60" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div02" taborder="33" text="장소" left="27.35%" top="4" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div03" taborder="34" text="마감일시" left="27.35%" top="38" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div07" taborder="35" text="당사주장" left="55.61%" top="72" width="11.73%" height="60" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div08" taborder="36" text="변호사의견" left="55.61%" top="131" width="11.73%" height="60" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Edit id="Edit01" taborder="37" left="39.49%" top="9" width="15.71%" height="25"/>
+              <Calendar id="Calendar01" taborder="38" left="39.39%" top="43" width="15.71%" height="25" editformat="yyyy-MM-dd HH:mm" onchanged="endDateChange" dateformat="yyyy-MM-dd" value="null"/>
+              <Edit id="Edit02" taborder="39" left="67.76%" top="77" width="31.12%" height="51" enable="true"/>
+              <Edit id="Edit03" taborder="40" left="67.76%" top="136" width="31.12%" height="51"/>
+              <Div id="Div12" taborder="41" text="주요쟁점" left="55.61%" top="4" width="11.73%" height="69" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="Button03" taborder="8" text="신규" onclick="Button03_onclick" left="81.6%" top="231" width="8.5%" height="26" style="image:URL('theme://images\insertBtn.png');" visible="false"/>
+        <Button id="Button00" taborder="9" text="삭제" left="90.4%" top="231" width="8.5%" height="26" style="image:URL('theme://images\deleteBtn.png');" onclick="Button00_onclick" visible="false"/>
+        <Button id="Button01" taborder="10" text="저장" left="90.5%" top="567" width="8.5%" height="26" style="image:URL('theme://images\saveBtn.png');" onclick="lawFixinfoChange" visible="false"/>
+        <Div id="Div06" taborder="11" left="0.9%" top="620" width="98.2%" height="229" style="align:left top;background:lavenderblush;border:1 solid #c8c8c8ff ;padding:0 0 0 10;" visible="false">
+          <Layouts>
+            <Layout width="982" height="255">
+              <Div id="Div09" taborder="43" text="Div09" left="8.47%" top="34" width="91.02%" height="35" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="35">
+                    <Edit id="Edit00" taborder="0" left="4.61%" top="4" width="36.97%" height="25"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div04" taborder="47" text="기일장소" left="0.51%" top="34" width="11.73%" height="35" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Div id="Div11" taborder="52" text="Div11" left="8.47%" top="68" width="91.02%" height="155" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout width="892" height="60">
+                    <ListBox id="ListBox00" taborder="0" left="4.61%" top="4" width="36.97%" height="145" innerdataset="@ds_sep" codecolumn="codeNo" datacolumn="codeName" index="-1"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div06" taborder="49" text="기일구분" left="0.51%" top="68" width="11.73%" height="155" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div02" taborder="53" left="52.65%" top="34" width="46.84%" height="189" style="background:#f4f4f4ff;border:1 solid #c8c8c8ff ;">
+                <Layouts>
+                  <Layout>
+                    <Calendar id="Calendar00" taborder="0" left="13.57%" top="4" right="40.04%" height="179" type="monthonly"/>
+                    <Edit id="Edit01" taborder="2" left="61.27%" top="34" width="100" height="25" inputtype="number" maxlength="2"/>
+                    <Edit id="Edit02" taborder="3" left="61.27%" top="64" width="100" height="25" inputtype="number" maxlength="2"/>
+                    <Combo id="Combo00" taborder="4" left="61.27%" top="4" height="25" width="100" innerdataset="@ds_time" codecolumn="code" datacolumn="value" index="0" value="1" text="오전"/>
+                    <Div id="Div00" taborder="5" text="시" left="81.84%" top="34" height="25" width="50"/>
+                    <Div id="Div01" taborder="6" text="분" left="81.84%" top="64" height="25" width="50"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00" taborder="50" text="기일일시" left="46.84%" top="34" width="11.73%" height="189" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;"/>
+              <Button id="Button03" taborder="54" text="등록" left="81.63%" top="4" width="8.47%" height="26" style="image:URL('theme://images\plusBtn.png');" onclick="Div06_Button03_onclick"/>
+              <Button id="Button00" taborder="55" text="취소" left="90.41%" top="4" width="8.47%" height="26" style="image:URL('theme://images\cancelBtn.png');" onclick="Div06_Button00_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_fixinfo">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="lawFixinfoNum" type="STRING" size="256"/>
+          <Column id="lawFixinfoSepCode" type="STRING" size="256"/>
+          <Column id="lawFixinfoSepName" type="STRING" size="256"/>
+          <Column id="lawFixinfoDate" type="STRING" size="256"/>
+          <Column id="lawFixinfoPlc" type="STRING" size="256"/>
+          <Column id="lawFixinfoMainIssu" type="STRING" size="256"/>
+          <Column id="lawFixinfoCpInsi" type="STRING" size="256"/>
+          <Column id="lawFixinfoOthInsi" type="STRING" size="256"/>
+          <Column id="lawFixinfoCortOpin" type="STRING" size="256"/>
+          <Column id="lawFixinfoLyrOpin" type="STRING" size="256"/>
+          <Column id="lawFixinfoDlinDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lawsuit">
+        <ColumnInfo>
+          <Column id="lawsuitAdmNo" type="STRING" size="256"/>
+          <Column id="lawRaisreqNo" type="STRING" size="256"/>
+          <Column id="lawsuitAplCortCode" type="STRING" size="256"/>
+          <Column id="lawsuitAplCaseCode" type="STRING" size="256"/>
+          <Column id="lawsuitCaseTyCode" type="STRING" size="256"/>
+          <Column id="lawsuitCpPladefSepcode" type="STRING" size="256"/>
+          <Column id="lawsuitAsitParcWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaWtr" type="STRING" size="256"/>
+          <Column id="lawsuitCtaNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaCaseNo" type="STRING" size="256"/>
+          <Column id="lawsuitCtaChg" type="STRING" size="256"/>
+          <Column id="lawsuitTempReqiDate" type="STRING" size="256"/>
+          <Column id="lawsuitRaisRea" type="STRING" size="256"/>
+          <Column id="lawsuitCostCfnApldate" type="STRING" size="256"/>
+          <Column id="lawsuitConcDate" type="STRING" size="256"/>
+          <Column id="lawsuitFulfDetmWtr" type="STRING" size="256"/>
+          <Column id="pladefName" type="STRING" size="256"/>
+          <Column id="instAdmCaseNo" type="STRING" size="256"/>
+          <Column id="instAdmPrgrCode" type="STRING" size="256"/>
+          <Column id="instAdmClamVop" type="STRING" size="256"/>
+          <Column id="instAdmCortCode" type="STRING" size="256"/>
+          <Column id="instAdmCode" type="STRING" size="256"/>
+          <Column id="instAdmName" type="STRING" size="256"/>
+          <Column id="instAdmRaisreqDate" type="STRING" size="256"/>
+          <Column id="instAdmJudId" type="STRING" size="256"/>
+          <Column id="instAdmJudName" type="STRING" size="256"/>
+          <Column id="instAdmEntLyrName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sep">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_time">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">오전</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">오후</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div03.Div09.Calendar00" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoDate"/>
+      <BindItem id="item1" compid="Div03.Edit00" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoPlc"/>
+      <BindItem id="item2" compid="Div03.Div10.Edit00" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoSepName"/>
+      <BindItem id="item3" compid="Div03.Calendar01" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoDlinDate"/>
+      <BindItem id="item4" compid="Div03.Div11.Edit00" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoOthInsi"/>
+      <BindItem id="item5" compid="Div03.Div01.Edit00" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoCortOpin"/>
+      <BindItem id="item6" compid="Div03.Div13.Edit00" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoMainIssu"/>
+      <BindItem id="item7" compid="Div03.Edit02" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoCpInsi"/>
+      <BindItem id="item8" compid="Div03.Edit03" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoLyrOpin"/>
+      <BindItem id="item9" compid="Div05.Div09.Edit00" propid="value" datasetid="ds_lawsuit" columnid="instAdmCaseNo"/>
+      <BindItem id="item10" compid="Div05.Div09.Edit01" propid="value" datasetid="ds_lawsuit" columnid="lawsuitCaseTyCode"/>
+      <BindItem id="item11" compid="Div05.Div09.Edit02" propid="value" datasetid="ds_lawsuit" columnid="instAdmPrgrCode"/>
+      <BindItem id="item12" compid="Div05.Div10.Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitCpPladefSepcode"/>
+      <BindItem id="item13" compid="Div05.Div10.Edit01" propid="value" datasetid="ds_lawsuit" columnid="pladefName"/>
+      <BindItem id="item14" compid="Div05.Div10.Edit02" propid="value" datasetid="ds_lawsuit" columnid="instAdmClamVop"/>
+      <BindItem id="item15" compid="Div05.Div11.Edit00" propid="value" datasetid="ds_lawsuit" columnid="instAdmCortCode"/>
+      <BindItem id="item16" compid="Div01.Div00.Combo00" propid="value" datasetid="ds_lawsuit" columnid="instAdmCode"/>
+      <BindItem id="item17" compid="Div01.Div00.Edit00" propid="value" datasetid="ds_lawsuit" columnid="lawsuitAdmNo"/>
+      <BindItem id="item18" compid="Div03.Div10.Combo00" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoSepCode"/>
+      <BindItem id="item19" compid="Div03.Edit01" propid="value" datasetid="ds_fixinfo" columnid="lawFixinfoPlc"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "Lib::Comm.xjs";
+
+this.v_pdl_023_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.comboSetup();
+}
+
+
+this.comboSetup = function()
+{
+	var oDatas =  {
+		svcid : "sepComboList",
+		sController : "SepComboList.do",
+		inds :[],
+		outds :["ds_sep=ds_sep"],
+		args  : [],
+		bAsync : true,
+		nDataType : 0,
+		bCompress :false,
+	};
+	Iject.transaction(this,oDatas,function(){
+		var pThis = this.fobj;
+	});
+}
+
+
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.Div03.set_visible(false);
+	this.Div06.set_top(364);
+	this.Div06.set_visible(true);
+
+	this.Button03.set_visible(false);
+	this.Button00.set_visible(false);
+}
+
+
+
+this.Div06_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.Button03.set_visible(true);
+	this.Button00.set_visible(true);
+	this.Div03.set_visible(true);
+	this.Div06.set_visible(false);
+
+	this.Div06.Div09.Edit00.set_value();
+	this.Div06.Div11.ListBox00.set_value();
+	this.Div06.Div02.Calendar00.set_value();
+	this.Div06.Div02.Combo00.set_index(0);
+	this.Div06.Div02.Edit01.set_value();
+	this.Div06.Div02.Edit02.set_value();	
+}
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+    objChildFrame.init("chf_popup2", "absolute", 30, 30, 30, 30, null, null, "Pattern::V_PDL_026.xfdl");
+    var objParam = {};
+    objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+}
+
+this.fn_popupCallback = function(strID, strTemp)
+{
+	this.Button03.set_visible(true);
+	this.Button00.set_visible(true);
+	this.Button01.set_visible(true);
+	this.Div01.Button01.set_visible(true);
+	
+	var strTempSplit = strTemp.split("/");
+	if(strTemp != undefined){
+		this.ds_search.setColumn(0, "lawsuitAdmNo", strTempSplit[0]);
+		this.ds_search.setColumn(0, "instAdmCode", strTempSplit[1]);
+		this.getLawsuitInfo();
+		this.getLawFixinfoList();
+	}
+}
+
+this.getLawFixinfoList = function() {
+
+	var oDatas =  {
+		  svcid : "fixinfoList",
+		  sController : "getLawFixinfoList.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_fixinfo=ds_fixinfo"],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+
+}
+
+this.getLawsuitInfo = function() {
+
+	var oDatas =  {
+		  svcid : "lawSuitInfo",
+		  sController : "getLawsuitInfo.do",
+		  inds :["ds_search=ds_search"],
+		  outds :["ds_lawsuit=ds_lawsuit"],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	};
+
+	Iject.transaction(this,oDatas,function(){
+ 		var pThis = this.fobj;
+	});	
+
+}
+
+this.lawFixinfoChange = function() {
+	var rowCnt = this.ds_fixinfo.rowcount;
+	
+	if(rowCnt == 0){
+		if(deleteBtnClick) {
+			deleteBtnClick = false;
+		} else {
+			alert("저장할 내용이 없습니다.");
+			return;
+		}
+	} else {
+		var rowCnt = this.ds_fixinfo.rowcount;
+		for(i = 0; i<rowCnt; i++) {
+			var lawFixinfoOthInsi = this.ds_fixinfo.getColumn(i, "lawFixinfoOthInsi");
+			var lawFixinfoCortOpin = this.ds_fixinfo.getColumn(i, "lawFixinfoCortOpin");
+			var lawFixinfoMainIssu = this.ds_fixinfo.getColumn(i, "lawFixinfoMainIssu");
+			var lawFixinfoCpInsi = this.ds_fixinfo.getColumn(i, "lawFixinfoCpInsi");
+			var lawFixinfoLyrOpin = this.ds_fixinfo.getColumn(i, "lawFixinfoLyrOpin");
+			var lawFixinfoDlinDate = this.ds_fixinfo.getColumn(i, "lawFixinfoDlinDate");
+		
+			if(lawFixinfoDlinDate == null){
+				alert("마감일시를 입력해주세요");
+				return;
+			}	
+			if(lawFixinfoOthInsi == null || lawFixinfoOthInsi == ""){
+				alert("상대방주장을 입력해주세요");
+				return;
+			}
+			if(lawFixinfoCortOpin == null || lawFixinfoCortOpin == ""){
+				alert("재판부의견을 입력해주세요");
+				return;
+			}
+			if(lawFixinfoMainIssu == null || lawFixinfoMainIssu == ""){
+				alert("주요쟁점을 입력해주세요");
+				return;
+			}
+			if(lawFixinfoCpInsi == null || lawFixinfoCpInsi == ""){
+				alert("당사주장을 입력해주세요");
+				return;
+			}
+			if(lawFixinfoLyrOpin == null || lawFixinfoLyrOpin == ""){
+				alert("변호사의견을 입력해주세요");
+				return;
+			}
+		}
+	}
+	
+	this.lawFixinfoSave();
+	
+	alert("저장되었습니다");	
+
+}
+
+this.lawFixinfoSave = function() 
+{
+	var oDatas =  {
+		  svcid : "lawFixinfoChange",
+		  sController : "lawFixinfoChange.do",
+		  inds :["ds_fixinfo=ds_fixinfo:U"],
+		  outds :[],
+		  args  : [],
+		  bAsync : true,
+		  nDataType : 0,
+		  bCompress :false,
+	}; 
+
+	Iject.transaction(this,oDatas,function(){
+		var pThis = this.fobj;
+	});	
+}
+
+this.Div06_Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+ 	var lawFixinfoPlc = this.Div06.Div09.Edit00.value;
+ 	var lawFixinfoSepName = this.Div06.Div11.ListBox00.text;
+ 	var lawFixinfoSepCode = this.Div06.Div11.ListBox00.value;
+
+	if(lawFixinfoPlc == null) {
+		alert("기일장소를 확인해주세요");
+		return;
+	}
+	
+	if(lawFixinfoSepCode == null) {
+		alert("기일구분을 확인해주세요");
+		return;
+	}
+
+	var currDate = new Date();
+	var year = currDate.getFullYear().toString().padLeft(4, "0");
+	var month = (currDate.getMonth()+1).toString().padLeft(2, "0");
+	var day = currDate.getDate().toString().padLeft(2, "0");
+	var lawFixinfoDate = this.Div06.Div02.Calendar00.value;
+	if(lawFixinfoDate == null) {
+		lawFixinfoDate = year+month+day;
+	}
+	
+	var time = this.Div06.Div02.Combo00.value;
+	var hour = new Number(this.Div06.Div02.Edit01.value);
+	var min = new Number(this.Div06.Div02.Edit02.value);	
+	if(time == "1") {
+		if(isNaN(hour) || hour < 0 || hour > 12) {
+			alert("시간을 확인해주세요");
+			return;
+		}
+		if(hour == 12) {
+			hour = hour - 12;
+		}
+		hour = hour.toString().padLeft(2, "0");
+	} else {
+		if(isNaN(hour) || hour < 0 || hour > 12) {
+			alert("시간을 확인해주세요");
+			return;
+		}
+		if(hour != 12) {
+			hour = hour + 12;
+		}
+		hour = hour.toString().padLeft(2, "0");
+	}
+	
+	if(isNaN(min) || min < 0 || min >= 60) {
+		alert("분을 확인해주세요");
+		return;
+	}
+	min = min.toString().padLeft(2, "0");
+	
+	lawFixinfoDate = lawFixinfoDate + hour + min;
+
+	this.ds_fixinfo.insertRow(0);
+	this.ds_fixinfo.setColumn(0, "lawsuitAdmNo", this.ds_search.getColumn(0, "lawsuitAdmNo"));
+	this.ds_fixinfo.setColumn(0, "instAdmCode", this.ds_search.getColumn(0, "instAdmCode"));
+	this.ds_fixinfo.setColumn(0, "lawFixinfoSepCode", lawFixinfoSepCode);	
+	this.ds_fixinfo.setColumn(0, "lawFixinfoSepName", lawFixinfoSepName);	
+	this.ds_fixinfo.setColumn(0, "lawFixinfoPlc", lawFixinfoPlc);
+	this.ds_fixinfo.setColumn(0, "lawFixinfoDate", lawFixinfoDate);	
+	
+	this.Div03.set_visible(true);
+	this.Div06.set_visible(false);
+	this.Button03.set_visible(true);
+	this.Button00.set_visible(true);
+	
+	this.Div06.Div09.Edit00.set_value(null);
+	this.Div06.Div11.ListBox00.set_index(-1);
+	this.Div06.Div02.Calendar00.set_value(null);
+	this.Div06.Div02.Combo00.set_index(0);
+	this.Div06.Div02.Edit01.set_value(null);
+	this.Div06.Div02.Edit02.set_value(null);	
+	
+}
+
+this.Div03_Div10_Combo00_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	var row = this.ds_fixinfo.rowposition;
+	var comboCode = this.Div03.Div10.Combo00.value;
+	var comboName = this.Div03.Div10.Combo00.text;
+	this.ds_fixinfo.setColumn(row, "lawFixinfoSepCode", comboCode);
+	this.ds_fixinfo.setColumn(row, "lawFixinfoSepName", comboName);	
+}
+
+var deleteBtnClick = false;
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var row = this.ds_fixinfo.rowposition;
+	if(this.ds_fixinfo.rowcount == 0){
+		alert("삭제할 데이터가 없습니다.");
+		return;
+    }
+    deleteBtnClick = true;
+	this.ds_fixinfo.deleteRow(row);
+}
+
+this.Div01_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_fixinfo.deleteAll();
+	this.ds_lawsuit.deleteAll();
+	this.Button03.set_visible(false);
+	this.Button00.set_visible(false);
+	this.Button01.set_visible(false);
+	this.Div01.Button01.set_visible(false);
+}
+
+this.startDateChange = function(obj:Calendar,e:nexacro.ChangeEventInfo)
+{
+	var startDate = obj.value / 100000;
+	var row = this.ds_fixinfo.rowposition;
+	this.ds_fixinfo.setColumn(row, "lawFixinfoDate", startDate);
+}
+
+this.endDateChange = function(obj:Calendar,e:nexacro.ChangeEventInfo)
+{
+	if(obj.value.toString().substr(0, 4) == "0000") {
+		var currDate = new Date();
+		var year = currDate.getFullYear().toString().padLeft(4, "0");
+		var month = (currDate.getMonth()+1).toString().padLeft(2, "0");
+		var day = currDate.getDate().toString().padLeft(2, "0");
+		currDate = year+month+day;
+		obj.set_value(currDate);	
+	} else {
+	
+	}
+	var endDate = obj.value / 100000;
+	var row = this.ds_fixinfo.rowposition;
+	this.ds_fixinfo.setColumn(row, "lawFixinfoDlinDate", endDate);
+}
+
+]]></Script>
+  </Form>
+</FDL>

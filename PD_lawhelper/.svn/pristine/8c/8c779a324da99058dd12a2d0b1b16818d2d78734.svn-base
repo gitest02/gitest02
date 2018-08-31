@@ -1,0 +1,579 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("FILE");
+                this.set_classname("FILE");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,1000,600);
+            }
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("FileUp", this);
+            obj._setContents("<ColumnInfo><Column id=\"addFileCheck\" type=\"STRING\" size=\"256\"/><Column id=\"debtorListNo\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRelNum\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerFileName\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSize\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDel\" type=\"STRING\" size=\"256\"/><Column id=\"addFileSerPath\" type=\"STRING\" size=\"256\"/><Column id=\"addFileChanDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFileRegDate\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFileExt\" type=\"STRING\" size=\"256\"/><Column id=\"addFilePcFile\" type=\"STRING\" size=\"256\"/><Column id=\"imgFile\" type=\"STRING\" size=\"256\"/><Column id=\"addFileDownCount\" type=\"STRING\" size=\"256\"/><Column id=\"addFileCode\" type=\"STRING\" size=\"256\"/><Column id=\"count\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("File", this);
+            obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"value\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"value\">전체</Col></Row><Row><Col id=\"code\">001</Col><Col id=\"value\">파일이름</Col></Row><Row><Col id=\"code\">002</Col><Col id=\"value\">파일확장자</Col></Row><Row><Col id=\"code\">003</Col><Col id=\"value\">삭제여부</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("FileName", this);
+            obj._setContents("<ColumnInfo><Column id=\"FILE_NAME\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "32.3%", "4", null, "48", "38.2%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("공통 파일 관리");
+            obj.style.set_align("center");
+            obj.style.set_font("bold 12 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "1%", "64", null, "28", "91.2%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("공통파일관리");
+            obj.style.set_background("lavenderblush");
+            obj.style.set_border("2 solid #c8c8c8ff");
+            obj.style.set_color("#133678ff");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("Edit3", "absolute", "20%", "64", null, "28", "61.5%", null, this);
+            obj.set_taborder("3");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button02", "absolute", "52.8%", "64", null, "27", "32.1%", null, this);
+            obj.set_taborder("6");
+            obj.set_text("다른이름으로 저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid0", "absolute", "1.6%", "109", null, "496", "1.6%", null, this);
+            obj.set_taborder("10");
+            obj.set_autofittype("col");
+            obj.set_binddataset("FileUp");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\"/><Column size=\"67\"/><Column size=\"85\"/><Column size=\"69\"/><Column size=\"101\"/><Column size=\"95\"/><Column size=\"124\"/><Column size=\"74\"/><Column size=\"97\"/><Column size=\"82\"/><Column size=\"66\"/><Column size=\"108\"/><Column size=\"110\"/><Column size=\"108\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/><Row size=\"60\" band=\"summ\"/></Rows><Band id=\"head\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" style=\"cursor:arrow;\" editdisplay=\"edit\"/><Cell col=\"1\" text=\"일련번호\"/><Cell col=\"2\" text=\"채무자번호\"/><Cell col=\"3\" text=\"파일이름\"/><Cell col=\"4\" text=\"파일확장자\"/><Cell col=\"5\" text=\"파일종류\"/><Cell col=\"6\" text=\"파일크기\"/><Cell col=\"7\" text=\"삭제여부\"/><Cell col=\"8\" text=\"수정일시\"/><Cell col=\"9\" text=\"등록일시\"/><Cell col=\"10\" text=\"파일경로\"/><Cell col=\"11\" text=\"원본파일이름\"/><Cell col=\"12\" text=\"증명사진/파일\"/><Cell col=\"13\" text=\"다운로드횟수\"/></Band><Band id=\"body\"><Cell/><Cell col=\"1\"/><Cell col=\"2\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/></Band><Band id=\"summary\"><Cell text=\"SUM\"/><Cell col=\"1\" text=\"파일수\"/><Cell col=\"2\" text=\"0개\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "78.4%", "610", null, "33", "13.7%", null, this);
+            obj.set_taborder("17");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("button3", "absolute", "38.4%", "64", null, "27", "54.4%", null, this);
+            obj.set_taborder("20");
+            obj.set_text("검색");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button0", "absolute", "45.6%", "64", null, "27", "47.2%", null, this);
+            obj.set_taborder("21");
+            obj.set_text("저장");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button9", "absolute", "68%", "64", null, "27", "24.8%", null, this);
+            obj.set_taborder("22");
+            obj.set_text("삭제");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button4", "absolute", "75.2%", "65", null, "27", "8.3%", null, this);
+            obj.set_taborder("23");
+            obj.set_text("파일이름변경");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button1", "absolute", "91.6%", "65", null, "27", "1.2%", null, this);
+            obj.set_taborder("24");
+            obj.set_text("닫기");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("list_com", "absolute", "8.8%", "64", null, "27", "80.1%", null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("25");
+            obj.set_codecolumn("code");
+            obj.set_datacolumn("value");
+            obj.set_innerdataset("@File");
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 1000, 600, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("FILE");
+            		p.set_titletext("New Form");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("FILE_copy.xfdl", function() {
+
+        function list_com_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+        {
+        	var code=list_com.text;
+        	if(code=="전체"){
+        		search_form();
+        	}else{
+        		if(code=="파일이름"){
+        			code="001";	
+        		}else if(code=="파일확장자"){
+        			code="002";	
+        		}else{
+        			code="003";	
+        	}
+        	
+        		search_code(code);
+        	}
+        }
+        //edit
+        this.edit3_OnChanged = function(obj,e)
+        {
+        	
+        }
+
+        
+
+        this.edit3_OnKeyDown = function(obj,e)
+        {
+        	if(nChar==13){ //검색입력창에서 엔터키 누를때 발생하는 이벤트
+        	button3_OnClick();
+        }
+        //검색
+        this.button3_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+        {
+        	var strSvcid = "select";
+        		var strURL="svc::register/selectFILE.do";
+        		var strInputDs = "";
+        		var strOutputDs = "FileUp=ds_output";
+        		var search1= Combo0.Value;
+        		var search2= edit3.Text;
+        		var strParam = "";
+        		
+        		pg = "1";
+        		Edit0.text = "1";
+
+        		strParam += "selectedId=" + Quote(search1); 	
+        		strParam += " selectedId1=" + Quote(search2);
+                strParam += " pg=" + Quote(pg);
+                
+        		var strFnCallback = "fnCallback";
+        		transaction(strSvcid
+        					, strUrl
+        					, strInputDs
+        					, strOutputDs
+        					, strParam
+        					, strFnCallback);
+        }//검색끝
+        //저장
+
+        
+
+        
+
+        //삭제
+        this.Button9_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+        {
+        	chekTurFalse();//체크가 되어있을경우에만 아래 문장 실행
+        	
+        	if(trueFalse == "true"){
+        	
+        		var strSvcID="del";//함수 호출시 찾아가는 아이디
+        		var strURL="svc::register/fileDel.do";//주소 ???확인
+        		var strInDatasets="";//넘겨주는 데이터
+        		var strOutDatasets="";//받는 데이터
+        		var strArgument="";//받을변수
+        		var strCallbackFunc	="fnCallback";//함수 호출
+        		var fileNumSplit;//삭제할 파일이름을 담을 변수
+        		var fileNumArray;//삭제할 파일을 배열로 하나하나씩 받는 변수
+        		
+        		if(confirm("파일을 삭제 하시겠습니까?") = true){
+        			var colDelChek;
+        			for(var i = 0 ; i < Fileup.Count ; i++){
+        				colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        				if(colDelChek == "1" && Fileup.GetColumn(i,"addFileDel") == "N"){
+        						fileNumSplit += Fileup.GetColumn(i,"addFileRelNum")+"@!#!$";
+        				}//if end
+        			}//for end
+        			
+        			//파일삭제코드
+        /*			for(var i = 0 ; i < Fileup.count ; i++){
+        				colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        				if(colDelChek == "1"){
+        					var fileDel = Fileup.GetColumn(i,"addFileSerPath")+"\\"+Fileup.GetColumn(i,"addFileSerFileName")+"."+Fileup.GetColumn(i,"addFilePcFileExt");
+        						File0.Delete(fileDel);
+        				}
+        			}
+        */		
+        			fileNumArray = Split(fileNumSplit,"@!#!$");//파일이름을 배열로 저장
+        			
+        			for(var i = 0 ; i < fileNumArray.Length() ; i++){
+        				strArgument += " fileNum["+i+"]=" + Quote(fileNumArray[i]);//서버로 각각따로 담을 변수
+        			}//for end
+
+        			Transaction(strSvcID,
+        						strURL,
+        						strInDatasets,
+        						strOutDatasets,
+        						strArgument,
+        						strCallbackFunc);//서버로 보냄
+        		}//end if
+        	}//end if
+        	trueFalse="";
+        }//삭제 끝
+
+        
+        //파일이름변경
+        this.Button4_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+        {
+        	chekTurFalse();
+        	
+        	if(trueFalse == "true"){
+        		if(confirm("파일이름을 변경 하시겠습니까?") = true){
+        		
+        			var reNameText="";
+        			
+        			for(var i = 0 ; i < Fileup.count ; i++){
+        				colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        				if(colDelChek == "1"){
+        					popName = Fileup.GetColumn(i,"addFileSerFileName");//변경전 파일이름을 담아서 팝업창에 보여줌
+        					Dialog("debt::ReName","");//파일이름 변경창 팝업
+        					popName="";
+        					if(ReName.Text !=""){
+        						reNameText += ReName.Text+"@!#!$";//변경된 파일이름을 저장
+        					}else{
+        						ReName.Text = "";
+        						break;//파일이름 변경 팝업창 취소 버튼 누르면 파일이름변경 하나도 수행하지 않음
+        					}//end if
+        				}//end if
+        			}//end for
+        			
+        			reNameText = Split(reNameText,"@!#!$");//변경된 파일이름을 배열로 저장
+        			
+        			if(ReName.Text != ""){//파일이름 변경이 모두 수행 되었을 경우에 실행
+        			
+        				var colDelChek;
+        				var strSvcID="fileReName";//함수 호출시 찾아가는 아이디
+        				var strURL="svc::register/fileReName.do";//주소
+        				var strInDatasets="";//넘겨주는 데이터
+        				var strOutDatasets="";//받는 데이터
+        				var strArgument="";//받을변수
+        				var strCallbackFunc	="fnCallback";//함수 호출
+        				var fileNumSplit;
+        				var fileNumArray;
+        				var fileReName;
+        				var oldFileName;
+        				var j=0;
+        				
+        				for(var i = 0 ; i < Fileup.count ; i++){
+        					colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        					if(colDelChek == "1"){
+        						oldFileName = Fileup.GetColumn(i,"addFileSerPath")+"\\"+Fileup.GetColumn(i,"addFileSerFileName")+"."+Fileup.GetColumn(i,"addFilePcFileExt");
+        						File0.ReName(oldFileName,Fileup.GetColumn(i,"addFileSerPath")+"\\"+reNameText[j]+"."+Fileup.GetColumn(i,"addFilePcFileExt"));
+        						fileNumSplit += Fileup.GetColumn(i,"addFileRelNum")+"@!#!$";
+        						j+=1;//0번 부터 수행
+        					}//end if
+        				}//end for
+        				
+        				fileNumArray = Split(fileNumSplit,"@!#!$");
+        				
+        			for(var i = 0 ; i < fileNumArray.Length() ; i++){
+        				strArgument += " fileNum["+i+"]=" + Quote(fileNumArray[i]);//파일 일련번호를 저장
+        			}//end for
+        			
+        			for(var i = 0 ; i < reNameText.Length() ; i++){
+        				strArgument += " reNameText["+i+"]=" + Quote(reNameText[i]);//변경된 파일이름을 저장
+        			}//end for
+        			
+        			Transaction(strSvcID,
+        						strURL,
+        						strInDatasets,
+        						strOutDatasets,
+        						strArgument,
+        						strCallbackFunc);
+        			}//end if
+        		}//end if
+        	}//end if
+        	
+        	trueFalse="";
+        	
+        	//동일한 파일이름이 있을경우 다시 수행하기 ---------->실패한 로직
+        	/*chekTurFalse();
+        	if(trueFalse == "true"){
+        		if(confirm("파일이름을 변경 하시겠습니까?") = true){
+        		var reNameText="";
+        		var textSplit="1";
+        		var abc;
+        		var a = true;
+        		//var d = array(fileup.count);
+        		var d = "";
+        		
+        		for(var k = 0 ; k < fileup.count ; k++){
+        			abc = Fileup.GetColumn(k,"addFileCheck");
+        			if(abc == "1"){
+        				d += Fileup.GetColumn(k,"addFileSerFileName")+"@!#!$";
+        			}
+        		}
+        		
+        		d = Split(d,"@!#!$");
+        		
+        			for(var i = 0 ; i < Fileup.count ; i++){
+        				colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        				if(colDelChek == "1"){
+        					popName.Text = Fileup.GetColumn(i,"addFileSerFileName")+"."+fileup.GetColumn(i,"addFilePcFileExt");
+        					Dialog("debt::ReName","");
+        					
+        		while(a){
+        		
+        				for(var u = 0 ; u < d.length ; u ++){
+        					if(reFilepop.Text == d[u]){
+
+        					Alert("다시 입력하세요 1번검사");
+        						Dialog("debt::ReName","");
+        					}else{
+        						break;
+        					}
+        				}//for 1
+        					
+        						for(var j = 0 ; j < textSplit.length ; j++){
+        							if(reFilepop.Text == Fileup.GetColumn(i,"addFileSerFileName")){
+        								if(reFilepop.Text == textSplit[j] || textSplit.length == 1){
+        								Alert("다시 입력하세요 2번검사");
+        									Dialog("debt::ReName","");
+        								}else{
+        									break;
+        								}
+        							}
+        						}//for 2
+        						
+        				}//while
+        			
+        		
+        					popName.Text = "";
+        					if(ReName.Text !=""){
+        						reNameText += ReName.Text+"@!#!$";
+        					}else{
+        						ReName.Text = "";
+        						break;
+        					}
+        					textSplit = Split(reNameText,"@!#!$");
+        					spText.Text = textSplit;
+        				}
+        			}
+        			
+        			Alert("데이터 전송 = "+reNameText);
+        			
+        			reNameText = Split(reNameText,"@!#!$");
+
+        			if(ReName.Text != ""){
+        			var colDelChek;
+        			var strSvcID="fileReName";//함수 호출시 찾아가는 아이디
+        			var strURL="svc::register/fileReName.do";//주소
+        			var strInDatasets="";//넘겨주는 데이터
+        			var strOutDatasets="";//받는 데이터
+        			var strArgument="";//받을변수
+        			var strCallbackFunc	="fnCallback";//함수 호출
+        			var fileNumSplit;
+        			var fileNumArray;
+        			var fileReName;
+        			var oldFileName;
+        			var j=0;
+        				for(var i = 0 ; i < Fileup.count ; i++){
+        					colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        					if(colDelChek == "1"){
+        						oldFileName = Fileup.GetColumn(i,"addFileSerPath")+"\\"+Fileup.GetColumn(i,"addFileSerFileName")+"."+Fileup.GetColumn(i,"addFilePcFileExt");
+        						File0.ReName(oldFileName,Fileup.GetColumn(i,"addFileSerPath")+"\\"+reNameText[j]+"."+Fileup.GetColumn(i,"addFilePcFileExt"));
+        						fileNumSplit += Fileup.GetColumn(i,"addFileRelNum")+"@!#!$";
+        						j+=1;
+        					}
+        				}
+        				fileNumArray = Split(fileNumSplit,"@!#!$");
+        			for(var i = 0 ; i < fileNumArray.Length() ; i++){
+        				strArgument += " fileNum["+i+"]=" + Quote(fileNumArray[i]);
+        			}
+        			for(var i = 0 ; i < reNameText.Length() ; i++){
+        				strArgument += " reNameText["+i+"]=" + Quote(reNameText[i]);
+        			}
+        			Transaction(strSvcID,
+        						strURL,
+        						strInDatasets,
+        						strOutDatasets,
+        						strArgument,
+        						strCallbackFunc);
+        			}
+        		}
+        	}
+        	trueFalse="";
+        */
+        }//파일이름 변경 끝	
+
+        //닫기
+        this.Button1_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+        {
+        	menu_div.URL="MAIN::Logo";
+        }
+        //저장
+        this.Button0_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+        {
+        	
+        chekTurFalse();
+        	if(trueFalse == "true"){
+        		if(FileDialog0.Open() = true){
+        			var colDelChek;
+        			var strSvcID="hit";//함수 호출시 찾아가는 아이디
+        			var strURL="svc::register/fileHit.do";//주소
+        			var strInDatasets="";//넘겨주는 데이터
+        			var strOutDatasets="";//받는 데이터
+        			var strArgument="";//받을변수
+        			var strCallbackFunc	="fnCallback";//함수 호출
+        			var fileNumSplit;
+        			var fileNumArray;
+        			for(var i = 0 ; i < Fileup.count ; i++){
+        				colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        				if(colDelChek == "1"){
+        					if(Fileup.GetColumn(i,"addFileDel") == "N"){
+        						var newFileCopy = Fileup.GetColumn(i,"addFileSerPath")+"\\"+Fileup.GetColumn(i,"addFileSerFileName")+"."+Fileup.GetColumn(i,"addFilePcFileExt");//경로+파일이름+확장자 저장
+        						var newFileName = Fileup.GetColumn(i,"addFileSerFileName")+"."+Fileup.GetColumn(i,"addFilePcFileExt");//파일이름+확장자 저장
+        							File0.Copy(newFileCopy,FileDialog0.FilePath+"\\"+newFileName);//지정된 경로에 파일 복사
+        							fileNumSplit += Fileup.GetColumn(i,"addFileRelNum")+"@!#!$";//파일 일련변호 저장
+        					}else{
+        						Alert("파일이 없습니다.(파일명:"+Fileup.GetColumn(i,"addFileSerFileName")+")");//삭제된 파일일경우 사용자에게 알려줌
+        					}//if end
+        				}//if end
+        			}//for end
+        			
+        			fileNumArray = Split(fileNumSplit,"@!#!$");//파일 일련번호를 배열로 저장
+        			
+        			for(var i = 0 ; i < fileNumArray.Length() ; i++){
+        				strArgument += " fileNum["+i+"]=" + Quote(fileNumArray[i]);
+        			}
+
+        			Transaction(strSvcID,
+        						strURL,
+        						strInDatasets,
+        						strOutDatasets,
+        						strArgument,
+        						strCallbackFunc); 
+        		}//if end
+        	}//if end
+        	trueFalse="";
+        }//저장 끝
+
+        }
+        //다른이름으로 저장
+        this.Button02_onclick = function(obj,e)
+        {
+        	chekTurFalse();
+        	
+        	if(trueFalse == "true"){
+        		var colDelChek;
+        		var strSvcID="hit";//함수 호출시 찾아가는 아이디
+        		var strURL="svc::register/fileHit.do";//주소
+        		var strInDatasets="";//넘겨주는 데이터
+        		var strOutDatasets="";//받는 데이터
+        		var strArgument="";//받을변수
+        		var strCallbackFunc	="fnCallback";//함수 호출
+        		var fileNumSplit;
+        		var fileNumArray;
+        		if(FileDialog0.Open() = true){
+        			for(var i = 0 ; i < Fileup.count ; i++){
+        				colDelChek = Fileup.GetColumn(i,"addFileCheck");
+        				if(colDelChek == "1"){
+        					if(Fileup.GetColumn(i,"addFileDel") == "N"){
+        						if(FileDialog1.Open(FileDialog0.FilePath) = true){				
+        							var newFileCopy = Fileup.GetColumn(i,"addFileSerPath")+"\\"+Fileup.GetColumn(i,"addFileSerFileName")+"."+Fileup.GetColumn(i,"addFilePcFileExt");
+        								File0.Copy(newFileCopy,FileDialog0.FilePath+"\\"+FileDialog1.FileName+"."+Fileup.GetColumn(i,"addFilePcFileExt"));
+        								fileNumSplit += Fileup.GetColumn(i,"addFileRelNum")+"@!#!$";
+        						}else{
+        							break;//취소 버튼을 누를 경우 작업 중지
+        						}//if end
+        					}else{
+        						Alert("파일이 없습니다.(파일명:"+Fileup.GetColumn(i,"addFileSerFileName")+")");
+        					}//if end
+        				}//if end
+        			}//for end
+
+        			if(fileNumSplit != ""){
+        				fileNumArray = Split(fileNumSplit,"@!#!$");
+        				for(var i = 0 ; i < fileNumArray.Length() ; i++){
+        					strArgument += " fileNum["+i+"]=" + Quote(fileNumArray[i]);
+        				}//end for
+        				Transaction(strSvcID,
+        							strURL,
+        							strInDatasets,
+        							strOutDatasets,
+        							strArgument,
+        							strCallbackFunc);
+        			}//if end
+        		}//if end
+        	}//if end
+        	trueFalse="";
+        }
+        //다른이름으로 저장끝
+        //체크박스 모두선택/해제
+        this.Grid0_OnHeadClick = function(obj,e)
+        {
+        	if(nCell == 0){
+        		if(grid0.GetCellProp('head',0,'value',0) == 0){
+        			Grid0.SetCellProp('head',0,'value',1);
+        			for(var i = 0 ; i < Fileup.count ; i++){
+        				fileup.SetColumn(i,"addFileCheck",1);
+        			}
+        		}else{
+        			Grid0.SetCellProp('head',0,'value',0);
+        			for(var i = 0 ; i < Fileup.count ; i++){
+        				fileup.SetColumn(i,"addFileCheck",0);
+        			}
+        		}
+        	}
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.Static01.addEventHandler("onclick", this.Static01_onclick, this);
+            this.Edit3.addEventHandler("onchanged", this.edit3_OnChanged, this);
+            this.Edit3.addEventHandler("onkeydown", this.edit3_OnKeyDown, this);
+            this.Edit3.addEventHandler("oneditclick", this.Edit3_oneditclick, this);
+            this.Button02.addEventHandler("onclick", this.Button02_onclick, this);
+            this.Grid0.addEventHandler("onheadclick", this.Grid0_OnHeadClick, this);
+            this.button3.addEventHandler("onclick", this.button3_OnClick, this);
+            this.Button0.addEventHandler("onclick", this.Button0_OnClick, this);
+            this.Button9.addEventHandler("onclick", this.Button9_OnClick, this);
+            this.Button4.addEventHandler("onclick", this.Button4_OnClick, this);
+            this.Button1.addEventHandler("onclick", this.Button1_OnClick, this);
+            this.list_com.addEventHandler("onitemchanged", this.list_com_onitemchanged, this);
+            this.list_com.addEventHandler("onchar", this.list_com_onitemchanged, this);
+
+        };
+
+        this.loadIncludeScript("FILE_copy.xfdl");
+
+       
+    };
+}
+)();

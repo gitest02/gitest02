@@ -1,0 +1,363 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_COM_002");
+                this.set_classname("V_COM_002");
+                this.set_titletext("New Form");
+                this._setFormPosition(0,0,658,325);
+            }
+            this.style.set_background("URL('img::btn_LF_Menu_D.png') stretch");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_searchid", this);
+            obj._setContents("<ColumnInfo><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"birth\" type=\"STRING\" size=\"256\"/><Column id=\"userid\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_user", this);
+            obj._setContents("<ColumnInfo><Column id=\"userid\" type=\"STRING\" size=\"256\"/><Column id=\"name\" type=\"STRING\" size=\"256\"/><Column id=\"password\" type=\"STRING\" size=\"256\"/><Column id=\"grade\" type=\"STRING\" size=\"256\"/><Column id=\"address\" type=\"STRING\" size=\"256\"/><Column id=\"phone\" type=\"STRING\" size=\"256\"/><Column id=\"email\" type=\"STRING\" size=\"256\"/><Column id=\"career\" type=\"STRING\" size=\"256\"/><Column id=\"position\" type=\"STRING\" size=\"256\"/><Column id=\"sex\" type=\"STRING\" size=\"256\"/><Column id=\"birth\" type=\"STRING\" size=\"256\"/><Column id=\"engname\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Static("Static00", "absolute", "15.81%", "48", null, "42", "69.3%", null, this);
+            obj.set_taborder("0");
+            obj.set_text("◈  아 이 디 찾 기");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_font("bold 9 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01", "absolute", "4.13%", "104", null, "31", "86.83%", null, this);
+            obj.set_taborder("1");
+            obj.set_text("* 성 명");
+            obj.style.set_color("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02", "absolute", "4.1%", "161", null, "33", "82.98%", null, this);
+            obj.set_taborder("2");
+            obj.set_text("* 생 년 월 일");
+            obj.style.set_color("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_name", "absolute", "17.78%", "104", null, "32", "58.81%", null, this);
+            obj.set_taborder("3");
+            obj.style.set_background("antiquewhite");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_birth01", "absolute", "17.78%", "161", null, "28", "58.81%", null, this);
+            obj.set_taborder("4");
+            obj.style.set_background("antiquewhite");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_id", "absolute", "13.94%", "235", null, "33", "62.94%", null, this);
+            obj.set_taborder("5");
+            obj.set_text("아이디 찾기");
+            obj.style.set_background("black");
+            obj.style.set_color("white");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static03", "absolute", "57.14%", "50", null, "40", "20.67%", null, this);
+            obj.set_taborder("6");
+            obj.set_text("◈  비 밀 번 호 찾 기");
+            obj.style.set_color("whitesmoke");
+            obj.style.set_font("bold 9 arial");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static04", "absolute", "43.92%", "102", null, "32", "46.35%", null, this);
+            obj.set_taborder("7");
+            obj.set_text("* 아 이 디");
+            obj.style.set_color("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static05", "absolute", "43.92%", "157", null, "31", "44.07%", null, this);
+            obj.set_taborder("8");
+            obj.set_text("* 생 년 월 일");
+            obj.style.set_color("whitesmoke");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_id", "absolute", "58.05%", "103", null, "32", "16.72%", null, this);
+            obj.set_taborder("9");
+            obj.style.set_background("antiquewhite");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_birth02", "absolute", "58.05%", "160", null, "31", "16.72%", null, this);
+            obj.set_taborder("10");
+            obj.style.set_background("antiquewhite");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_pass", "absolute", "55.59%", "235", null, "31", "19.14%", null, this);
+            obj.set_taborder("11");
+            obj.set_text("비밀번호 찾기");
+            obj.style.set_background("black");
+            obj.style.set_color("white");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 658, 325, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_COM_002");
+            		p.set_titletext("New Form");
+            		p.style.set_background("URL('img::btn_LF_Menu_D.png') stretch");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.registerScript("V_COM_002.xfdl", function() {
+        this.V_COM_002_onload = function(obj,e)
+        {
+        	//기본 공통  함수 초기화
+        	Iject.formOnload(obj);	
+            //this.fn_search();	
+            this.ds_searchid.addRow();
+        }
+
+        this.Buttonid_onclick = function(obj,e)
+        {
+        	var name = this.ed_name.value;
+        	var birth =  this.ed_birth01.value;
+        	this.ds_searchid.setColumn(0, "name", name);
+        	this.ds_searchid.setColumn(0, "birth", birth);
+        	
+           var oDatas =  {
+        			  svcid : "search",
+        			  sController : "userfindID.do",			 
+        			  inds :["input1=ds_searchid"],
+        			  outds :[
+        				 "ds_user=output1"
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : false,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //		
+        			}; 
+        	
+        	 //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid       서비스 ID
+        		*   @param : {object}    this.fobj        : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/    
+        	
+        		if(this.errorcode < 0)
+        		{
+        		   //Iject.alert(this.errorMsg);			
+        		   alert("해당정보가 없습니다.");
+        		   return;
+        		} 
+        	       var pThis = this.fobj;   //form object	      
+        	});	
+        	if(this.ds_user.getRowCount()<=0){
+        	alert("해당정보가 없습니다.");
+        	}else{
+        	alert("\""+name+"\""+"님의 아이디는"+"'"+this.ds_user.getColumn(0,14)+"'"+"입니다.");
+        	}
+        }
+
+        this.Buttonpass_onclick = function(obj,e)
+        {
+        	var userid = this.ed_id.value;
+        	var birth =  this.ed_birth02.value;
+        	this.ds_searchid.setColumn(0, "userid", userid);
+        	this.ds_searchid.setColumn(0, "birth", birth);
+        	
+            var oDatas =  {
+        			  svcid : "search",
+        			  sController : "userfindPASS.do",			 
+        			  inds :["input2=ds_searchid"],
+        			  outds :[
+        				 "ds_user=output1"
+        			     ],			     
+        			  args  : [				
+        			  ],
+        			  bAsync : false,    // 비동기여부 (true : async  false: sync)
+        			  nDataType : 0,   // (0: XML타입, 1: 이진 타입, 2: SSV 타입)
+        			  bCompress :false,	 //		
+        			}; 
+        	
+        	 //공통 transaction 함수 호츨   //function callback 
+        	Iject.transaction(this,oDatas,function(){   
+        		/*  
+        		*   callback argument
+        		*   @param : {string}    this.svcid       서비스 ID
+        		*   @param : {object}    this.fobj        : 현재 form object
+        		*   @param : {number}    this.errorcode  : 서비스 에러 코드
+        		*   @param : {string}    this.errormsg   : 서비스 에러 메세지
+        		*/    
+        	
+        		if(this.errorcode < 0)
+        		{
+        		   //Iject.alert(this.errorMsg);			
+        		   alert("해당정보가 없습니다.");
+        		   return;
+        		} 
+        	       var pThis = this.fobj;   //form object	      
+        	});	
+        	if(this.ds_user.getRowCount()<=0){
+        	alert("해당정보가 없습니다.");
+        	}else{
+        	alert("이메일주소로 임시비밀번호를 발송하였습니다.");
+        	}
+        }
+
+        this.autoHypenbirth = function(str){
+        var tmp = '';
+          if(str.length < 1){
+            return str;
+          }else if(str.length < 4){
+        	tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2);
+            this.ed_birth.value.trim();
+            return tmp;
+          }
+         
+          else if(str.length < 6){
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 2);
+            tmp += '-';
+            tmp += str.substr(4);
+            this.ed_birth.value.trim();
+            return tmp;
+          }else{        
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 2);
+            tmp += '-';
+            tmp += str.substr(4);
+            this.ed_birth01.value.trim();
+            this.ed_birth01.set_value(tmp);
+            return tmp;
+          }
+          }
+
+        this.ed_birth01_onkeyup = function(obj,e)
+        {
+        	var str = this.ed_birth01.value;
+        	this.ed_birth01.set_maxlength(6);
+        	this.autoHypenbirth(str);
+        }
+
+        this.autoHypenbirth = function(str){
+        var tmp = '';
+          if(str.length < 1){
+            return str;
+          }else if(str.length < 4){
+        	tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2);
+            this.ed_birth01.value.trim();
+            return tmp;
+          }
+         
+          else if(str.length < 6){
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 2);
+            tmp += '-';
+            tmp += str.substr(4);
+            this.ed_birth01.value.trim();
+            return tmp;
+          }else{        
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 2);
+            tmp += '-';
+            tmp += str.substr(4);
+            this.ed_birth01.value.trim();
+            this.ed_birth01.set_value(tmp);
+            return tmp;
+          }
+          }
+
+        this.ed_birth02_onkeyup = function(obj,e)
+        {
+        	var str = this.ed_birth02.value;
+        	this.ed_birth02.set_maxlength(6);
+        	this.autoHypenbirth2(str);
+        }
+
+        this.autoHypenbirth2 = function(str){
+        var tmp = '';
+          if(str.length < 1){
+            return str;
+          }else if(str.length < 4){
+        	tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2);
+            this.ed_birth02.value.trim();
+            return tmp;
+          }
+         
+          else if(str.length < 6){
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 2);
+            tmp += '-';
+            tmp += str.substr(4);
+            this.ed_birth02.value.trim();
+            return tmp;
+          }else{        
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 2);
+            tmp += '-';
+            tmp += str.substr(4);
+            this.ed_birth02.value.trim();
+            this.ed_birth02.set_value(tmp);
+            return tmp;
+          }
+          }
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload", this.V_COM_002_onload, this);
+            this.ed_birth01.addEventHandler("onkeyup", this.ed_birth01_onkeyup, this);
+            this.btn_id.addEventHandler("onclick", this.Buttonid_onclick, this);
+            this.ed_birth02.addEventHandler("onkeyup", this.ed_birth02_onkeyup, this);
+            this.btn_pass.addEventHandler("onclick", this.Buttonpass_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_COM_002.xfdl");
+
+       
+    };
+}
+)();

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="V_REC_002" classname="V_REC_002" left="0" top="0" width="500" height="400" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="Div00" left="1%" top="50" right="1%" height="35" style="background:lavenderblush;border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Edit id="mgr_tx" taborder="13" oneditclick="Div00_Edit00_oneditclick" left="34.84%" top="5" right="25.61%" height="25"/>
+              <Button id="btn_mgr_search" taborder="14" text="검색  " onclick="Div00_Button00_onclick" left="75%" top="7" width="56" height="20" style="background:@gradation URL('theme://images\btn_TF_Search.png') 10px 50px;align:right middle;"/>
+              <Combo id="mgr_com" taborder="15" text="전체" codecolumn="id" datacolumn="value" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="12.5%" top="5" width="21.93%" height="24" value="null"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static04" taborder="2" text="담당자 조회" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;align:center middle;font:bold 12 굴림;"/>
+        <Static id="Static00" taborder="3" text="공탁담당자 목록" left="1.8%" top="91" right="76.8%" height="24"/>
+        <Button id="btn_close" taborder="4" text="닫기" left="89%" top="370" right="1%" height="23" onclick="Div00_Button00_onclick"/>
+        <Grid id="grd_Search" taborder="5" binddataset="ds_mgr" useinputpanel="false" autofittype="col" oncelldblclick="grid_searchList_oncellclick" left="1%" top="91" right="1%" height="275" style="border:1 solid #9f8f71ff,0 none #808080ff;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="58"/>
+                <Column size="99"/>
+                <Column size="98"/>
+                <Column size="184"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO."/>
+                <Cell col="1" text="사번"/>
+                <Cell col="2" text="담당자명"/>
+                <Cell col="3" text="이메일"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1" text="bind:insaSabun"/>
+                <Cell col="2" text="bind:insaName"/>
+                <Cell col="3" text="bind:insaEmail"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_mgr">
+        <ColumnInfo>
+          <Column id="insaSabun" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+          <Column id="insaEmail" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="mgr_no">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">전체</Col>
+          </Row>
+          <Row>
+            <Col id="id">0</Col>
+            <Col id="value">사번</Col>
+          </Row>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="value">이름</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+//닫기 버튼 클릭 시
+this.Div00_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Example_pattern" classname="Example_pattern" left="0" top="0" width="500" height="250" titletext="New Form" style="border:1 solid #c8c8c8ff ;">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="결재상신" left="1%" top="0" right="1%" height="42" style="background:transparent URL('theme://images\bg_Cal_click.png') stretch;color:whitesmoke;padding:0 0 0 10;font:bold 12 굴림;" onclick="Static00_onclick"/>
+        <Div id="Div01" taborder="2" text="Div01" left="0%" top="49" right="0%" height="196">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" onclick="Div00_Static00_onclick" left="1%" top="40" right="1.2%" height="103" style="background:lavenderblush;border:1 solid #c8c8c8ff ;color:#080808ff;font:bold 9 굴림;"/>
+              <Static id="Static07" taborder="5" text="결재라인" left="1%" top="11" right="88.17%" height="20" style="font:10 bold Dotum;"/>
+              <Static id="Static02" taborder="7" text="제목" left="2.33%" top="46" width="100" height="24" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:middle;"/>
+              <Static id="Static03" taborder="9" text="참고의견" left="2.33%" top="69" width="100" height="68" style="background:#f4edfaff;border:1 solid #c8c8c8ff ;align:middle;"/>
+              <Edit id="TextArea1" taborder="10" oneditclick="Div00_Edit00_oneditclick" left="22.4%" top="69" width="374" height="68"/>
+              <Button id="Button3" taborder="11" text="상신" onclick="Div00_Button00_onclick" left="69.6%" top="149" width="70" height="20"/>
+              <Button id="btn_close" taborder="12" text="닫기" onclick="Div00_Button01_onclick" left="84.8%" top="149" width="70" height="20"/>
+              <Edit id="Edit6" taborder="13" left="22.4%" top="46" width="374" height="24"/>
+              <Combo id="Combo0" taborder="14" codecolumn="codeSabun" datacolumn="id" type="filter" onitemchanged="div_search_cb_searchLawClassName_onitemchanged" left="74.8%" top="7" width="120" height="24"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_dept_code">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_insa">
+        <ColumnInfo>
+          <Column id="insaDeptCode" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+          <Column id="insaSabun" type="STRING" size="256"/>
+          <Column id="insaDeptName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_comment">
+        <ColumnInfo>
+          <Column id="aprvprgrInfoStepCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoBookNo" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvInfoSeq" type="STRING" size="256"/>
+          <Column id="aprvInfoSabun" type="STRING" size="256"/>
+          <Column id="aprvInfoName" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptCode" type="STRING" size="256"/>
+          <Column id="aprvInfoDeptName" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpId" type="STRING" size="256"/>
+          <Column id="aprvInfoCondCode" type="STRING" size="256"/>
+          <Column id="aprvInfoProcDate" type="STRING" size="256"/>
+          <Column id="aprvInfoReqDate" type="STRING" size="256"/>
+          <Column id="aprvInfoFinWtr" type="STRING" size="256"/>
+          <Column id="aprvInfoCont" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoUpSeq" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritSabun" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWrit" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptCode" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDeptName" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritDate" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritCont" type="STRING" size="256"/>
+          <Column id="aprvprgrInfoWritTit" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_firstAprvLine">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeSabun" type="STRING" size="256"/>
+          <Column id="codeDeptCode" type="STRING" size="256"/>
+          <Column id="codeDeptName" type="STRING" size="256"/>
+          <Column id="codeUpId" type="STRING" size="256"/>
+          <Column id="codeNameSabun" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_position_pig">
+        <ColumnInfo>
+          <Column id="aprvlineAdmSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpSeq" type="STRING" size="256"/>
+          <Column id="aprvlineAdmProcCode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvId" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvDeptId" type="STRING" size="256"/>
+          <Column id="aprvlineAdmUpAprvcode" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAdWtr" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvIdName" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvDeptIdName" type="STRING" size="256"/>
+          <Column id="aprvlineAdmAprvUpId" type="STRING" size="256"/>
+          <Column id="insaName" type="STRING" size="256"/>
+          <Column id="classCode" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dept_code_0">
+        <ColumnInfo>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_Wri_dept_code">
+        <ColumnInfo>
+          <Column id="codeNo" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div01.Edit6" propid="text" datasetid="ds_comment" columnid="aprvprgrInfoWritTit"/>
+      <BindItem id="item2" compid="Div01.TextArea1" propid="text" datasetid="ds_comment" columnid="aprvprgrInfoWritCont"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[////////////////////////////////////////////////////////////////////////////////
+/*
+작 성 자 : 이창민
+작 성 일 : 2018.08.02
+프로그램 : 조정안 관리
+*/
+////////////////////////////////////////////////////////////////////////////////
+include "Lib::Comm.xjs";
+
+//Onload
+this.V_MED_001_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.code_select(); 	// 공통코드 호출 [단 1회 호출추천]
+	this.comboSetup(); 	//  공통코드 콤보데이터에 맞게 분할
+	this.legal_input.SetFocus();
+	this.LawNoSearch();	//소송관리번호 조회
+	
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+//결재라인 불러오기
+this.fnCallback1 = function()
+{
+	if(strId == "outList"){
+		if(errcode < 0){			
+			alert("데이터 불러오기에 실패하였습니다." + errmsg);
+		}else {
+			//작성자정보 불러오기(ds_insa 로딩)
+			Sabun = substr(gb_Param, "4", "10");
+			get_getAprvWriter(Sabun);
+		}
+	}
+}
+
+function fnCallback1(strId, errcode, errmsg){
+	if(strId == "outList"){
+		if(errcode < 0){			
+			alert("데이터 불러오기에 실패하였습니다." + errmsg);
+		}else {
+			//작성자정보 불러오기(ds_insa 로딩)
+			Sabun = substr(gb_Param, "4", "10");
+			get_getAprvWriter(Sabun);
+		}
+	}
+}
+
+
+
+
+
+
+////////////////////////////
+
+//상신 버튼 클릭 시
+this.Div00_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+}
+
+//닫기 버튼 클릭 시
+this.Div00_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

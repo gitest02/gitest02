@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="lawRec">
+
+<!-- <resultMap type="approval.lawmapper.vo.ApprovalTotalVO" id="approvalTotalVO"> -->
+<!-- 	<result property="lawsuitAdmNo" column="LAWSUIT_ADM_NO" /> -->
+<!-- </resultMap> -->
+
+		
+ 	<!-- 결제라인 리스트 가져오기 approvalProg --> 
+<!-- 	<select id="getApprovalPigList" resultMap="approvalTotalVO" parameterType="approval.lawmapper.vo.ApprovalTotalVO">	 -->
+<!--        	SELECT   -->
+<!-- 	           T1.APRVLINE_ADM_PROC_CODE     -->
+<!-- 	           ,T1.APRVLINE_ADM_SEQ     -->
+<!-- 	           ,T1.APRVLINE_ADM_APRV_ID     -->
+<!-- 	           ,T1.APRVLINE_ADM_APRV_DEPT_ID     -->
+<!-- 	           ,T1.APRVLINE_ADM_UP_APRVCODE     -->
+<!-- 	           ,T1.APRVLINE_ADM_UP_SEQ     -->
+<!-- 	           ,T1.APRVLINE_ADM_AD_WTR -->
+<!-- 	           ,T1.APRVLINE_ADM_UP_ID -->
+<!-- 	           ,T2.INSA_NAME -->
+<!-- 	           ,T2.INSA_POS_GBN_CODE -->
+<!-- 	           ,T3.CODE_NAME -->
+<!-- 	           ,T3.CODE_NO CODE_NO -->
+	           
+<!--         FROM  -->
+<!--          		TAB_APRVLINE_ADM T1, TAB_INSA T2, CMM_CODE_DETAIL T3	 -->
+<!--         WHERE 	T1.APRVLINE_ADM_APRV_ID=T2.INSA_SABUN							결재자ID = 사번 -->
+<!--         AND 	T2.INSA_POS_GBN_CODE=T3.CODE_NO							T2.직원구분코드 =  T3.상세코드 -->
+<!--         AND		T1.APRVLINE_ADM_PROC_CODE=#aprvlineAdmProcCode#			T1.결재진행단계코드 -->
+<!--         AND 	T3.CLASS_CODE=#classCode# -->
+<!--         <isNotNull> -->
+<!-- 			<isNotEmpty property="aprvlineAdmSeq" prepend="AND"> -->
+<!-- 				T1.APRVLINE_ADM_SEQ=#aprvlineAdmSeq# -->
+<!-- 			</isNotEmpty> -->
+<!-- 		</isNotNull> -->
+         
+<!-- 		ORDER BY T1.APRVLINE_ADM_SEQ ASC -->
+<!-- 	</select> -->
+	
+</mapper>

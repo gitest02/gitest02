@@ -1,0 +1,233 @@
+﻿(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        this.on_create = function()
+        {
+            // Declare Reference
+            var obj = null;
+            
+            if (Form == this.constructor) {
+                this.set_name("V_LAW_002_1");
+                this.set_classname("V_LAW_002_1");
+                this.set_titletext("행정심판례본문");
+                this._setFormPosition(0,0,405,579);
+            }
+            this.style.set_background("floralwhite");
+            this.style.set_border("1 solid black");
+
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("ds_selectlist", this);
+            obj._setContents("<ColumnInfo><Column id=\"deccno\" type=\"STRING\" size=\"256\"/><Column id=\"casename\" type=\"STRING\" size=\"256\"/><Column id=\"reclassname\" type=\"STRING\" size=\"256\"/><Column id=\"decidedate\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_decctext", this);
+            obj._setContents("<ColumnInfo><Column id=\"maintext\" type=\"STRING\" size=\"256\"/><Column id=\"opiniontext\" type=\"STRING\" size=\"256\"/><Column id=\"repltext\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
+
+
+            
+            // UI Components Initialize
+            obj = new Div("Div01", "absolute", "0.25%", "4", null, "524", "0.99%", null, this);
+            obj.set_taborder("3");
+            obj.set_text("Div01");
+            obj.style.set_background("transparent");
+            obj.style.set_border("0 none #808080ff");
+            this.addChild(obj.name, obj);
+            obj = new TextArea("TextArea00", "absolute", "3.25%", "170", null, "71", "0.25%", null, this.Div01);
+            obj.set_taborder("6");
+            obj.set_wordwrap("char");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "10 Dotum");
+            obj.set_enable("false");
+            this.Div01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea01", "absolute", "3.25%", "285", null, "222", "0.25%", null, this.Div01);
+            obj.set_taborder("7");
+            obj.set_wordwrap("char");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "10 Dotum");
+            obj.set_enable("false");
+            this.Div01.addChild(obj.name, obj);
+            obj = new TextArea("TextArea02", "absolute", "3.25%", "76", null, "53", "0.25%", null, this.Div01);
+            obj.set_taborder("8");
+            obj.set_wordwrap("char");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "9 Dotum");
+            obj.set_enable("false");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("주문", "absolute", "3.21%", "53", null, "19", "84.26%", null, this.Div01);
+            obj.set_taborder("9");
+            obj.set_text("주문");
+            obj.style.set_font("bold 12 arial");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "3.21%", "133", null, "44", "76.09%", null, this.Div01);
+            obj.set_taborder("10");
+            obj.set_text("청구취지");
+            obj.style.set_font("bold 12 arial");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static01", "absolute", "3.21%", "240", null, "42", "76.09%", null, this.Div01);
+            obj.set_taborder("11");
+            obj.set_text("재결요지");
+            obj.style.set_font("bold 12 arial");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static02", "absolute", "3.21%", "14", null, "23", "73.18%", null, this.Div01);
+            obj.set_taborder("13");
+            obj.set_text("의결일자");
+            obj.style.set_font("bold 12 arial");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("Edit00", "absolute", "26.53%", "14", null, "19", "53.64%", null, this.Div01);
+            obj.set_taborder("14");
+            obj.set_enable("false");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "10 Dotum");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Static("Static03", "absolute", "52.19%", "14", null, "23", "25.66%", null, this.Div01);
+            obj.set_taborder("15");
+            obj.set_text("일련번호");
+            obj.style.set_font("bold 12 arial");
+            this.Div01.addChild(obj.name, obj);
+            obj = new Edit("Edit01", "absolute", "74.64%", "15", null, "19", "4.37%", null, this.Div01);
+            obj.set_taborder("16");
+            obj.set_enable("false");
+            obj.style.set_border("0 solid #808080ff");
+            obj.style.setStyleValue("background", "disabled", "transparent");
+            obj.style.setStyleValue("border", "disabled", "0 none transparent");
+            obj.style.setStyleValue("color", "disabled", "black");
+            obj.style.setStyleValue("font", "disabled", "10 Dotum");
+            this.Div01.addChild(obj.name, obj);
+
+            obj = new Button("Button00", "absolute", "57.28%", "543", "70", "24", null, null, this);
+            obj.set_taborder("6");
+            obj.style.set_image("URL('img::Printer_icon_small.png')");
+            obj.style.set_font("bold 10 Dotum");
+            obj.set_text("인쇄");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button01", "absolute", "79.01%", "543", "70", "24", null, null, this);
+            obj.set_taborder("7");
+            obj.set_text("닫기");
+            obj.style.set_image("URL('img::small_close.png')");
+            this.addChild(obj.name, obj);
+
+
+            
+            // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 993, 673, this.Div01,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("3");
+            		p.set_text("Div01");
+            		p.style.set_background("transparent");
+            		p.style.set_border("0 none #808080ff");
+
+            	}
+            );
+            this.Div01.addLayout(obj.name, obj);
+
+            //-- Default Layout
+            obj = new Layout("default", "", 405, 579, this,
+            	//-- Layout function
+            	function(p) {
+            		p.set_classname("V_LAW_002_1");
+            		p.set_titletext("행정심판례본문");
+            		p.style.set_background("floralwhite");
+            		p.style.set_border("1 solid black");
+
+            	}
+            );
+            this.addLayout(obj.name, obj);
+
+
+            
+            // BindItem Information
+            obj = new BindItem("item2","Div01.TextArea02","value","ds_decctext","maintext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item3","Div01.TextArea00","value","ds_decctext","opiniontext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item4","Div01.TextArea01","value","ds_decctext","repltext");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item5","Div01.Edit00","value","ds_selectlist","decidedate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item1","Div01.Edit01","value","ds_selectlist","deccno");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            
+            // Remove Reference
+            obj = null;
+        };
+        
+
+        
+        // User Script
+        this.addIncludeScript("V_LAW_006.xfdl", "Lib::Comm.xjs");
+        this.registerScript("V_LAW_006.xfdl", function() {
+        //include "Lib::Comm.xjs";
+
+        this.form_onload = function(obj,e)
+        {
+        	this.ds_selectlist.copyData(this.parent.ds_selectlist);
+        	this.ds_decctext.copyData(this.parent.ds_decctext);
+        	
+
+        } 
+
+        
+
+        
+        this.Button00_onclick = function(obj,e)
+        {
+        		
+        		system.print(this.Div01,false,"left", false);
+        		
+        	
+        }
+
+        this.Button01_onclick = function(obj,e)
+        {
+        	this.close();
+        }
+        
+        });
+
+
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.ds_decctext.addEventHandler("onload", this.form_onload, this);
+            this.addEventHandler("onload", this.form_onload, this);
+            this.Div01.TextArea00.addEventHandler("oneditclick", this.Div01_TextArea00_oneditclick, this);
+            this.Div01.TextArea02.addEventHandler("oneditclick", this.Div01_TextArea02_oneditclick, this);
+            this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+            this.Button01.addEventHandler("onclick", this.Button01_onclick, this);
+
+        };
+
+        this.loadIncludeScript("V_LAW_006.xfdl");
+
+       
+    };
+}
+)();

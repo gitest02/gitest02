@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CODEMASTER" classname="CODEMASTER" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="공통코드마스터관리" left="0.59%" top="26" right="16.8%" height="49" style="background:cornflowerblue;color:black;"/>
+        <Div id="Div00" taborder="1" text="Div00" left="0.78%" top="82" right="16.99%" height="52">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="분류" left="1.78%" top="10" right="81.95%" height="41" style="background:gray;align:center;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Combo id="Combo00" taborder="2" text="전체" left="16.5%" top="92" right="71.88%" height="43"/>
+        <Edit id="Edit00" taborder="3" left="29.69%" top="95" right="34.28%" height="39"/>
+        <Button id="Button00" taborder="4" text="검색" left="66.41%" top="97" right="24.8%" height="37"/>
+        <Div id="Div01" taborder="5" text="Div01" left="0.88%" top="154" right="70.31%" height="54">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="공통코드리스트" left="4.41%" top="4" right="49.15%" height="37" style="align:center;font:bold 10 arial;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="6" useinputpanel="false" left="2.15%" top="221" right="16.21%" height="443" binddataset="Dataset00">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="분류코드"/>
+                <Cell col="1" disptype="normal" text="분류명칭"/>
+                <Cell col="2" disptype="normal" text="사용여부"/>
+                <Cell col="3" disptype="normal" text="주사용테이블"/>
+                <Cell col="4" disptype="normal" text="사용컬럼명칭"/>
+                <Cell col="5" disptype="normal" text="등록일시"/>
+                <Cell col="6" disptype="normal" text="action"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:분류코드"/>
+                <Cell col="1" disptype="normal" text="bind:분류명칭"/>
+                <Cell col="2" disptype="normal" text="bind:사용여부"/>
+                <Cell col="3" disptype="normal" text="bind:주사용테이블"/>
+                <Cell col="4" disptype="normal" text="bind:사용컬럼명칭"/>
+                <Cell col="5" disptype="normal" text="bind:등록일시"/>
+                <Cell col="6" disptype="normal" text="bind:action"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="NO" type="INT" size="256"/>
+          <Column id="분류코드" type="STRING" size="256"/>
+          <Column id="분류명칭" type="STRING" size="256"/>
+          <Column id="사용여부" type="STRING" size="256"/>
+          <Column id="주사용테이블" type="STRING" size="256"/>
+          <Column id="사용컬럼명칭" type="STRING" size="256"/>
+          <Column id="등록일시" type="DATETIME" size="256"/>
+          <Column id="action" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="분류코드">A01</Col>
+            <Col id="분류명칭">채무자구분</Col>
+            <Col id="사용여부">N</Col>
+            <Col id="주사용테이블">TAB_DETOR_LIST</Col>
+            <Col id="사용컬럼명칭">DEBTOR_LIST_CODE</Col>
+            <Col id="등록일시">2013-03-20 13:58:32</Col>
+            <Col id="action">normal</Col>
+          </Row>
+          <Row>
+            <Col id="분류코드">A02</Col>
+            <Col id="분류명칭">상태코드</Col>
+            <Col id="사용여부">N</Col>
+            <Col id="주사용테이블">TAB_DEBTOR_LIST</Col>
+            <Col id="사용컬럼명칭">DEBTOR_LIST_STATUS</Col>
+            <Col id="등록일시">2013-03-20 13:58:32</Col>
+            <Col id="action">normal</Col>
+          </Row>
+          <Row>
+            <Col id="분류코드">B01</Col>
+            <Col id="분류명칭">발생사유코드</Col>
+            <Col id="사용여부">N</Col>
+            <Col id="주사용테이블">TAB_DEBTOR_OCC</Col>
+            <Col id="사용컬럼명칭">DEBTOR_OCC_CODE</Col>
+            <Col id="등록일시">2013-03-20 13:58:32</Col>
+            <Col id="action">normal</Col>
+          </Row>
+          <Row>
+            <Col id="분류코드">C01</Col>
+            <Col id="분류명칭">환입사유코드</Col>
+            <Col id="사용여부">N</Col>
+            <Col id="주사용테이블">TAB_MONEY_IN</Col>
+            <Col id="사용컬럼명칭">MONEY_IN_CODE</Col>
+            <Col id="등록일시">2013-03-20 13:58:32</Col>
+            <Col id="action">normal</Col>
+          </Row>
+          <Row>
+            <Col id="분류코드">D01</Col>
+            <Col id="분류명칭">재산구분</Col>
+            <Col id="사용여부">N</Col>
+            <Col id="주사용테이블">TAB_PROPERTY</Col>
+            <Col id="사용컬럼명칭">PROPERTY_CODE</Col>
+            <Col id="등록일시">2013-03-20 13:58:32</Col>
+            <Col id="action">normal</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

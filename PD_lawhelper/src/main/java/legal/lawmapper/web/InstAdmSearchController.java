@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import legal.lawmapper.service.InstAdmSearchService;
-import legal.lawmapper.vo.FixinfoVO;
 import legal.lawmapper.vo.InstAdmSearchVO;
 
 import com.nexacro.spring.annotation.ParamDataSet;
